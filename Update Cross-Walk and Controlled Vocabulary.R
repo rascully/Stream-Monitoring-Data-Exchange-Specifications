@@ -6,6 +6,7 @@ install.packages("readr")
 library(readr)
 
 #load the metadata file from the GitRepository library
-urlfile= ""
+urlfile= "https://raw.githubusercontent.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/master/Metadata_test.csv"
 
 
+metadata <- read_csv(url(urlfile))

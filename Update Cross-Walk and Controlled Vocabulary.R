@@ -12,12 +12,14 @@ metadata    <- as_tibble(read.xlsx(paste0(wd,"/Metadata.xlsx") , 3), col_names= 
 
 definitions    <- as_tibble(read.xlsx(paste0(wd,"/Metadata.xlsx") , 4), col_names= TRUE)
 
+
+
 #Subset of columens that are shared as part of work to confirm the controled vocab 
 SubsetColumns  <- select(metadata, c(CategoryID, FieldID, Category, InDES, SubsetOfMetrics, LongName, Field, Definition, DataType, NotesCodesConventions, DataType,
-                                  AREMPField, AREMPFieldCorrection, AREMPDescriptionIfDifferentFromDefinition, AREMPUnits, AREMPCollectionMethodID, AREMPAnalysisMethodID, 
-                                  BLMFieldFromMetadata, BLMField, BLMFieldCorrection, BLMDescriptionIfDifferentFromDefinition, BLMUnits, BLMCollectionMethodID, BLMAnalysisMethodID,
-                                  EPA2008Field, EPA2008FieldCorrection, EPA2004Field, EPA2004FieldCorrection, EPADescriptionIfDifferentFromDefinition, EPAUnits, EPACollectionMethodID, EPAAnalysisMethodID,
-                                  PIBOField, PIBOFieldCorrection, PIBODescriptionIfDifferentFromDescription, PIBOUnits, PIBOCollectionMethodID, PIBOAnalysisMethodID))
+                                  AREMPDescriptionIfDifferentFromDefinition, AREMPField, AREMPFieldCorrection, AREMPUnits, AREMPCollectionMethodID, AREMPAnalysisMethodID, 
+                                  BLMDescriptionIfDifferentFromDefinition, BLMFieldFromMetadata, BLMField, BLMFieldCorrection,  BLMUnits, BLMCollectionMethodID, BLMAnalysisMethodID,
+                                  EPADescriptionIfDifferentFromDefinition, EPA2008Field, EPA2008FieldCorrection, EPA2004Field, EPA2004FieldCorrection, EPAUnits, EPACollectionMethodID, EPAAnalysisMethodID,
+                                  PIBODescriptionIfDifferentFromDescription, PIBOField, PIBOFieldCorrection,  PIBOUnits, PIBOCollectionMethodID, PIBOAnalysisMethodID))
                            
 # Extract the subset of metrics that are inclued in the initial controlled vocubilary, not in the inital crontrolled vocab or the data exchange specifications, and in the data exhcnage specifications 
 metrics <- SubsetColumns%>% 

@@ -3,7 +3,6 @@ install.packages('tidyverse')
 library(tidyverse)
 library(downloader) 
 library(xlsx)
-
 install.packages("writexl")
 library(writexl)
 
@@ -28,9 +27,11 @@ metrics <- SubsetColumns%>%
 metrics <- SubsetColumns %>% 
           filter(SubsetOfMetrics =="x")
 
-NotInControlledVocab <- SubsetColumns %>% 
-  filter(SubsetOfMetrics !="x" | InDES == 'x')
-    
+NotInControlledVocab <- SubsetColumns %>%
+        filter(is.na(InDES)) %>%
+        filter(is.na(SubsetOfMetrics))
+
+
 des <- SubsetColumns %>%
     filter(InDES =='x')
 
@@ -41,10 +42,10 @@ subsetDefinitions <- definitions %>%
 #Save the spreadsheets with the definitions 
 
 sheets <- list("Controlled Vocabulary And CrossWalk" = metrics, "Column Definitions" = subsetDefinitions) #assume sheet1 and sheet2 are data frames
-write_xlsx(sheets, "Controlled Vocabulary And CrossWalk.xlsx")
+write_xlsx(sheets, paste0(wd, "/Controlled Vocabulary And CrossWalk.xlsx"))
 
 sheets <- list("Data Exchange Specifications" = des, "Column Definitions"= subsetDefinitions)
-write_xlsx(sheets, "Elements Of Data Exchange Specifications.xlsx")
+write_xlsx(sheets, paste0(wd, "/Elements Of Data Exchange Specifications.xlsx"))
 
 sheets <- list("Metrics Not In Controlled Vocabulary" = NotInControlledVocab, "Column Definitions"= subsetDefinitions) 
-write_xlsx(sheets, "Metrics Not In Controlled Vocabulary.xlsx")
+write_xlsx(sheets, paste0(wd, "/Metrics Not In Controlled Vocabulary.xlsx"))

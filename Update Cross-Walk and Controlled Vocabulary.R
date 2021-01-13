@@ -13,14 +13,14 @@ definitions    <- as_tibble(read.xlsx(paste0(wd,"/Metadata.xlsx") , 4), col_name
 
 
 
-#Subset of columens that are shared as part of work to confirm the controled vocab 
+#Subset of columns that are shared as part of work to confirm the controlled vocab 
 SubsetColumns  <- select(metadata, c(CategoryID, FieldID, Category, InDES, SubsetOfMetrics, LongName, Field, Definition, DataType, NotesCodesConventions, DataType,
                                   AREMPDescriptionIfDifferentFromDefinition, AREMPField, AREMPFieldCorrection, AREMPUnits, AREMPCollectionMethodID, AREMPAnalysisMethodID, 
                                   BLMDescriptionIfDifferentFromDefinition, BLMFieldFromMetadata, BLMField, BLMFieldCorrection,  BLMUnits, BLMCollectionMethodID, BLMAnalysisMethodID,
                                   EPADescriptionIfDifferentFromDefinition, EPA2008Field, EPA2008FieldCorrection, EPA2004Field, EPA2004FieldCorrection, EPAUnits, EPACollectionMethodID, EPAAnalysisMethodID,
                                   PIBODescriptionIfDifferentFromDescription, PIBOField, PIBOFieldCorrection,  PIBOUnits, PIBOCollectionMethodID, PIBOAnalysisMethodID))
                            
-# Extract the subset of metrics that are inclued in the initial controlled vocubilary, not in the inital crontrolled vocab or the data exchange specifications, and in the data exhcnage specifications 
+# Extract the subset of metrics that are included in the initial controlled vocabulary, not in the initial controlled vocab or the data exchange specifications, and in the data exhcnage specifications 
 metrics <- SubsetColumns%>% 
   filter(SubsetOfMetrics== "x" | InDES == 'x')
 
@@ -35,17 +35,17 @@ NotInControlledVocab <- SubsetColumns %>%
 des <- SubsetColumns %>%
     filter(InDES =='x')
 
-#Extract the definitions of the columns included in the subseted metadata. If a name is added to the "cross-walk" variable update the metadata file definitions sheet. 
+#Extract the definitions of the columns included in the subsets metadata. If a name is added to the "cross-walk" variable update the metadata file definitions sheet. 
 subsetDefinitions <- definitions %>%
   filter(IncludeInCrosswalk =="x")
 
 #Save the spreadsheets with the definitions 
 
-sheets <- list("Controlled Vocabulary And CrossWalk" = metrics, "Column Definitions" = subsetDefinitions) #assume sheet1 and sheet2 are data frames
-write_xlsx(sheets, paste0(wd, "/Controlled Vocabulary And CrossWalk.xlsx"))
+sheets <- list("ControlledVocabularyAndCrossWalk" = metrics, "Column Definitions" = subsetDefinitions) #assume sheet1 and sheet2 are data frames
+write_xlsx(sheets, paste0(wd, "/ControlledVocabularyAndCrossWalk.xlsx"))
 
-sheets <- list("Data Exchange Specifications" = des, "Column Definitions"= subsetDefinitions)
-write_xlsx(sheets, paste0(wd, "/Elements Of Data Exchange Specifications.xlsx"))
+sheets <- list("DataExchangeSpecifications" = des, "Column Definitions"= subsetDefinitions)
+write_xlsx(sheets, paste0(wd, "/ElementsOfDataExchangeSpecifications.xlsx"))
 
-sheets <- list("Metrics Not In Controlled Vocabulary" = NotInControlledVocab, "Column Definitions"= subsetDefinitions) 
-write_xlsx(sheets, paste0(wd, "/Metrics Not In Controlled Vocabulary.xlsx"))
+sheets <- list("MetricsNotInControlledVocabulary" = NotInControlledVocab, "Column Definitions"= subsetDefinitions) 
+write_xlsx(sheets, paste0(wd, "/MetricsNotInControlledVocabulary.xlsx"))

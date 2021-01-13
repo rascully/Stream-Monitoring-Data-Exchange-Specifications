@@ -25,12 +25,8 @@ We built the standard vocabulary using metadata and metrics from four large scal
 
 The working group cross-walked each of their program's field names to the standard vocabulary.  We also documented detail of the metric combability discussions between the four programs in Appendix A.  The burden is on the data users to ultimately decide if the methods are comparable enough to answer their specific management questions based on metadata in MonitoringResources.org.
 
-If partners wish to exchange additional metrics, they must update the controlled vocabulary on GitHub. The metrics from the four programs not included in the first draft of the standard vocabulary are (MetricsNotInControlledVocabulary.xlsx)
+If partners wish to exchange additional metrics, they must update the controlled vocabulary on GitHub. The metrics from the four programs not included in the first draft of the standard vocabulary are (/MetricsNotInControlledVocabulary.xlsx)
 
-# Providing Data to Users 
-We model this data schema on the Darwin Core star schema [Figure 2](Figures/HabiatDataSharingSchema.png). The star schema is an efficient format for updating and storing data, but not for quick and efficient data analysis. Therefore we will build tools for managers and analysts to download the data in an analysis-ready format based on the Tidy Data principles of each observation is a row; each variable is a column (Wickham 2014).  We chose this structure to simplify loading the data into R and Python for analysis. Each data collect event is a row, and the multiple reach level metrics produced and metadata from an event are fields in the data set. Fields refer to the column headers in the data set, and fields are defined by these data exchange specifications.  
-
-To simplify this data's reuse, we will also link the data to other data sets to provide environmental context to each data collection location, such as elevation, land ownership, management unit, percent forested, etc. 
 
 # Conclusion
 The data exchange specifications contain the details of what will be share and the format to be shared.  We recognize preparing data to be shared requires an investment of time, resources, expertise, and careful documentation of the data collection process and the results.  A recent opinion piece in Nature by Barend Mons (2020), the director of a Global Open FAIR office, recommends that "5% of research funds be invested in making data reusable". Projects producing this type of data are already working beyond their capacity, so to integrate data between habitat programs, there needs to be supported in project budgets or for a centralized data manager to help implement and updated the necessary documentation and code to share data. 

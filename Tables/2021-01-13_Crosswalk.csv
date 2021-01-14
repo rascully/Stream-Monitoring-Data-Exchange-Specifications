@@ -1,0 +1,68 @@
+"","CategoryID","Category","FieldID","MeasurementID","VocabularyCatagory","Field","LongName","Description","Examples","DataType","Unit","AREMPField","NRSA2004Field","NRSA2008Field","AIMField","PIBOField"
+"1",4,"ControlledVocabulary",1,1,"Channel dimensions","BFWidth","Average bankfull width from transects","Average bankfull width across transects.",NA,"Double","m","average_bfwidth","XBKF_W","XBKF_W","BNKFLL_WT","Bf"
+"2",4,"ControlledVocabulary",2,1,"Channel dimensions","Grad","Gradient of stream reach","Mean slope of water surface (%) from the bottom of the reach to the top of the reach.","min: 0, max: 100","Double","%","gradient","XSLOPE","XSLOPE","SLPE","Grad"
+"3",4,"ControlledVocabulary",3,1,"Channel dimensions","RchLen","Length of sampling reach","Length of sampling reach measured along the thalweg",NA,"Double","m","REACH_LENGTH","REACHLEN","REACHLEN","TOT_RCH_LEN","RchLen"
+"4",4,"ControlledVocabulary",4,1,"Channel dimensions","BFWDRatio","Bankfull width to depth ratio at transects","Average Bankfull Width/Depth Ratio across transects.",NA,"Double","m","ave_widthDepth_ratio","BFWD_RAT","BFWD_RAT",NA,"WDTrans"
+"5",4,"ControlledVocabulary",6,1,"Channel dimensions","WetWidth","Average wetted width from transects","Average wetted width across transects.",NA,"Double","m","wettedWidth_ave","XWIDTH","XWIDTH","WTTD_WT",NA
+"6",4,"ControlledVocabulary",7,1,"Channel dimensions","WetWidthToDepth","Wetted width to depth ratio at transects","Mean Wetted Width/Thalweg Depth ratio",NA,"Double","ratio",NA,"XWD_RAT","XWD_RAT",NA,"WDWetTrans"
+"7",4,"ControlledVocabulary",2,2,"Channel Characteristics","PctDry","Percent of Reach that is Dry","Percent of the reach that was dry","min: 0, max: 100","Double","%",NA,"PCT_DRS","PCT_DRS","PCT_DRY",NA
+"8",4,"ControlledVocabulary",4,2,"Channel Characteristics","StreamOrder","Stream Order","Strahler stream order of the site from the provider dataset",NA,"Double","NA","StreamOrder",NA,"STRAHLERORDER","STRM_ORDR",NA
+"9",4,"ControlledVocabulary",1,4,"Pools","RPD","Residual pool depth","Average of the residual pool depth values for all pools in a reach. Residual pool depth the difference of the pool tail depth from the max depth.",NA,"Double","m","ave_residual_depth",NA,NA,"RES_PL_DEP","PoolDp"
+"10",4,"ControlledVocabulary",4,4,"Pools","PctPool","Percent pools","Percent of the sample reach (linear extent) classified as pool habitat","min: 0, max: 100","Double","%","PctReachInPools",NA,NA,"PCT_PL","PoolPct"
+"11",4,"ControlledVocabulary",1,5,"Streambanks","BankAngle","Bank angle","Measured angle of the stream bank;","min: 0, max: 180","Double","degrees",NA,NA,"XBKA","BNK_AN","BankAngle"
+"12",4,"ControlledVocabulary",2,5,"Streambanks","PctStab","Percent stable banks","Percent of 42 banks lacking visible signs of active erosion (e.g., slump, slough, fracture) (units: %, min: 0, max: 100, n= 42)","min: 0, max: 100","Double","%",NA,NA,NA,"BankStability","Stab"
+"13",4,"ControlledVocabulary",1,6,"Substrate","D50","Diameter of the 50th percentile streambed particle","Median diamerter of bed surface particle size corresponding to the areal median (50th percentile of measured particles) .","min: 1, max: 4098","Double","mm","D50",NA,"Sub_dmm","D50","D50"
+"14",4,"ControlledVocabulary",4,6,"Substrate","PctFines2","Percent of streambed particles <2mm","Percent of the stream bed area that is comprised of pratices with a b-axis < 2 mm","min: 0, max: 100","Double","%","pcnt_fines_tran2","PCT_SAFN","PCT_SAFN","PCT_FN",NA
+"15",4,"ControlledVocabulary",5,6,"Substrate","PctFines6","Percent of streambed particles <6mm","Percent of the stream bed area that is coporsed of particles with a b-axis < 6 mm","min: 0, max: 100","Double","%","pect_fines_tran6","PCT_FN","PCT_FN","PCT_FN6",NA
+"16",4,"ControlledVocabulary",6,6,"Substrate","D16","Diameter of the 16th percentile streambed particle","Bed surface particle size corresponding to the 16th percentile of measured particles","min: 1, max: 4098","Double","mm",NA,NA,NA,"D16","D16"
+"17",4,"ControlledVocabulary",7,6,"Substrate","D84","Diameter of the 84th percentile streambed particle","Bed surface partical size corresponding to the 84th percentile of measured particles","min: 1, max: 4098","Double","mm",NA,NA,NA,"D84","D84"
+"18",4,"ControlledVocabulary",14,6,"Substrate","PctBdrk","Percent Bed Surface Bedrock","Percent of the stream bed area that is coporsed of particles with a b-axis > 4098mm (bedrock)","min: 0, max: 100","Double","%","bedrock_pcnt",NA,"PCT_BDRK",NA,NA
+"19",4,"ControlledVocabulary",32,6,"Substrate","PoolTailFines2","Percent pool tail fines < 2mm","Average percent fine sediment (< 2mm) on the pool tail","min: 0, max: 100","Double","%","pool_fines",NA,NA,"PL_TL_FN","PTFines2"
+"20",4,"ControlledVocabulary",33,6,"Substrate","PoolTailFines6","Percent pool tail fines < 6mm","Average percent fine sediment (< 6mm) on the pool tail","min: 0, max: 100","Double","%",NA,NA,NA,"PL_TL_FN6","PTFines6"
+"21",4,"ControlledVocabulary",1,8,"Temperature",NA,"Mean annual tempeature","Average of mean daily temperatures during a year",NA,NA,"Degrees Celsius",NA,NA,NA,NA,NA
+"22",4,"ControlledVocabulary",2,8,"Temperature",NA,"Mean winter temperature (Dec, Jan, Feb)","Average of mean daily temperatures during December, January, and February",NA,NA,"Degrees Celsius",NA,NA,NA,NA,NA
+"23",4,"ControlledVocabulary",3,8,"Temperature",NA,"Mean spring temperature","Average of mean daily temperatures during March, April, and May",NA,NA,"Degrees Celsius",NA,NA,NA,NA,NA
+"24",4,"ControlledVocabulary",4,8,"Temperature",NA,"Mean summer temperatures","Average of mean daily temperatures during June, July, and August",NA,NA,"Degrees Celsius",NA,NA,NA,NA,NA
+"25",4,"ControlledVocabulary",5,8,"Temperature",NA,"Mean august temperature","Average of mean daily temperatures during August",NA,NA,"Degrees Celsius",NA,NA,NA,NA,NA
+"26",4,"ControlledVocabulary",6,8,"Temperature",NA,"Mean fall temperature","Average of mean daily temperatures during September, October, and November",NA,NA,"Degrees Celsius",NA,NA,NA,NA,NA
+"27",4,"ControlledVocabulary",7,8,"Temperature",NA,"Minimum daily temperature","Lowest mean daily temperature during a year",NA,NA,"Degrees Celsius",NA,NA,NA,NA,NA
+"28",4,"ControlledVocabulary",8,8,"Temperature",NA,"Minimum weekly average temperature","Lowest seven-day running average of mean daily temperature during a year",NA,NA,"Degrees Celsius",NA,NA,NA,NA,NA
+"29",4,"ControlledVocabulary",9,8,"Temperature",NA,"Maximum daily temperature","Highest mean daily temperature during a year",NA,NA,"Degrees Celsius",NA,NA,NA,NA,NA
+"30",4,"ControlledVocabulary",10,8,"Temperature",NA,"Maximum weekly average temperature","Highest seven-day running average of mean daily temperature during a year",NA,NA,"Degrees Celsius",NA,NA,NA,NA,NA
+"31",4,"ControlledVocabulary",11,8,"Temperature",NA,"annual degree day s","Cumulative total of degree days during a year (1°C for 24 h = 1 degree day)",NA,NA,"Count of days",NA,NA,NA,NA,NA
+"32",4,"ControlledVocabulary",12,8,"Temperature",NA,"Annual Standard Deivation","Standard deviation of mean daily temperature during a year",NA,NA,NA,NA,NA,NA,NA,NA
+"33",4,"ControlledVocabulary",13,8,"Temperature",NA,"Winter Standard Deviation","Standard deviation of mean daily temperature during winter months",NA,NA,NA,NA,NA,NA,NA,NA
+"34",4,"ControlledVocabulary",14,8,"Temperature",NA,"Spring Standard Deviation","Standard deviation of mean daily temperature during spring months",NA,NA,NA,NA,NA,NA,NA,NA
+"35",4,"ControlledVocabulary",15,8,"Temperature",NA,"Summer SD","Standard deviation of mean daily temperature during summer months",NA,NA,NA,NA,NA,NA,NA,NA
+"36",4,"ControlledVocabulary",16,8,"Temperature",NA,"August SD","Standard deviation of mean daily temperature during the month of August",NA,NA,NA,NA,NA,NA,NA,NA
+"37",4,"ControlledVocabulary",17,8,"Temperature",NA,"Fall SD","Standard deviation of mean daily temperature during fall months",NA,NA,NA,NA,NA,NA,NA,NA
+"38",4,"ControlledVocabulary",18,8,"Temperature",NA,"Range in extream daily termperature s","Difference between minimum and maximum mean daily temperatures during a
+year (M9 minus M7)",NA,NA,NA,NA,NA,NA,NA,NA
+"39",4,"ControlledVocabulary",19,8,"Temperature",NA,"Range in streme weekly temperatures","Difference between minimum and maximum weekly average temperatures
+during a year (M10 minus M8)",NA,NA,NA,NA,NA,NA,NA,NA
+"40",4,"ControlledVocabulary",20,8,"Temperature",NA,"Interannual standard deviation of mean
+annual","Interannual standard deviation in mean annual temperature",NA,NA,NA,NA,NA,NA,NA,NA
+"41",4,"ControlledVocabulary",21,8,"Temperature",NA,"Interannual standard deviation of
+minimum weekly","Interannual standard deviation in minimum weekly average temperature",NA,NA,NA,NA,NA,NA,NA,NA
+"42",4,"ControlledVocabulary",22,8,"Temperature",NA,"Interannual standard deviation of
+maximum weekly","Interannual standard deviation in maximum weekly average temperature",NA,NA,NA,NA,NA,NA,NA,NA
+"43",4,"ControlledVocabulary",23,8,"Temperature",NA,"Interannual standard deviation of 5%
+degree days","Interannual standard deviation in date of 5% of degree days",NA,NA,NA,NA,NA,NA,NA,NA
+"44",4,"ControlledVocabulary",24,8,"Temperature",NA,"Interannual standard deviation of 50%
+degree days","Interannual standard deviation in date of 50% of degree days",NA,NA,NA,NA,NA,NA,NA,NA
+"45",4,"ControlledVocabulary",25,8,"Temperature",NA,"Frequency of hot days","Number of days with mean daily temperatures >20°C",NA,NA,NA,NA,NA,NA,NA,NA
+"46",4,"ControlledVocabulary",26,8,"Temperature",NA,"Frequency of cold days","Number of days with mean daily temperatures <2°C",NA,NA,NA,NA,NA,NA,NA,NA
+"47",4,"ControlledVocabulary",27,8,"Temperature",NA,"Date of 5% degree days","Number of days from December 1 until 5% of degree days are accumulated",NA,NA,NA,NA,NA,NA,NA,NA
+"48",4,"ControlledVocabulary",28,8,"Temperature",NA,"Date of 25% degree days","Number of days from December 1 until 25% of degree days are accumulated",NA,NA,NA,NA,NA,NA,NA,NA
+"49",4,"ControlledVocabulary",29,8,"Temperature",NA,"Date of 50% degrees days","Number of days from December 1 until 50% of degree days are accumulated",NA,NA,NA,NA,NA,NA,NA,NA
+"50",4,"ControlledVocabulary",30,8,"Temperature",NA,"Date of 95% degree days","Number of days from December 1 until 95% of degree days are accumulated",NA,NA,NA,NA,NA,NA,NA,NA
+"51",4,"ControlledVocabulary",31,8,"Temperature",NA,"Growing Season length","Number of days between the 95% and 5% of degree days (T5 minus T1)",NA,NA,NA,NA,NA,NA,NA,NA
+"52",4,"ControlledVocabulary",32,8,"Temperature",NA,"Duration of hot days","Longest number of consecutive days with mean daily temperatures >20°C",NA,NA,NA,NA,NA,NA,NA,NA
+"53",4,"ControlledVocabulary",33,8,"Temperature",NA,"Duration of cold days","Longest number of consecutive days with mean daily temperatures <2°C",NA,NA,NA,NA,NA,NA,NA,NA
+"54",4,"ControlledVocabulary",34,8,"Temperature",NA,"Date of 75% degree days","Number of days from December 1 until 75% of degree days are accumulated",NA,NA,NA,NA,NA,NA,NA,NA
+"55",4,"ControlledVocabulary",2,10,"Water chemistry","Conductivity","Conductivity","Measure of the concentration of ionized materials in water, or the ability of water to conduct electrical current. Used as a measure of mineral / ionic concentration.",NA,"Double","ppm",NA,"TSS","TSS",NA,"Cond"
+"56",4,"ControlledVocabulary",3,10,"Water chemistry","TotalNitrogen","Total Nitrogen","Measured total nitrogen value",NA,"Double","ug/L",NA,"NTL","NTL","TotalNitrogen",NA
+"57",4,"ControlledVocabulary",5,10,"Water chemistry","TotalPhosphorous","Total Phosphorous","Measured total phosphorous value",NA,"Double","ug/L",NA,"PTL","PTL","TotalPhosphorous",NA
+"58",4,"ControlledVocabulary",7,10,"Water chemistry","SpecificConductance","Specific Conductance","Measured specific conductance value. The specific conductance is conductivity standardized to 25 degrees C.","min: 0, max: 65500","Double","uS/cm",NA,"COND","COND","SpecificConductance",NA
+"59",4,"ControlledVocabulary",9,10,"Water chemistry","pH","pH","Measured pH value","min: 0, max: 14","Double","NA",NA,NA,NA,"pH",NA
+"60",4,"ControlledVocabulary",11,10,"Water chemistry","Turbidity","Turbidity","Average water clarity as measured by the suspended solids in the water column",NA,"Double","NTU",NA,"TURB","TURB","Turbidity",NA

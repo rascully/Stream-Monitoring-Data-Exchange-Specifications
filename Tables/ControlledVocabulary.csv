@@ -1,4 +1,4 @@
-"CategoryID","Category","FieldID","MeasurementID","Field","LongName","Description","Examples","DataType","Unit"
+"CategoryID","Category","TermID","MeasurementID","Term","LongName","Description","Examples","DataType","Unit"
 5,"ControlledVocabulary",1,1,"BFWidth","Average bankfull width from transects","Average bankfull width across transects.",NA,"Double","m"
 5,"ControlledVocabulary",2,1,"Grad","Gradient of stream reach","Mean slope of water surface (%) from the bottom of the reach to the top of the reach.","min: 0, max: 100","Double","%"
 5,"ControlledVocabulary",3,1,"RchLen","Length of sampling reach","Length of sampling reach measured along the thalweg",NA,"Double","m"

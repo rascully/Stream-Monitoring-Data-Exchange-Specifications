@@ -1,4 +1,4 @@
-"CategoryID","Category","FieldID","MeasurementID","VocabularyCatagory","Field","LongName","Description","Examples","DataType","Unit","AREMPField","NRSA2004Field","NRSA2008Field","AIMField","PIBOField"
+"CategoryID","Category","TermID","MeasurementID","VocabularyCatagory","Term","LongName","Description","Examples","DataType","Unit","AREMPField","NRSA2004Field","NRSA2008Field","AIMField","PIBOField"
 5,"ControlledVocabulary",1,1,"Channel dimensions","BFWidth","Average bankfull width from transects","Average bankfull width across transects.",NA,"Double","m","average_bfwidth","XBKF_W","XBKF_W","BNKFLL_WT","Bf"
 5,"ControlledVocabulary",2,1,"Channel dimensions","Grad","Gradient of stream reach","Mean slope of water surface (%) from the bottom of the reach to the top of the reach.","min: 0, max: 100","Double","%","gradient","XSLOPE","XSLOPE","SLPE","Grad"
 5,"ControlledVocabulary",3,1,"Channel dimensions","RchLen","Length of sampling reach","Length of sampling reach measured along the thalweg",NA,"Double","m","REACH_LENGTH","REACHLEN","REACHLEN","TOT_RCH_LEN","RchLen"

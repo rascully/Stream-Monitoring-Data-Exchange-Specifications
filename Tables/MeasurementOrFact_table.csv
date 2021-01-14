@@ -1,4 +1,4 @@
-"CategoryID","FieldID","Category","Field","Description","Examples","DataType"
+"CategoryID","TermID","Category","Term","Description","Examples","DataType"
 4,1,"MeasurementOrFact","measurementID","An identifier for the MeasurementOrFact (information pertaining to measurements, facts, characteristics, or assertions). May be a global unique identifier or an identifier specific to the data set.",NA,"string"
 4,2,"MeasurementOrFact","measurementType","The nature of the measurement, fact, characteristic, or assertion. Recommended best practice is to use a controlled vocabulary.","tail length, ""temperature"", ""trap line length"", ""survey area"", ""trap type""","string"
 4,3,"MeasurementOrFact","measurementValue","The value of the measurement, fact, characteristic, or assertion.","45, ""20"", ""1"", ""14.5"", ""UV-light""",NA

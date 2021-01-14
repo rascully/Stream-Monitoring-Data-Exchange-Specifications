@@ -15,7 +15,7 @@ for (i in 1:length(DES_tables)){
       
       print(DES_tables[i]) 
       file_name <- paste0(DES_tables[i], "_table") # create a file name 
-      write.csv(x, file=paste0("Tables/",Sys.Date(),"_",file_name,".csv" ))
+      write.csv(x, file=paste0("Tables/",Sys.Date(),"_",file_name,".csv" ), row.names = F)
   }
 
 #create a vocabulary table 
@@ -25,7 +25,7 @@ vocabulary<- metadata %>%
                   filter(Category== "ControlledVocabulary", SubsetOfMetrics=="x") %>% 
                   select(-SubsetOfMetrics)
 
-write.csv(vocabulary, file=paste0("Tables/",Sys.Date(),"_ControlledVocabulary.csv" )) 
+write.csv(vocabulary, file=paste0("Tables/",Sys.Date(),"_ControlledVocabulary.csv" ), row.names=F) 
 
 #Create the crosswalk table 
 crosswalk<- metadata %>% 
@@ -35,4 +35,4 @@ crosswalk<- metadata %>%
                   filter(SubsetOfMetrics=="x")  %>% 
                   select(-SubsetOfMetrics, -InDES)
 
-write.csv(crosswalk, file=paste0("Tables/",Sys.Date(),"_Crosswalk.csv" ))
+write.csv(crosswalk, file=paste0("Tables/",Sys.Date(),"_Crosswalk.csv" ), row.names=F)

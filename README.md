@@ -1,4 +1,4 @@
-# Stream Monitoring Habiata Data Exchange Specifications 
+# Stream Monitoring Habitat Data Exchange Specifications 
 [Stream Monitoring Habitat Data Exchange Specifications](MetricLevelExchangeSpecifications.docx) are a standard for exchanging metric-level habitat data based on the Darwin Core principle. These specifications were drafted by the Stream Habitat Metric Data Integration working group lead by the Pacific Northwest Aquatic Monitoring Partnership (https://www.pnamp.org/project/habitat-metric-data-integration). 
 
 To make stream habitat data available, data exchange specifications are needed, guidelines, and rules for using and combining information. Rigorous data exchange specifications support reuse, promote interoperability, and reduce data integration costs (Morris and Frechette 2008, Hamm 2019). We modeled this data exchange specification for stream habitat data on the Darwin Core principles for exchanging biological data. Darwin Core provides terms and schema for integrating and exchanging biodiversity information (Wieczorek 2012), and it is highly flexible and adapted for many types of information.  

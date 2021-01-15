@@ -36,3 +36,14 @@ crosswalk<- metadata %>%
                   select(-SubsetOfMetrics, -InDES)
 
 write.csv(crosswalk, file=paste0("Tables/Crosswalk.csv" ), row.names=F)
+
+
+#Create a list of metrics from the programs not in the controlled vocabulary 
+notInVocab<- metadata %>% 
+  select(CategoryI, Category, TermID, MeasurementID, VocabularyCatagory, SubsetOfMetrics, InDES, 
+         Term, LongName, Description, Examples ,DataType, Unit, 
+         AREMPField, NRSA2004Field, NRSA2008Field, AIMField, PIBOField) %>% 
+  filter(is.na(SubsetOfMetrics)& is.na(InDES))  %>% 
+  select(-SubsetOfMetrics, -InDES)
+
+write.csv(crosswalk, file=paste0("Tables/NotInControlledVocabularyOrDES.csv" ), row.names=F)

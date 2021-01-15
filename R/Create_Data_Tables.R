@@ -3,7 +3,7 @@
 library(tidyverse)
 
 #Open the metadata file 
-metadata <- readxl::read_excel("Metadata.xlsx", sheet = 3)
+metadata <- readxl::read_excel("Data/Metadata.xlsx", sheet = 3)
 
 #Create the data exchange specifications tables 
 DES_tables <- c("RecordLevel", "Location","Event", "MeasurementOrFact")
@@ -40,7 +40,7 @@ write.csv(crosswalk, file=paste0("Tables/Crosswalk.csv" ), row.names=F)
 
 #Create a list of metrics from the programs not in the controlled vocabulary 
 notInVocab<- metadata %>% 
-  select(CategoryI, Category, TermID, MeasurementID, VocabularyCatagory, SubsetOfMetrics, InDES, 
+  select(CategoryID, Category, TermID, MeasurementID, VocabularyCatagory, SubsetOfMetrics, InDES, 
          Term, LongName, Description, Examples ,DataType, Unit, 
          AREMPField, NRSA2004Field, NRSA2008Field, AIMField, PIBOField) %>% 
   filter(is.na(SubsetOfMetrics)& is.na(InDES))  %>% 

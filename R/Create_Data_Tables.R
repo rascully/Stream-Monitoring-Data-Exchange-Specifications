@@ -25,7 +25,7 @@ vocabulary<- metadata %>%
                   filter(Category== "ControlledVocabulary", SubsetOfMetrics=="x") %>% 
                   select(-SubsetOfMetrics)
 
-write.csv(vocabulary, file=paste0("Tables/ControlledVocabulary.csv" ), row.names=F) 
+write.csv(vocabulary, file=paste0("Tables/StandardVocabulary.csv" ), row.names=F) 
 
 #Create the crosswalk table 
 crosswalk<- metadata %>% 
@@ -46,4 +46,4 @@ notInVocab<- metadata %>%
   filter(is.na(SubsetOfMetrics)& is.na(InDES))  %>% 
   select(-SubsetOfMetrics, -InDES)
 
-write.csv(crosswalk, file=paste0("Tables/NotInControlledVocabularyOrDES.csv" ), row.names=F)
+write.csv(crosswalk, file=paste0("Tables/NotInStandardVocabularyOrDES.csv" ), row.names=F)

@@ -31,7 +31,7 @@ write.csv(vocabulary, file=paste0("Tables/StandardVocabulary.csv" ), row.names=F
 crosswalk<- metadata %>% 
                   select(CategoryID, Category, TermID, MeasurementID, VocabularyCatagory, SubsetOfMetrics, InDES, 
                          Term, LongName, Description, Examples ,DataType, Unit, 
-                         AREMPField, NRSA2004Field, NRSA2008Field, AIMField, PIBOField) %>% 
+                         AREMPField, NRSAField, AIMField, PIBOField) %>% 
                   filter(SubsetOfMetrics=="x")  %>% 
                   select(-SubsetOfMetrics, -InDES)
 
@@ -42,7 +42,7 @@ write.csv(crosswalk, file=paste0("Tables/Crosswalk.csv" ), row.names=F)
 notInVocab<- metadata %>% 
   select(CategoryID, Category, TermID, MeasurementID, VocabularyCatagory, SubsetOfMetrics, InDES, 
          Term, LongName, Description, Examples ,DataType, Unit, 
-         AREMPField, NRSA2004Field, NRSA2008Field, AIMField, PIBOField) %>% 
+         AREMPField, NRSAField, AIMField, PIBOField) %>% 
   filter(is.na(SubsetOfMetrics)& is.na(InDES))  %>% 
   select(-SubsetOfMetrics, -InDES)
 

@@ -1,5 +1,5 @@
 "CategoryID","TermID","Category","Term","Description","Examples","DataType"
-1,1,"RecordLevel","datasetID","An identifier for the set of data. May be a global unique identifier or an identifier specific to a collection or institution.","The ScienceBase ID number of the dataset","Integer (need to check this)"
+1,1,"RecordLevel","datasetID","An identifier for the set of data. May be a global unique identifier or an identifier specific to a collection or institution.","The ScienceBase ID number of the dataset","String"
 1,2,"RecordLevel","type","The nature or genre of the resource.","This will be Stream Habitat for all values","String"
 1,3,"RecordLevel","modified","The most recent date-time on which the combined dataset was changed.","Recommended best practice is to use a date that conforms to ISO 8601:2004(E).","Date"
 1,4,"RecordLevel","rightsHolder","A person or organization owning or managing rights over the resource.","Example: BLM AIM, EPA NARS, USFS ARMEP","String"

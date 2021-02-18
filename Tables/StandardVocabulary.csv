@@ -7,6 +7,7 @@
 5,"ControlledVocabulary",7,1,"WetWidthToDepth","Wetted width to depth ratio at transects","Mean Wetted Width/Thalweg Depth ratio",NA,"Numeric","ratio"
 5,"ControlledVocabulary",26,1,"countTransects","Count of Transects","Number of transects in the reach.",NA,NA,NA
 5,"ControlledVocabulary",2,2,"PctDry","Percent of Reach that is Dry","Percent of the reach that was dry","min: 0, max: 100","Numeric","%"
+5,"ControlledVocabulary",3,2,"Beaver","Beaver Sign at Reach","Beaver value from the provider dataset.",NA,"String",NA
 5,"ControlledVocabulary",4,2,"StreamOrder","Stream Order","Strahler stream order of the site from the provider dataset",NA,"Numeric","NA"
 5,"ControlledVocabulary",1,4,"RPD","Residual pool depth","Average of the residual pool depth values for all pools in a reach. Residual pool depth the difference of the pool tail depth from the max depth.",NA,"Numeric","m"
 5,"ControlledVocabulary",4,4,"PctPool","Percent pools","Percent of the sample reach (linear extent) classified as pool habitat","min: 0, max: 100","Numeric","%"

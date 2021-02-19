@@ -31,9 +31,18 @@ write.csv(vocabulary, file=paste0("Tables/StandardVocabulary.csv" ), row.names=F
 crosswalk<- metadata %>% 
                   select(CategoryID, Category, TermID, MeasurementID, VocabularyCatagory, SubsetOfMetrics, InDES, 
                          Term, LongName, Description, Examples ,DataType, Unit, 
-                         AREMPField, NRSAField, AIMField, PIBOField) %>% 
+                         AREMPField,AREMPCollectionMethodID,  NRSAField,NRSACollectionMethodID,  
+                         AIMField,AIMCollectionMethodID, PIBOField, PIBOCollectionMethodID) %>% 
                   filter(SubsetOfMetrics=="x")  %>% 
-                  select(-SubsetOfMetrics, -InDES)
+                  select(-SubsetOfMetrics, -InDES) 
+
+crosswalk<- metadata %>% 
+  select(c("CategoryID", "Category", "TermID", "MeasurementID", "VocabularyCatagory", "SubsetOfMetrics", "InDES", 
+           "Term", "LongName", "Description", "Examples", "DataType", "Unit", "AREMPField", "NRSAField", "AIMField",
+           "PIBOField")|contains("Method")) %>% 
+        filter(SubsetOfMetrics=="x")  %>% 
+        select(-SubsetOfMetrics, -InDES)                  
+
 
 write.csv(crosswalk, file=paste0("Tables/Crosswalk.csv" ), row.names=F)
 

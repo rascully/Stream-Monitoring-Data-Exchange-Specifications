@@ -1,70 +1,296 @@
-"CategoryID","Category","TermID","MeasurementID","VocabularyCatagory","Term","LongName","Description","Examples","DataType","Unit","AREMPField","AREMPCollectionMethodID","NRSAField","NRSACollectionMethodID","AIMField","AIMCollectionMethodID","PIBOField","PIBOCollectionMethodID"
-5,"ControlledVocabulary",1,1,"Channel dimensions","BFWidth","Average bankfull width from transects","Average bankfull width across transects.",NA,"Numeric","m","average_bfwidth",6849,"XBKF_W",6870,"BNKFLL_WT","https://www.monitoringresources.org/Document/CustomizedMethod/Details/31137","Bf",6871
-5,"ControlledVocabulary",2,1,"Channel dimensions","Grad","Gradient of stream reach","Mean slope of water surface (%) from the bottom of the reach to the top of the reach.","min: 0, max: 100","Numeric","%","gradient",6852,"XSLOPE",6852,"SLPE","https://www.monitoringresources.org/Document/CustomizedMethod/Details/31139","Grad",6868
-5,"ControlledVocabulary",3,1,"Channel dimensions","RchLen","Length of sampling reach","Length of sampling reach measured along the thalweg",NA,"Numeric","m","REACH_LENGTH",NA,"REACHLEN",NA,"TOT_RCH_LEN",NA,"RchLen",NA
-5,"ControlledVocabulary",4,1,"Channel dimensions","BFWDRatio","Bankfull width to depth ratio at transects","Average Bankfull Width/Depth Ratio across transects.",NA,"Numeric","m","ave_widthDepth_ratio",NA,"BFWD_RAT",NA,NA,NA,"WDTrans",NA
-5,"ControlledVocabulary",6,1,"Channel dimensions","WetWidth","Average wetted width from transects","Average wetted width across transects.",NA,"Numeric","m","wettedWidth_ave",NA,"XWIDTH",NA,"WTTD_WT",NA,NA,NA
-5,"ControlledVocabulary",7,1,"Channel dimensions","WetWidthToDepth","Wetted width to depth ratio at transects","Mean Wetted Width/Thalweg Depth ratio",NA,"Numeric","ratio",NA,NA,"XWD_RAT",NA,NA,NA,"WDWetTrans",NA
-5,"ControlledVocabulary",26,1,"Channel dimensions","countTransects","Count of Transects","Number of transects in the reach.",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",2,2,"Channel Characteristics","PctDry","Percent of Reach that is Dry","Percent of the reach that was dry","min: 0, max: 100","Numeric","%",NA,NA,"PCT_DRS",NA,"PCT_DRY",NA,NA,NA
-5,"ControlledVocabulary",3,2,"Channel Characteristics","Beaver","Beaver Sign at Reach","Beaver value from the provider dataset.",NA,"String",NA,NA,NA,NA,NA,"BVR_SGN",NA,NA,NA
-5,"ControlledVocabulary",4,2,"Channel Characteristics","StreamOrder","Stream Order","Strahler stream order of the site from the provider dataset",NA,"Numeric","NA","StreamOrder",NA,"STRAHLERORDER",NA,"STRM_ORDR",NA,NA,NA
-5,"ControlledVocabulary",1,4,"Pools","RPD","Residual pool depth","Average of the residual pool depth values for all pools in a reach. Residual pool depth the difference of the pool tail depth from the max depth.",NA,"Numeric","m","ave_residual_depth",NA,NA,NA,"RES_PL_DEP",NA,"PoolDp",NA
-5,"ControlledVocabulary",4,4,"Pools","PctPool","Percent pools","Percent of the sample reach (linear extent) classified as pool habitat","min: 0, max: 100","Numeric","%","PctReachInPools",6844,NA,6875,"PCT_PL","6859","PoolPct",6872
-5,"ControlledVocabulary",1,5,"Streambanks","BankAngle","Bank angle","Measured angle of the stream bank;","min: 0, max: 180","Numeric","degrees",NA,NA,"XBKA",NA,"BNK_AN",NA,"BankAngle",NA
-5,"ControlledVocabulary",2,5,"Streambanks","PctStab","Percent stable banks","Percent of 42 banks lacking visible signs of active erosion (e.g., slump, slough, fracture) (units: %, min: 0, max: 100, n= 42)","min: 0, max: 100","Numeric","%",NA,NA,NA,NA,"BNK_STBLTY",NA,"Stab",NA
-5,"ControlledVocabulary",1,6,"Substrate","D50","Diameter of the 50th percentile streambed particle","Median diameter of bed surface particle size corresponding to the areal median (50th percentile of measured particles) .","min: 1, max: 4098","Numeric","mm","D50",6797,"Sub_dmm",6874,"D50","6801","D50",6797
-5,"ControlledVocabulary",4,6,"Substrate","PctFines2","Percent of streambed particles <2mm","Percent of the stream bed area that is comprised of particles with a b-axis < 2 mm","min: 0, max: 100","Numeric","%","pcnt_fines_tran2",6797,"PCT_SAFN",6874,"PCT_FN","6862",NA,6797
-5,"ControlledVocabulary",5,6,"Substrate","PctFines6","Percent of streambed particles <6mm","Percent of the stream bed area that is composed of particles with a b-axis < 6 mm","min: 0, max: 100","Numeric","%","pect_fines_tran6",6797,"PCT_FN",6874,"PCT_FN6","6801",NA,6797
-5,"ControlledVocabulary",6,6,"Substrate","D16","Diameter of the 16th percentile streambed particle","Bed surface particle size corresponding to the 16th percentile of measured particles","min: 1, max: 4098","Numeric","mm",NA,6797,NA,NA,"D16","6810","D16",NA
-5,"ControlledVocabulary",7,6,"Substrate","D84","Diameter of the 84th percentile streambed particle","Bed surface particle size corresponding to the 84th percentile of measured particles","min: 1, max: 4098","Numeric","mm",NA,6797,NA,NA,"D84","6810","D84",NA
-5,"ControlledVocabulary",14,6,"Substrate","PctBdrk","Percent Bed Surface Bedrock","Percent of the stream bed area that is composed of particles with a b-axis > 4098mm (bedrock)","min: 0, max: 100","Numeric","%","bedrock_pcnt",6797,"PCT_BDRK",NA,NA,"6810",NA,NA
-5,"ControlledVocabulary",32,6,"Substrate","PoolTailFines2","Percent pool tail fines < 2mm","Average percent fine sediment (< 2mm) on the pool tail","min: 0, max: 100","Numeric","%","pool_fines",6798,NA,NA,"PL_TL_FN","6862","PTFines2",6862
-5,"ControlledVocabulary",33,6,"Substrate","PoolTailFines6","Percent pool tail fines < 6mm","Average percent fine sediment (< 6mm) on the pool tail","min: 0, max: 100","Numeric","%",NA,NA,NA,NA,"PL_TL_FN6","6862","PTFines6",NA
-5,"ControlledVocabulary",1,8,"Temperature",NA,"Mean annual tempeature","Average of mean daily temperatures during a year",NA,NA,"Degrees Celsius",NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",2,8,"Temperature",NA,"Mean winter temperature (Dec, Jan, Feb)","Average of mean daily temperatures during December, January, and February",NA,NA,"Degrees Celsius",NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",3,8,"Temperature",NA,"Mean spring temperature","Average of mean daily temperatures during March, April, and May",NA,NA,"Degrees Celsius",NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",4,8,"Temperature",NA,"Mean summer temperatures","Average of mean daily temperatures during June, July, and August",NA,NA,"Degrees Celsius",NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",5,8,"Temperature",NA,"Mean august temperature","Average of mean daily temperatures during August",NA,NA,"Degrees Celsius",NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",6,8,"Temperature",NA,"Mean fall temperature","Average of mean daily temperatures during September, October, and November",NA,NA,"Degrees Celsius",NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",7,8,"Temperature",NA,"Minimum daily temperature","Lowest mean daily temperature during a year",NA,NA,"Degrees Celsius",NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",8,8,"Temperature",NA,"Minimum weekly average temperature","Lowest seven-day running average of mean daily temperature during a year",NA,NA,"Degrees Celsius",NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",9,8,"Temperature",NA,"Maximum daily temperature","Highest mean daily temperature during a year",NA,NA,"Degrees Celsius",NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",10,8,"Temperature",NA,"Maximum weekly average temperature","Highest seven-day running average of mean daily temperature during a year",NA,NA,"Degrees Celsius",NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",11,8,"Temperature",NA,"annual degree day s","Cumulative total of degree days during a year (1°C for 24 h = 1 degree day)",NA,NA,"Count of days",NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",12,8,"Temperature",NA,"Annual Standard Deivation","Standard deviation of mean daily temperature during a year",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",13,8,"Temperature",NA,"Winter Standard Deviation","Standard deviation of mean daily temperature during winter months",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",14,8,"Temperature",NA,"Spring Standard Deviation","Standard deviation of mean daily temperature during spring months",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",15,8,"Temperature",NA,"Summer SD","Standard deviation of mean daily temperature during summer months",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",16,8,"Temperature",NA,"August SD","Standard deviation of mean daily temperature during the month of August",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",17,8,"Temperature",NA,"Fall SD","Standard deviation of mean daily temperature during fall months",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",18,8,"Temperature",NA,"Range in extream daily termperature s","Difference between minimum and maximum mean daily temperatures during a
-year (M9 minus M7)",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",19,8,"Temperature",NA,"Range in streme weekly temperatures","Difference between minimum and maximum weekly average temperatures
-during a year (M10 minus M8)",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",20,8,"Temperature",NA,"Interannual standard deviation of mean
-annual","Interannual standard deviation in mean annual temperature",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",21,8,"Temperature",NA,"Interannual standard deviation of
-minimum weekly","Interannual standard deviation in minimum weekly average temperature",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",22,8,"Temperature",NA,"Interannual standard deviation of
-maximum weekly","Interannual standard deviation in maximum weekly average temperature",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",23,8,"Temperature",NA,"Interannual standard deviation of 5%
-degree days","Interannual standard deviation in date of 5% of degree days",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",24,8,"Temperature",NA,"Interannual standard deviation of 50%
-degree days","Interannual standard deviation in date of 50% of degree days",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",25,8,"Temperature",NA,"Frequency of hot days","Number of days with mean daily temperatures >20°C",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",26,8,"Temperature",NA,"Frequency of cold days","Number of days with mean daily temperatures <2°C",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",27,8,"Temperature",NA,"Date of 5% degree days","Number of days from December 1 until 5% of degree days are accumulated",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",28,8,"Temperature",NA,"Date of 25% degree days","Number of days from December 1 until 25% of degree days are accumulated",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",29,8,"Temperature",NA,"Date of 50% degrees days","Number of days from December 1 until 50% of degree days are accumulated",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",30,8,"Temperature",NA,"Date of 95% degree days","Number of days from December 1 until 95% of degree days are accumulated",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",31,8,"Temperature",NA,"Growing Season length","Number of days between the 95% and 5% of degree days (T5 minus T1)",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",32,8,"Temperature",NA,"Duration of hot days","Longest number of consecutive days with mean daily temperatures >20°C",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",33,8,"Temperature",NA,"Duration of cold days","Longest number of consecutive days with mean daily temperatures <2°C",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",34,8,"Temperature",NA,"Date of 75% degree days","Number of days from December 1 until 75% of degree days are accumulated",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-5,"ControlledVocabulary",2,10,"Water chemistry","Conductivity","Conductivity","Measure of the concentration of ionized materials in water, or the ability of water to conduct electrical current. Used as a measure of mineral / ionic concentration.",NA,"Numeric","ppm",NA,NA,"TSS",NA,NA,NA,"Cond",NA
-5,"ControlledVocabulary",3,10,"Water chemistry","TotalNitrogen","Total Nitrogen","Measured total nitrogen value",NA,"Numeric","ug/L",NA,NA,"NTL",NA,"TotalNitrogen",NA,NA,NA
-5,"ControlledVocabulary",5,10,"Water chemistry","TotalPhosphorous","Total Phosphorous","Measured total phosphorous value",NA,"Numeric","ug/L",NA,NA,"PTL",NA,"TotalPhosphorous",NA,NA,NA
-5,"ControlledVocabulary",7,10,"Water chemistry","SpecificConductance","Specific Conductance","Measured specific conductance value. The specific conductance is conductivity standardized to 25 degrees C.","min: 0, max: 65500","Numeric","uS/cm",NA,NA,"COND",NA,"SpecificConductance",NA,NA,NA
-5,"ControlledVocabulary",9,10,"Water chemistry","pH","pH","Measured pH value","min: 0, max: 14","Numeric","NA",NA,NA,NA,NA,"pH",NA,NA,NA
-5,"ControlledVocabulary",11,10,"Water chemistry","Turbidity","Turbidity","Average water clarity as measured by the suspended solids in the water column",NA,"Numeric","NTU",NA,NA,"TURB",NA,"TRBDTY",NA,NA,NA
+"CategoryID","Category","TermID","MeasurementID","VocabularyCatagory","Term","LongName","Description","Examples","DataType","Unit","AREMPField","AIMField","NRSAField","PIBOField"
+1,"Record Level",NA,NA,NA,"basisOfRecord","basis of record","The specific nature of the data record.","Recommended best practice is to use the standard label of one of the Darwin Core classes.","String",NA,NA,NA,NA,NA
+1,"Record Level",NA,NA,NA,"informationWithheald","Information Withheld","Additional information that exists, but that has not been shared in the given record.","location information not given for endangered species, collector identities withheld | ask about tissue samples","String",NA,NA,NA,NA,NA
+2,"Location",11,NA,NA,"Region","FS Region or BLM State Office",NA,NA,"String",NA,"STATES","State",NA,"Region"
+2,"Location",12,NA,NA,"Forest","FS Forest or BLM District",NA,NA,"String",NA,NA,"District",NA,"Forest"
+2,"Location",13,NA,NA,"District","Forest Service District or BLM Field Office/Resource Area",NA,NA,"String",NA,NA,"FieldOffice",NA,"District"
+2,"Location",14,NA,NA,NA,"Nominal latitude in decimal degrees",NA,NA,NA,NA,NA,NA,"LAT_DD83",NA
+2,"Location",15,NA,NA,NA,"Nominal longitude in decimal degrees",NA,NA,NA,NA,NA,NA,"LON_DD83",NA
+2,"Location",16,NA,NA,NA,"Creek Code",NA,NA,NA,NA,"creek_code",NA,NA,NA
+2,"Identification",16,NA,NA,NA,"Targeted or Random",NA,NA,NA,NA,NA,"Targeted",NA,NA
+2,"Location",17,NA,NA,NA,"Mid Reach Latitude",NA,NA,NA,NA,NA,"MidLat",NA,NA
+2,"Location",18,NA,NA,NA,"Mid Reach Longitude",NA,NA,NA,NA,NA,"MidLong",NA,NA
+2,"Location",19,NA,NA,NA,"Top of Reach Latitude",NA,NA,NA,NA,NA,"TRLat",NA,NA
+2,"Location",20,NA,NA,NA,"Top of Reach Longitude",NA,NA,NA,NA,NA,"TRLong",NA,NA
+2,"Location",21,NA,NA,"waterbody","waterbody","The name of the water body in which the Location occurs from the NHD+ layer.",NA,"String",NA,NA,NA,NA,NA
+2,"Identification",NA,NA,NA,NA,"PIBO Use of Site",NA,NA,NA,NA,NA,NA,NA,"Project"
+2,"Identification",NA,NA,NA,NA,"PIBO Sample Type",NA,NA,NA,NA,NA,NA,NA,"Type"
+2,"Identification",NA,NA,NA,NA,"Panel year",NA,NA,NA,NA,NA,NA,NA,"PanelYr"
+2,"Identification",NA,NA,NA,NA,"EPA Site Class",NA,NA,NA,NA,NA,NA,"SITE_CLASS",NA
+2,"Identification",NA,NA,NA,NA,"EPA X Site Status",NA,NA,NA,NA,NA,NA,"VALXSITE",NA
+2,"Identification",NA,NA,NA,NA,"Use visit in NRSA population estimates",NA,NA,NA,NA,NA,NA,"USE_NRSA",NA
+2,"Identification",NA,NA,NA,NA,"EPA Great river site",NA,NA,NA,NA,NA,NA,"GREAT_RIVER",NA
+2,"Identification",NA,NA,NA,NA,"Count of Visits per Year",NA,NA,NA,NA,NA,NA,"VISIT_NO",NA
+2,"Identification",NA,NA,NA,NA,"Site Name",NA,NA,NA,NA,NA,NA,NA,"SiteName"
+2,"Identification",NA,NA,NA,NA,"PIBO Group",NA,NA,NA,NA,NA,NA,NA,"Group"
+2,"Identification",NA,NA,NA,NA,"PIBO Order",NA,NA,NA,NA,NA,NA,NA,"Order"
+2,"Identification",NA,NA,NA,NA,"BLM Merge of Site Code",NA,NA,NA,NA,NA,"MergeSiteCodes",NA,NA
+2,"Identification",NA,NA,NA,NA,"Visit Number",NA,NA,NA,NA,NA,"VisitNumber",NA,NA
+2,"Identification",NA,NA,NA,NA,"BLM Project",NA,NA,NA,NA,NA,"Project",NA,NA
+2,"Identification",NA,NA,NA,NA,"BLM Stratum",NA,NA,NA,NA,NA,"Stratum",NA,NA
+5,"ControlledVocabulary",5,1,"Channel dimensions","BFHeight","Bankfull Height","Average bankfull height measured from water surface across transects.",NA,"Numeric","m","average_bfdepth","BNKFLL_HT","XBKF_H",NA
+5,"ControlledVocabulary",8,1,"Channel dimensions","CVWetWidth","CV Wetted Width",NA,NA,"Numeric",NA,NA,NA,"CVWIDTH",NA
+5,"ControlledVocabulary",9,1,"Channel dimensions",NA,"Mean Flow Direction of Reach",NA,NA,NA,NA,NA,NA,"PCTCLINOMETER",NA
+5,"ControlledVocabulary",10,1,"Channel dimensions",NA,"Mean Flow Direction of Reach",NA,NA,NA,NA,NA,NA,"XBEARING",NA
+5,"ControlledVocabulary",11,1,"Channel dimensions",NA,"Mean Slope From Field Based Measurements",NA,NA,NA,NA,NA,NA,"XSLOPE_FIELD",NA
+5,"ControlledVocabulary",12,1,"Channel dimensions",NA,"Mean Slope From Map-Based Calculations",NA,NA,NA,NA,NA,NA,"XSLOPE_MAP",NA
+5,"ControlledVocabulary",13,1,"Channel dimensions",NA,"Mean wetted width X Thalweg Depth",NA,NA,NA,NA,NA,NA,"XWXD",NA
+5,"ControlledVocabulary",14,1,"Channel dimensions",NA,"Channel Incision Height -Standard Deviation",NA,NA,NA,NA,NA,NA,"SDINC_H",NA
+5,"ControlledVocabulary",15,1,"Channel dimensions",NA,"Std Dev of Width/Depth Ratio (m/m)",NA,NA,NA,NA,NA,NA,"SDWD_RAT",NA
+5,"ControlledVocabulary",16,1,"Channel dimensions",NA,"Standard Deviation . of Wetted Width (m)",NA,NA,NA,NA,NA,NA,"SDWIDTH",NA
+5,"ControlledVocabulary",17,1,"Channel dimensions",NA,"Standard Deviation . of Wetted Width x Thalweg Depth (m2)",NA,NA,NA,NA,NA,NA,"SDWXD",NA
+5,"ControlledVocabulary",18,1,"Channel dimensions",NA,"Average Bankfull Area",NA,NA,NA,NA,"ave_bfarea",NA,NA,NA
+5,"ControlledVocabulary",19,1,"Channel dimensions",NA,"Minimum Bankfull Width at a Reach",NA,NA,NA,NA,"min_bfwidth",NA,NA,NA
+5,"ControlledVocabulary",20,1,"Channel dimensions",NA,"Maxima Bankfull Width at a Reach",NA,NA,NA,NA,"max_bfwidth",NA,NA,NA
+5,"ControlledVocabulary",21,1,"Channel dimensions",NA,"Floodplain Height",NA,NA,NA,NA,NA,"FloodplainHeight",NA,NA
+5,"ControlledVocabulary",22,1,"Channel dimensions",NA,"Terrace Height Above Water",NA,NA,NA,NA,NA,NA,"XINC_H",NA
+5,"ControlledVocabulary",23,1,"Channel dimensions",NA,"Length of Sample Reach at Original Sampling Occurrence",NA,NA,NA,NA,"reach_length_original",NA,NA,NA
+5,"ControlledVocabulary",24,1,"Channel dimensions","CVThalwag Depth","CV Thalweg Depth",NA,NA,"Numeric",NA,NA,"ThalwegDepthCV","CVDTH",NA
+5,"ControlledVocabulary",25,1,"Channel dimensions","MeanThalwegDepth","Average Thalweg Depth",NA,NA,"Numeric",NA,NA,"ThalwegDepthMean","XDEPTH_CM",NA
+5,"ControlledVocabulary",1,2,"Channel Characteristics","Sin","Sinuosity of Local Stream Reach","Reach sinuosity (reach length along the thalweg divided by straight line distance between the bottom of the reach and the top of the reach)",NA,"Numeric",NA,NA,"SNSTY","SINU","Sin"
+5,"ControlledVocabulary",5,2,"Channel Characteristics",NA,"Percent of Reach that is Dry",NA,NA,NA,NA,NA,NA,"PCT_DR",NA
+5,"ControlledVocabulary",6,2,"Channel Characteristics",NA,"Constraining features",NA,NA,NA,NA,NA,NA,"CONFEATURES",NA
+5,"ControlledVocabulary",7,2,"Channel Characteristics",NA,"Channel pattern",NA,NA,NA,NA,NA,NA,"CONPATTERN",NA
+5,"ControlledVocabulary",8,2,"Channel Characteristics",NA,"Percent of channel length in contact with constraining features",NA,NA,NA,NA,NA,NA,"CONPERCENT",NA
+5,"ControlledVocabulary",9,2,"Channel Characteristics",NA,"Channel Constraint Type",NA,NA,NA,NA,NA,NA,"CONSTRAINT",NA
+5,"ControlledVocabulary",10,2,"Channel Characteristics",NA,"Estimated Valley Width",NA,NA,NA,NA,NA,NA,"CONVALLEY",NA
+5,"ControlledVocabulary",11,2,"Channel Characteristics",NA,"Valley Boarders not Seen",NA,NA,NA,NA,NA,NA,"CONVALLEYBOX",NA
+5,"ControlledVocabulary",12,2,"Channel Characteristics",NA,"Percent of Reach Ability to See Over Bank",NA,NA,NA,NA,NA,NA,"PCT_OVRB",NA
+5,"ControlledVocabulary",13,2,"Channel Characteristics",NA,"Distance (m) from shoreline to vegetation",NA,NA,NA,NA,NA,NA,"XSHOR2VG",NA
+5,"ControlledVocabulary",14,2,"Channel Characteristics",NA,"Percent of Reach that is Dry",NA,NA,NA,NA,NA,NA,"PCT_DR",NA
+5,"ControlledVocabulary",15,2,"Channel Characteristics",NA,"Percent of Reach that is Falls",NA,NA,NA,NA,NA,NA,"PCT_FA",NA
+5,"ControlledVocabulary",16,2,"Channel Characteristics",NA,"Percent Fast Water Habitat",NA,NA,NA,NA,NA,NA,"PCT_FAST",NA
+5,"ControlledVocabulary",17,2,"Channel Characteristics",NA,"Glide (% of reach)",NA,NA,NA,NA,NA,NA,"PCT_GL",NA
+5,"ControlledVocabulary",18,2,"Channel Characteristics",NA,"Percent of reach with Pool or Glide Habitat",NA,NA,NA,NA,NA,NA,"PCT_SLOW",NA
+5,"ControlledVocabulary",19,2,"Channel Characteristics",NA,"Floodplain Connectivity",NA,NA,NA,NA,NA,"FloodplainConnectivity",NA,NA
+5,"ControlledVocabulary",20,2,"Channel Characteristics",NA,"Instream Habitat Complexity",NA,NA,NA,NA,NA,"InstreamHabitatComplexity",NA,NA
+5,"ControlledVocabulary",21,2,"Channel Characteristics",NA,"Flood Prone Width",NA,NA,NA,NA,NA,"FloodWidth",NA,NA
+5,"ControlledVocabulary",22,2,"Channel Characteristics",NA,"Percent of the Reach With a Side Channel or Backwater",NA,NA,NA,NA,NA,NA,"PCT_SIDE",NA
+5,"ControlledVocabulary",23,2,"Channel Characteristics",NA,"Entrench Ratio",NA,NA,NA,NA,NA,"Entrench",NA,NA
+5,"ControlledVocabulary",24,2,"Channel Characteristics",NA,"Beaver Flow Modification",NA,NA,NA,NA,NA,"BeaverFlowMod",NA,NA
+5,"ControlledVocabulary",25,2,"Channel Characteristics",NA,"Water Withdrawal (Y/N)",NA,NA,NA,NA,NA,"WaterWithdrawal",NA,NA
+5,"ControlledVocabulary",26,2,"Channel Characteristics",NA,"Stream Order Category",NA,NA,NA,NA,NA,"StreamSizeOrder",NA,NA
+5,"ControlledVocabulary",27,2,"Channel Characteristics",NA,"Stream Size Category",NA,NA,NA,NA,NA,"StreamSizeBankfull",NA,NA
+5,"ControlledVocabulary",28,2,"Channel Characteristics","BeaverPresent","Beaver Present","Indication if beaver's have disturbed the flow of the stream in the reach.",NA,"Categorical",NA,NA,NA,NA,NA
+5,"ControlledVocabulary",1,3,"Bed stability",NA,"Hydraulic Resistance due to Bed Particles at Bankfull",NA,NA,NA,NA,NA,NA,"CP3_MILL",NA
+5,"ControlledVocabulary",2,3,"Bed stability",NA,"Ratio of particle to total hydraulic resistances at bankfull",NA,NA,NA,NA,NA,NA,"CP3CTRPWD_RAT",NA
+5,"ControlledVocabulary",3,3,"Bed stability",NA,"Hydraulic Resistance, Total at Bankfull",NA,NA,NA,NA,NA,NA,"CT_RPWD",NA
+5,"ControlledVocabulary",4,3,"Bed stability",NA,"Streambed Critical Diameter-at Bankfull",NA,NA,NA,NA,NA,NA,"LDMB_BW5",NA
+5,"ControlledVocabulary",5,3,"Bed stability",NA,"Relative Bed Stability (Log10)",NA,NA,NA,NA,NA,NA,"LRBS_BW5",NA
+5,"ControlledVocabulary",6,3,"Bed stability",NA,"Log10[Erod. sub. dia.]- Est. 2 split BL",NA,NA,NA,NA,NA,NA,"LRBS_BW6",NA
+5,"ControlledVocabulary",7,3,"Bed stability",NA,"Log10(Relative Bed Stability (Dgm/Dcb) (PRK 2008)",NA,NA,NA,NA,NA,NA,"LRBS_G08",NA
+5,"ControlledVocabulary",8,3,"Bed stability",NA,"Log10[Relative Bed Stability] - Fast est",NA,NA,NA,NA,NA,NA,"LRBS_TST",NA
+5,"ControlledVocabulary",9,3,"Bed stability",NA,"Log10[Erodible Substr Dia.(mm)]-Fast est",NA,NA,NA,NA,NA,NA,"LTEST",NA
+5,"ControlledVocabulary",10,3,"Bed stability",NA,"Hydraulic Radius of Channel at Bankfull",NA,NA,NA,NA,NA,NA,"RB3",NA
+5,"ControlledVocabulary",11,3,"Bed stability",NA,"Particle Reynolds Number at Bankful",NA,NA,NA,NA,NA,NA,"REYP3",NA
+5,"ControlledVocabulary",12,3,"Bed stability",NA,"Effective Hydraulic Radius at Bankfull",NA,NA,NA,NA,NA,NA,"RRPW3",NA
+5,"ControlledVocabulary",13,3,"Bed stability",NA,"Shields parameter at Bankful",NA,NA,NA,NA,NA,NA,"SHLD_PX3",NA
+5,"ControlledVocabulary",2,4,"Pools",NA,"Maximum Residual Pool Depth in Reach",NA,NA,NA,NA,NA,NA,"RPMXDEP_CM",NA
+5,"ControlledVocabulary",3,4,"Pools",NA,"Mean Residual Pool Depth Per Pool",NA,NA,NA,NA,NA,NA,"RPXDEP_CM",NA
+5,"ControlledVocabulary",5,4,"Pools","PoolFreq","Number of pools per kilometer",NA,NA,"Numeric",NA,NA,"PoolFreq",NA,"PoolFreq"
+5,"ControlledVocabulary",6,4,"Pools",NA,"Residual pool depth Greater then 50 cm per reach",NA,NA,NA,NA,NA,NA,"RPGT50",NA
+5,"ControlledVocabulary",7,4,"Pools",NA,"Residual pool depth Greater then 75 cm per reach",NA,NA,NA,NA,NA,NA,"RPGT75",NA
+5,"ControlledVocabulary",8,4,"Pools",NA,"Residual pool proportion",NA,NA,NA,NA,NA,NA,"RPRAT",NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+5,"ControlledVocabulary",3,5,"Streambanks",NA,"Median Bank Angle",NA,NA,NA,NA,NA,NA,"MEDBK_A",NA
+5,"ControlledVocabulary",4,5,"Streambanks",NA,"Median Undercut Distance",NA,NA,NA,NA,NA,NA,"MEDBKUN",NA
+5,"ControlledVocabulary",5,5,"Streambanks",NA,"Mean Undercut Distance",NA,NA,NA,NA,NA,NA,"XUN",NA
+5,"ControlledVocabulary",6,5,"Streambanks",NA,"Mode of bank slope category",NA,NA,NA,NA,NA,NA,"BANGMODE",NA
+5,"ControlledVocabulary",7,5,"Streambanks",NA,"Percent of bank angles < 90o",NA,NA,NA,NA,NA,NA,NA,"UnCutPct"
+5,"ControlledVocabulary",8,5,"Streambanks",NA,"Bank Cover",NA,NA,NA,NA,NA,"BankCover",NA,NA
+5,"ControlledVocabulary",9,5,"Streambanks",NA,"Bank Cover Stability",NA,NA,NA,NA,NA,"BnkCover_Stab",NA,NA
+5,"ControlledVocabulary",10,5,"Streambanks",NA,"Bank Cover Bedrock",NA,NA,NA,NA,NA,"BnkCoverBedrock",NA,NA
+5,"ControlledVocabulary",11,5,"Streambanks",NA,"Bank Cover Cobble",NA,NA,NA,NA,NA,"BnkCoverCobble",NA,NA
+5,"ControlledVocabulary",12,5,"Streambanks",NA,"Bank Cover Large Wood Debris",NA,NA,NA,NA,NA,"BnkCoverLWD",NA,NA
+5,"ControlledVocabulary",13,5,"Streambanks",NA,"Bank Cover Vegetation",NA,NA,NA,NA,NA,"BnkCoverVeg",NA,NA
+5,"ControlledVocabulary",9,6,"Substrate",NA,"Diameter of the 50th percentile streambed particle with Bedrock removed",NA,NA,NA,NA,"D50nobed",NA,NA,NA
+5,"ControlledVocabulary",10,6,"Substrate",NA,"Streambed Critical Diameter-at Bankfull (Log 10)",NA,NA,NA,NA,NA,NA,"LDCBF_G08",NA
+5,"ControlledVocabulary",11,6,"Substrate",NA,"Dgm--Geometric Mean Bed Surface Particle Diameter (Log 10)",NA,NA,NA,NA,NA,NA,"LSUB_DMM",NA
+5,"ControlledVocabulary",12,6,"Substrate",NA,"Log10(Dgm--Geom.Mean Bed Surf.Part Diam,exclud Bdrk+hardpan--mm)",NA,NA,NA,NA,NA,NA,"LSUB_DMM_NOR",NA
+5,"ControlledVocabulary",13,6,"Substrate",NA,"Thalweg substrate -Standard Deviation (LOG10)",NA,NA,NA,NA,NA,NA,"LSUBD_SD",NA
+5,"ControlledVocabulary",15,6,"Substrate",NA,"Percent Bed Surface Bedrock and Hardpan",NA,NA,NA,NA,NA,NA,"PCT_BH",NA
+5,"ControlledVocabulary",16,6,"Substrate",NA,"Bed Surface Percent Larger than Gravel (64mm)",NA,NA,NA,NA,NA,NA,"PCT_BIGR",NA
+5,"ControlledVocabulary",17,6,"Substrate",NA,"Percent Substrate Coarse Gravel -- 16-64 mm",NA,NA,NA,NA,NA,NA,"PCT_GC",NA
+5,"ControlledVocabulary",18,6,"Substrate",NA,"Percent Substrate Fine Gravel -- 2-16 mm",NA,NA,NA,NA,NA,NA,"PCT_GF",NA
+5,"ControlledVocabulary",19,6,"Substrate",NA,"Percent Thalweg substrate Gravel -- 16-64 mm",NA,NA,NA,NA,NA,NA,"PCT_GR",NA
+5,"ControlledVocabulary",20,6,"Substrate",NA,"Bed Surface Percent Hardpan",NA,NA,NA,NA,NA,NA,"PCT_HP",NA
+5,"ControlledVocabulary",21,6,"Substrate",NA,"Percent Substrate Organic detritus",NA,NA,NA,NA,NA,NA,"PCT_OM",NA
+5,"ControlledVocabulary",22,6,"Substrate",NA,"Percent Substrate Wood or Detritus",NA,NA,NA,NA,NA,NA,"PCT_ORG",NA
+5,"ControlledVocabulary",23,6,"Substrate",NA,"Thalweg substrate Miscellaneous -- (Percent)",NA,NA,NA,NA,NA,NA,"PCT_OT",NA
+5,"ControlledVocabulary",24,6,"Substrate",NA,"Percent Substrate Concrete",NA,NA,NA,NA,NA,NA,"PCT_RC",NA
+5,"ControlledVocabulary",25,6,"Substrate",NA,"Percent Thalweg Substrate Sand -- .06-2 mm",NA,NA,NA,NA,NA,NA,"PCT_SA",NA
+5,"ControlledVocabulary",26,6,"Substrate",NA,"Bed Surface Fine Gravel or smaller (<16mm)",NA,NA,NA,NA,NA,NA,"PCT_SFGF",NA
+5,"ControlledVocabulary",27,6,"Substrate",NA,"Percent Substrate Woody",NA,NA,NA,NA,NA,NA,"PCT_WD",NA
+5,"ControlledVocabulary",28,6,"Substrate",NA,"Percent Mean Embeddedness--Channel only",NA,NA,NA,NA,NA,NA,"XCEMBED",NA
+5,"ControlledVocabulary",29,6,"Substrate",NA,"Percent Mean streambed embeddedness",NA,NA,NA,NA,NA,NA,"XEMBED",NA
+5,"ControlledVocabulary",30,6,"Substrate",NA,"Geometric Mean Particle Diameter",NA,NA,NA,NA,NA,"GeometricMeanParticleDiam",NA,NA
+5,"ControlledVocabulary",31,6,"Substrate",NA,"Bed Surface course gravel or smaller",NA,NA,NA,NA,NA,NA,"PCT_SFG",NA
+5,"ControlledVocabulary",34,6,"Substrate","CountFines","Count of Pools Fines are Measured In",NA,NA,NA,NA,"number_pools_fines",NA,NA,NA
+5,"ControlledVocabulary",1,7,"Wood","LWDFreq","Large wood frequency","Frequency of large woody debris within the channel of the reach.",NA,"Numeric",NA,NA,"LWD_FREQ","C1WM100","LWFrq"
+5,"ControlledVocabulary",2,7,"Wood","LWDVol","Large wood volume","Volume of LWD within the channel of the reach",NA,"Numeric",NA,NA,"LWD_VL","V1WM100","LWVol"
+5,"ControlledVocabulary",3,7,"Wood",NA,"Large Wood above Bankfull Channel",NA,NA,NA,NA,NA,NA,"C1TM100",NA
+5,"ControlledVocabulary",4,7,"Wood",NA,"Large Wood in and Above the Wetted Channel",NA,NA,NA,NA,NA,NA,"C2TM100",NA
+5,"ControlledVocabulary",5,7,"Wood",NA,"Large Wood in the Wetted Channel",NA,NA,NA,NA,NA,NA,"C2WM100",NA
+5,"ControlledVocabulary",6,7,"Wood",NA,"Large Wood in/above Wetted Channel",NA,NA,NA,NA,NA,NA,"C4TM100",NA
+5,"ControlledVocabulary",8,7,"Wood",NA,"Bankful Channel woody debris (m3/m2)",NA,NA,NA,NA,NA,NA,"V1W_MSQ",NA
+5,"ControlledVocabulary",9,7,"Wood",NA,"LWD vol in Bkf chnl& dry (m3/m2-SMLX)",NA,NA,NA,NA,NA,NA,"V2W_MSQ",NA
+5,"ControlledVocabulary",10,7,"Wood",NA,"LWD vol in Bkf chnl& dry (m3/100m-SMLX)",NA,NA,NA,NA,NA,NA,"V2WM100",NA
+5,"ControlledVocabulary",11,7,"Wood",NA,"Large Wood Volume in Bankful Channel Dry Including Dry",NA,NA,NA,NA,NA,NA,"V4W_MSQ",NA
+5,"ControlledVocabulary",12,7,"Wood",NA,"LWD vol in Bkf chnl & dry (m3/100m-LX)",NA,NA,NA,NA,NA,NA,"V4WM100",NA
+5,"ControlledVocabulary",14,7,"Wood",NA,"Large Wood Volume in the Channel",NA,NA,NA,NA,NA,NA,"LWDEQVOLM100",NA
+5,"ControlledVocabulary",15,7,"Wood",NA,"Count of Pieces n+I201:I388ot corrected",NA,NA,NA,NA,"tot_pieces_uncorrected",NA,NA,NA
+5,"ControlledVocabulary",16,7,"Wood",NA,"Count of  Pieces corrected",NA,NA,NA,NA,"tot_pieces_corrected",NA,NA,NA
+5,"ControlledVocabulary",18,7,"Wood",NA,"Number of Measured Pecies",NA,NA,NA,NA,"number_measured_pieces",NA,NA,NA
+5,"ControlledVocabulary",19,7,"Wood",NA,"Total Number of Pieces less then 30 CM  Dimander",NA,NA,NA,NA,"tot_pieces_LT30cm_diam",NA,NA,NA
+5,"ControlledVocabulary",20,7,"Wood",NA,"Count of Small Pieces of Wood",NA,NA,NA,NA,"tot_small_pieces",NA,NA,NA
+5,"ControlledVocabulary",21,7,"Wood",NA,"Count of 12 by 25 Pieces of Wood",NA,NA,NA,NA,"tot_12x25",NA,NA,NA
+5,"ControlledVocabulary",22,7,"Wood",NA,"Count of 18 by 25 Pieces of Wood",NA,NA,NA,NA,"tot_18x25",NA,NA,NA
+5,"ControlledVocabulary",23,7,"Wood",NA,"Count of 25 by 33 Pieces of Wood",NA,NA,NA,NA,"tot_24x33",NA,NA,NA
+5,"ControlledVocabulary",24,7,"Wood",NA,"Count of 24 by 50 Pieces of Wood",NA,NA,NA,NA,"tot_24x50",NA,NA,NA
+5,"ControlledVocabulary",7,7,"Wood",NA,"Large Wood in Wetted Channel",NA,NA,NA,NA,NA,NA,"C4WM100",NA
+5,"ControlledVocabulary",13,7,"Wood",NA,"Wood Vol (m3/m2 in area fished in littoral)",NA,NA,NA,NA,NA,NA,"LWDEQVOL_MSQ",NA
+5,"ControlledVocabulary",17,7,"Wood",NA,"Number of Estimated Pieces of Wood",NA,NA,NA,NA,"number_estimated_pieces",NA,NA,NA
+5,"ControlledVocabulary",1,9,"Macroinvertebrates","Observed","Observed macroinvertebrate richness",NA,NA,"Integer",NA,"observed","ObservedInvertRichness",NA,NA
+5,"ControlledVocabulary",2,9,"Macroinvertebrates","Expected","Expected macroinvertebrate richness",NA,NA,"Integer",NA,"expected","ExpectedInvertRichness",NA,NA
+5,"ControlledVocabulary",3,9,"Macroinvertebrates",NA,"Metric score for taxa richness",NA,NA,NA,NA,NA,NA,"RICH_PT",NA
+5,"ControlledVocabulary",4,9,"Macroinvertebrates","OEratio","O/E Macroinvertebrate Index","Biological condition was assessed using an observed/expected (O/E) index.","min: 0, max: 1.5","Numeric","NA",NA,"OE_MACROINVRTBRTE","OE_SCORE",NA
+5,"ControlledVocabulary",5,9,"Macroinvertebrates",NA,"Condition class based on O/E score",NA,NA,NA,NA,NA,NA,"OE_COND",NA
+5,"ControlledVocabulary",6,9,"Macroinvertebrates",NA,"Presence of Invasive Macroinvertebrates",NA,NA,NA,NA,NA,"InvasiveInvertSp",NA,NA
+5,"ControlledVocabulary",7,9,"Macroinvertebrates","MMI","Multimetric Macroinvertebrate Index","Biological condition was assessed using the MMI (MultimetricIndex)",NA,"Numeric","NA",NA,"MMI_MACROINVRTBRTE","BENT_MMI_COND",NA
+5,"ControlledVocabulary",8,9,"Macroinvertebrates",NA,"The O/E or MMI model used to determine biological integrity",NA,NA,NA,NA,NA,"OE_MMI_ModelUsed",NA,NA
+5,"ControlledVocabulary",9,9,"Macroinvertebrates",NA,"Resample Count",NA,NA,NA,NA,"resampleCount",NA,NA,NA
+5,"ControlledVocabulary",10,9,"Macroinvertebrates",NA,"Condition",NA,NA,NA,NA,"condition",NA,NA,NA
+5,"ControlledVocabulary",11,9,"Macroinvertebrates",NA,"Model Applicability",NA,NA,NA,NA,NA,"ModelApplicability",NA,NA
+5,"ControlledVocabulary",12,9,"Macroinvertebrates",NA,"Macroinvertebrate Count",NA,NA,NA,NA,NA,"MacroinvertebrateCount",NA,NA
+5,"ControlledVocabulary",13,9,"Macroinvertebrates",NA,"Field Split",NA,NA,NA,NA,"field_split",NA,NA,NA
+5,"ControlledVocabulary",14,9,"Macroinvertebrates",NA,"Lab Split",NA,NA,NA,NA,"lab_split",NA,NA,NA
+5,"ControlledVocabulary",15,9,"Macroinvertebrates",NA,"Split Count",NA,NA,NA,NA,"split_count",NA,NA,NA
+5,"ControlledVocabulary",16,9,"Macroinvertebrates",NA,"Fixed count",NA,NA,NA,NA,"fixed_count",NA,NA,NA
+5,"ControlledVocabulary",17,9,"Macroinvertebrates",NA,"Big Rare Count",NA,NA,NA,NA,"big_rare_count",NA,NA,NA
+5,"ControlledVocabulary",18,9,"Macroinvertebrates","Richness","Taxa richness",NA,NA,"Integer",NA,"richness",NA,NA,"Rich"
+5,"ControlledVocabulary",19,9,"Macroinvertebrates",NA,"Abundance",NA,NA,NA,NA,"abundance",NA,NA,NA
+5,"ControlledVocabulary",20,9,"Macroinvertebrates",NA,"Shannon's Diversity",NA,NA,NA,NA,"Shannons_diversity",NA,"HPRIME",NA
+5,"ControlledVocabulary",21,9,"Macroinvertebrates",NA,"Metric score for functional feeding group",NA,NA,NA,NA,NA,NA,"FEED_PT",NA
+5,"ControlledVocabulary",22,9,"Macroinvertebrates",NA,"Metric score for habit",NA,NA,NA,NA,NA,NA,"HABT_PT",NA
+5,"ControlledVocabulary",23,9,"Macroinvertebrates",NA,"Metric score for composition metric",NA,NA,NA,NA,NA,NA,"COMP_PT",NA
+5,"ControlledVocabulary",24,9,"Macroinvertebrates",NA,"Metric score for diversity metric",NA,NA,NA,NA,NA,NA,"DIVS_PT",NA
+5,"ControlledVocabulary",25,9,"Macroinvertebrates",NA,"Simpson's Diversity",NA,NA,NA,NA,"Simpsons_diversity",NA,NA,NA
+5,"ControlledVocabulary",26,9,"Macroinvertebrates",NA,"Evenness",NA,NA,NA,NA,"evenness",NA,NA,NA
+5,"ControlledVocabulary",27,9,"Macroinvertebrates",NA,"Number of EPT Taxa",NA,NA,NA,NA,"EPT_num_tx",NA,NA,NA
+5,"ControlledVocabulary",28,9,"Macroinvertebrates",NA,"EPT Taxa Abundance",NA,NA,NA,NA,"EPT_abd_tx",NA,NA,NA
+5,"ControlledVocabulary",29,9,"Macroinvertebrates",NA,"Dominant Family",NA,NA,NA,NA,"dominant_family",NA,NA,NA
+5,"ControlledVocabulary",30,9,"Macroinvertebrates",NA,"Dominant Family abd",NA,NA,NA,NA,"dominant_family_abd",NA,NA,NA
+5,"ControlledVocabulary",31,9,"Macroinvertebrates",NA,"Dominant Taxa",NA,NA,NA,NA,"dominant_tx",NA,NA,NA
+5,"ControlledVocabulary",32,9,"Macroinvertebrates",NA,"Dominant abd Taxa",NA,NA,NA,NA,"dominant_abd_tx",NA,NA,NA
+5,"ControlledVocabulary",33,9,"Macroinvertebrates",NA,"Hilsenhoff Biotic Index",NA,NA,NA,NA,"Hilsenhoff_biotic_index",NA,NA,NA
+5,"ControlledVocabulary",34,9,"Macroinvertebrates",NA,"% clinger taxa, based on WSA autecology",NA,NA,NA,NA,NA,NA,"CLNGPTAX",NA
+5,"ControlledVocabulary",35,9,"Macroinvertebrates","Cling","Number of clinger taxa",NA,NA,"Integer",NA,"clinger_num_tx",NA,"CLNGNTAX","Cling"
+5,"ControlledVocabulary",36,9,"Macroinvertebrates","LongLvd","Number of long lived taxa",NA,NA,"Integer",NA,"long_lived_tx",NA,NA,"LongLvd"
+5,"ControlledVocabulary",37,9,"Macroinvertebrates",NA,"Intolerant abd Taxz",NA,NA,NA,NA,"intolerant_abd_tx",NA,NA,NA
+5,"ControlledVocabulary",38,9,"Macroinvertebrates",NA,"Tolerant Number Taxa",NA,NA,NA,NA,"tolerant_num_tx",NA,NA,NA
+5,"ControlledVocabulary",39,9,"Macroinvertebrates",NA,"Tolerant abd Taxa",NA,NA,NA,NA,"tolerant_abd_tx",NA,NA,NA
+5,"ControlledVocabulary",40,9,"Macroinvertebrates","CTQd","Community tolerance quotient",NA,NA,"Integer",NA,"USFS_community_tol_quot",NA,NA,"CTQd"
+5,"ControlledVocabulary",41,9,"Macroinvertebrates",NA,"Number of distinct intolerant taxa",NA,NA,NA,NA,NA,NA,"MMI_BENT",NA
+5,"ControlledVocabulary",42,9,"Macroinvertebrates",NA,"No. of non-tolerants (PTV<6) taxa",NA,NA,NA,NA,NA,NA,"NTOLNTAX",NA
+5,"ControlledVocabulary",43,9,"Macroinvertebrates",NA,"% taxa with pollution tolerance score between 0 and 5.9",NA,NA,NA,NA,NA,NA,"NTOLPTAX",NA
+5,"ControlledVocabulary",44,9,"Macroinvertebrates",NA,"% taxa with pollution tolerance score between 8 and 10",NA,NA,NA,NA,NA,NA,"STOLPTAX",NA
+5,"ControlledVocabulary",45,9,"Macroinvertebrates",NA,"Metric score for tolerance metric",NA,NA,NA,NA,NA,NA,"TOLR_PT",NA
+5,"ControlledVocabulary",46,9,"Macroinvertebrates",NA,"% Tolerant (PTV>=7) taxa",NA,NA,NA,NA,NA,NA,"TOLRPTAX",NA
+5,"ControlledVocabulary",47,9,"Macroinvertebrates",NA,"Number of shredder taxa",NA,NA,NA,NA,"shredder_num_tx",NA,"SHRDNTAX",NA
+5,"ControlledVocabulary",48,9,"Macroinvertebrates",NA,"Shredder Abundance",NA,NA,NA,NA,"shredder_abd",NA,NA,NA
+5,"ControlledVocabulary",49,9,"Macroinvertebrates",NA,"Number of scraper taxa",NA,NA,NA,NA,"scraper_num_tx",NA,"SCRPNTAX",NA
+5,"ControlledVocabulary",50,9,"Macroinvertebrates",NA,"Scraper abundance",NA,NA,NA,NA,"scraper_abd",NA,NA,NA
+5,"ControlledVocabulary",51,9,"Macroinvertebrates",NA,"Number of collector-filterer taxa",NA,NA,NA,NA,"collector_filterer_num_tx",NA,NA,NA
+5,"ControlledVocabulary",52,9,"Macroinvertebrates",NA,"Collector-filterer abundance",NA,NA,NA,NA,"collector_filterer_abd",NA,NA,NA
+5,"ControlledVocabulary",53,9,"Macroinvertebrates",NA,"Number of collector-gatherer taxa",NA,NA,NA,NA,"collector_gatherer_num_tx",NA,NA,NA
+5,"ControlledVocabulary",54,9,"Macroinvertebrates",NA,"Collector-gatherer abundance",NA,NA,NA,NA,"collector_gatherer_abd",NA,NA,NA
+5,"ControlledVocabulary",55,9,"Macroinvertebrates",NA,"Number of predator taxa",NA,NA,NA,NA,"predator_num_tx",NA,NA,NA
+5,"ControlledVocabulary",56,9,"Macroinvertebrates",NA,"Predator abundance",NA,NA,NA,NA,"predator_abd",NA,NA,NA
+5,"ControlledVocabulary",57,9,"Macroinvertebrates","Ephet","Number of Ephemeroptera taxa",NA,NA,"Integer",NA,"Marcos Metrics",NA,NA,"Ephet"
+5,"ControlledVocabulary",58,9,"Macroinvertebrates",NA,"Number of Ephemeroptera taxa",NA,NA,NA,NA,"Ephemeroptera_num_tx",NA,"EPHENTAX",NA
+5,"ControlledVocabulary",59,9,"Macroinvertebrates",NA,"% Ephemeroptera taxa",NA,NA,NA,NA,NA,NA,"EPHEPTAX",NA
+5,"ControlledVocabulary",60,9,"Macroinvertebrates",NA,"Ephemeroptera abundance",NA,NA,NA,NA,"Ephemeroptera_abd",NA,NA,NA
+5,"ControlledVocabulary",61,9,"Macroinvertebrates",NA,"Number of distinct Ephemeroptera, Plecoptera, and Trichoptera taxa",NA,NA,NA,NA,NA,NA,"EPT_NTAX",NA
+5,"ControlledVocabulary",62,9,"Macroinvertebrates",NA,"% Ephemeroptera, Plecoptera, and Trichoptera individuals",NA,NA,NA,NA,NA,NA,"EPT_PIND",NA
+5,"ControlledVocabulary",63,9,"Macroinvertebrates",NA,"Percent of  Ephemeroptera, Plecoptera, and Trichoptera taxa",NA,NA,NA,NA,NA,NA,"EPT_PTAX",NA
+5,"ControlledVocabulary",64,9,"Macroinvertebrates","Plect","Number of Plecoptera taxa",NA,NA,"Integer",NA,"Plecoptera_num_tx",NA,NA,"Plect"
+5,"ControlledVocabulary",65,9,"Macroinvertebrates",NA,"Plecoptera abundance",NA,NA,NA,NA,"Plecoptera_abd",NA,NA,NA
+5,"ControlledVocabulary",66,9,"Macroinvertebrates","Trict","Number of Trichoptera taxa",NA,NA,"Integer",NA,"Trichoptera_num_tx",NA,NA,"Trict"
+5,"ControlledVocabulary",67,9,"Macroinvertebrates",NA,"Trichoptera abundance",NA,NA,NA,NA,"Trichoptera_abd",NA,NA,NA
+5,"ControlledVocabulary",68,9,"Macroinvertebrates",NA,"Number of Coleoptera taxa",NA,NA,NA,NA,"Coleoptera_num_tx",NA,NA,NA
+5,"ControlledVocabulary",69,9,"Macroinvertebrates",NA,"Coleoptera abundance",NA,NA,NA,NA,"Coleoptera_abd",NA,NA,NA
+5,"ControlledVocabulary",70,9,"Macroinvertebrates",NA,"Number of Elmidae taxa",NA,NA,NA,NA,"Elmidae_num_tx",NA,NA,NA
+5,"ControlledVocabulary",71,9,"Macroinvertebrates",NA,"Elmidae abundance",NA,NA,NA,NA,"Elmidae_abd",NA,NA,NA
+5,"ControlledVocabulary",72,9,"Macroinvertebrates",NA,"Number of Megaloptera taxa",NA,NA,NA,NA,"Megaloptera_num_tx",NA,NA,NA
+5,"ControlledVocabulary",73,9,"Macroinvertebrates",NA,"Megaloptera abundance",NA,NA,NA,NA,"Megaloptera_abd",NA,NA,NA
+5,"ControlledVocabulary",74,9,"Macroinvertebrates",NA,"Number of Diptera taxa",NA,NA,NA,NA,"Diptera_num_tx",NA,NA,NA
+5,"ControlledVocabulary",75,9,"Macroinvertebrates",NA,"Diptera abundance",NA,NA,NA,NA,"Diptera_abd",NA,NA,NA
+5,"ControlledVocabulary",76,9,"Macroinvertebrates",NA,"Number of Chironomidae taxa",NA,NA,NA,NA,"Chironomidae_num_tx",NA,NA,NA
+5,"ControlledVocabulary",77,9,"Macroinvertebrates",NA,"Percent Chironomidae taxa",NA,NA,NA,NA,NA,NA,"CHIRPTAX",NA
+5,"ControlledVocabulary",78,9,"Macroinvertebrates",NA,"Chironomidae abundance",NA,NA,NA,NA,"Chironomidae_abd",NA,NA,NA
+5,"ControlledVocabulary",79,9,"Macroinvertebrates",NA,"Number of Crustacea taxa",NA,NA,NA,NA,"crustacea_num_tx",NA,NA,NA
+5,"ControlledVocabulary",80,9,"Macroinvertebrates",NA,"Crustacea abundance",NA,NA,NA,NA,"crustacea_abd",NA,NA,NA
+5,"ControlledVocabulary",81,9,"Macroinvertebrates",NA,"Number of Oligochaete taxa",NA,NA,NA,NA,"Oligochaete_num_tx",NA,NA,NA
+5,"ControlledVocabulary",82,9,"Macroinvertebrates",NA,"% burrower taxa, based on WSA autecology",NA,NA,NA,NA,NA,NA,"BURRPTAX",NA
+5,"ControlledVocabulary",83,9,"Macroinvertebrates",NA,"Oligochaete abundance",NA,NA,NA,NA,"Oligochaete_abd",NA,NA,NA
+5,"ControlledVocabulary",84,9,"Macroinvertebrates",NA,"Number of Mollusca taxa",NA,NA,NA,NA,"Mollusca_num_tx",NA,NA,NA
+5,"ControlledVocabulary",85,9,"Macroinvertebrates",NA,"Mollusca abundance",NA,NA,NA,NA,"Mollusca_abd",NA,NA,NA
+5,"ControlledVocabulary",86,9,"Macroinvertebrates",NA,"Number of Insect taxa",NA,NA,NA,NA,"insect_num_tx",NA,NA,NA
+5,"ControlledVocabulary",87,9,"Macroinvertebrates",NA,"Insect abundance",NA,NA,NA,NA,"insect_abd",NA,NA,NA
+5,"ControlledVocabulary",88,9,"Macroinvertebrates",NA,"Number of non-insect taxa",NA,NA,NA,NA,"noninsect_num_tx",NA,NA,NA
+5,"ControlledVocabulary",89,9,"Macroinvertebrates",NA,"Non-insect abundance",NA,NA,NA,NA,"noninsect_abd",NA,NA,NA
+5,"ControlledVocabulary",90,9,"Macroinvertebrates",NA,"% non-insect individuals",NA,NA,NA,NA,NA,NA,"NOINPIND",NA
+5,"ControlledVocabulary",91,9,"Macroinvertebrates","Intol","Number of Intolerant taxa",NA,NA,"Integer",NA,"intolerant_num_tx",NA,"INTLNTAX","Intol"
+5,"ControlledVocabulary",92,9,"Macroinvertebrates",NA,"% individuals in dominant 5 taxa",NA,NA,NA,NA,NA,NA,"DOM5PIND",NA
+5,"ControlledVocabulary",93,9,"Macroinvertebrates",NA,"RIVPAC's score of observed / expected taxa",NA,NA,NA,NA,NA,NA,NA,"RIVPACS"
+5,"ControlledVocabulary",1,10,"Water chemistry","InstantTemp","Insidious Air Temperature",NA,NA,"Numeric",NA,"air_temp","InstantTemp",NA,NA
+5,"ControlledVocabulary",4,10,"Water chemistry",NA,"Perdectied Total Nitrogen",NA,NA,NA,NA,NA,"PRD_TotalNitrogen",NA,NA
+5,"ControlledVocabulary",6,10,"Water chemistry",NA,"Predicted Total Phosphorous",NA,NA,NA,NA,NA,"PRD_TotalPhosphorous",NA,NA
+5,"ControlledVocabulary",8,10,"Water chemistry",NA,"Predicted Specific Conductance",NA,NA,NA,NA,NA,"PRD_SpecificConductance","PHLAB",NA
+5,"ControlledVocabulary",10,10,"Water chemistry",NA,"Time Air Temperature Was Collected",NA,NA,NA,NA,"air_temp_time",NA,NA,NA
+5,"ControlledVocabulary",1,11,"Overhead Cover",NA,"Percent Overhead Cover",NA,NA,NA,NA,NA,"PctOverheadCover",NA,NA
+5,"ControlledVocabulary",2,11,"Overhead Cover",NA,"Average percent overhead cover provided by stream banks",NA,NA,NA,NA,NA,"BankOverheadCover",NA,NA
+5,"ControlledVocabulary",3,11,"Overhead Cover",NA,"Mean Canopy Density at Bank",NA,NA,NA,NA,NA,NA,"XCDENBK",NA
+5,"ControlledVocabulary",4,11,"Overhead Cover",NA,"Mean Canopy Density at Mid- Channel",NA,NA,NA,NA,NA,NA,"XCDENMID",NA
+5,"ControlledVocabulary",1,12,"Other/Covariates",NA,"Date the Data Was Change",NA,NA,NA,NA,NA,"DateChange",NA,NA
+5,"ControlledVocabulary",2,12,"Other/Covariates",NA,"Reason and Field Changed",NA,NA,NA,NA,NA,"ReasonChange",NA,NA
+5,"ControlledVocabulary",1,13,"Management",NA,"Percent FS / BLM",NA,NA,NA,NA,NA,NA,NA,"FedPct"
+5,"ControlledVocabulary",2,13,"Management",NA,"Management Category",NA,NA,NA,NA,NA,NA,NA,"Mgmt"
+5,"ControlledVocabulary",1,14,"Index Value",NA,"Index of physical habitat integrity",NA,NA,NA,NA,NA,NA,NA,"HabIndex"
+5,"ControlledVocabulary",1,15,"Fish cover",NA,"Filamentous algae Mean areal cover",NA,NA,NA,NA,NA,NA,"XFC_ALG",NA
+5,"ControlledVocabulary",2,15,"Fish cover",NA,"Fish Cover -All Types (Sum Areal Prop)",NA,NA,NA,NA,NA,NA,"XFC_ALL",NA
+5,"ControlledVocabulary",3,15,"Fish cover",NA,"Aquatic macrophyte mean areal cover",NA,NA,NA,NA,NA,NA,"XFC_AQM",NA
+5,"ControlledVocabulary",4,15,"Fish cover",NA,"Fish Cover -LWDRCKUCBorHUM(Sum Area Prop)",NA,NA,NA,NA,NA,NA,"XFC_BIG",NA
+5,"ControlledVocabulary",5,15,"Fish cover",NA,"Fish Cvr-Brush&Small Debris (Areal Prop)",NA,NA,NA,NA,NA,NA,"XFC_BRS",NA
+5,"ControlledVocabulary",6,15,"Fish cover",NA,"Fish Cover-Artificial Structures",NA,NA,NA,NA,NA,NA,"XFC_HUM",NA
+5,"ControlledVocabulary",7,15,"Fish cover",NA,"Fish Cover-Artificial Structures",NA,NA,NA,NA,NA,NA,"XFC_LVT",NA
+5,"ControlledVocabulary",8,15,"Fish cover",NA,"Large woody debris areal cover",NA,NA,NA,NA,NA,NA,"XFC_LWD",NA
+5,"ControlledVocabulary",9,15,"Fish cover",NA,"Sum of Non-Anthropogenic Fish Areal Cover Types",NA,NA,NA,NA,NA,NA,"XFC_NAT",NA
+5,"ControlledVocabulary",10,15,"Fish cover",NA,"Fish Cover -Overhang Veg (Areal Prop)",NA,NA,NA,NA,NA,NA,"XFC_OHV",NA
+5,"ControlledVocabulary",11,15,"Fish cover",NA,"Fish Cover-Boulders",NA,NA,NA,NA,NA,NA,"XFC_RCK",NA
+5,"ControlledVocabulary",12,15,"Fish cover",NA,"Fish Cover - Undercut Banks",NA,NA,NA,NA,NA,NA,"XFC_UCB",NA
+5,"ControlledVocabulary",1,16,"Environment",NA,"Three climatic regions of the US used in WSA in indicator development: Eastern Highlands, West, and Plains and Lowlands",NA,NA,NA,NA,NA,NA,"FW_ECO3",NA
+5,"ControlledVocabulary",2,16,"Environment",NA,"Aggregated level 3 ecoregions used in WSA",NA,NA,NA,NA,NA,NA,"FW_ECO9",NA
+5,"ControlledVocabulary",3,16,"Environment",NA,"Catchment area upstream from the site",NA,NA,NA,NA,NA,NA,NA,"Area"
+5,"ControlledVocabulary",4,16,"Environment",NA,"Elevation at the bottom of stream reach",NA,NA,NA,NA,NA,NA,NA,"Elev"
+5,"ControlledVocabulary",5,16,"Environment",NA,"Annual Average Precipitation",NA,NA,NA,NA,NA,NA,NA,"AvgPrecip"
+5,"ControlledVocabulary",6,16,"Environment",NA,"EPA Hybrid Level III Ecoregion",NA,NA,NA,NA,NA,"EcoregionHybrid10",NA,NA
+5,"ControlledVocabulary",7,16,"Environment",NA,"EPA Climatic Zone",NA,NA,NA,NA,NA,"Climate",NA,NA
+5,"ControlledVocabulary",8,16,"Environment",NA,"NAMC Benchmark",NA,NA,NA,NA,NA,"NAMC_Benchmark",NA,NA
+5,"ControlledVocabulary",9,16,"Environment",NA,"NRCS Hydrologic Unit Code for 6th field sub-watersheds",NA,NA,NA,NA,NA,NA,NA,"HUC6"
+5,"ControlledVocabulary",1,17,"Human disturbance",NA,"EPA Human Disturbacne Indix- Argicultural Influence",NA,NA,NA,NA,NA,NA,"W1_HAG",NA
+5,"ControlledVocabulary",2,17,"Human disturbance",NA,"EPA Human Distrubance Index",NA,NA,NA,NA,NA,NA,"W1_HALL",NA
+5,"ControlledVocabulary",3,17,"Human disturbance",NA,"EPA Human Distrubance Index - Non-Argicultura",NA,NA,NA,NA,NA,NA,"W1_HNOAG",NA
+5,"ControlledVocabulary",4,17,"Human disturbance",NA,"Distance to Buildings",NA,NA,NA,NA,NA,NA,"W1H_BLDG",NA
+5,"ControlledVocabulary",5,17,"Human disturbance",NA,"Count of Near Channel Disturbance",NA,NA,NA,NA,NA,NA,"W1H_CROP",NA
+5,"ControlledVocabulary",6,17,"Human disturbance",NA,"Distance to Trash/Landfill",NA,NA,NA,NA,NA,NA,"W1H_LDFL",NA
+5,"ControlledVocabulary",7,17,"Human disturbance",NA,"Distance to Logging",NA,NA,NA,NA,NA,NA,"W1H_LOG",NA
+5,"ControlledVocabulary",8,17,"Human disturbance",NA,"Distance to Mining",NA,NA,NA,NA,NA,NA,"W1H_MINE",NA
+5,"ControlledVocabulary",9,17,"Human disturbance",NA,"Distance to Lawn/Park",NA,NA,NA,NA,NA,NA,"W1H_PARK",NA
+5,"ControlledVocabulary",10,17,"Human disturbance",NA,"Distance to Pipes (infl/Effl)",NA,NA,NA,NA,NA,NA,"W1H_PIPE",NA
+5,"ControlledVocabulary",11,17,"Human disturbance",NA,"Distance to Pasture or Hayfield",NA,NA,NA,NA,NA,NA,"W1H_PSTR",NA
+5,"ControlledVocabulary",12,17,"Human disturbance",NA,"Distance to Pavement",NA,NA,NA,NA,NA,NA,"W1H_PVMT",NA
+5,"ControlledVocabulary",13,17,"Human disturbance",NA,"Distance to Road/Railroad",NA,NA,NA,NA,NA,NA,"W1H_ROAD",NA
+5,"ControlledVocabulary",14,17,"Human disturbance",NA,"Count of Near Channel Disturbance",NA,NA,NA,NA,NA,NA,"W1H_WALL",NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA

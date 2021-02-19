@@ -28,32 +28,25 @@ vocabulary<- metadata %>%
 write.csv(vocabulary, file=paste0("Tables/StandardVocabulary.csv" ), row.names=F) 
 
 #Create the crosswalk table 
-crosswalk<- metadata %>% 
-                  select(CategoryID, Category, TermID, MeasurementID, VocabularyCatagory, SubsetOfMetrics, InDES, 
-                         Term, LongName, Description, Examples ,DataType, Unit, 
-                         AREMPField,AREMPCollectionMethodID,  NRSAField,NRSACollectionMethodID,  
-                         AIMField,AIMCollectionMethodID, PIBOField, PIBOCollectionMethodID) %>% 
-                  filter(SubsetOfMetrics=="x")  %>% 
-                  select(-SubsetOfMetrics, -InDES) 
 
 crosswalk<- metadata %>% 
-  select(c("CategoryID", "Category", "TermID", "MeasurementID", "VocabularyCatagory", "SubsetOfMetrics", "InDES", 
-           "Term", "LongName", "Description", "Examples", "DataType", "Unit", "AREMPField", "NRSAField", "AIMField",
-           "PIBOField")|contains("Method")) %>% 
+        select(c("CategoryID", "Category", "TermID", "MeasurementID", "VocabularyCatagory", "SubsetOfMetrics", "InDES", 
+           "Term", "LongName", "Description", "Examples", "DataType", "Unit")|contains("CW")) %>% 
         filter(SubsetOfMetrics=="x")  %>% 
-        select(-SubsetOfMetrics, -InDES)                  
-
-
+        select(-SubsetOfMetrics, -InDES) 
+        
+  
+names(crosswalk) <- str_remove_all(names(crosswalk), "CW")
 write.csv(crosswalk, file=paste0("Tables/Crosswalk.csv" ), row.names=F)
 
 
 #Create a list of metrics from the programs not in the controlled vocabulary 
 notInVocab<- metadata %>% 
-  select(CategoryID, Category, TermID, MeasurementID, VocabularyCatagory, SubsetOfMetrics, InDES, 
-         Term, LongName, Description, Examples ,DataType, Unit, 
-         AREMPField, NRSAField, AIMField, PIBOField) %>% 
+  select(c(CategoryID, Category, TermID, MeasurementID, VocabularyCatagory, SubsetOfMetrics, InDES, 
+         Term, LongName, Description, Examples ,DataType, Unit) | contains("FieldCW"))  %>% 
   filter(is.na(SubsetOfMetrics)& is.na(InDES))  %>% 
   select(-SubsetOfMetrics, -InDES)
 
-write.csv(crosswalk, file=paste0("Tables/NotInStandardVocabularyOrDES.csv" ), row.names=F)
+names(notInVocab) <- str_remove_all(names(notInVocab), "CW")
+write.csv(notInVocab, file=paste0("Tables/NotInStandardVocabularyOrDES.csv" ), row.names=F)
 

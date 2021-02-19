@@ -32,7 +32,7 @@ write.csv(vocabulary, file=paste0("Tables/StandardVocabulary.csv" ), row.names=F
 crosswalk<- metadata %>% 
         select(c("CategoryID", "Category", "TermID", "MeasurementID", "VocabularyCatagory", "SubsetOfMetrics", "InDES", 
            "Term", "LongName", "Description", "Examples", "DataType", "Unit")|contains("CW")) %>% 
-        filter(SubsetOfMetrics=="x")  %>% 
+        filter(SubsetOfMetrics=="x"| InDES=="x"  ) %>% 
         select(-SubsetOfMetrics, -InDES) 
         
   

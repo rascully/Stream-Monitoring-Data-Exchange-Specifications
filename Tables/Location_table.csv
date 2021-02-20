@@ -1,6 +1,6 @@
 "CategoryID","TermID","Category","Term","Description","Examples","DataType"
 2,2,"Location","locationID","This is the location identification for the integrated data set the value is the concatenation of the verbatimlocationID and the institutionCode. Example) 5483AIM, 88963AREMP, WtR563EPA",NA,"string"
-2,1,"Location","verbatimlocationID","Number that identifies a unique sampling location. A site is a stream segment with a fixed starting and ending location for sampling",NA,"string"
+2,1,"Location","verbatimlocationID","Number that identifies a unique sampling location. A site is a stream segment with a fixed starting and ending location for sampling",NA,"String"
 2,3,"Location","verbatimLatitude","The verbatim original latitude of the Location. The coordinate ellipsoid, geodeticDatum, or full Spatial Reference System (SRS) for these coordinates should be stored in verbatimSRS and the coordinate system should be stored in verbatimCoordinateSystem.","For this dataset we use the botton of the reach as the location.","Numeric"
 2,4,"Location","verbatimLongitude","The verbatim original longitude of the Location. The coordinate ellipsoid, geodeticDatum, or full Spatial Reference System (SRS) for these coordinates should be stored in verbatimSRS and the coordinate system should be stored in verbatimCoordinateSystem.","For this dataset we use the botton of the reach as the location.","Numeric"
 2,5,"Location","verbatimWaterbody","The water body name from the original data set.","For this data set this field is often refered to as Stream Name.","string"

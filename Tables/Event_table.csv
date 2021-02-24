@@ -10,4 +10,4 @@
 3,9,"Event","year","The four-digit year in which the Event occurred, according to the Common Era Calendar.","2008","Integer"
 3,10,"Event","fieldNumber","An identifier given to the event in the field. Often serves as a link between field notes and the Event.","RV Sol 87-03-08","String"
 3,11,"Event","fieldNotes","One of a) an indicator of the existence of, b) a reference to (publication, URI), or c) the text of notes taken in the field about the Event.","notes available in Grinnell-Miller Library","String"
-3,12,"Event","eventRemark","Comments or notes about the Event.","after the recent rains the river is nearly at flood stage","string"
+3,12,"Event","eventRemark","Comments or notes about the Event.","after the recent rains the river is nearly at flood stage","String"

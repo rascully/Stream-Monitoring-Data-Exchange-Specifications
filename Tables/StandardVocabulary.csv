@@ -33,7 +33,7 @@
 5,"ControlledVocabulary",10,8,"HighSevenDayAverage","Maximum weekly average temperature","Highest seven-day running average of mean daily temperature during a year",NA,"Numeric","Degrees Celsius"
 5,"ControlledVocabulary",11,8,"DegreeDays","annual degree day s","Cumulative total of degree days during a year (1°C for 24 h = 1 degree day)",NA,"Numeric","Count of days"
 5,"ControlledVocabulary",12,8,"SDMeanDaily","Annual Standard Deivation","Standard deviation of mean daily temperature during a year",NA,"Numeric",NA
-5,"ControlledVocabulary",13,8,"SDMeanDaily","Winter Standard Deviation","Standard deviation of mean daily temperature during winter months",NA,"Numeric",NA
+5,"ControlledVocabulary",13,8,"SDMeanWinterDaily","Winter Standard Deviation","Standard deviation of mean daily temperature during winter months",NA,"Numeric",NA
 5,"ControlledVocabulary",14,8,"SDMeanSpring","Spring Standard Deviation","Standard deviation of mean daily temperature during spring months",NA,"Numeric",NA
 5,"ControlledVocabulary",15,8,"SDMeanSummer","Summer SD","Standard deviation of mean daily temperature during summer months",NA,"Numeric",NA
 5,"ControlledVocabulary",16,8,"SDMeanAugust","August SD","Standard deviation of mean daily temperature during the month of August",NA,"Numeric",NA

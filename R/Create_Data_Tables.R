@@ -1,6 +1,7 @@
 #Script to create tables for the the data exchange specifications and the publications
 
 library(tidyverse)
+library(stringr)
 
 #Open the metadata file 
 metadata <- readxl::read_excel("Data/Metadata.xlsx", sheet = 3)

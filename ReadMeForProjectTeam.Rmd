@@ -3,8 +3,9 @@ title: "ReadMeForProjectTeam"
 author: "Becca Scully"
 date: "2/25/2021"
 output:
-  word_document: default
   html_document: default
+  pdf_document: default
+  word_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -16,67 +17,73 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(knitr)
 library(readxl)
+library(kableExtra)
+
 metadata <- readxl::read_excel("Data/Metadata.xlsx", sheet = 3)
+
+DES_tables <- c("RecordLevel", "Location","Event", "MeasurementOrFact")
+for(i in 1:length(DES_tables)){ 
+    
+     assign(DES_tables[i], metadata %>% 
+            select(Category, InDES, Term,Description,Examples, DataType ) %>% 
+            filter(Category== DES_tables[i], InDES=="x") %>% 
+            select(-InDES, -Category)) 
+      
+     
+      file_name <- paste0(DES_tables[i], "_table") # create a file name 
+      write.csv(DES_tables[i], file=paste0("Tables/",file_name,".csv" ), row.names = F)
+  }
 
 ```
 
 ## R Markdown
 
 # Stream Monitoring Habitat Data Exchange Specifications 
-Data exchange specifications are a set of guidelines and rules for using and combining information. Rigorous data exchange specifications support reuse, promote interoperability, and reduce data integration costs (Morris and Frechette 2008, Hamm 2019). The [Stream Monitoring Habitat Data Exchange Specifications](MetricLevelExchangeSpecifications.docx) are a standard for exchanging metric-level habitat data based on the Darwin Core principles as outlined by Wieczorek et al. in 2012. The Darwin Core standard is maintained at the Git Hub repository https://github.com/tdwg/dwc. The Stream Habitat Metric Data Integration working group facilitated by the Pacific Northwest Aquatic Monitoring Partnership (https://www.pnamp.org/project/habitat-metric-data-integration) and the USGS adapted the Darwin Core standard for stream habitat metrics, and as a use case, integrate stream habitat metrics from three federal stream habitat monitoring programs in a separate Git Hub Repository: https://github.com/rascully/Integrating-Stream-Monitoring-Data-From-Multiple-Programs.
+Data exchange specifications are a set of guidelines and rules for using and combining information. Rigorous data exchange specifications support reuse, promote interoperability, and reduce data integration costs (Morris and Frechette 2008, Hamm 2019). The Stream Monitoring Habitat Data Exchange Specifications are a standard for exchanging metric-level habitat data based on the Darwin Core principles as outlined by Wieczorek et al. in 2012. The Darwin Core standard is maintained at the GitHub repository https://github.com/tdwg/dwc. The Stream Habitat Metric Data Integration working group facilitated by the Pacific Northwest Aquatic Monitoring Partnership (https://www.pnamp.org/project/habitat-metric-data-integration) and the USGS adapted the Darwin Core standard for stream habitat metrics, and as a use case, integrate stream habitat metrics from three federal stream habitat monitoring programs in a separate Git Hub Repository: https://github.com/rascully/Integrating-Stream-Monitoring-Data-From-Multiple-Programs.
 
 # Structure 
-We utilize the Darwin Core classes: Record-level, Location, Event, and Measurement or Fact [Data Structure](Figures/StructureOfDarwinCoreForHabitatMetrics.png ). Class in Darwin Core is the title for a group of terms (Wieczorek et al. 2012). Record-level Class documents information about each data set and links to Location using the DatasetID. Location Class documents the location and metadata about a specific location; it is associated with a sampling event using the LocationID. Multiple events can be related to a single location. The Event Class documents the data collection event and metadata about the sampling event. The event is linked to the specific metric using the EventID. The Measurement or Fact Class documents the metrics and metadata about each metric. At each event, programs collect multiple measurements, producing numerous metrics. To promote transparent and consistent metadata, we facilitated a process to describe a controlled vocabulary defining the metrics that can be shared using these data exchange specifications. This data is suited to a star [data schema](Figures/HabiatDataSharingSchema.png) 
+We utilize the Darwin Core classes: Record-level, Location, Event, and Measurement or Fact [Data Structure](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Figures/StructureOfDarwinCoreForHabitatMetrics.png ). Class in Darwin Core is the title for a group of terms (Wieczorek et al. 2012). Record-level Class documents information about each data set and links to Location using the DatasetID. Location Class documents the location and metadata about a specific location; it is associated with a sampling event using the LocationID. Multiple events can be related to a single location. The Event Class documents the data collection event and metadata about the sampling event. The event is linked to the specific metric using the EventID. The Measurement or Fact Class documents the metrics and metadata about each metric. At each event, programs collect multiple measurements, producing numerous metrics. To promote transparent and consistent metadata, we facilitated a process to describe a controlled vocabulary defining the metrics that can be shared using these data exchange specifications. This type of data is suited to a star data schema due to the one to many relationships between locations and events, and events and metrics. We adapted the stream habitat metrics to the [star schema](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Figures/HabiatDataSharingSchema.png) 
 
 ## Record Level Class 
 The Record Level Class documents the core elements of a data set, including information about the origin of the data set, who collected the data, and how to cite the data set. See details in the [Record Level table](Tables/RecordLevel_table.csv). A data set is a collection of locations, at each location a collection events, at each event a collection of metrics; for example, a program releases a data set every five years containing all the data collection locations, events and metrics occurring in the previous five years. We recommend storing metadata about the data sets in a trusted online data repository ensuring we have sufficient information about data sets’ origins. If a program does not have the resources to build a repository, we recommend using USGS ScienceBase, which is available to all. Find more information about ScienceBase here https://www.sciencebase.gov/about/. 
 
 ```{r echo=FALSE, results= 'asis'}
 
-class_table<- metadata %>% 
-            select(Category, InDES, Term,Description,Examples, DataType ) %>% 
-            filter(Category== "RecordLevel", InDES=="x") %>% 
-            select(-InDES)
-kable(class_table, caption = "Record Level Class")
+#kable(RecordLevel, caption = "Record Level Class")
+
+RecordLevel %>%
+  kbl() %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), font_size= 12 )  
+  
 ```
 
 ## Location Class
 Understanding where data are collected is critical to interpreting biological monitoring data.  The Location class describes where information are collected, see the list of terms in the [Location table](Tables/Location_table.csv).  There will be multiple locations in each data set. The locationID is the key to link locations to events. To view and analysis data from various sources, latitudes and longitude information must be consistent among data sets; therefore, for this data all latitude and longitudes are converted to WGS1984.
 
 ```{r echo=FALSE}
-class = "Location"
-class_table<- metadata %>% 
-            select(Category, InDES, Term,Description,Examples, DataType ) %>% 
-            filter(Category== class, InDES=="x") %>% 
-            select(-InDES)
-kable(class_table, caption = class)
+
+
+Location %>%
+  kbl() %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), font_size= 12)  
 
 ```
 ## Event Class
 The Event class describes an action that occurs at a specific time frame see the [Event table](Tables/Event_table.csv) for the terms. To assess the status and trend of a resource as a response to management actions, stream habitat monitoring programs often implement a rotating panel design, meaning that the project returns to a single location multiple times during the study duration.  Therefore, a data set will contain numerous locations, and each location can include numerous events.
 ```{r echo= FALSE}
-class = "Event"
-class_table<- metadata %>% 
-            select(InDES,Term,Description,Examples, DataType ) %>% 
-            filter(Category== class, InDES=="x") %>% 
-            select(-InDES)
-kable(class_table, caption = class)
+Event %>%
+  kbl() %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), font_size= 12)  
 
 ```
 ## Measurement Or Fact (Metrics) Class
 A metric is a value resulting from the reduction or processing of measurements taken at an event based on the procedures defined by the response design. Programs derive a variety of metrics from a single measurement. For stream habitat data at each event, programs take multiple types of measurements and produce various metrics from one measurement; for example, the measurement for pools produces both percent pools and pool frequency. Events are associated with measurements by the eventID, see the [Measurement Or Fact Table](Tables/MeasurementOrFact_table.csv) for the full definitions of terms. 
 
 ```{r echo=FALSE}
-class = "MeasurementOrFact"
-class_table<- metadata %>% 
-            select(Category, InDES, Term,Description,Examples, DataType ) %>% 
-            filter(Category== class, InDES=="x") %>% 
-            select(-InDES)
 
-kable(class_table, caption = class)
-
-
-
+MeasurementOrFact %>%
+  kbl() %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), font_size= 12)  
 ```
 ### Controlled Vocabulary  
 We defined a controlled vocabulary of metrics to select from for the MeasurmetID and populate the MeasurmentUnit in the Measurement or Fact Class. The standard language enables the integration of multiple habitat monitoring program metrics into one data set. 
@@ -86,32 +93,38 @@ We built the controlled vocabulary  using metadata and metrics from four large s
 ```{r echo=FALSE}
 #create a vocabulary table 
 vocabulary<- metadata %>% 
-                  select(Category, MeasurementID, SubsetOfMetrics,
-                         Term,LongName, Description,Examples, DataType, Unit ) %>% 
+                  select(Category, SubsetOfMetrics,
+                         Term,LongName, Description,Examples, DataType, Unit) %>% 
                   filter(Category== "ControlledVocabulary", SubsetOfMetrics=="x") %>% 
-                  select(-SubsetOfMetrics)
-kable(vocabulary)
+                  select(-SubsetOfMetrics, -Category)
+
+vocabulary %>%
+  kbl() %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), font_size = 12 )  
+
 ```
 
 The working group crosswalked each of their program's field names to the controlled vocabulary. We documented details of the metric combability discussions between the four programs in Appendix A of the [Data Exchange Specification](MetricLevelExchangeSpecifications.docx) document. 
 
 ```{r echo=FALSE}
 crosswalk<- metadata %>% 
-        select(c("Category", "MeasurementID", "VocabularyCatagory", "SubsetOfMetrics", "InDES", 
+        select(c("SubsetOfMetrics", "InDES", 
            "Term", "LongName", "Description", "Examples", "DataType", "Unit")|contains("CW")) %>% 
         filter(SubsetOfMetrics=="x"| InDES=="x"  ) %>% 
         select(-SubsetOfMetrics, -InDES) 
         
   
 names(crosswalk) <- str_remove_all(names(crosswalk), "CW")
-kable(crosswalk)
+crosswalk %>%
+  kbl() %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), font_size= 12)  
 
 ```
 
 If partners wish to exchange additional metrics, the controlled vocabulary must be updated and cross-walk. The list of metrics from the four programs not included in the first draft of the standard vocabulary or data exchange specifications is here: [list of metrics not in the controlled vocabulary ](Tables/NotInControlledVocabularyOrDES.csv) 
 
 # Use Case 
-We wrote code based on these data exchange specifications to share habitat metrics from three federal habitat monitoring programs: Environmental Protection Agency (EPA) National Rivers & Streams Assessment (NRSA), Bureau of Land Management (BLM) Aquatic Assessment, Inventory, and Monitoring (AIM),and the Forest Service Aquatic and Riparian Effective Monitoring Program (AREMP). The work flow pulls program information from ScienceBase, the exchange specifications and the field crosswalk from this repository, and data collection metrics documented from MonitoringResources.org [work flow diagram](Figures/WorkFlow.png). The R code to integrate data sets can be found at https://github.com/rascully/Integrating-Stream-Monitoring-Data-From-Multiple-Programs and the data set documentation in ScinceBase at ADD SCIENCEBAES LINK WHEN I CAN 
+We wrote code based on these data exchange specifications to share habitat metrics from three federal habitat monitoring programs: Environmental Protection Agency (EPA) National Rivers & Streams Assessment (NRSA), Bureau of Land Management (BLM) Aquatic Assessment, Inventory, and Monitoring (AIM),and the Forest Service Aquatic and Riparian Effective Monitoring Program (AREMP). The work flow pulls program information from ScienceBase, the exchange specifications and the field crosswalk from this repository, and data collection metrics documented from MonitoringResources.org [work flow diagram](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Figures/WorkFlow.png). The R code to integrate data sets can be found at https://github.com/rascully/Integrating-Stream-Monitoring-Data-From-Multiple-Programs and the data set documentation in ScinceBase at ADD SCIENCEBAES LINK WHEN I CAN 
 
 # Conclusion
 The data exchange specifications contain the details of what will be share and the format to be shared. We recognize preparing data to be shared requires an investment of time, resources, expertise, and careful documentation of the data collection process and the results.  A recent opinion piece in Nature by Barend Mons (2020), the director of a Global Open FAIR office, recommends that '5% of research funds be invested in making data reusable'. Projects producing this type of data are already working beyond their capacity, so to integrate data between habitat programs, there needs to be support in project budgets or for a centralized data manager to help implement and updated the necessary documentation and code to share data. 

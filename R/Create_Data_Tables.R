@@ -9,14 +9,15 @@ metadata <- readxl::read_excel("Data/Metadata.xlsx", sheet = 3)
 #Create the data exchange specifications tables 
 DES_tables <- c("RecordLevel", "Location","Event", "MeasurementOrFact")
 for (i in 1:length(DES_tables)){ 
-     x<- metadata %>% 
+    
+     assign(DES_tables[i], metadata %>% 
             select(CategoryID, TermID, Category, InDES, Term,Description,Examples, DataType ) %>% 
             filter(Category== DES_tables[i], InDES=="x") %>% 
-            select(-InDES)
+            select(-InDES)) 
       
       print(DES_tables[i]) 
       file_name <- paste0(DES_tables[i], "_table") # create a file name 
-      write.csv(x, file=paste0("Tables/",file_name,".csv" ), row.names = F)
+      write.csv(DES_tables[i], file=paste0("Tables/",file_name,".csv" ), row.names = F)
   }
 
 #create a vocabulary table 

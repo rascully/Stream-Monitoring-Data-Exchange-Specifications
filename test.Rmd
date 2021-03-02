@@ -1,11 +1,10 @@
 ---
-title: "ReadMeForProjectTeam"
+title: "Data Exchange Specifications"
 author: "Becca Scully"
-date: "2/25/2021"
+date: "3/1/2021"
 output:
-  pdf_document: default
-  word_document: default
-  html_document: default
+  word_document:
+    reference_docx: word-styles-reference-01.docx
 ---
 
 ```{r setup, include=FALSE}
@@ -18,7 +17,7 @@ always_allow_html = TRUE
 library(tidyverse)
 library(knitr)
 library(readxl)
-library(kableExtra)
+#library(kableExtra)
 
 metadata <- readxl::read_excel("Data/Metadata.xlsx", sheet = 3)
 
@@ -48,11 +47,13 @@ The Record Level Class documents the core elements of a data set, including info
 
 ```{r echo=FALSE, results= 'asis'}
 
-#kable(RecordLevel, caption = "Record Level Class")
+kable(RecordLevel, caption = "Record Level Class")
 
-RecordLevel %>%
-  kbl() %>%
-  kable_styling(bootstrap_options = c("striped", "hover"), font_size= 12 )  
+
+
+#RecordLevel %>%
+ # kbl() %>%
+  #kable_styling(bootstrap_options = c("striped", "hover"), font_size= 12 )  
   
 ```
 
@@ -61,28 +62,31 @@ Understanding where data are collected is critical to interpreting biological mo
 
 ```{r echo=FALSE}
 
-
-Location %>%
-  kbl() %>%
-  kable_styling(bootstrap_options = c("striped", "hover"), font_size= 12)  
+kable(Location) 
+#Location %>%
+ # kbl() %>%
+  #kable_styling(bootstrap_options = c("striped", "hover"), font_size= 12)  
 
 ```
 ## Event Class
 The Event class describes an action that occurs at a specific time frame see the [Event table](Tables/Event_table.csv) for the terms. To assess the status and trend of a resource as a response to management actions, stream habitat monitoring programs often implement a rotating panel design, meaning that the project returns to a single location multiple times during the study duration.  Therefore, a data set will contain numerous locations, and each location can include numerous events.
 ```{r echo= FALSE}
-Event %>%
-  kbl() %>%
-  kable_styling(bootstrap_options = c("striped", "hover"), font_size= 12)  
+kable(Event)
+
+#Event %>%
+ # kbl() %>%
+  #kable_styling(bootstrap_options = c("striped", "hover"), font_size= 12)  
 
 ```
 ## Measurement Or Fact (Metrics) Class
 A metric is a value resulting from the reduction or processing of measurements taken at an event based on the procedures defined by the response design. Programs derive a variety of metrics from a single measurement. For stream habitat data at each event, programs take multiple types of measurements and produce various metrics from one measurement; for example, the measurement for pools produces both percent pools and pool frequency. Events are associated with measurements by the eventID, see the [Measurement Or Fact Table](Tables/MeasurementOrFact_table.csv) for the full definitions of terms. 
 
 ```{r echo=FALSE}
+kable(MeasurementOrFact)
 
-MeasurementOrFact %>%
-  kbl() %>%
-  kable_styling(bootstrap_options = c("striped", "hover"), font_size= 12)  
+#MeasurementOrFact %>%
+ # kbl() %>%
+  #kable_styling(bootstrap_options = c("striped", "hover"), font_size= 12)  
 ```
 ### Controlled Vocabulary  
 We defined a controlled vocabulary of metrics to select from for the MeasurmetID and populate the MeasurmentUnit in the Measurement or Fact Class. The standard language enables the integration of multiple habitat monitoring program metrics into one data set. 
@@ -97,9 +101,10 @@ vocabulary<- metadata %>%
                   filter(Category== "ControlledVocabulary", SubsetOfMetrics=="x") %>% 
                   select(-SubsetOfMetrics, -Category)
 
-vocabulary %>%
-  kbl() %>%
-  kable_styling(bootstrap_options = c("striped", "hover"), font_size = 12 )  
+kable(vocabulary)
+#vocabulary %>%
+ # kbl() %>%
+  #kable_styling(bootstrap_options = c("striped", "hover"), font_size = 12 )  
 
 ```
 

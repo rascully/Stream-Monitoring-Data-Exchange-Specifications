@@ -28,8 +28,8 @@ for(i in 1:length(DES_tables)){
             select(Category, InDES, Term,Description,Examples, DataType ) %>% 
             filter(Category== DES_tables[i], InDES=="x") %>% 
             select(-InDES, -Category)) 
-     file_name <- paste0(DES_tables[i], "_table") # create a file name 
-     write.csv(DES_tables[i], file=paste0("Tables/",file_name,".csv" ), row.names = F)
+   #  file_name <- paste0(DES_tables[i], "_table") # create a file name 
+    # write.csv(DES_tables[i], file=paste0("Tables/",file_name,".csv" ), row.names = F)
   }
 
 ```
@@ -108,7 +108,7 @@ kable(vocabulary)
 
 ```
 
-The working group crosswalked each of their program's field names to the controlled vocabulary. We documented details of the metric combability discussions between the four programs in Appendix A of the [Data Exchange Specification](MetricLevelExchangeSpecifications.docx) document. 
+The working group crosswalked each of their program's field names to the controlled vocabulary. We documented details of the metric compatibility discussions between the four programs in Appendix A of the [Data Exchange Specification](MetricLevelExchangeSpecifications.docx) document. 
 
 ```{r echo=FALSE}
 crosswalk<- metadata %>% 
@@ -118,8 +118,8 @@ crosswalk<- metadata %>%
         select(-SubsetOfMetrics, -InDES) 
         
   
-names(crosswalk) <- str_remove_all(names(crosswalk), "CW")
-write.csv(crosswalk, file=paste0("Tables/Crosswalk.csv" ), row.names=F)
+#names(crosswalk) <- str_remove_all(names(crosswalk), "CW")
+#write.csv(crosswalk, file=paste0("Tables/Crosswalk.csv" ), row.names=F)
 #crosswalk %>%
   #kbl() %>%
  # kable_styling(bootstrap_options = c("striped", "hover"), font_size= 12)  

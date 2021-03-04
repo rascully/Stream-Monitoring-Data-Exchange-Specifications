@@ -27,7 +27,7 @@ vocabulary<- metadata %>%
                   filter(Category== "ControlledVocabulary", SubsetOfMetrics=="x") %>% 
                   select(-SubsetOfMetrics)
 
-write.csv(vocabulary, file=paste0("Tables/StandardVocabulary.csv" ), row.names=F) 
+write.csv(vocabulary, file=paste0("Tables/ControlledVocabulary.csv" ), row.names=F) 
 
 #Create the crosswalk table 
 
@@ -41,6 +41,18 @@ crosswalk<- metadata %>%
 names(crosswalk) <- str_remove_all(names(crosswalk), "CW")
 write.csv(crosswalk, file=paste0("Tables/Crosswalk.csv" ), row.names=F)
 
+#Short crosswalk for the project team
+
+short_crosswalk <- metadata %>% 
+  select(c("VocabularyCatagory", "SubsetOfMetrics", "InDES", 
+           "Term", "LongName", "Description", "Examples", "DataType", "Unit")|contains("CW")) %>% 
+  filter(SubsetOfMetrics=="x"| InDES=="x"  ) %>% 
+  select(-SubsetOfMetrics, -InDES, -contains("Method")) %>% 
+  filter(VocabularyCatagory != "Temperature")
+
+names(short_crosswalk) <- str_remove_all(names(short_crosswalk), "CW")
+write.csv(short_crosswalk, file=paste0("Tables/CrosswalkForReview.csv" ), row.names=F)
+
 
 #Create a list of metrics from the programs not in the controlled vocabulary 
 notInVocab<- metadata %>% 
@@ -50,5 +62,5 @@ notInVocab<- metadata %>%
   select(-SubsetOfMetrics, -InDES)
 
 names(notInVocab) <- str_remove_all(names(notInVocab), "CW")
-write.csv(notInVocab, file=paste0("Tables/NotInStandardVocabularyOrDES.csv" ), row.names=F)
+write.csv(notInVocab, file=paste0("Tables/NotInControlledVocabularyOrDES.csv" ), row.names=F)
 

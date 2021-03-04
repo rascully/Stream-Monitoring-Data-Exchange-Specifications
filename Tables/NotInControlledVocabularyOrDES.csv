@@ -28,7 +28,6 @@
 2,"Identification",NA,NA,NA,NA,"Visit Number",NA,NA,NA,NA,NA,"VisitNumber",NA,NA,NA
 2,"Identification",NA,NA,NA,NA,"BLM Project",NA,NA,NA,NA,NA,"Project",NA,NA,NA
 2,"Identification",NA,NA,NA,NA,"BLM Stratum",NA,NA,NA,NA,NA,"Stratum",NA,NA,NA
-5,"ControlledVocabulary",5,1,"Channel dimensions","BFHeight","Bankfull Height","Average bankfull height measured from water surface across transects.",NA,"Numeric","m","average_bfdepth","BNKFLL_HT","BankfullHeightAvg","XBKF_H",NA
 5,"ControlledVocabulary",8,1,"Channel dimensions","CVWetWidth","CV Wetted Width",NA,NA,"Numeric",NA,NA,NA,NA,"CVWIDTH",NA
 5,"ControlledVocabulary",9,1,"Channel dimensions",NA,"Mean Flow Direction of Reach",NA,NA,NA,NA,NA,NA,NA,"PCTCLINOMETER",NA
 5,"ControlledVocabulary",10,1,"Channel dimensions",NA,"Mean Flow Direction of Reach",NA,NA,NA,NA,NA,NA,NA,"XBEARING",NA
@@ -46,8 +45,6 @@
 5,"ControlledVocabulary",22,1,"Channel dimensions",NA,"Terrace Height Above Water",NA,NA,NA,NA,NA,NA,NA,"XINC_H",NA
 5,"ControlledVocabulary",23,1,"Channel dimensions",NA,"Length of Sample Reach at Original Sampling Occurrence",NA,NA,NA,NA,"reach_length_original",NA,NA,NA,NA
 5,"ControlledVocabulary",24,1,"Channel dimensions","CVThalwag Depth","CV Thalweg Depth",NA,NA,"Numeric",NA,NA,"ThalwegDepthCV",NA,"CVDTH",NA
-5,"ControlledVocabulary",25,1,"Channel dimensions","MeanThalwegDepth","Average Thalweg Depth",NA,NA,"Numeric",NA,NA,"ThalwegDepthMean",NA,"XDEPTH_CM",NA
-5,"ControlledVocabulary",1,2,"Channel Characteristics","Sin","Sinuosity of Local Stream Reach","Reach sinuosity (reach length along the thalweg divided by straight line distance between the bottom of the reach and the top of the reach)",NA,"Numeric",NA,NA,"SNSTY",NA,"SINU","Sin"
 5,"ControlledVocabulary",5,2,"Channel Characteristics",NA,"Percent of Reach that is Dry",NA,NA,NA,NA,NA,NA,NA,"PCT_DR",NA
 5,"ControlledVocabulary",6,2,"Channel Characteristics",NA,"Constraining features",NA,NA,NA,NA,NA,NA,NA,"CONFEATURES",NA
 5,"ControlledVocabulary",7,2,"Channel Characteristics",NA,"Channel pattern",NA,NA,NA,NA,NA,NA,NA,"CONPATTERN",NA
@@ -62,7 +59,6 @@
 5,"ControlledVocabulary",16,2,"Channel Characteristics",NA,"Percent Fast Water Habitat",NA,NA,NA,NA,NA,NA,NA,"PCT_FAST",NA
 5,"ControlledVocabulary",17,2,"Channel Characteristics",NA,"Glide (% of reach)",NA,NA,NA,NA,NA,NA,NA,"PCT_GL",NA
 5,"ControlledVocabulary",18,2,"Channel Characteristics",NA,"Percent of reach with Pool or Glide Habitat",NA,NA,NA,NA,NA,NA,NA,"PCT_SLOW",NA
-5,"ControlledVocabulary",19,2,"Channel Characteristics",NA,"Floodplain Connectivity",NA,NA,NA,NA,NA,"FloodplainConnectivity",NA,NA,NA
 5,"ControlledVocabulary",20,2,"Channel Characteristics",NA,"Instream Habitat Complexity",NA,NA,NA,NA,NA,"InstreamHabitatComplexity",NA,NA,NA
 5,"ControlledVocabulary",21,2,"Channel Characteristics",NA,"Flood Prone Width",NA,NA,NA,NA,NA,"FloodWidth",NA,NA,NA
 5,"ControlledVocabulary",22,2,"Channel Characteristics",NA,"Percent of the Reach With a Side Channel or Backwater",NA,NA,NA,NA,NA,NA,NA,"PCT_SIDE",NA
@@ -91,6 +87,7 @@
 5,"ControlledVocabulary",6,4,"Pools",NA,"Residual pool depth Greater then 50 cm per reach",NA,NA,NA,NA,NA,NA,NA,"RPGT50",NA
 5,"ControlledVocabulary",7,4,"Pools",NA,"Residual pool depth Greater then 75 cm per reach",NA,NA,NA,NA,NA,NA,NA,"RPGT75",NA
 5,"ControlledVocabulary",8,4,"Pools",NA,"Residual pool proportion",NA,NA,NA,NA,NA,NA,NA,"RPRAT",NA
+5,"ControlledVocabulary",NA,NA,NA,NA,"Bank angle",NA,NA,NA,NA,NA,NA,NA,"XBKA",NA
 NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 5,"ControlledVocabulary",3,5,"Streambanks",NA,"Median Bank Angle",NA,NA,NA,NA,NA,NA,NA,"MEDBK_A",NA
 5,"ControlledVocabulary",4,5,"Streambanks",NA,"Median Undercut Distance",NA,NA,NA,NA,NA,NA,NA,"MEDBKUN",NA

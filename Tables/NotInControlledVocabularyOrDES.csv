@@ -28,6 +28,7 @@
 2,"Identification",NA,NA,NA,NA,"Visit Number",NA,NA,NA,NA,NA,"VisitNumber",NA,NA,NA
 2,"Identification",NA,NA,NA,NA,"BLM Project",NA,NA,NA,NA,NA,"Project",NA,NA,NA
 2,"Identification",NA,NA,NA,NA,"BLM Stratum",NA,NA,NA,NA,NA,"Stratum",NA,NA,NA
+5,"ControlledVocabulary",7,1,"Channel dimensions","WetWidthToDepth","Wetted width to depth ratio at transects","Mean Wetted Width/Thalweg Depth ratio",NA,"Numeric","ratio",NA,NA,NA,"XWD_RAT","WDWetTrans"
 5,"ControlledVocabulary",8,1,"Channel dimensions","CVWetWidth","CV Wetted Width",NA,NA,"Numeric",NA,NA,NA,NA,"CVWIDTH",NA
 5,"ControlledVocabulary",9,1,"Channel dimensions",NA,"Mean Flow Direction of Reach",NA,NA,NA,NA,NA,NA,NA,"PCTCLINOMETER",NA
 5,"ControlledVocabulary",10,1,"Channel dimensions",NA,"Mean Flow Direction of Reach",NA,NA,NA,NA,NA,NA,NA,"XBEARING",NA
@@ -59,6 +60,7 @@
 5,"ControlledVocabulary",16,2,"Channel Characteristics",NA,"Percent Fast Water Habitat",NA,NA,NA,NA,NA,NA,NA,"PCT_FAST",NA
 5,"ControlledVocabulary",17,2,"Channel Characteristics",NA,"Glide (% of reach)",NA,NA,NA,NA,NA,NA,NA,"PCT_GL",NA
 5,"ControlledVocabulary",18,2,"Channel Characteristics",NA,"Percent of reach with Pool or Glide Habitat",NA,NA,NA,NA,NA,NA,NA,"PCT_SLOW",NA
+5,"ControlledVocabulary",19,2,"Channel Characteristics",NA,"Floodplain Connectivity",NA,NA,NA,NA,NA,"FloodplainConnectivity",NA,NA,NA
 5,"ControlledVocabulary",20,2,"Channel Characteristics",NA,"Instream Habitat Complexity",NA,NA,NA,NA,NA,"InstreamHabitatComplexity",NA,NA,NA
 5,"ControlledVocabulary",21,2,"Channel Characteristics",NA,"Flood Prone Width",NA,NA,NA,NA,NA,"FloodWidth",NA,NA,NA
 5,"ControlledVocabulary",22,2,"Channel Characteristics",NA,"Percent of the Reach With a Side Channel or Backwater",NA,NA,NA,NA,NA,NA,NA,"PCT_SIDE",NA
@@ -100,6 +102,7 @@ NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 5,"ControlledVocabulary",11,5,"Streambanks",NA,"Bank Cover Cobble",NA,NA,NA,NA,NA,"BnkCoverCobble",NA,NA,NA
 5,"ControlledVocabulary",12,5,"Streambanks",NA,"Bank Cover Large Wood Debris",NA,NA,NA,NA,NA,"BnkCoverLWD",NA,NA,NA
 5,"ControlledVocabulary",13,5,"Streambanks",NA,"Bank Cover Vegetation",NA,NA,NA,NA,NA,"BnkCoverVeg",NA,NA,NA
+5,"ControlledVocabulary",NA,6,"Substrate","Bed Surface % Fines <0.06mm",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 5,"ControlledVocabulary",9,6,"Substrate",NA,"Diameter of the 50th percentile streambed particle with Bedrock removed",NA,NA,NA,NA,"D50nobed",NA,NA,NA,NA
 5,"ControlledVocabulary",10,6,"Substrate",NA,"Streambed Critical Diameter-at Bankfull (Log 10)",NA,NA,NA,NA,NA,NA,NA,"LDCBF_G08",NA
 5,"ControlledVocabulary",11,6,"Substrate",NA,"Dgm--Geometric Mean Bed Surface Particle Diameter (Log 10)",NA,NA,NA,NA,NA,NA,NA,"LSUB_DMM",NA

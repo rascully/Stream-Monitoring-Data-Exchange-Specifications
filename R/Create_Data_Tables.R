@@ -9,7 +9,7 @@ metadata <- readxl::read_excel("Data/Metadata.xlsx", sheet = 3)
 #Create the data exchange specifications tables 
 DES_tables <- c("RecordLevel", "Location","Event", "MeasurementOrFact")
 for (i in 1:length(DES_tables)){ 
-      write.csv( assign(DES_tables[i], metadata %>% 
+      write.csv(assign(DES_tables[i], metadata %>% 
                            select(CategoryID, TermID, Category, InDES, Term,Description,Examples, DataType ) %>% 
                            filter(Category== DES_tables[i], InDES=="x") %>% 
                            select(-InDES)), file=paste0("Tables/",file_name,".csv" ), row.names = F )

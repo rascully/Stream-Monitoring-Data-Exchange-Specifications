@@ -10,7 +10,7 @@
 "Channel dimensions","countTransects","Count of Transects","Number of transects in the reach.",NA,NA,NA,NA,NA,NA,NA,NA
 "Channel Characteristics","Sin","Sinuosity of Local Stream Reach","Reach sinuosity (reach length along the thalweg divided by straight line distance between the bottom of the reach and the top of the reach)",NA,"Numeric",NA,NA,"SNSTY",NA,"SINU","Sin"
 "Channel Characteristics","PctDry","Percent of Reach that is Dry","Percent of the reach that was dry","min: 0, max: 100","Numeric","%",NA,"PCT_DRY","PctDru","PCT_DRS",NA
-"Channel Characteristics","Beaver","Beaver Sign at Reach","Beaver value from the provider dataset.",NA,"Numeric",NA,NA,"BVR_SGN",NA,NA,NA
+"Channel Characteristics","Beaver","Beaver Sign at Reach","Beaver value from the provider dataset.",NA,"Numeric",NA,"beaver_impacted","BVR_SGN",NA,NA,NA
 "Channel Characteristics","StreamOrder","Stream Order","Strahler stream order of the site from the provider dataset",NA,"Numeric","NA","StreamOrder","STRM_ORDR","StreamOrder","STRAHLERORDER",NA
 "Pools","RPD","Residual pool depth","Average of the residual pool depth values for all pools in a reach. Residual pool depth the difference of the pool tail depth from the max depth.",NA,"Numeric","m","ave_residual_depth","RES_PL_DEP","ResPoolDepthAvg",NA,"PoolDp"
 "Pools","PctPool","Percent pools","Percent of the sample reach (linear extent) classified as pool habitat","min: 0, max: 100","Numeric","%","PctReachInPools","PCT_PL","PctPools",NA,"PoolPct"

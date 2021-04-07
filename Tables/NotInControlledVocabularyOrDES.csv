@@ -1,6 +1,8 @@
 "CategoryID","Category","TermID","MeasurementID","VocabularyCatagory","Term","LongName","Description","Examples","DataType","Unit","AREMPField","AIMField","NewAIMField","NRSAField","PIBOField"
 1,"Record Level",NA,NA,NA,"basisOfRecord","basis of record","The specific nature of the data record.","Recommended best practice is to use the standard label of one of the Darwin Core classes.","String",NA,NA,NA,NA,NA,NA
 1,"Record Level",NA,NA,NA,"informationWithheald","Information Withheld","Additional information that exists, but that has not been shared in the given record.","location information not given for endangered species, collector identities withheld | ask about tissue samples","String",NA,NA,NA,NA,NA,NA
+2,"Location",6,NA,NA,"verbatimCoordinateSystem","From the DatasetCoordinateSystem","The spatial coordinate system for the verbatimLatitude and verbatimLongitude or the verbatimCoordinates of the Location.",NA,"String",NA,NA,NA,NA,NA,NA
+2,"Location",NA,NA,NA,NA,"Admistriative state",NA,NA,NA,NA,NA,"ADMIN_ST","BLM_AdminState",NA,NA
 2,"Location",11,NA,NA,"Region","FS Region or BLM State Office",NA,NA,"String",NA,"STATES","State",NA,NA,"Region"
 2,"Location",12,NA,NA,"Forest","FS Forest or BLM District",NA,NA,"String",NA,NA,"District",NA,NA,"Forest"
 2,"Location",13,NA,NA,"District","Forest Service District or BLM Field Office/Resource Area",NA,NA,"String",NA,NA,"FieldOffice",NA,NA,"District"
@@ -28,6 +30,8 @@
 2,"Identification",NA,NA,NA,NA,"Visit Number",NA,NA,NA,NA,NA,"VisitNumber",NA,NA,NA
 2,"Identification",NA,NA,NA,NA,"BLM Project",NA,NA,NA,NA,NA,"Project",NA,NA,NA
 2,"Identification",NA,NA,NA,NA,"BLM Stratum",NA,NA,NA,NA,NA,"Stratum",NA,NA,NA
+3,"Event",6,NA,NA,"verbatimEventTime","Time","The time or interval during which an Event occurred. Recommended best practice is to use an encoding scheme, such as ISO 8601:2004(E).","14:07-0600 is 2:07pm in the time zone six hours earlier than UTC, ""08:40:21Z"" is 8:40:21am UTC, ""13:00:00Z/15:30:00Z"" is the interval between 1pm UTC and 3:30pm UTC.","Date",NA,NA,NA,NA,NA,NA
+3,"Event",10,NA,NA,"fieldNumber",NA,"An identifier given to the event in the field. Often serves as a link between field notes and the Event.","RV Sol 87-03-08","String",NA,NA,NA,NA,NA,NA
 5,"ControlledVocabulary",7,1,"Channel dimensions","WetWidthToDepth","Wetted width to depth ratio at transects","Mean Wetted Width/Thalweg Depth ratio",NA,"Numeric","ratio",NA,NA,NA,"XWD_RAT","WDWetTrans"
 5,"ControlledVocabulary",8,1,"Channel dimensions","CVWetWidth","CV Wetted Width",NA,NA,"Numeric",NA,NA,NA,NA,"CVWIDTH",NA
 5,"ControlledVocabulary",9,1,"Channel dimensions",NA,"Mean Flow Direction of Reach",NA,NA,NA,NA,NA,NA,NA,"PCTCLINOMETER",NA

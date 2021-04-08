@@ -27,7 +27,7 @@ write.csv(vocabulary, file=paste0("Tables/ControlledVocabulary.csv" ), row.names
 #Create the crosswalk table 
 
 crosswalk<- metadata %>% 
-        select(c("CategoryID", "Category", "TermID", "MeasurementID", "VocabularyCatagory", "SubsetOfMetrics", "InDES", 
+        select(c("CategoryID", "Category", "TermID", "measurementID", "VocabularyCatagory", "SubsetOfMetrics", "InDES", 
            "Term", "LongName", "Description", "Examples", "DataType", "Unit")|contains("CW")) %>% 
         filter(SubsetOfMetrics=="x"| InDES=="x"  ) %>% 
         select(-SubsetOfMetrics, -InDES) 

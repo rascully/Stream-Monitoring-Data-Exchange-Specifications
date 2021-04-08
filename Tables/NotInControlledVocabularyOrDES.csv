@@ -1,4 +1,4 @@
-"CategoryID","Category","TermID","MeasurementID","VocabularyCatagory","Term","LongName","Description","Examples","DataType","Unit","AREMPField","AIMField","NewAIMField","NRSAField","PIBOField"
+"CategoryID","Category","TermID","measurementID","VocabularyCatagory","Term","LongName","Description","Examples","DataType","Unit","AREMPField","AIMField","NewAIMField","NRSAField","PIBOField"
 1,"Record Level",NA,NA,NA,"basisOfRecord","basis of record","The specific nature of the data record.","Recommended best practice is to use the standard label of one of the Darwin Core classes.","String",NA,NA,NA,NA,NA,NA
 1,"Record Level",NA,NA,NA,"informationWithheald","Information Withheld","Additional information that exists, but that has not been shared in the given record.","location information not given for endangered species, collector identities withheld | ask about tissue samples","String",NA,NA,NA,NA,NA,NA
 2,"Location",6,NA,NA,"verbatimCoordinateSystem","From the DatasetCoordinateSystem","The spatial coordinate system for the verbatimLatitude and verbatimLongitude or the verbatimCoordinates of the Location.",NA,"String",NA,NA,NA,NA,NA,NA

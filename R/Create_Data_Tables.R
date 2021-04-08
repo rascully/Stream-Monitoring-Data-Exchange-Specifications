@@ -17,7 +17,7 @@ for (i in 1:length(DES_tables)){
 
 #create a vocabulary table 
 vocabulary<- metadata %>% 
-                  select(CategoryID, Category,VocabularyCatagory, TermID, MeasurementID, SubsetOfMetrics,
+                  select(CategoryID, Category,VocabularyCatagory, TermID, measurementID, SubsetOfMetrics,
                          Term,LongName, Description,Examples, DataType, Unit ) %>% 
                   filter(Category== "ControlledVocabulary", SubsetOfMetrics=="x") %>% 
                   select(-SubsetOfMetrics)
@@ -51,7 +51,7 @@ write.csv(short_crosswalk, file=paste0("Tables/CrosswalkForReview.csv" ), row.na
 
 #Create a list of metrics from the programs not in the controlled vocabulary 
 notInVocab<- metadata %>% 
-  select(c(CategoryID, Category, TermID, MeasurementID, VocabularyCatagory, SubsetOfMetrics, InDES, 
+  select(c(CategoryID, Category, TermID, measurementID, VocabularyCatagory, SubsetOfMetrics, InDES, 
          Term, LongName, Description, Examples ,DataType, Unit) | contains("FieldCW"))  %>% 
   filter(is.na(SubsetOfMetrics)& is.na(InDES))  %>% 
   select(-SubsetOfMetrics, -InDES)

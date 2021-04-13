@@ -18,7 +18,7 @@ for (i in 1:length(DES_tables)){
 
 #create a vocabulary table 
 vocabulary<- metadata %>% 
-                  select(CategoryID,Table,measurementType, TermID, measurementID, SubsetOfMetrics,
+                  select(CategoryID,Table,measurementType, measurementID, SubsetOfMetrics,
                          measurementTerm,LongName, Description,Examples, DataType, measurementUnit ) %>% 
                   filter(Table== "ControlledVocabulary", SubsetOfMetrics=="x") %>% 
                   select(-SubsetOfMetrics)
@@ -28,7 +28,7 @@ write.csv(vocabulary, file=paste0("Tables/ControlledVocabulary.csv" ), row.names
 #Create the crosswalk table 
 
 crosswalk<- metadata %>% 
-        select(c("TermID", "measurementType", "measurementID", "measurementTerm", "SubsetOfMetrics", "InDES", 
+        select(c("measurementType", "measurementID", "measurementTerm", "SubsetOfMetrics", "InDES", 
           "LongName", "Description", "Examples", "DataType", "measurementUnit")|contains("CW")) %>% 
         filter(SubsetOfMetrics=="x"| InDES=="x"  ) %>% 
         select(-SubsetOfMetrics, -InDES) 
@@ -52,7 +52,7 @@ write.csv(short_crosswalk, file=paste0("Tables/CrosswalkForReview.csv" ), row.na
 
 #Create a list of metrics from the programs not in the controlled vocabulary 
 vocabulary<- metadata %>% 
-  select(CategoryID,Table,measurementType, TermID, measurementID, SubsetOfMetrics,
+  select(CategoryID,Table,measurementType, measurementID, SubsetOfMetrics,
          measurementTerm,LongName, Description,Examples, DataType, measurementUnit ) %>% 
   filter(Table== "ControlledVocabulary", SubsetOfMetrics=="x") %>% 
   select(-SubsetOfMetrics)

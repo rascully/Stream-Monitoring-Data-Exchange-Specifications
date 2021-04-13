@@ -1,4 +1,4 @@
-"VocabularyCatagory","Term","LongName","Description","Examples","DataType","Unit","AREMPField","AIMField","NewAIMField","NRSAField","PIBOField"
+"measurementType","measurementTerm","LongName","Description","Examples","DataType","measurementUnit","AREMPField","AIMField","NewAIMField","NRSAField","PIBOField"
 "Channel dimensions","BFWidth","Average bankfull width from transects","Average bankfull width across transects for the reach.",NA,"Numeric","m","average_bfwidth","BNKFLL_WT","BankfullWidthAvg","XBKF_W","Bf"
 "Channel dimensions","countTransectsBFWidth","Count of cross sections","Number of cross sections included in the average bankfull width calculation",NA,"Numeric","count of measurments",NA,NA,NA,NA,NA
 "Channel dimensions","Grad","Gradient of stream reach","Mean slope of water surface (%) from the bottom of the reach to the top of the reach.","min: 0, max: 100","Numeric","%","gradient","SLPE","PctSlope","XSLOPE","Grad"

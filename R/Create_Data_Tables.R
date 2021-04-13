@@ -9,17 +9,18 @@ metadata <- readxl::read_excel("Data/Metadata.xlsx", sheet = 3)
 #Create the data exchange specifications tables 
 DES_tables <- c("RecordLevel", "Location","Event", "MeasurementOrFact")
 for (i in 1:length(DES_tables)){ 
-      write.csv(assign(DES_tables[i], metadata %>% 
-                           select(CategoryID, TermID, Category, InDES, Term,Description,Examples, DataType ) %>% 
-                           filter(Category== DES_tables[i], InDES=="x") %>% 
+  file_name =paste0(DES_tables[i], "_table")
+   write.csv(assign(DES_tables[i], metadata %>% 
+                           select(CategoryID, TermID, Table,measurementType, InDES, measurementTerm,Description,Examples, DataType ) %>% 
+                           filter(Table== DES_tables[i], InDES=="x") %>% 
                            select(-InDES)), file=paste0("Tables/",file_name,".csv" ), row.names = F )
      }
 
 #create a vocabulary table 
 vocabulary<- metadata %>% 
-                  select(CategoryID, Category,VocabularyCatagory, TermID, measurementID, SubsetOfMetrics,
-                         Term,LongName, Description,Examples, DataType, Unit ) %>% 
-                  filter(Category== "ControlledVocabulary", SubsetOfMetrics=="x") %>% 
+                  select(CategoryID,Table,measurementType, TermID, measurementID, SubsetOfMetrics,
+                         measurementTerm,LongName, Description,Examples, DataType, measurementUnit ) %>% 
+                  filter(Table== "ControlledVocabulary", SubsetOfMetrics=="x") %>% 
                   select(-SubsetOfMetrics)
 
 write.csv(vocabulary, file=paste0("Tables/ControlledVocabulary.csv" ), row.names=F) 
@@ -27,8 +28,8 @@ write.csv(vocabulary, file=paste0("Tables/ControlledVocabulary.csv" ), row.names
 #Create the crosswalk table 
 
 crosswalk<- metadata %>% 
-        select(c("CategoryID", "Category", "TermID", "measurementID", "VocabularyCatagory", "SubsetOfMetrics", "InDES", 
-           "Term", "LongName", "Description", "Examples", "DataType", "Unit")|contains("CW")) %>% 
+        select(c("TermID", "measurementType", "measurementID", "measurementTerm", "SubsetOfMetrics", "InDES", 
+          "LongName", "Description", "Examples", "DataType", "measurementUnit")|contains("CW")) %>% 
         filter(SubsetOfMetrics=="x"| InDES=="x"  ) %>% 
         select(-SubsetOfMetrics, -InDES) 
         
@@ -39,20 +40,26 @@ write.csv(crosswalk, file=paste0("Tables/Crosswalk.csv" ), row.names=F)
 #Short crosswalk for the project team
 
 short_crosswalk <- metadata %>% 
-  select(c("VocabularyCatagory", "SubsetOfMetrics", "InDES", 
-           "Term", "LongName", "Description", "Examples", "DataType", "Unit")|contains("CW")) %>% 
+  select(c("measurementType", "SubsetOfMetrics", "InDES", 
+           "measurementTerm", "LongName", "Description", "Examples", "DataType", "measurementUnit")|contains("CW")) %>% 
   filter(SubsetOfMetrics=="x"| InDES=="x"  ) %>% 
   select(-SubsetOfMetrics, -InDES, -contains("Method")) %>% 
-  filter(VocabularyCatagory != "Temperature")
+  filter(measurementType != "Temperature")
 
 names(short_crosswalk) <- str_remove_all(names(short_crosswalk), "CW")
 write.csv(short_crosswalk, file=paste0("Tables/CrosswalkForReview.csv" ), row.names=F)
 
 
 #Create a list of metrics from the programs not in the controlled vocabulary 
+vocabulary<- metadata %>% 
+  select(CategoryID,Table,measurementType, TermID, measurementID, SubsetOfMetrics,
+         measurementTerm,LongName, Description,Examples, DataType, measurementUnit ) %>% 
+  filter(Table== "ControlledVocabulary", SubsetOfMetrics=="x") %>% 
+  select(-SubsetOfMetrics)
+
 notInVocab<- metadata %>% 
-  select(c(CategoryID, Category, TermID, measurementID, VocabularyCatagory, SubsetOfMetrics, InDES, 
-         Term, LongName, Description, Examples ,DataType, Unit) | contains("FieldCW"))  %>% 
+  select(c(CategoryID,Table,measurementType, TermID, measurementID, SubsetOfMetrics,
+           measurementTerm,LongName, Description,Examples, DataType, measurementUnit, InDES) | contains("FieldCW")) %>% 
   filter(is.na(SubsetOfMetrics)& is.na(InDES))  %>% 
   select(-SubsetOfMetrics, -InDES)
 

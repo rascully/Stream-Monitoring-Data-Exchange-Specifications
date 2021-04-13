@@ -1,6 +1,6 @@
-"CategoryID","Category","VocabularyCatagory","TermID","measurementID","Term","LongName","Description","Examples","DataType","Unit"
+"CategoryID","Table","measurementType","TermID","measurementID","measurementTerm","LongName","Description","Examples","DataType","measurementUnit"
 5,"ControlledVocabulary","Channel dimensions",1,1,"BFWidth","Average bankfull width from transects","Average bankfull width across transects for the reach.",NA,"Numeric","m"
-5,"ControlledVocabulary","Channel dimensions",NA,2,"countTransectsBFWidth","Count of cross sections","Number of cross sections included in the average bankfull width calculation",NA,"Numeric","count of measurments"
+5,"ControlledVocabulary","Channel dimensions",57,2,"countTransectsBFWidth","Count of cross sections","Number of cross sections included in the average bankfull width calculation",NA,"Numeric","count of measurments"
 5,"ControlledVocabulary","Channel dimensions",2,3,"Grad","Gradient of stream reach","Mean slope of water surface (%) from the bottom of the reach to the top of the reach.","min: 0, max: 100","Numeric","%"
 5,"ControlledVocabulary","Channel dimensions",3,4,"ReachLen","Length of sampling reach","Length of sampling reach measured along the thalweg",NA,"Numeric","m"
 5,"ControlledVocabulary","Channel dimensions",4,5,"AvgBFWDRatio","Bankfull width to depth ratio at transects","Average bankfull width/depth ratio for the reach.",NA,"Numeric","m"

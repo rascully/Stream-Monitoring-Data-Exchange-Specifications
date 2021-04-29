@@ -1,6 +1,6 @@
 "CategoryID","TermID","Table","measurementType","measurementTerm","Description","Examples","DataType"
 1,1,"RecordLevel",NA,"datasetID","An identifier for the set of data. May be a global unique identifier or an identifier specific to a collection or institution.","The ScienceBase ID number of the dataset","String"
-1,2,"RecordLevel",NA,"type","The nature or genre of the resource.","This will be Stream Habitat for all values","String"
+1,2,"RecordLevel",NA,"type","The nature or genre of the resource.","This will be ""Water Quality and Physical Habitat Structure"" for all values in this data set.","String"
 1,3,"RecordLevel",NA,"modified","The most recent date-time on which the combined dataset was changed.","Recommended best practice is to use a date that conforms to ISO 8601:2004(E).","Date"
 1,4,"RecordLevel",NA,"rightsHolder","A person or organization owning or managing rights over the resource.","Example: BLM AIM, EPA NARS, USFS ARMEP","String"
 1,5,"RecordLevel",NA,"bibilographicCititation","A bibliographic reference for the resource as a statement indicating how this record should be cited (attributed) when used.",NA,"String"

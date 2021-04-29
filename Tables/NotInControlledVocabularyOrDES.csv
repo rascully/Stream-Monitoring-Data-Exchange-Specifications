@@ -32,7 +32,10 @@
 2,"Identification",NA,NA,NA,NA,"BLM Stratum",NA,NA,NA,NA,NA,"Stratum",NA,NA,NA
 3,"Event",NA,4,NA,"verbatimEventDate","Sample Date","The verbatim original representation of the date and time information for an Event.","spring 1910, ""Marzo 2002"", ""1999-03-XX"", ""17IV1934""","Date",NA,"survey_date","DT","FieldEvalDate","DATE_COL",NA
 3,"Event",NA,6,NA,"verbatimEventTime","Time","The time or interval during which an Event occurred. Recommended best practice is to use an encoding scheme, such as ISO 8601:2004(E).","14:07-0600 is 2:07pm in the time zone six hours earlier than UTC, ""08:40:21Z"" is 8:40:21am UTC, ""13:00:00Z/15:30:00Z"" is the interval between 1pm UTC and 3:30pm UTC.","Date",NA,NA,NA,NA,NA,NA
+3,"Event",NA,7,NA,"day",NA,"The integer day of the month on which the Event occurred.","9, ""28""","Date",NA,NA,NA,NA,NA,NA
+3,"Event",NA,8,NA,"month","Standardized Date","The ordinal month in which the Event occurred.","1 (=January), ""10"" (=October)","Date",NA,NA,NA,NA,NA,NA
 3,"Event",NA,10,NA,"fieldNumber",NA,"An identifier given to the event in the field. Often serves as a link between field notes and the Event.","RV Sol 87-03-08","String",NA,NA,NA,NA,NA,NA
+3,"Event",NA,12,NA,"eventRemark",NA,"Comments or notes about the Event.","after the recent rains the river is nearly at flood stage","String",NA,NA,NA,NA,NA,NA
 4,"MeasurementOrFact",NA,5,NA,"measurementAccuracy",NA,"The description of the potential error associated with the measurementValue.","0.01, ""normal distribution with variation of 2 m""","String",NA,NA,NA,NA,NA,NA
 5,"ControlledVocabulary","Channel dimensions",7,1,"WetWidthToDepth","Wetted width to depth ratio at transects","Mean Wetted Width/Thalweg Depth ratio",NA,"Numeric","ratio",NA,NA,NA,"XWD_RAT","WDWetTrans"
 5,"ControlledVocabulary","Channel dimensions",8,1,"CVWetWidth","CV Wetted Width",NA,NA,"Numeric",NA,NA,NA,NA,"CVWIDTH",NA

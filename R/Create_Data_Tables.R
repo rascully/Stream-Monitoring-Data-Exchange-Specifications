@@ -2,6 +2,7 @@
 
 library(tidyverse)
 library(stringr)
+library(openxlsx)
 
 #Open the metadata file 
 metadata <- readxl::read_excel("Data/Metadata.xlsx", sheet = 3)
@@ -19,7 +20,7 @@ for (i in 1:length(DES_tables)){
 #create a vocabulary table 
 vocabulary<- metadata %>% 
                   select(CategoryID,Table,measurementType, measurementID, SubsetOfMetrics,
-                         measurementTerm,LongName, Description,Examples, DataType, measurementUnit ) %>% 
+                         measurementTerm,LongName, Description,Examples, DataType, measurementUnit,`Minimam Possible Value`, `Maximam  Possible Value` ) %>% 
                   filter(Table== "ControlledVocabulary", SubsetOfMetrics=="x") %>% 
                   select(-SubsetOfMetrics)
 
@@ -28,7 +29,7 @@ write.csv(vocabulary, file=paste0("Tables/ControlledVocabulary.csv" ), row.names
 #Create the crosswalk table 
 
 crosswalk<- metadata %>% 
-        select(c("measurementType", "measurementID", "measurementTerm", "SubsetOfMetrics", "InDES", 
+        select(c("Table","measurementType", "measurementID", "measurementTerm", "SubsetOfMetrics", "InDES", 
           "LongName", "Description", "Examples", "DataType", "measurementUnit")|contains("CW")) %>% 
         filter(SubsetOfMetrics=="x"| InDES=="x"  ) %>% 
         select(-SubsetOfMetrics, -InDES) 
@@ -53,7 +54,7 @@ write.csv(short_crosswalk, file=paste0("Tables/CrosswalkForReview.csv" ), row.na
 #Create a list of metrics from the programs not in the controlled vocabulary 
 vocabulary<- metadata %>% 
   select(CategoryID,Table,measurementType, measurementID, SubsetOfMetrics,
-         measurementTerm,LongName, Description,Examples, DataType, measurementUnit ) %>% 
+         measurementTerm,LongName, Description,Examples, DataType, measurementUnit, MaximamPossibleValue, MinimamPossibleValue, PickList ) %>% 
   filter(Table== "ControlledVocabulary", SubsetOfMetrics=="x") %>% 
   select(-SubsetOfMetrics)
 
@@ -66,3 +67,32 @@ notInVocab<- metadata %>%
 names(notInVocab) <- str_remove_all(names(notInVocab), "CW")
 write.csv(notInVocab, file=paste0("Tables/NotInControlledVocabularyOrDES.csv" ), row.names=F)
 
+
+#the original metadata from the programs and the proposed schema cross walk 
+
+read_excel_allsheets <- function(filename, tibble = FALSE) {
+  # I prefer straight data.frames
+  # but if you like tidyverse tibbles (the default with read_excel)
+  # then just pass tibble = TRUE
+  sheets <- readxl::excel_sheets(filename)
+  x <- lapply(sheets, function(X) readxl::read_excel(filename, sheet = X))
+  if(!tibble) x <- lapply(x, as.data.frame)
+  names(x) <- sheets
+  x
+}
+
+all_metadata <- read_excel_allsheets("Data/Metadata.xlsx")
+BLM <- all_metadata$BLM
+AREMP <- all_metadata$AREMP
+PIBO <- all_metadata$PIBO
+EPA <- all_metadata[grep("EPA", names(all_metadata))]
+EPA_names <- names(EPA)
+
+one= as.df(EPA[1])
+
+
+list_of_datasets <- list("Record_level" = RecordLevel, "location"= Location, "Event"= Event,
+                          "Measurment_or_Fact"= MeasurementOrFact, "Crosswalk"= crosswalk, "BLM"= BLM, "AREMP"= AREMP, "PIBO" = PIBO)
+list_of_datasets <- append(list_of_datasets, EPA)
+
+openxlsx::write.xlsx(list_of_datasets, file = "Tables/PropertyRegistry.csv") 

@@ -92,7 +92,7 @@ one= as.df(EPA[1])
 
 
 list_of_datasets <- list("Record_level" = RecordLevel, "location"= Location, "Event"= Event,
-                          "Measurment_or_Fact"= MeasurementOrFact, "Crosswalk"= crosswalk, "BLM"= BLM, "AREMP"= AREMP, "PIBO" = PIBO)
+                          "Measurment_or_Fact"= MeasurementOrFact, "Vocabulary"= vocabulary,  "Crosswalk"= crosswalk, "BLM"= BLM, "AREMP"= AREMP, "PIBO" = PIBO)
 list_of_datasets <- append(list_of_datasets, EPA)
 
-openxlsx::write.xlsx(list_of_datasets, file = "Tables/PropertyRegistry.csv") 
+openxlsx::write.xlsx(list_of_datasets, file = "Tables/PropertyRegistry.xlsx") 

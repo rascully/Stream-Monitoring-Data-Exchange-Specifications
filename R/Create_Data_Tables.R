@@ -20,7 +20,7 @@ for (i in 1:length(DES_tables)){
 #create a vocabulary table 
 vocabulary<- metadata %>% 
                   select(CategoryID,Table,measurementType, measurementID, SubsetOfMetrics,
-                         measurementTerm,LongName, Description,Examples, DataType, measurementUnit,`Minimam Possible Value`, `Maximam  Possible Value` ) %>% 
+                         measurementTerm,LongName, Description,Examples, DataType, measurementUnit, MaximamPossibleValue, MaximamPossibleValue ) %>% 
                   filter(Table== "ControlledVocabulary", SubsetOfMetrics=="x") %>% 
                   select(-SubsetOfMetrics)
 
@@ -34,6 +34,7 @@ crosswalk<- metadata %>%
         filter(SubsetOfMetrics=="x"| InDES=="x"  ) %>% 
         select(-SubsetOfMetrics, -InDES) 
         
+crosswalk[str_detect(crosswalk$measurementTerm, c("verbatimLongitude","verbatimLatitude")),]
   
 names(crosswalk) <- str_remove_all(names(crosswalk), "CW")
 write.csv(crosswalk, file=paste0("Tables/Crosswalk.csv" ), row.names=F)

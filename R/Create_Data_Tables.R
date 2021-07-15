@@ -34,7 +34,7 @@ crosswalk<- metadata %>%
         filter(SubsetOfMetrics=="x"| InDES=="x"  ) %>% 
         select(-SubsetOfMetrics, -InDES) 
         
-crosswalk[str_detect(crosswalk$measurementTerm, c("verbatimLongitude","verbatimLatitude")),]
+crosswalk[str_detect(crosswalk$measurementTerm, c("verbatimLongitude","verbatimLatitude", "Protocol")),]
   
 names(crosswalk) <- str_remove_all(names(crosswalk), "CW")
 write.csv(crosswalk, file=paste0("Tables/Crosswalk.csv" ), row.names=F)

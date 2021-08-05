@@ -34,7 +34,7 @@ crosswalk<- metadata %>%
         filter(SubsetOfMetrics=="x"| InDES=="x"  ) %>% 
         select(-SubsetOfMetrics, -InDES) 
         
-crosswalk[str_detect(crosswalk$measurementTerm, c("verbatimLongitude","verbatimLatitude", "Protocol")),]
+crosswalk[str_detect(crosswalk$measurementTerm, c("sampingProtocol")),]
   
 names(crosswalk) <- str_remove_all(names(crosswalk), "CW")
 write.csv(crosswalk, file=paste0("Tables/Crosswalk.csv" ), row.names=F)
@@ -97,3 +97,8 @@ list_of_datasets <- list("Record_level" = RecordLevel, "location"= Location, "Ev
 list_of_datasets <- append(list_of_datasets, EPA)
 
 openxlsx::write.xlsx(list_of_datasets, file = "Tables/PropertyRegistry.xlsx") 
+##### Data exhange specifications 
+
+list_of_datasets <- list("Record_level" = RecordLevel, "location"= Location, "Event"= Event,
+                                         "Measurment_or_Fact"= MeasurementOrFact, "Vocabulary"= vocabulary) 
+

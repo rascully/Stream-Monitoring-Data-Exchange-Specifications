@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+>
+  <rdf:Description rdf:about="http://vocabulary.odm2.org/organizationtype/foundation">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition>An institution or organization supported by a donation or legacy appropriation.</skos:definition>
+    <skos:inScheme rdf:resource="http://vocabulary.odm2.org/organizationtype"/>
+    <skos:prefLabel>Foundation</skos:prefLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vocabulary.odm2.org/organizationtype/park">
+    <skos:inScheme rdf:resource="http://vocabulary.odm2.org/organizationtype"/>
+    <skos:prefLabel>Park</skos:prefLabel>
+    <skos:definition>An organization that operates federal, state, county, or municipal parks.</skos:definition>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vocabulary.odm2.org/organizationtype/laboratory">
+    <skos:prefLabel>Laboratory</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://vocabulary.odm2.org/organizationtype"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition>A room, building, or institution equipped for scientific research, experimentation, or analysis.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vocabulary.odm2.org/organizationtype/university">
+    <skos:inScheme rdf:resource="http://vocabulary.odm2.org/organizationtype"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition>An institution of higher education.</skos:definition>
+    <skos:prefLabel>University</skos:prefLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vocabulary.odm2.org/organizationtype/company">
+    <skos:inScheme rdf:resource="http://vocabulary.odm2.org/organizationtype"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:prefLabel>Company</skos:prefLabel>
+    <skos:definition>An business entity that provides services.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vocabulary.odm2.org/organizationtype/vendor">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:inScheme rdf:resource="http://vocabulary.odm2.org/organizationtype"/>
+    <skos:prefLabel>Vendor</skos:prefLabel>
+    <skos:definition>A person or company that sells a product.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vocabulary.odm2.org/organizationtype/faithBasedOrganization">
+    <skos:prefLabel>Faith-based organization</skos:prefLabel>
+    <skos:exactMatch>https://en.wikipedia.org/wiki/Faith-based_organization</skos:exactMatch>
+    <skos:inScheme rdf:resource="http://vocabulary.odm2.org/organizationtype"/>
+    <skos:historyNote>See https://en.wikipedia.org/wiki/Faith-based_organization</skos:historyNote>
+    <skos:definition>An organization whose values are based on faith and/or beliefs, which has a mission based on social values of the particular faith, and which most often draws its activists (leaders, staff, volunteers) from a particular faith group.</skos:definition>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vocabulary.odm2.org/organizationtype/governmentAgency">
+    <skos:prefLabel>Government agency</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://vocabulary.odm2.org/organizationtype"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition>A department or other administrative unit of a government.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vocabulary.odm2.org/organizationtype/schoolPrimary">
+    <skos:inScheme rdf:resource="http://vocabulary.odm2.org/organizationtype"/>
+    <skos:definition>An educational institution providing primary education.</skos:definition>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:prefLabel>School primary</skos:prefLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vocabulary.odm2.org/organizationtype/studentOrganization">
+    <skos:inScheme rdf:resource="http://vocabulary.odm2.org/organizationtype"/>
+    <skos:prefLabel>Student organization</skos:prefLabel>
+    <skos:definition>A group of students who associate for a particular purpose. </skos:definition>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vocabulary.odm2.org/organizationtype/program">
+    <skos:inScheme rdf:resource="http://vocabulary.odm2.org/organizationtype"/>
+    <skos:prefLabel>Program</skos:prefLabel>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition>A set of structured activities.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vocabulary.odm2.org/organizationtype/publisher">
+    <skos:inScheme rdf:resource="http://vocabulary.odm2.org/organizationtype"/>
+    <skos:definition>An organization that publishes data.</skos:definition>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:prefLabel>Publisher</skos:prefLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vocabulary.odm2.org/organizationtype">
+    <dc:description>A vocabulary for describing types of Organizations. In ODM2, People may or may not be affiliated with an Organization. People can also be affiliated with more than one Organization.</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+    <dc:creator>ODM2 Working Group</dc:creator>
+    <dc:title>ODM2 OrganizationType Controlled Vocabulary</dc:title>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vocabulary.odm2.org/organizationtype/college">
+    <skos:inScheme rdf:resource="http://vocabulary.odm2.org/organizationtype"/>
+    <skos:prefLabel>College</skos:prefLabel>
+    <skos:definition>An institution of higher education.</skos:definition>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vocabulary.odm2.org/organizationtype/manufacturer">
+    <skos:definition>A person or company that makes a product.</skos:definition>
+    <skos:inScheme rdf:resource="http://vocabulary.odm2.org/organizationtype"/>
+    <skos:prefLabel>Manufacturer</skos:prefLabel>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vocabulary.odm2.org/organizationtype/institute">
+    <skos:prefLabel>Institute</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://vocabulary.odm2.org/organizationtype"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition>An organization founded to promote a cause.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vocabulary.odm2.org/organizationtype/natureCenter">
+    <skos:definition>An organization that promotes outdoor exploration, provides nature education, and or fosters appreciation and stewardship of the natural world.</skos:definition>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:inScheme rdf:resource="http://vocabulary.odm2.org/organizationtype"/>
+    <skos:prefLabel>Nature center</skos:prefLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vocabulary.odm2.org/organizationtype/nonProfitOrganization">
+    <skos:exactMatch>https://en.wikipedia.org/wiki/Nonprofit_organization</skos:exactMatch>
+    <skos:definition>An organization dedicated to furthering a particular social cause or advocating for a shared point of view. In economic terms, it is an organization that uses its surplus of revenues to further achieve its ultimate objective, rather than distributing its income to the organization's shareholders, leaders, or members. Non-profits are tax exempt or charitable, meaning they do not pay income tax on the money that they receive for their organization. They can operate in religious, scientific, research, or educational settings.</skos:definition>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:historyNote>See https://en.wikipedia.org/wiki/Nonprofit_organization</skos:historyNote>
+    <skos:prefLabel>Non-profit organization</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://vocabulary.odm2.org/organizationtype"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vocabulary.odm2.org/organizationtype/researchInstitute">
+    <skos:prefLabel>Research institute</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://vocabulary.odm2.org/organizationtype"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition>An organization founded to conduct research.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vocabulary.odm2.org/organizationtype/researchAgency">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:inScheme rdf:resource="http://vocabulary.odm2.org/organizationtype"/>
+    <skos:definition>A department or other administrative unit of a government with the express purpose of conducting research.</skos:definition>
+    <skos:prefLabel>Research agency</skos:prefLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vocabulary.odm2.org/organizationtype/division">
+    <skos:definition>A section of a large company, agency, or organization.</skos:definition>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:inScheme rdf:resource="http://vocabulary.odm2.org/organizationtype"/>
+    <skos:prefLabel>Division</skos:prefLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vocabulary.odm2.org/organizationtype/consortium">
+    <skos:inScheme rdf:resource="http://vocabulary.odm2.org/organizationtype"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition>An association of individuals or organizations for the purpose of engaging in a joint venture.</skos:definition>
+    <skos:prefLabel>Consortium</skos:prefLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vocabulary.odm2.org/organizationtype/researchOrganization">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:inScheme rdf:resource="http://vocabulary.odm2.org/organizationtype"/>
+    <skos:prefLabel>Research organization</skos:prefLabel>
+    <skos:definition>A group of cooperating researchers.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vocabulary.odm2.org/organizationtype/unknown">
+    <skos:inScheme rdf:resource="http://vocabulary.odm2.org/organizationtype"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition>The organization type is unknown.</skos:definition>
+    <skos:prefLabel>Unknown</skos:prefLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vocabulary.odm2.org/organizationtype/center">
+    <skos:inScheme rdf:resource="http://vocabulary.odm2.org/organizationtype"/>
+    <skos:definition>A place where some function or activity occurs.</skos:definition>
+    <skos:prefLabel>Center</skos:prefLabel>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vocabulary.odm2.org/organizationtype/library">
+    <skos:definition>An institution that holds books and or other forms of stored information for use by the public or other experts.</skos:definition>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:inScheme rdf:resource="http://vocabulary.odm2.org/organizationtype"/>
+    <skos:prefLabel>Library</skos:prefLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vocabulary.odm2.org/organizationtype/fundingOrganization">
+    <skos:inScheme rdf:resource="http://vocabulary.odm2.org/organizationtype"/>
+    <skos:prefLabel>Funding organization</skos:prefLabel>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition>An organization that funds research or creative works.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vocabulary.odm2.org/organizationtype/museum">
+    <skos:definition>A building or institution dedicated to the acquisition, conservation, study, exhibition, and educational interpretation of objects having scientific, historical, cultural, or artistic value.</skos:definition>
+    <skos:inScheme rdf:resource="http://vocabulary.odm2.org/organizationtype"/>
+    <skos:prefLabel>Museum</skos:prefLabel>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vocabulary.odm2.org/organizationtype/youthGroup">
+    <skos:inScheme rdf:resource="http://vocabulary.odm2.org/organizationtype"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition>A group of young people that meet and participate in a variety of activities.</skos:definition>
+    <skos:prefLabel>Youth group</skos:prefLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vocabulary.odm2.org/organizationtype/schoolSecondary">
+    <skos:prefLabel>School secondary</skos:prefLabel>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition>An educational institution providing secondary education.</skos:definition>
+    <skos:inScheme rdf:resource="http://vocabulary.odm2.org/organizationtype"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vocabulary.odm2.org/organizationtype/analyticalLaboratory">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:inScheme rdf:resource="http://vocabulary.odm2.org/organizationtype"/>
+    <skos:prefLabel>Analytical laboratory</skos:prefLabel>
+    <skos:definition>A laboratory within which ex situ analysis of of environmental samples is performed.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vocabulary.odm2.org/organizationtype/association">
+    <skos:inScheme rdf:resource="http://vocabulary.odm2.org/organizationtype"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:prefLabel>Association</skos:prefLabel>
+    <skos:definition>A group of persons associated for a common purpose.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vocabulary.odm2.org/organizationtype/department">
+    <skos:inScheme rdf:resource="http://vocabulary.odm2.org/organizationtype"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:prefLabel>Department</skos:prefLabel>
+    <skos:definition>A subdivision or unit within a university, institution, or agency.</skos:definition>
+  </rdf:Description>
+</rdf:RDF>

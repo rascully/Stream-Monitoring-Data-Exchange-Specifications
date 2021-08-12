@@ -1,19 +1,8 @@
 ---
 title: "Data Exchange Specifications"
-author: "Becca Scully"
-date: "3/1/2021"
-output:
-  html_document:
-    df_print: paged
-  word_document:
-    reference_docx: word-styles-reference-01.docx
+contact: "Becca Scully"
+contact information: rscully@usgs.gov 
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-always_allow_html = TRUE     
-
-```
 
 ```{r include= FALSE}
 library(tidyverse)

@@ -81,11 +81,12 @@ To streamline the data storing and data retaliate we selected a relational data 
 * Results Extension: http://odm2.github.io/ODM2/schemas/ODM2_Current/diagrams/ODM2Results.html
 * Sampling Feature Extension: http://odm2.github.io/ODM2/schemas/ODM2_Current/diagrams/ODM2SamplingFeatures.html
 
+# Details of the Data Model 
 
 ## ODM Core.Datasets Record Level Class 
-The Record Level Class documents the core elements of a data set, including information about the origin of the data set, who collected the data, and how to cite the data set. See details in the [Record Level table](Tables/RecordLevel_table.csv). A data set is a collection of locations, at each location a collection events, at each event a collection of metrics; for example, a program releases a data set every five years containing all the data collection locations, events and metrics occurring in the previous five years. We recommend storing metadata about the data sets in a trusted online data repository ensuring we have sufficient information about data sets’ origins. If a program does not have the resources to build a repository, we recommend using USGS ScienceBase, which is available to all. Find more information about ScienceBase here https://www.sciencebase.gov/about/. 
+The Record Level Class documents the core elements of a data set, including information about the origin of the data set, who collected the data, and how to cite the data set. See details in the [Dataset table](Tables/ODMDataset_table.csv). A data set is a collection of locations, at each location a collection events, at each event a collection of metrics; for example, a program releases a data set every five years containing all the data collection locations, events and metrics occurring in the previous five years. We recommend storing metadata about the data sets in a trusted online data repository ensuring we have sufficient information about data sets’ origins. If a program does not have the resources to build a repository, we recommend using USGS ScienceBase, which is available to all. Find more information about ScienceBase here https://www.sciencebase.gov/about/. 
 
-#### To the Datasets table from ODME2 Metadata table we add:
+#### To the Datasets table from ODME2 Metadata table we added:
   * MetadataLink 
   
 
@@ -96,6 +97,12 @@ The Record Level Class documents the core elements of a data set, including info
 
 #### The primary key is: 
   * DatasetID 
+  
+#### Controlled Vocabularies:  
+  *  DatasetType
+      * http://vocabulary.odm2.org/datasettype/
+      * SKOS API: http://vocabulary.odm2.org/api/v1/datasettype/?format=skos 
+
 
 
 ```{r echo=FALSE, results= 'asis'}
@@ -113,7 +120,7 @@ kable(datasets, caption = "Datasets Table")
 ```
 
 ## Sampling Feature 
-Understanding where data are collected is critical to interpreting biological monitoring data.  The Sampling Feature class describes where information are collected, see the list of terms in the [Sampling Feature table](Tables/Location_table.csv). In this data type often this is refered to as the sampling location, but to be compadable with the ODM2 we now refer to this as the Sampling Feature. Each data set contains mutiple sample features (locations). The actionID is the key to link locations to events. To view and analysis data from various sources, latitudes and longitude information must be consistent among data sets; therefore, for this data all latitude and longitudes are converted to WGS1984.
+Understanding where data are collected is critical to interpreting biological monitoring data.  The Sampling Feature class describes where information are collected, see the list of terms in the [Sampling Feature table](Tables/ODMSamplingFeature_table.csv). In this data type often this is refered to as the sampling location, but to be compadable with the ODM2 we now refer to this as the Sampling Feature. Each data set contains mutiple sample features (locations). The actionID is the key to link locations to events. To view and analysis data from various sources, latitudes and longitude information must be consistent among data sets; therefore, for this data all latitude and longitudes are converted to WGS1984.
 
 #### To the Sample Feature Table from ODME2 SampleFeature.Site we added:  
   * Latitude 
@@ -133,6 +140,17 @@ For the integrated data sets all locations Latitude, Longitude are transformed i
   
 #### Added a foreign key: 
   * datasetID to link the Dataset table to the Sample Features table
+  
+#### Controlled Vocabularies: 
+  *  SamplingFeatureType
+      * http://vocabulary.odm2.org/samplingfeaturetype/
+      * SKOS API http://vocabulary.odm2.org/api/v1/samplingfeaturetype/?format=skos
+  * SamplingFeatureGeotype
+      * http://vocabulary.odm2.org/samplingfeaturegeotype/
+      * SKOS API http://vocabulary.odm2.org/api/v1/samplingfeaturegeotype/?format=skos
+  * SpatialReferenceID 
+  
+
 
 
 
@@ -147,7 +165,7 @@ kable(sampling_feature)
 
 ```
 ## Core Action 
-The Action describes an action that occurs at a specific time frame see the [Core Action table](Tables/Event_table.csv) for the terms.  In this data type often this is refered to as the sampling event, but to make our data comparable with the ODM2 we adopoted the term action.  To assess the status and trend of a resource as a response to management actions, stream habitat monitoring programs often implement a rotating panel design, meaning that the project returns to a single location multiple times during the study duration.  Therefore, a data set will contain numerous locations, and each location can include numerous events.
+The Action describes an action that occurs at a specific time frame see the [Core Action table](Tables/ODMAction_table.csv) for the terms.  In this data type often this is refered to as the sampling event, but to make our data comparable with the ODM2 we adopoted the term action.  To assess the status and trend of a resource as a response to management actions, stream habitat monitoring programs often implement a rotating panel design, meaning that the project returns to a single location multiple times during the study duration.  Therefore, a data set will contain numerous locations, and each location can include numerous events.
 
 ### This implementation 
 
@@ -157,12 +175,15 @@ The Action describes an action that occurs at a specific time frame see the [Cor
 
 #### From DarwinCore we added to the Record Level table:
   * Added VerbatimActionID based on the DarwinCore, because when implementing these data exchange specification we found that there are duplicate ActionIDs between two or more of the source data sets. 
+
 #### The primary key is: 
   * ActionID
 
-
-
- 
+#### Controlled Vocabularies: 
+  *  ActionTypeCV 
+      * http://vocabulary.odm2.org/actiontype/
+      * SKOS API: http://vocabulary.odm2.org/api/v1/actiontype/?format=skos
+  
 ```{r echo= FALSE}
 
 actions <- read.csv("Tables/ODMAction_table.csv")
@@ -174,16 +195,7 @@ kable(actions)
 
 ```
 ## Core Results 
-A metric is a value resulting from the reduction or processing of measurements taken at an event based on the procedures defined by the response design. Programs derive a variety of metrics from a single measurement. For stream habitat data at each event, programs take multiple types of measurements and produce various metrics from one measurement; for example, the measurement for pools produces both percent pools and pool frequency. Events are associated with measurements by the eventID, see the [Measurement Or Fact Table](Tables/MeasurementOrFact_table.csv) for the full definitions of terms. 
-
-
-From ODME2 Results.MeasurementsResultsValues in this implementation we merged the following into the Sample Feature table 
-  * MethodID 
-  * MeasurementRemark 
-  * DataValue 
-  
-Added a foregin key
-  *ActionID 
+A metric is a value resulting from the reduction or processing of measurements taken at an event based on the procedures defined by the response design. Programs derive a variety of metrics from a single measurement. For stream habitat data at each event, programs take multiple types of measurements and produce various metrics from one measurement; for example, the measurement for pools produces both percent pools and pool frequency. Events are associated with measurements by the eventID, see the [Results Table](Tables/ODMResults_table.csv) for the full definitions of terms. 
 
 
 ### This implementation 
@@ -200,9 +212,12 @@ Added a foregin key
 #### Added foregin key:
   * ActionID 
 
-#### Controlled Vocabularies 
-  *  
-
+#### Controlled Vocabularies: 
+  * VariableID 
+      *  see below 
+  * UnitID: 
+      * http://vocabulary.odm2.org/units/
+    
 
 
 ```{r echo=FALSE}
@@ -214,7 +229,7 @@ kable(results)
  # kbl() %>%
   #kable_styling(bootstrap_options = c("striped", "hover"), font_size= 12)  
 ```
-### Variable Controlled Vocabularies for Results Table 
+### VariableID  Controlled Vocabularies for Results Table 
 
 Critical to implementing the observation data model (ODM) for stream habitat monitoring, is solving semantic heterogeneity, or the differences in languages used to describe observations between datasets (CITE). There needs to be a controlled vocabularies for each data type integrated. The standard language enables the integration of multiple habitat monitoring program metrics into one data set. 
 
@@ -223,9 +238,6 @@ We built the variable controlled vocabulary  using metadata and metrics from fou
 We focused on defining a set of metric we would integrate.  Previous work has been completed compare some of these data sets and field collection procedures. (CITE) For our initial assessment of metric compadability There have been efforts in the past to comparei field processes for these programs, but we wanted to confirm with the project lead that fields were comparable. PNAMP lead an effort to facilitate conversations with data experts from the four programs to define the metrics that can be shared across the programs. The conversations are documented in Appendix A. We agreed that data in the same colume is compadable, even with this agreement we want to provide documentation of the field methods for each of the metrics included in the controlled vocabulary. To make this effective each individual data collection method needs to be documented in a stand alone, machine readable way. This means when the data set is reused the data collection methology can be accessed via APIs. Simplifying the creation of data portals, web maps and other user interfaces. We used MonitoringResources.org an online tool for documenting field data collection or analysis methods to so for each metric and program we document the field protocols (ADD TABLE OF CONTROLLED VOCABULARY AND METRIC IDs). 
 
 Using the metadata from each program we build a comprehensive list of the metrics produced across the programs and then facilitated discussion with experts from each program to define where metrics are comparable across programs (SEE METHOD REPORT). Use this approach we defined a controlled vocabulary of metrics to be integrated. Additional we defined a subset of metadata for data sets, locations, and events to include in the integrated data sets. Using all this information we build a data schema defining a relation data base observation and measurement model based on Darwin core and CAUSI data models. We then created a schema cross walk from the original data sets to the integrate data schema, and wrote code to pull the data from the orgial locations to be intergrated in the final data sets. 
-
-
-
 
 
 

@@ -221,11 +221,14 @@ pre code {
 <li>Sampling Feature Extension: <a href="http://odm2.github.io/ODM2/schemas/ODM2_Current/diagrams/ODM2SamplingFeatures.html" class="uri">http://odm2.github.io/ODM2/schemas/ODM2_Current/diagrams/ODM2SamplingFeatures.html</a></li>
 </ul>
 </div>
+</div>
+<div id="details-of-the-data-model" class="section level1">
+<h1>Details of the Data Model</h1>
 <div id="odm-core.datasets-record-level-class" class="section level2">
 <h2>ODM Core.Datasets Record Level Class</h2>
-<p>The Record Level Class documents the core elements of a data set, including information about the origin of the data set, who collected the data, and how to cite the data set. See details in the <a href="Tables/RecordLevel_table.csv">Record Level table</a>. A data set is a collection of locations, at each location a collection events, at each event a collection of metrics; for example, a program releases a data set every five years containing all the data collection locations, events and metrics occurring in the previous five years. We recommend storing metadata about the data sets in a trusted online data repository ensuring we have sufficient information about data sets’ origins. If a program does not have the resources to build a repository, we recommend using USGS ScienceBase, which is available to all. Find more information about ScienceBase here <a href="https://www.sciencebase.gov/about/" class="uri">https://www.sciencebase.gov/about/</a>.</p>
-<div id="to-the-datasets-table-from-odme2-metadata-table-we-add" class="section level4">
-<h4>To the Datasets table from ODME2 Metadata table we add:</h4>
+<p>The Record Level Class documents the core elements of a data set, including information about the origin of the data set, who collected the data, and how to cite the data set. See details in the <a href="Tables/ODMDataset_table.csv">Dataset table</a>. A data set is a collection of locations, at each location a collection events, at each event a collection of metrics; for example, a program releases a data set every five years containing all the data collection locations, events and metrics occurring in the previous five years. We recommend storing metadata about the data sets in a trusted online data repository ensuring we have sufficient information about data sets’ origins. If a program does not have the resources to build a repository, we recommend using USGS ScienceBase, which is available to all. Find more information about ScienceBase here <a href="https://www.sciencebase.gov/about/" class="uri">https://www.sciencebase.gov/about/</a>.</p>
+<div id="to-the-datasets-table-from-odme2-metadata-table-we-added" class="section level4">
+<h4>To the Datasets table from ODME2 Metadata table we added:</h4>
 <ul>
 <li>MetadataLink</li>
 </ul>
@@ -241,6 +244,16 @@ pre code {
 <h4>The primary key is:</h4>
 <ul>
 <li>DatasetID</li>
+</ul>
+</div>
+<div id="controlled-vocabularies" class="section level4">
+<h4>Controlled Vocabularies:</h4>
+<ul>
+<li>DatasetType
+<ul>
+<li><a href="http://vocabulary.odm2.org/datasettype/" class="uri">http://vocabulary.odm2.org/datasettype/</a></li>
+<li>SKOS API: <a href="http://vocabulary.odm2.org/api/v1/datasettype/?format=skos" class="uri">http://vocabulary.odm2.org/api/v1/datasettype/?format=skos</a></li>
+</ul></li>
 </ul>
 <table>
 <caption>Datasets Table</caption>
@@ -309,7 +322,7 @@ pre code {
 </div>
 <div id="sampling-feature" class="section level2">
 <h2>Sampling Feature</h2>
-<p>Understanding where data are collected is critical to interpreting biological monitoring data. The Sampling Feature class describes where information are collected, see the list of terms in the <a href="Tables/Location_table.csv">Sampling Feature table</a>. In this data type often this is refered to as the sampling location, but to be compadable with the ODM2 we now refer to this as the Sampling Feature. Each data set contains mutiple sample features (locations). The actionID is the key to link locations to events. To view and analysis data from various sources, latitudes and longitude information must be consistent among data sets; therefore, for this data all latitude and longitudes are converted to WGS1984.</p>
+<p>Understanding where data are collected is critical to interpreting biological monitoring data. The Sampling Feature class describes where information are collected, see the list of terms in the <a href="Tables/ODMSamplingFeature_table.csv">Sampling Feature table</a>. In this data type often this is refered to as the sampling location, but to be compadable with the ODM2 we now refer to this as the Sampling Feature. Each data set contains mutiple sample features (locations). The actionID is the key to link locations to events. To view and analysis data from various sources, latitudes and longitude information must be consistent among data sets; therefore, for this data all latitude and longitudes are converted to WGS1984.</p>
 <div id="to-the-sample-feature-table-from-odme2-samplefeature.site-we-added" class="section level4">
 <h4>To the Sample Feature Table from ODME2 SampleFeature.Site we added:</h4>
 <ul>
@@ -337,6 +350,22 @@ pre code {
 <h4>Added a foreign key:</h4>
 <ul>
 <li>datasetID to link the Dataset table to the Sample Features table</li>
+</ul>
+</div>
+<div id="controlled-vocabularies-1" class="section level4">
+<h4>Controlled Vocabularies:</h4>
+<ul>
+<li>SamplingFeatureType
+<ul>
+<li><a href="http://vocabulary.odm2.org/samplingfeaturetype/" class="uri">http://vocabulary.odm2.org/samplingfeaturetype/</a></li>
+<li>SKOS API <a href="http://vocabulary.odm2.org/api/v1/samplingfeaturetype/?format=skos" class="uri">http://vocabulary.odm2.org/api/v1/samplingfeaturetype/?format=skos</a></li>
+</ul></li>
+<li>SamplingFeatureGeotype
+<ul>
+<li><a href="http://vocabulary.odm2.org/samplingfeaturegeotype/" class="uri">http://vocabulary.odm2.org/samplingfeaturegeotype/</a></li>
+<li>SKOS API <a href="http://vocabulary.odm2.org/api/v1/samplingfeaturegeotype/?format=skos" class="uri">http://vocabulary.odm2.org/api/v1/samplingfeaturegeotype/?format=skos</a></li>
+</ul></li>
+<li>SpatialReferenceID</li>
 </ul>
 <table>
 <colgroup>
@@ -444,7 +473,7 @@ pre code {
 </div>
 <div id="core-action" class="section level2">
 <h2>Core Action</h2>
-<p>The Action describes an action that occurs at a specific time frame see the <a href="Tables/Event_table.csv">Core Action table</a> for the terms. In this data type often this is refered to as the sampling event, but to make our data comparable with the ODM2 we adopoted the term action. To assess the status and trend of a resource as a response to management actions, stream habitat monitoring programs often implement a rotating panel design, meaning that the project returns to a single location multiple times during the study duration. Therefore, a data set will contain numerous locations, and each location can include numerous events.</p>
+<p>The Action describes an action that occurs at a specific time frame see the <a href="Tables/ODMAction_table.csv">Core Action table</a> for the terms. In this data type often this is refered to as the sampling event, but to make our data comparable with the ODM2 we adopoted the term action. To assess the status and trend of a resource as a response to management actions, stream habitat monitoring programs often implement a rotating panel design, meaning that the project returns to a single location multiple times during the study duration. Therefore, a data set will contain numerous locations, and each location can include numerous events.</p>
 <div id="this-implementation" class="section level3">
 <h3>This implementation</h3>
 <div id="to-the-core-action-table-from-odme2-core-feature-action-we-added" class="section level4">
@@ -456,8 +485,23 @@ pre code {
 <div id="from-darwincore-we-added-to-the-record-level-table-1" class="section level4">
 <h4>From DarwinCore we added to the Record Level table:</h4>
 <ul>
-<li>Added VerbatimActionID based on the DarwinCore, because when implementing these data exchange specification we found that there are duplicate ActionIDs between two or more of the source data sets. #### The primary key is:</li>
+<li>Added VerbatimActionID based on the DarwinCore, because when implementing these data exchange specification we found that there are duplicate ActionIDs between two or more of the source data sets.</li>
+</ul>
+</div>
+<div id="the-primary-key-is-2" class="section level4">
+<h4>The primary key is:</h4>
+<ul>
 <li>ActionID</li>
+</ul>
+</div>
+<div id="controlled-vocabularies-2" class="section level4">
+<h4>Controlled Vocabularies:</h4>
+<ul>
+<li>ActionTypeCV
+<ul>
+<li><a href="http://vocabulary.odm2.org/actiontype/" class="uri">http://vocabulary.odm2.org/actiontype/</a></li>
+<li>SKOS API: <a href="http://vocabulary.odm2.org/api/v1/actiontype/?format=skos" class="uri">http://vocabulary.odm2.org/api/v1/actiontype/?format=skos</a></li>
+</ul></li>
 </ul>
 <table>
 <colgroup>
@@ -534,9 +578,7 @@ pre code {
 </div>
 <div id="core-results" class="section level2">
 <h2>Core Results</h2>
-<p>A metric is a value resulting from the reduction or processing of measurements taken at an event based on the procedures defined by the response design. Programs derive a variety of metrics from a single measurement. For stream habitat data at each event, programs take multiple types of measurements and produce various metrics from one measurement; for example, the measurement for pools produces both percent pools and pool frequency. Events are associated with measurements by the eventID, see the <a href="Tables/MeasurementOrFact_table.csv">Measurement Or Fact Table</a> for the full definitions of terms.</p>
-<p>From ODME2 Results.MeasurementsResultsValues in this implementation we merged the following into the Sample Feature table * MethodID * MeasurementRemark * DataValue</p>
-<p>Added a foregin key *ActionID</p>
+<p>A metric is a value resulting from the reduction or processing of measurements taken at an event based on the procedures defined by the response design. Programs derive a variety of metrics from a single measurement. For stream habitat data at each event, programs take multiple types of measurements and produce various metrics from one measurement; for example, the measurement for pools produces both percent pools and pool frequency. Events are associated with measurements by the eventID, see the <a href="Tables/ODMResults_table.csv">Results Table</a> for the full definitions of terms.</p>
 <div id="this-implementation-1" class="section level3">
 <h3>This implementation</h3>
 <div id="to-the-core-results-from-results.-measurementsresultsvalues-to-core-resoutls-added" class="section level4">
@@ -547,7 +589,7 @@ pre code {
 <li>DataValue</li>
 </ul>
 </div>
-<div id="the-primary-key-is-2" class="section level4">
+<div id="the-primary-key-is-3" class="section level4">
 <h4>The primary key is:</h4>
 <ul>
 <li>ResultsID</li>
@@ -559,10 +601,17 @@ pre code {
 <li>ActionID</li>
 </ul>
 </div>
-<div id="controlled-vocabularies" class="section level4">
-<h4>Controlled Vocabularies</h4>
+<div id="controlled-vocabularies-3" class="section level4">
+<h4>Controlled Vocabularies:</h4>
 <ul>
-<li></li>
+<li>VariableID
+<ul>
+<li>see below</li>
+</ul></li>
+<li>UnitID:
+<ul>
+<li><a href="http://vocabulary.odm2.org/units/" class="uri">http://vocabulary.odm2.org/units/</a></li>
+</ul></li>
 </ul>
 <table style="width:100%;">
 <colgroup>
@@ -676,8 +725,8 @@ pre code {
 </table>
 </div>
 </div>
-<div id="variable-controlled-vocabularies-for-results-table" class="section level3">
-<h3>Variable Controlled Vocabularies for Results Table</h3>
+<div id="variableid-controlled-vocabularies-for-results-table" class="section level3">
+<h3>VariableID Controlled Vocabularies for Results Table</h3>
 <p>Critical to implementing the observation data model (ODM) for stream habitat monitoring, is solving semantic heterogeneity, or the differences in languages used to describe observations between datasets (CITE). There needs to be a controlled vocabularies for each data type integrated. The standard language enables the integration of multiple habitat monitoring program metrics into one data set.</p>
 <p>We built the variable controlled vocabulary using metadata and metrics from four large scale, long-running federal stream habitat monitoring programs: Environmental Protection Agency (EPA) National Rivers &amp; Streams Assessment (NRSA), Bureau of Land Management (BLM) Aquatic Assessment, Inventory, and Monitoring (AIM), the Forest Service Aquatic and Riparian Effective Monitoring Program (AREMP) and PACFISH/INFISH Biological Opinion (PIBO) Effectiveness Monitoring. Each program has unique objectives, spatial, temporal, response, and inference designs; yet, they produce similar metrics. These four programs collectively produce over 300 metrics but have only a subset of metrics in common across programs. The program leads and data managers from the four programs agreed on a subset of the metrics that can be shared across the programs; these can be found in the first draft of the <a href="Tables/StandardVocabulary.csv">controlled vocabulary</a>.</p>
 <p>We focused on defining a set of metric we would integrate. Previous work has been completed compare some of these data sets and field collection procedures. (CITE) For our initial assessment of metric compadability There have been efforts in the past to comparei field processes for these programs, but we wanted to confirm with the project lead that fields were comparable. PNAMP lead an effort to facilitate conversations with data experts from the four programs to define the metrics that can be shared across the programs. The conversations are documented in Appendix A. We agreed that data in the same colume is compadable, even with this agreement we want to provide documentation of the field methods for each of the metrics included in the controlled vocabulary. To make this effective each individual data collection method needs to be documented in a stand alone, machine readable way. This means when the data set is reused the data collection methology can be accessed via APIs. Simplifying the creation of data portals, web maps and other user interfaces. We used MonitoringResources.org an online tool for documenting field data collection or analysis methods to so for each metric and program we document the field protocols (ADD TABLE OF CONTROLLED VOCABULARY AND METRIC IDs).</p>

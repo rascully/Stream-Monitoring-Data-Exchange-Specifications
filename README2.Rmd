@@ -19,18 +19,8 @@ always_allow_html = TRUE
 library(tidyverse)
 library(knitr)
 library(readxl)
-#library(kableExtra)
 
 metadata <- readxl::read_excel("Data/Metadata.xlsx", sheet = 3)
-
-#DES_tables <- c("RecordLevel", "Location","Event", "MeasurementOrFact")
-#for(i in 1:length(DES_tables)){ 
- #   
-  #   assign(DES_tables[i], metadata %>% 
-   #         select(InDES, Term,Description,Examples, DataType ) %>% 
-  #          filter(Category== DES_tables[i], InDES=="x") %>% 
-   #         select(-InDES)) 
-   # }
 
 ```
 
@@ -111,12 +101,6 @@ datasets <- read.csv("Tables/ODMDatasets_table.csv")
 
 kable(datasets, caption = "Datasets Table")
 
-
-
-#RecordLevel %>%
- # kbl() %>%
-  #kable_styling(bootstrap_options = c("striped", "hover"), font_size= 12 )  
-  
 ```
 
 ## Sampling Feature 
@@ -159,10 +143,6 @@ For the integrated data sets all locations Latitude, Longitude are transformed i
  
 sampling_feature <- read.csv("Tables/ODMSamplingFeature_table.csv")
 kable(sampling_feature)
-#Location %>%
- # kbl() %>%
-  #kable_styling(bootstrap_options = c("striped", "hover"), font_size= 12)  
-
 ```
 ## Core Action 
 The Action describes an action that occurs at a specific time frame see the [Core Action table](Tables/ODMAction_table.csv) for the terms.  In this data type often this is refered to as the sampling event, but to make our data comparable with the ODM2 we adopoted the term action.  To assess the status and trend of a resource as a response to management actions, stream habitat monitoring programs often implement a rotating panel design, meaning that the project returns to a single location multiple times during the study duration.  Therefore, a data set will contain numerous locations, and each location can include numerous events.
@@ -188,11 +168,6 @@ The Action describes an action that occurs at a specific time frame see the [Cor
 
 actions <- read.csv("Tables/ODMAction_table.csv")
 kable(actions)
-
-#Event %>%
- # kbl() %>%
-  #kable_styling(bootstrap_options = c("striped", "hover"), font_size= 12)  
-
 ```
 ## Core Results 
 A metric is a value resulting from the reduction or processing of measurements taken at an event based on the procedures defined by the response design. Programs derive a variety of metrics from a single measurement. For stream habitat data at each event, programs take multiple types of measurements and produce various metrics from one measurement; for example, the measurement for pools produces both percent pools and pool frequency. Events are associated with measurements by the eventID, see the [Results Table](Tables/ODMResults_table.csv) for the full definitions of terms. 
@@ -224,10 +199,6 @@ A metric is a value resulting from the reduction or processing of measurements t
 results <- read.csv("Tables/ODMResults_table.csv")
 
 kable(results)
-
-#MeasurementOrFact %>%
- # kbl() %>%
-  #kable_styling(bootstrap_options = c("striped", "hover"), font_size= 12)  
 ```
 ### VariableID  Controlled Vocabularies for Results Table 
 
@@ -250,9 +221,6 @@ vocabulary<- metadata %>%
                   select(-SubsetOfMetrics, -Table)
 
 kable(vocabulary)
-#vocabulary %>%
- # kbl() %>%
-  #kable_styling(bootstrap_options = c("striped", "hover"), font_size = 12 )  
 
 ```
 
@@ -264,16 +232,6 @@ crosswalk<- metadata %>%
            "measurementTerm", "LongName", "Description", "Examples", "DataType", "measurementUnit")|contains("CW")) %>% 
         filter(SubsetOfMetrics=="x"| InDES=="x"  ) %>% 
         select(-SubsetOfMetrics, -InDES)  
-
-#names(crosswalk) <- str_remove_all(names(crosswalk), "CW")
-#write.csv(crosswalk, file=paste0("Tables/Crosswalk.csv" ), row.names=F)
-
-
-
-#crosswalk %>%
-  #kbl() %>%
- # kable_styling(bootstrap_options = c("striped", "hover"), font_size= 12)  
-
 ```
 
 If partners wish to exchange additional metrics, the controlled vocabulary must be updated and cross-walk. The list of metrics from the four programs not included in the first draft of the standard vocabulary or data exchange specifications is here: [list of metrics not in the controlled vocabulary ](Tables/NotInControlledVocabularyOrDES.csv) 

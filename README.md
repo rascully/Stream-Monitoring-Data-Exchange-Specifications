@@ -12,18 +12,18 @@ library(readxl)
 metadata <- readxl::read_excel("Data/Metadata.xlsx", sheet = 3)
 
 ```
-
-
 ## R Markdown
 
 # Stream Monitoring Habitat Data Exchange Specifications 
 Data exchange specifications are a set of guidelines and rules for using and combining information. Rigorous data exchange specifications support reuse, promote interoperability, and reduce data integration costs (Morris and Frechette 2008, Hamm 2019). 
 
 # Summary 
-We use [observation data model 2 (ODM)](https://github.com/ODM2/ODM2) and [Darwin Core](https://www.gbif.org/sampling-event-data) to define data exchange specifications and data model (Figure 1) for stream habitat monitoring data. We appaly controlled vocabularies from ODM2 and define a controlled vocabulary for stream habitat monitoring variables. As a use case we cross walk four federally funded stream habitat monitoring programs to the exchange specifications and wrote R code to to build a data set, this is documented in a GIT Repository here: https://github.com/rascully/Integrating-Stream-Monitoring-Data-From-Multiple-Programs=
+We use [observation data model 2 (ODM)](https://github.com/ODM2/ODM2) and [Darwin Core](https://www.gbif.org/sampling-event-data) to define data exchange specifications and data model (Figure 1) for stream habitat monitoring data. We apply controlled vocabularies from ODM2 and define a controlled vocabulary for stream habitat monitoring variables. As a use case we cross walk four federally funded stream habitat monitoring programs to the exchange specifications and wrote R code to to build a data set, this is documented in a GIT Repository here: https://github.com/rascully/Integrating-Stream-Monitoring-Data-From-Multiple-Programs=
  
  ![Figure 1](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Figures/HabiatDataSharingSchema.png)
   *Figure 1* 
+  
+Specifics on each table is outline below or for full documentation go here:  https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Tables/ODM2_DarwinCore_StreamHabitat_ExchangeSpecifications.xlsx   
   
 # Introduction 
 Streams are critical to fish, aquatic community structure, and overall watershed health. State, Federal and Tribal entities collect in-stream habitat data to assess the resources' status and trends unique to their management questions.  Due to climate change, urbanization, and multi-use land management, there is a need to determine the resources' quality and trends across jurisdictional boundaries by using information from multiple collection efforts (Katz et al. 2012). It is not straightforward to combine data from various monitoring programs due to differences in response and survey (spatial and temporal) designs. Additionally, data produced by these programs are not always findable, accessible, interoperable, and reusable (FAIR) (Wilkinson et al. 2016).  There is no centralized repository, data model or data dictionary for this type of information.  A standard theory in data science states researchers spend 80% of their time organizing, fixing mistakes, and cleaning data, leaving only 20% of their time to analyze data (Mons 2020).   Well established rules for integrating and sharing stream habitat data from multiple sources will decrease the time spent finding and organizing data providing accurate and timely information for building indicators, completing analysis, and making decisions. 
@@ -108,9 +108,6 @@ kable(datasets, caption = "Datasets Table")
 
 ```
 
-## Provance extention 
-https://github.com/ODM2/ODM2/blob/master/doc/ODM2Docs/ext_provenance.md
-
 ## Sampling Feature 
 Understanding where data are collected is critical to interpreting biological monitoring data.  The Sampling Feature class describes where information are collected, see the list of terms in the [Sampling Feature table](Tables/ODMSamplingFeature_table.csv). In this data type often this is refered to as the sampling location, but to be compadable with the ODM2 we now refer to this as the Sampling Feature. Each data set contains mutiple sample features (locations). The actionID is the key to link locations to events. To view and analysis data from various sources, latitudes and longitude information must be consistent among data sets; therefore, for this data all latitude and longitudes are converted to WGS1984.
 
@@ -160,7 +157,6 @@ The Action describes an action that occurs at a specific time frame see the [Act
 
 #### To the Core Action table from ODME2 Core Feature Action we added:
   * SampleFeatureID 
-  
 
 #### From DarwinCore we added to the Record Level table:
   * Added VerbatimActionID based on the DarwinCore, because when implementing these data exchange specification we found that there are duplicate ActionIDs between two or more of the source data sets. 
@@ -174,7 +170,6 @@ The Action describes an action that occurs at a specific time frame see the [Act
       * SKOS API: http://vocabulary.odm2.org/api/v1/actiontype/?format=skos
   
 ```{r echo= FALSE}
-
 actions <- read.csv("Tables/ODMAction_table.csv")
 kable(actions)
 ```

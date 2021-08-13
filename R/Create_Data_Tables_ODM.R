@@ -13,24 +13,23 @@ DES_tables <- c("Datasets", "SamplingFeature","Action", "Results")
 for (i in 1:length(DES_tables)){ 
   file_name = paste0(DES_tables[i], "_table")
   write.csv(assign(DES_tables[i], metadata %>% 
-                     dplyr::select(TermID, ODMTable, InDES, ODM, Description,Examples, DataType, 
+                     dplyr::select(TermID, ODMTable, InDES, Term , Description,Examples, DataType, 
                                    PrimaryKey, ForeginKey, ControlledVocabulary, ControlledVocabularyAPI, 
                                    MinimamPossibleValue,MaximamPossibleValue   ) %>% 
                      filter(ODMTable== DES_tables[i], InDES=="x") %>% 
-                     rename(Term=ODM) %>% 
                      select(-InDES, -ODMTable)) , file=paste0("Tables/ODM",file_name,".csv" ), row.names = F )
       }
 
 
 metadata %>% 
-  dplyr::select(CategoryID, TermID, ODM, ODMTable, Table,measurementType, InDES, measurementTerm,Description,Examples, DataType )%>% 
+  dplyr::select(CategoryID, TermID, Term, ODMTable, Table,measurementType, InDES, Term,Description,Examples, DataType )%>% 
   filter(ODMTable== DES_tables[1], InDES=="x")
 
 
 #create a vocabulary table 
 vocabulary<- metadata %>% 
   select(CategoryID,Table,measurementType, measurementID, SubsetOfMetrics,
-         measurementTerm,LongName, Description,Examples, DataType, measurementUnit, MaximamPossibleValue, MaximamPossibleValue ) %>% 
+         Term,LongName, Description,Examples, DataType, measurementUnit, MaximamPossibleValue, MaximamPossibleValue ) %>% 
   filter(Table== "ControlledVocabulary", SubsetOfMetrics=="x") %>% 
   select(-SubsetOfMetrics)
 
@@ -39,12 +38,12 @@ write.csv(vocabulary, file=paste0("Tables/ControlledVocabulary.csv" ), row.names
 #Create the crosswalk table 
 
 crosswalk<- metadata %>% 
-  select(c("Table","measurementType", "measurementID", "measurementTerm", "SubsetOfMetrics", "InDES", 
+  select(c("Table","measurementType", "measurementID", "Term", "SubsetOfMetrics", "InDES", 
            "LongName", "Description", "Examples", "DataType", "measurementUnit")|contains("CW")) %>% 
   filter(SubsetOfMetrics=="x"| InDES=="x"  ) %>% 
   select(-SubsetOfMetrics, -InDES) 
 
-crosswalk[str_detect(crosswalk$measurementTerm, c("sampingProtocol")),]
+crosswalk[str_detect(crosswalk$Term, c("sampingProtocol")),]
 
 names(crosswalk) <- str_remove_all(names(crosswalk), "CW")
 write.csv(crosswalk, file=paste0("Tables/Crosswalk.csv" ), row.names=F)
@@ -63,7 +62,7 @@ openxlsx::write.xlsx(list_of_datasets, file = "Tables/ODM2_DarwinCore_StreamHabi
 
 short_crosswalk <- metadata %>% 
   select(c("measurementType", "SubsetOfMetrics", "InDES", 
-           "measurementTerm", "LongName", "Description", "Examples", "DataType", "measurementUnit")|contains("CW")) %>% 
+           "Term", "LongName", "Description", "Examples", "DataType", "measurementUnit")|contains("CW")) %>% 
   filter(SubsetOfMetrics=="x"| InDES=="x"  ) %>% 
   select(-SubsetOfMetrics, -InDES, -contains("Method")) %>% 
   filter(measurementType != "Temperature")
@@ -75,13 +74,13 @@ write.csv(short_crosswalk, file=paste0("Tables/CrosswalkForReview.csv" ), row.na
 #Create a list of metrics from the programs not in the controlled vocabulary 
 vocabulary<- metadata %>% 
   select(CategoryID,Table,measurementType, measurementID, SubsetOfMetrics,
-         measurementTerm,LongName, Description,Examples, DataType, measurementUnit, MaximamPossibleValue, MinimamPossibleValue, PickList ) %>% 
+         Term,LongName, Description,Examples, DataType, measurementUnit, MaximamPossibleValue, MinimamPossibleValue, ControlledVocabulary, ControlledVocabularyAPI ) %>% 
   filter(Table== "ControlledVocabulary", SubsetOfMetrics=="x") %>% 
   select(-SubsetOfMetrics)
 
 notInVocab<- metadata %>% 
   select(c(CategoryID,Table,measurementType, TermID, measurementID, SubsetOfMetrics,
-           measurementTerm,LongName, Description,Examples, DataType, measurementUnit, InDES) | contains("FieldCW")) %>% 
+           Term,LongName, Description,Examples, DataType, measurementUnit, InDES) | contains("FieldCW")) %>% 
   filter(is.na(SubsetOfMetrics)& is.na(InDES))  %>% 
   select(-SubsetOfMetrics, -InDES)
 

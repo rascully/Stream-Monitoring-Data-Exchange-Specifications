@@ -1,4 +1,4 @@
-"measurementType","measurementTerm","LongName","Description","Examples","DataType","measurementUnit","AREMPField","AIMField","NewAIMField","NRSAField","PIBOField"
+"measurementType","Term","LongName","Description","Examples","DataType","measurementUnit","AREMPField","AIMField","NewAIMField","NRSAField","PIBOField"
 "Channel dimensions","BFWidth","Average bankfull width from transects","Average bankfull width across transects for the reach.",NA,"Numeric","m","average_bfwidth","BNKFLL_WT","BankfullWidthAvg","XBKF_W","Bf"
 "Channel Characteristics","Sin","Sinuosity of Local Stream Reach","Reach sinuosity (reach length along the thalweg divided by straight line distance between the bottom of the reach and the top of the reach)",NA,"Numeric",NA,NA,"SNSTY",NA,"SINU","Sin"
 "Channel dimensions","Grad","Gradient of stream reach","Mean slope of water surface (%) from the bottom of the reach to the top of the reach.","min: 0, max: 100","Numeric","%","gradient","SLPE","PctSlope","XSLOPE","Grad"

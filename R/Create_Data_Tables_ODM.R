@@ -10,31 +10,21 @@ metadata <- readxl::read_excel("Data/Metadata.xlsx", sheet = 3)
 #Create the data exchange specifications tables 
 DES_tables <- c("Datasets", "SamplingFeature","Action", "Results")
 
-
 for (i in 1:length(DES_tables)){ 
   file_name = paste0(DES_tables[i], "_table")
   write.csv(assign(DES_tables[i], metadata %>% 
-                     dplyr::select(ODMTable, InDES, measurementTerm,ODM, Description,Examples, DataType ) %>% 
+                     dplyr::select(TermID, ODMTable, InDES, ODM, Description,Examples, DataType, 
+                                   PrimaryKey, ForeginKey, ControlledVocabulary, ControlledVocabularyAPI, 
+                                   MinimamPossibleValue,MaximamPossibleValue   ) %>% 
                      filter(ODMTable== DES_tables[i], InDES=="x") %>% 
-                     rename(Term=measurementTerm) %>% 
-                     select(-InDES)) , file=paste0("Tables/ODM",file_name,".csv" ), row.names = F )
+                     rename(Term=ODM) %>% 
+                     select(-InDES, -ODMTable)) , file=paste0("Tables/ODM",file_name,".csv" ), row.names = F )
       }
-
- #####Create one file) 
-list_of_datasets <- list("Record_level" = RecordLevel, "location"= Location, "Event"= Event,
-                         "Measurment_or_Fact"= MeasurementOrFact, "Vocabulary"= vocabulary,  "Crosswalk"= crosswalk, "BLM"= BLM, "AREMP"= AREMP, "PIBO" = PIBO)
-list_of_datasets <- append(list_of_datasets, EPA)
-
-openxlsx::write.xlsx(list_of_datasets, file = "Tables/PropertyRegistry.xlsx") 
 
 
 metadata %>% 
   dplyr::select(CategoryID, TermID, ODM, ODMTable, Table,measurementType, InDES, measurementTerm,Description,Examples, DataType )%>% 
   filter(ODMTable== DES_tables[1], InDES=="x")
-
-
-#%>% 
- # select(-InDES)), file=paste0("Tables/ODM",file_name,".csv" ), row.names = F
 
 
 #create a vocabulary table 
@@ -58,6 +48,16 @@ crosswalk[str_detect(crosswalk$measurementTerm, c("sampingProtocol")),]
 
 names(crosswalk) <- str_remove_all(names(crosswalk), "CW")
 write.csv(crosswalk, file=paste0("Tables/Crosswalk.csv" ), row.names=F)
+
+
+#####Create one file
+list_of_datasets <- list("Datasets" = Datasets, "SamplingFeature"= SamplingFeature, "Action"= Action,
+                         "Results"= Results, "VariableCV"= vocabulary,  "Crosswalk"= crosswalk) 
+
+file.remove("Tables/ODM2_DarwinCore_StreamHabitat_ExchangeSpecifications.xlsx")
+
+openxlsx::write.xlsx(list_of_datasets, file = "Tables/ODM2_DarwinCore_StreamHabitat_ExchangeSpecifications.xlsx") 
+
 
 #Short crosswalk for the project team
 

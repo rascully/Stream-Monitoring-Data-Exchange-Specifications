@@ -180,14 +180,24 @@ pre code {
 <h1>Stream Monitoring Habitat Data Exchange Specifications</h1>
 <p>Data exchange specifications are a set of guidelines and rules for using and combining information. Rigorous data exchange specifications support reuse, promote interoperability, and reduce data integration costs (Morris and Frechette 2008, Hamm 2019).</p>
 </div>
+<div id="summary" class="section level1">
+<h1>Summary</h1>
+<p>We use <a href="https://github.com/ODM2/ODM2">observation data model 2 (ODM)</a> and <a href="https://www.gbif.org/sampling-event-data">Darwin Core</a> to define data exchange specifications and <a href>data model</a> for stream habitat monitoring data. We use controlled vocabularies from ODM2 and define a controlled vocabulary for stream habitat monitoring variables. Finally we cross walk four federally funded stream habitat monitoring programs as a use case for the exchange specifications to build a data set: <a href="https://github.com/rascully/Integrating-Stream-Monitoring-Data-From-Multiple-Programs" class="uri">https://github.com/rascully/Integrating-Stream-Monitoring-Data-From-Multiple-Programs</a></p>
+</div>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>Streams are critical to fish, aquatic community structure, and overall watershed health. State, Federal and Tribal entities collect in-stream habitat data to assess the resources’ status and trends unique to their management questions. Due to climate change, urbanization, and multi-use land management, there is a need to determine the resources’ quality and trends across jurisdictional boundaries by using information from multiple collection efforts (Katz et al. 2012). It is not straightforward to combine data from various monitoring programs due to differences in response and survey (spatial and temporal) designs. Additionally, data produced by these programs are not always findable, accessible, interoperable, and reusable (FAIR) (Wilkinson et al. 2016). There is no centralized repository, data model or data dictionary for this type of information. A standard theory in data science states researchers spend 80% of their time organizing, fixing mistakes, and cleaning data, leaving only 20% of their time to analyze data (Mons 2020). Well established rules for integrating and sharing stream habitat data from multiple sources will decrease the time spent finding and organizing data providing accurate and timely information for building indicators, completing analysis, and making decisions.<br />
+Data integration requires a set of business rules to flow data from sources to a target data set. Data needs to be accessed, extracted, moved, validated and cleansed, standardized, transformed, documented and published. (DAMA Dictionary, CITE OTHER DATA INTEGRATION EFFOTRS) Rigorous data exchange specifications support reuse, promote interoperability, and reduce integration data cost (Morris and Frechette 2008, Hamm 2019).</p>
+<p>The biggest challenges to data integration are heterogeneity issues (Beran &amp; Piasecki 2009). Stream habitat monitoring data is not immune to these challenges, the data has both semantic heterogeny, disagreement about the meaning of the same or related term (Sheth &amp; Larson 1990) and structural heterogeneity, information system storing their day in different formats and layouts (Ouskel and Sheth 1999). To overcome these issues we undertook a facilitated effort to agree on a controlled vocabulary, fields and definitions, and data model, format of the data to be integrated, from a set of pilot programs. We then mapped the data from the individual programs to the data model and controlled vocabulary and wrote code to build an integrated data set. The integrated data set is published on USGS ScienceBase, so SAY SOMETHING ABOUT API ACCESS. We modeled the data exchange specification for stream habitat data based on the observation data model (ODM), but added a table to capture data collection events. Building on existing standards and past research will allow this data to be integrated existing into other tools.</p>
+</div>
 <div id="methods" class="section level1">
 <h1>Methods</h1>
 <p>To integrate data, we need to establish business rules to flow data from the sources to a target data sets. Data must be accessed, extricated, moved, validated, cleaned, standardized, transformed, and loaded (DAMA Dictionary). At the start of this project there is no target data set or rules to integrate stream habitat data. Therefore, to build an integrated data set we define the structure and fields to include in the target data set and define business rules to flow data from sources.</p>
 <p>Before starting the integration work, we need to understand what data and metadata from the desperate data sets needs to be integrated. There are two approaches: 1. Look for a specific regulatory management question that needs to be answered in order to inform a decision and provide the data to answer those specific questions. (CITE EXAMPLE CAX) 2. Let the data guide the integration, identify a subset of like data that provide value and could be use together to answer a variety of management or research question</p>
 <p>For stream habitat monitoring data we took the second approach and used the data, metadata and program experts to guide the structure and fields of the target data set. Fields refer to the column headers in the data set.</p>
 <p>We invited four large scale, long term, well documented stream habitat monitoring programs to collaborate in defining a method for integrating data from there stream habitat monitoring programs that can be adapted to similar Federal, State and Tribal programs as needed.</p>
-<div id="we-coordinated-with" class="section level4">
-<h4>We coordinated with:</h4>
+<div id="coordinated-with" class="section level4">
+<h4>Coordinated with:</h4>
 <ul>
 <li><p>The Assessment, Inventory, and Monitoring (AIM) Strategy provides a framework for the Bureau of Land Management (BLM) to inventory and quantitatively assess the condition and trend of natural resources on the nation’s public lands. This program gathers information to determine ecosystem conditions and how they are changing over time. Such information is actively used by the BLM to guide and justify land uses, policy actions, and adaptive management decisions. (AIM Strategy website) LINK TO THE SCIENCEBASE ITEM</p></li>
 <li><p>The USFS Aquatic and Riparian Effectiveness Monitoring Program (AREMP) was developed to track changes that occurred as a result of active and passive management on the landscape. The Aquatic and Riparian Effectiveness Monitoring Program focuses on assessing the degree to which federal land management under the aquatic conservation strategy (ACS) of the Northwest Forest Plan (NWFP) has been effective in maintaining and improving watershed conditions. (USFS AREMP website) LINK TO THE SCIENCEBASE ITEM</p></li>
@@ -224,9 +234,14 @@ pre code {
 </div>
 <div id="details-of-the-data-model" class="section level1">
 <h1>Details of the Data Model</h1>
-<div id="odm-core.datasets-record-level-class" class="section level2">
-<h2>ODM Core.Datasets Record Level Class</h2>
+<div id="odm-core.datasets-level-class" class="section level2">
+<h2>ODM Core.Datasets Level Class</h2>
 <p>The Record Level Class documents the core elements of a data set, including information about the origin of the data set, who collected the data, and how to cite the data set. See details in the <a href="Tables/ODMDataset_table.csv">Dataset table</a>. A data set is a collection of locations, at each location a collection events, at each event a collection of metrics; for example, a program releases a data set every five years containing all the data collection locations, events and metrics occurring in the previous five years. We recommend storing metadata about the data sets in a trusted online data repository ensuring we have sufficient information about data sets’ origins. If a program does not have the resources to build a repository, we recommend using USGS ScienceBase, which is available to all. Find more information about ScienceBase here <a href="https://www.sciencebase.gov/about/" class="uri">https://www.sciencebase.gov/about/</a>.</p>
+<div id="details-of-the-odm2-implementation-of-the-dataset-table-httpsgithub.comodm2odm2blobmasterdocodm2docscore_datasets.md" class="section level3">
+<h3>Details of the ODM2 implementation of the Dataset table : <a href="https://github.com/ODM2/ODM2/blob/master/doc/ODM2Docs/core_datasets.md" class="uri">https://github.com/ODM2/ODM2/blob/master/doc/ODM2Docs/core_datasets.md</a></h3>
+</div>
+<div id="the-stream-habitat-monitoring-implentation" class="section level3">
+<h3>The Stream Habitat Monitoring Implentation</h3>
 <div id="to-the-datasets-table-from-odme2-metadata-table-we-added" class="section level4">
 <h4>To the Datasets table from ODME2 Metadata table we added:</h4>
 <ul>
@@ -319,6 +334,11 @@ pre code {
 </tbody>
 </table>
 </div>
+</div>
+</div>
+<div id="provance-extention" class="section level2">
+<h2>Provance extention</h2>
+<p><a href="https://github.com/ODM2/ODM2/blob/master/doc/ODM2Docs/ext_provenance.md" class="uri">https://github.com/ODM2/ODM2/blob/master/doc/ODM2Docs/ext_provenance.md</a></p>
 </div>
 <div id="sampling-feature" class="section level2">
 <h2>Sampling Feature</h2>
@@ -607,6 +627,10 @@ pre code {
 <li>VariableID
 <ul>
 <li>see below</li>
+</ul></li>
+<li>ResultsType:
+<ul>
+<li>SKOS API:</li>
 </ul></li>
 <li>UnitID:
 <ul>

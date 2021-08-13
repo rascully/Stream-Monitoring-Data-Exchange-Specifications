@@ -1,12 +1,8 @@
-"ODMTable","Term","ODM","Description","Examples","DataType"
-"Results","ValueID","ValueID","Unique integer identifier for each
-data value.","5","Interger"
-"Results","measurementType",NA,"The nature of the measurement, fact, characteristic, or assertion. Recommended best practice is to use a controlled vocabulary.","tail length, ""temperature"", ""trap line length"", ""survey area"", ""trap type""","String"
-"Results","measurementID","VariableID","An identifier for the MeasurementOrFact (information pertaining to measurements, facts, characteristics, or assertions). May be a global unique identifier or an identifier specific to the data set.",NA,"Numeric"
-"Results","measurementTerm",NA,"A field name for the MeasurementOrFact. Term from the stream habitat controlled vocabulary.","Grad, WetWidth, ReachLen","String"
-"Results","measurementValue","DataValue","The value of the measurement, fact, characteristic, or assertion.","45, ""20"", ""1"", ""14.5"", ""UV-light""",NA
-"Results","measurementUnit",NA,"The units associated with the measurementValue. Recommended best practice is to use the International System of Units (SI).","mm, ""C"", ""km"", ""ha""","String"
-"Results","measurementDeterminedDate","validDateTime","The date on which the MeasurementOrFact was made. Recommended best practice is to use an encoding scheme, such as ISO 8601:2004(E).","1963-03-08T14:07-0600, ""2009-02-20T08:40Z"", ""1809-02-12"", ""1906-06"", ""1971"", ""2007-03-01T13:00:00Z/2008-05-11T15:30:00Z"", ""2007-11-13/15""","String"
-"Results","measurementDeterminedBy","SourceID","A list (concatenated and separated) of names of people, groups, or organizations who determined the value of the MeasurementOrFact.","AREMP, NRSA, PIBO","String"
-"Results","measurementMethod","MethodID","A description of or reference to (publication, URI) the method or protocol used to determine the measurement, fact, characteristic, or assertion.","URL of the MonitoringResources.rog field and if avilable calcuation method","String"
-"Results","measurementRemarks",NA,"Comments or notes accompanying the MeasurementOrFact.","tip of tail missing","String"
+"TermID","Term","Description","Examples","DataType","PrimaryKey","ForeginKey","ControlledVocabulary","ControlledVocabularyAPI","MinimamPossibleValue","MaximamPossibleValue"
+1,"ResultID","Unique integer identifier for each
+data value.","5","Interger","X",NA,NA,NA,"NA","NA"
+2,"ResultTypeCV","The nature of the measurement, fact, characteristic, or assertion. Recommended best practice is to use a controlled vocabulary.","tail length, ""temperature"", ""trap line length"", ""survey area"", ""trap type""","String",NA,"X","http://vocabulary.odm2.org/resulttype/","http://vocabulary.odm2.org/api/v1/resulttype/?format=skos","NA","NA"
+3,"VariableID","An identifier for the MeasurementOrFact (information pertaining to measurements, facts, characteristics, or assertions). May be a global unique identifier or an identifier specific to the data set.",NA,"Numeric",NA,"X","https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Tables/ControlledVocabulary.csv",NA,"NA","NA"
+4,"MethodID","A description of or reference to (publication, URI) the method or protocol used to determine the measurement, fact, characteristic, or assertion.","URL of the MonitoringResources.rog field and if avilable calcuation method","String",NA,"X",NA,"https://www.monitoringresources.org/api/v1/methods/","NA","NA"
+5,"measurementRemarks","Comments or notes accompanying the MeasurementOrFact.","tip of tail missing","String",NA,NA,NA,NA,"NA","NA"
+6,"DataValue","The value of the measurement, fact, characteristic, or assertion.","45, ""20"", ""1"", ""14.5"", ""UV-light""",NA,NA,NA,NA,NA,"NA","NA"

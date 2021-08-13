@@ -10,6 +10,7 @@
 1,"RecordLevel",NA,NA,NA,"ZipCode",NA,"US Zip Code or country postal code.",NA,NA,NA,NA,NA,NA,NA,NA
 1,"RecordLevel",NA,NA,NA,NA,"basis of record","The specific nature of the data record.","Recommended best practice is to use the standard label of one of the Darwin Core classes.","String",NA,NA,NA,NA,NA,NA
 1,"RecordLevel",NA,NA,NA,NA,"Information Withheld","Additional information that exists, but that has not been shared in the given record.","location information not given for endangered species, collector identities withheld | ask about tissue samples","String",NA,NA,NA,NA,NA,NA
+2,"Location",NA,10,NA,"verbatimSpatialReferenceID","Spatial Reference System (SRS)","The ellipsoid, geodetic datum, or spatial reference system (SRS) upon which coordinates given in verbatimLatitude and verbatimLongitude, or verbatimCoordinates are based.",NA,"String",NA,NA,NA,NA,NA,NA
 2,"Location",NA,11,NA,NA,"FS Region or BLM State Office",NA,NA,"String",NA,"STATES","State",NA,NA,"Region"
 2,"Location",NA,12,NA,NA,"FS Forest or BLM District",NA,NA,"String",NA,NA,"District",NA,NA,"Forest"
 2,"Location",NA,13,NA,NA,"Forest Service District or BLM Field Office/Resource Area",NA,NA,"String",NA,NA,"FieldOffice",NA,NA,"District"

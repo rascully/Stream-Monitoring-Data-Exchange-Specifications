@@ -20,12 +20,14 @@ metadata <- readxl::read_excel("Data/Metadata.xlsx", sheet = 3)
 Data exchange specifications are a set of guidelines and rules for using and combining information. Rigorous data exchange specifications support reuse, promote interoperability, and reduce data integration costs (Morris and Frechette 2008, Hamm 2019). 
 
 # Summary 
-We use [observation data model 2 (ODM)](https://github.com/ODM2/ODM2) and [Darwin Core](https://www.gbif.org/sampling-event-data) to define data exchange specifications and data model (Figure 1) for stream habitat monitoring data. We use controlled vocabularies from ODM2 and define a controlled vocabulary for stream habitat monitoring variables. As a use case we cross walk four federally funded stream habitat monitoring programs to the exchange specifications and wrote R code to to build a data set, this is documented in a GIT Repository here: https://github.com/rascully/Integrating-Stream-Monitoring-Data-From-Multiple-Programs=
+We use [observation data model 2 (ODM)](https://github.com/ODM2/ODM2) and [Darwin Core](https://www.gbif.org/sampling-event-data) to define data exchange specifications and data model (Figure 1) for stream habitat monitoring data. We appaly controlled vocabularies from ODM2 and define a controlled vocabulary for stream habitat monitoring variables. As a use case we cross walk four federally funded stream habitat monitoring programs to the exchange specifications and wrote R code to to build a data set, this is documented in a GIT Repository here: https://github.com/rascully/Integrating-Stream-Monitoring-Data-From-Multiple-Programs=
  
  ![Figure 1](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Figures/HabiatDataSharingSchema.png)
   *Figure 1* 
+  
 # Introduction 
-Streams are critical to fish, aquatic community structure, and overall watershed health. State, Federal and Tribal entities collect in-stream habitat data to assess the resources' status and trends unique to their management questions.  Due to climate change, urbanization, and multi-use land management, there is a need to determine the resources' quality and trends across jurisdictional boundaries by using information from multiple collection efforts (Katz et al. 2012). It is not straightforward to combine data from various monitoring programs due to differences in response and survey (spatial and temporal) designs. Additionally, data produced by these programs are not always findable, accessible, interoperable, and reusable (FAIR) (Wilkinson et al. 2016).  There is no centralized repository, data model or data dictionary for this type of information.  A standard theory in data science states researchers spend 80% of their time organizing, fixing mistakes, and cleaning data, leaving only 20% of their time to analyze data (Mons 2020).   Well established rules for integrating and sharing stream habitat data from multiple sources will decrease the time spent finding and organizing data providing accurate and timely information for building indicators, completing analysis, and making decisions.   
+Streams are critical to fish, aquatic community structure, and overall watershed health. State, Federal and Tribal entities collect in-stream habitat data to assess the resources' status and trends unique to their management questions.  Due to climate change, urbanization, and multi-use land management, there is a need to determine the resources' quality and trends across jurisdictional boundaries by using information from multiple collection efforts (Katz et al. 2012). It is not straightforward to combine data from various monitoring programs due to differences in response and survey (spatial and temporal) designs. Additionally, data produced by these programs are not always findable, accessible, interoperable, and reusable (FAIR) (Wilkinson et al. 2016).  There is no centralized repository, data model or data dictionary for this type of information.  A standard theory in data science states researchers spend 80% of their time organizing, fixing mistakes, and cleaning data, leaving only 20% of their time to analyze data (Mons 2020).   Well established rules for integrating and sharing stream habitat data from multiple sources will decrease the time spent finding and organizing data providing accurate and timely information for building indicators, completing analysis, and making decisions. 
+
 Data integration requires a set of business rules to flow data from sources to a target data set. Data needs to be accessed, extracted, moved, validated and cleansed, standardized, transformed, documented and published.  (DAMA Dictionary, CITE OTHER DATA INTEGRATION EFFOTRS)  Rigorous data exchange specifications support reuse, promote interoperability, and reduce integration data cost (Morris and Frechette 2008, Hamm 2019). 
 
 The biggest challenges to data integration are heterogeneity issues (Beran & Piasecki 2009). Stream habitat monitoring data is not immune to these challenges, the data has both semantic heterogeny, disagreement about the meaning of the same or related term (Sheth & Larson 1990) and structural heterogeneity, information system storing their day in different formats and layouts (Ouskel and Sheth 1999). To overcome these issues we undertook a facilitated effort to agree on a controlled vocabulary, fields and definitions, and data model, format of the data to be integrated, from a set of pilot programs.  We then mapped the data from the individual programs to the data model and controlled vocabulary and wrote code to build an integrated data set. The integrated data set is published on USGS ScienceBase, so SAY SOMETHING ABOUT API ACCESS.  We modeled the data exchange specification for stream habitat data based on the observation data model (ODM), but added a table to capture data collection events. Building on existing standards and past research will allow this data to be integrated existing into other tools. 
@@ -77,9 +79,12 @@ To streamline the data storing and data retaliate we selected a relational data 
 ## ODM Core.Datasets Level Class 
 The Record Level Class documents the core elements of a data set, including information about the origin of the data set, who collected the data, and how to cite the data set. See details in the [Dataset table](Tables/ODMDataset_table.csv). A data set is a collection of locations, at each location a collection events, at each event a collection of metrics; for example, a program releases a data set every five years containing all the data collection locations, events and metrics occurring in the previous five years. We recommend storing metadata about the data sets in a trusted online data repository ensuring we have sufficient information about data sets’ origins. If a program does not have the resources to build a repository, we recommend using USGS ScienceBase, which is available to all. Find more information about ScienceBase here https://www.sciencebase.gov/about/. 
 
-### Details of the ODM2  implementation of the Dataset table : https://github.com/ODM2/ODM2/blob/master/doc/ODM2Docs/core_datasets.md 
+Details of the ODM2 implementation of the Dataset table : https://github.com/ODM2/ODM2/blob/master/doc/ODM2Docs/core_datasets.md  
 
 ### The Stream Habitat Monitoring Implentation 
+
+#### [Dataset table](Tables/ODMDataset_table.csv)
+
 #### To the Datasets table from ODME2 Metadata table we added:
   * MetadataLink 
 
@@ -109,6 +114,10 @@ https://github.com/ODM2/ODM2/blob/master/doc/ODM2Docs/ext_provenance.md
 ## Sampling Feature 
 Understanding where data are collected is critical to interpreting biological monitoring data.  The Sampling Feature class describes where information are collected, see the list of terms in the [Sampling Feature table](Tables/ODMSamplingFeature_table.csv). In this data type often this is refered to as the sampling location, but to be compadable with the ODM2 we now refer to this as the Sampling Feature. Each data set contains mutiple sample features (locations). The actionID is the key to link locations to events. To view and analysis data from various sources, latitudes and longitude information must be consistent among data sets; therefore, for this data all latitude and longitudes are converted to WGS1984.
 
+### The Stream Habitat Monitoring Implentation 
+
+#### [Sampling Feature table](Tables/ODMSamplingFeature_table.csv)
+
 #### To the Sample Feature Table from ODME2 SampleFeature.Site we added:  
   * Latitude 
   * Longitude 
@@ -120,7 +129,6 @@ For the integrated data sets all locations Latitude, Longitude are transformed i
   * VerbatimLatitude 
   * VerbatimLongitude 
   * VerbatimSpatialReferenceID
-
 
 #### The primary key is: 
   * SamplingFeatureID 
@@ -136,10 +144,6 @@ For the integrated data sets all locations Latitude, Longitude are transformed i
       * http://vocabulary.odm2.org/samplingfeaturegeotype/
       * SKOS API http://vocabulary.odm2.org/api/v1/samplingfeaturegeotype/?format=skos
   * SpatialReferenceID 
-  
-
-
-
 
 ```{r echo=FALSE}
 
@@ -147,10 +151,12 @@ For the integrated data sets all locations Latitude, Longitude are transformed i
 sampling_feature <- read.csv("Tables/ODMSamplingFeature_table.csv")
 kable(sampling_feature)
 ```
-## Core Action 
-The Action describes an action that occurs at a specific time frame see the [Core Action table](Tables/ODMAction_table.csv) for the terms.  In this data type often this is refered to as the sampling event, but to make our data comparable with the ODM2 we adopoted the term action.  To assess the status and trend of a resource as a response to management actions, stream habitat monitoring programs often implement a rotating panel design, meaning that the project returns to a single location multiple times during the study duration.  Therefore, a data set will contain numerous locations, and each location can include numerous events.
+## Action 
+The Action describes an action that occurs at a specific time frame see the [Action table](Tables/ODMAction_table.csv) for the terms.  In this data type often this is refered to as the sampling event, but to make our data comparable with the ODM2 we adopoted the term action.  To assess the status and trend of a resource as a response to management actions, stream habitat monitoring programs often implement a rotating panel design, meaning that the project returns to a single location multiple times during the study duration.  Therefore, a data set will contain numerous locations, and each location can include numerous events.
 
-### This implementation 
+### The Stream Habitat Monitoring Implentation 
+
+#### [Action table](Tables/ODMAction_table.csv)
 
 #### To the Core Action table from ODME2 Core Feature Action we added:
   * SampleFeatureID 
@@ -172,11 +178,13 @@ The Action describes an action that occurs at a specific time frame see the [Cor
 actions <- read.csv("Tables/ODMAction_table.csv")
 kable(actions)
 ```
-## Core Results 
+## Results 
 A metric is a value resulting from the reduction or processing of measurements taken at an event based on the procedures defined by the response design. Programs derive a variety of metrics from a single measurement. For stream habitat data at each event, programs take multiple types of measurements and produce various metrics from one measurement; for example, the measurement for pools produces both percent pools and pool frequency. Events are associated with measurements by the eventID, see the [Results Table](Tables/ODMResults_table.csv) for the full definitions of terms. 
 
 
-### This implementation 
+### The Stream Habitat Monitoring Implentation 
+
+#### [Results Table](Tables/ODMResults_table.csv)
 
 #### To the Core Results from Results. MeasurementsResultsValues to Core Resoutls added:
   * MethodID 

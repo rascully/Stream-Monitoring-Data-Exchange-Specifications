@@ -55,49 +55,8 @@ data value.","5","Interger",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "ControlledVocabulary","Substrate",23,"PctBdrk","Percent Bed Surface Bedrock","Percent of the stream bed area that is composed of particles with a b-axis > 4098mm (bedrock)","min: 0, max: 100","Numeric","%","bedrock_pcnt","www.monitoringresources.org/Document/Method/Details/6797",NA,NA,NA,"www.monitoringresources.org/Document/Method/Details/6810",NA,"PCT_BDRK",NA,NA,NA,NA,NA
 "ControlledVocabulary","Substrate",24,"PoolTailFines2","Percent pool tail fines < 2mm","Average percent fine sediment (< 2mm) on the pool tail","min: 0, max: 100","Numeric","%","pool_fines","www.monitoringresources.org/Document/Method/Details/6798",NA,"PL_TL_FN",NA,"www.monitoringresources.org/Document/Method/Details/6862",NA,NA,NA,NA,"Fines2","www.monitoringresources.org/Document/Method/Details/6862",NA
 "ControlledVocabulary","Substrate",25,"PoolTailFines6","Percent pool tail fines < 6mm","Average percent fine sediment (< 6mm) on the pool tail","min: 0, max: 100","Numeric","%",NA,NA,NA,"PL_TL_FN6",NA,"www.monitoringresources.org/Document/Method/Details/6862",NA,NA,NA,NA,"Fines6","www.monitoringresources.org/Document/Method/Details/6862",NA
-"ControlledVocabulary","Temperature",26,"Temp","Mean annual tempeature","Average of mean daily temperatures during a year",NA,"Numeric","Degrees Celsius",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"ControlledVocabulary","Temperature",27,"WinterMean","Mean winter temperature (Dec, Jan, Feb)","Average of mean daily temperatures during December, January, and February",NA,"Numeric","Degrees Celsius",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"ControlledVocabulary","Temperature",28,"SpringMean","Mean spring temperature","Average of mean daily temperatures during March, April, and May",NA,"Numeric","Degrees Celsius",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"ControlledVocabulary","Temperature",29,"SummerMean","Mean summer temperatures","Average of mean daily temperatures during June, July, and August",NA,"Numeric","Degrees Celsius",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"ControlledVocabulary","Temperature",30,"AugustMean","Mean august temperature","Average of mean daily temperatures during August",NA,"Numeric","Degrees Celsius",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"ControlledVocabulary","Temperature",31,"MeanFall","Mean fall temperature","Average of mean daily temperatures during September, October, and November",NA,"Numeric","Degrees Celsius",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"ControlledVocabulary","Temperature",32,"LowMean","Minimum daily temperature","Lowest mean daily temperature during a year",NA,"Numeric","Degrees Celsius",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"ControlledVocabulary","Temperature",33,"LowSevenDayAverage","Minimum weekly average temperature","Lowest seven-day running average of mean daily temperature during a year",NA,"Numeric","Degrees Celsius",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "ControlledVocabulary","Channel dimensions",8,"MeanThalwegDepth","Average Thalweg Depth","Mean thalweg depth. Metric of how deep water was at the site.",NA,"Numeric","m",NA,NA,NA,"ThalwegDepthMean",NA,NA,NA,"XDEPTH_CM",NA,NA,NA,NA,NA
-"ControlledVocabulary","Temperature",34,"HighMean","Maximum daily temperature","Highest mean daily temperature during a year",NA,"Numeric","Degrees Celsius",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "ControlledVocabulary","Channel dimensions",9,"countTransects","Count of Transects","Number of transects in the reach.",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"www.monitoringresources.org/Document/Method/Details/65",NA
-"ControlledVocabulary","Temperature",35,"HighSevenDayAverage","Maximum weekly average temperature","Highest seven-day running average of mean daily temperature during a year",NA,"Numeric","Degrees Celsius",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"ControlledVocabulary","Temperature",36,"DegreeDays","annual degree day s","Cumulative total of degree days during a year (1°C for 24 h = 1 degree day)",NA,"Numeric","Count of days",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"ControlledVocabulary","Temperature",37,"SDMeanDaily","Annual Standard Deivation","Standard deviation of mean daily temperature during a year",NA,"Numeric",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"ControlledVocabulary","Temperature",38,"SDMeanWinterDaily","Winter Standard Deviation","Standard deviation of mean daily temperature during winter months",NA,"Numeric",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"ControlledVocabulary","Temperature",39,"SDMeanSpring","Spring Standard Deviation","Standard deviation of mean daily temperature during spring months",NA,"Numeric",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"ControlledVocabulary","Temperature",40,"SDMeanSummer","Summer SD","Standard deviation of mean daily temperature during summer months",NA,"Numeric",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"ControlledVocabulary","Temperature",41,"SDMeanAugust","August SD","Standard deviation of mean daily temperature during the month of August",NA,"Numeric",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"ControlledVocabulary","Temperature",42,"SDMeanFall","Fall SD","Standard deviation of mean daily temperature during fall months",NA,"Numeric",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"ControlledVocabulary","Temperature",43,"DiffMinMax","Range in extream daily termperature s","Difference between minimum and maximum mean daily temperatures during a
-year (M9 minus M7)",NA,"Numeric",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"ControlledVocabulary","Temperature",44,"DifMinMaxWeekly","Range in streme weekly temperatures","Difference between minimum and maximum weekly average temperatures
-during a year (M10 minus M8)",NA,"Numeric",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"ControlledVocabulary","Temperature",45,"SDAnnual","Interannual standard deviation of mean
-annual","Interannual standard deviation in mean annual temperature",NA,"Numeric",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"ControlledVocabulary","Temperature",46,"SDMinWeekly","Interannual standard deviation of
-minimum weekly","Interannual standard deviation in minimum weekly average temperature",NA,"Numeric",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"ControlledVocabulary","Temperature",47,"SDMaxWeekly","Interannual standard deviation of
-maximum weekly","Interannual standard deviation in maximum weekly average temperature",NA,"Numeric",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"ControlledVocabulary","Temperature",48,"SD5PercentDegreeDay","Interannual standard deviation of 5%
-degree days","Interannual standard deviation in date of 5% of degree days",NA,"Numeric",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"ControlledVocabulary","Temperature",49,"SD50PercentDegreeDay","Interannual standard deviation of 50%
-degree days","Interannual standard deviation in date of 50% of degree days",NA,"Numeric",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"ControlledVocabulary","Temperature",50,"NumberMeanGT20","Frequency of hot days","Number of days with mean daily temperatures >20°C",NA,"Numeric",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"ControlledVocabulary","Temperature",51,"NumberMeanLT2","Frequency of cold days","Number of days with mean daily temperatures <2°C",NA,"Numeric",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"ControlledVocabulary","Temperature",52,"NumberDaysDec","Date of 5% degree days","Number of days from December 1 until 5% of degree days are accumulated",NA,"Numeric",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"ControlledVocabulary","Temperature",53,"NumberDaysDec25","Date of 25% degree days","Number of days from December 1 until 25% of degree days are accumulated",NA,"Numeric",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"ControlledVocabulary","Temperature",54,"NumberDaysDec50","Date of 50% degrees days","Number of days from December 1 until 50% of degree days are accumulated",NA,"Numeric",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"ControlledVocabulary","Temperature",55,"NumberDaysDec95","Date of 95% degree days","Number of days from December 1 until 95% of degree days are accumulated",NA,"Numeric",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"ControlledVocabulary","Temperature",56,"NumberDaysBetween95and5","Growing Season length","Number of days between the 95% and 5% of degree days (T5 minus T1)",NA,"Numeric",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"ControlledVocabulary","Temperature",57,"LongestDaysGT20","Duration of hot days","Longest number of consecutive days with mean daily temperatures >20°C",NA,"Numeric",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"ControlledVocabulary","Temperature",58,"LongestDaysLT2","Duration of cold days","Longest number of consecutive days with mean daily temperatures <2°C",NA,"Numeric",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"ControlledVocabulary","Temperature",59,"NumberDaysDec75","Date of 75% degree days","Number of days from December 1 until 75% of degree days are accumulated",NA,"Numeric",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "ControlledVocabulary","Water chemistry",60,"Conductivity","Conductivity","Measure of the concentration of ionized materials in water, or the ability of water to conduct electrical current. Used as a measure of mineral / ionic concentration.",NA,"Numeric","ppm",NA,"www.monitoringresources.org/Document/Method/Details/5537",NA,NA,NA,NA,NA,"TSS",NA,NA,"Cond","www.monitoringresources.org/Document/Method/Details/61",NA
 "ControlledVocabulary","Water chemistry",61,"TotalNitrogen","Total Nitrogen","Measured total nitrogen value",NA,"Numeric","ug/L",NA,NA,NA,"TotalNitrogen",NA,NA,NA,"NTL",NA,NA,NA,NA,NA
 "ControlledVocabulary","Water chemistry",62,"TotalPhosphorous","Total Phosphorous","Measured total phosphorous value",NA,"Numeric","ug/L",NA,NA,NA,"TotalPhosphorous",NA,NA,NA,"PTL",NA,NA,NA,NA,NA

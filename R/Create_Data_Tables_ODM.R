@@ -10,7 +10,10 @@ metadata <- readxl::read_excel("Data/Metadata.xlsx", sheet = 3)
 #Create the data exchange specifications tables 
 DES_tables <- c("Datasets", "SamplingFeature","Action", "Results")
 
+DES_tables <- c("RecordLevel", "Location","Event", "MeasurementOrFact")
+
 for (i in 1:length(DES_tables)){ 
+  
   file_name = paste0(DES_tables[i], "_table")
   write.csv(assign(DES_tables[i], metadata %>% 
                      dplyr::select(TermID, ODMTable, InDES, Term , Description,Examples, DataType, 

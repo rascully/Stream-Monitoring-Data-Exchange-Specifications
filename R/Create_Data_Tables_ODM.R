@@ -10,7 +10,6 @@ metadata <- readxl::read_excel("Data/Metadata.xlsx", sheet = 3)
 #Create the data exchange specifications tables 
 DES_tables <- c("Datasets", "SamplingFeature","Action", "Results")
 
-DES_tables <- c("RecordLevel", "Location","Event", "MeasurementOrFact")
 
 for (i in 1:length(DES_tables)){ 
   
@@ -115,11 +114,13 @@ one= as.df(EPA[1])
 
 
 list_of_datasets <- list("Record_level" = RecordLevel, "location"= Location, "Event"= Event,
-                         "Measurment_or_Fact"= MeasurementOrFact, "Vocabulary"= vocabulary,  "Crosswalk"= crosswalk, "BLM"= BLM, "AREMP"= AREMP, "PIBO" = PIBO)
+                         "Measurment_or_Fact"= MeasurementOrFact, "Vocabulary"= vocabulary,  "Crosswalk"= crosswalk, 
+                         "BLM"= BLM, "AREMP"= AREMP, "PIBO" = PIBO)
 list_of_datasets <- append(list_of_datasets, EPA)
 
+file.remove("Tables/PropertyRegistry.xlsx")
 openxlsx::write.xlsx(list_of_datasets, file = "Tables/PropertyRegistry.xlsx") 
-##### Data exhange specifications 
+##### Data exchange specifications 
 
 list_of_datasets <- list("Record_level" = RecordLevel, "location"= Location, "Event"= Event,
                          "Measurment_or_Fact"= MeasurementOrFact, "Vocabulary"= vocabulary) 

@@ -40,12 +40,12 @@
 2,"Identification",NA,NA,NA,NA,"Visit Number",NA,NA,NA,NA,NA,"VisitNumber",NA,NA,NA
 2,"Identification",NA,NA,NA,NA,"BLM Project",NA,NA,NA,NA,NA,"Project",NA,NA,NA
 2,"Identification",NA,NA,NA,NA,"BLM Stratum",NA,NA,NA,NA,NA,"Stratum",NA,NA,NA
-3,"Event",NA,4,NA,NA,"Sample Date","The verbatim original representation of the date and time information for an Event.","spring 1910, ""Marzo 2002"", ""1999-03-XX"", ""17IV1934""","Date",NA,"survey_date","DT","FieldEvalDate","DATE_COL",NA
-3,"Event",NA,6,NA,NA,"Time","The time or interval during which an Event occurred. Recommended best practice is to use an encoding scheme, such as ISO 8601:2004(E).","14:07-0600 is 2:07pm in the time zone six hours earlier than UTC, ""08:40:21Z"" is 8:40:21am UTC, ""13:00:00Z/15:30:00Z"" is the interval between 1pm UTC and 3:30pm UTC.","Date",NA,NA,NA,NA,NA,NA
-3,"Event",NA,7,NA,NA,NA,"The integer day of the month on which the Event occurred.","9, ""28""","Date",NA,NA,NA,NA,NA,NA
-3,"Event",NA,8,NA,NA,"Standardized Date","The ordinal month in which the Event occurred.","1 (=January), ""10"" (=October)","Date",NA,NA,NA,NA,NA,NA
-3,"Event",NA,10,NA,NA,NA,"An identifier given to the event in the field. Often serves as a link between field notes and the Event.","RV Sol 87-03-08","String",NA,NA,NA,NA,NA,NA
-3,"Event",NA,12,NA,NA,NA,"Comments or notes about the Event.","after the recent rains the river is nearly at flood stage","String",NA,NA,NA,NA,NA,NA
+3,"Event",NA,NA,NA,NA,"Sample Date","The verbatim original representation of the date and time information for an Event.","spring 1910, ""Marzo 2002"", ""1999-03-XX"", ""17IV1934""","Date",NA,"survey_date","DT","FieldEvalDate","DATE_COL",NA
+3,"Event",NA,NA,NA,NA,"Time","The time or interval during which an Event occurred. Recommended best practice is to use an encoding scheme, such as ISO 8601:2004(E).","14:07-0600 is 2:07pm in the time zone six hours earlier than UTC, ""08:40:21Z"" is 8:40:21am UTC, ""13:00:00Z/15:30:00Z"" is the interval between 1pm UTC and 3:30pm UTC.","Date",NA,NA,NA,NA,NA,NA
+3,"Event",NA,NA,NA,NA,NA,"The integer day of the month on which the Event occurred.","9, ""28""","Date",NA,NA,NA,NA,NA,NA
+3,"Event",NA,NA,NA,NA,"Standardized Date","The ordinal month in which the Event occurred.","1 (=January), ""10"" (=October)","Date",NA,NA,NA,NA,NA,NA
+3,"Event",NA,NA,NA,NA,NA,"An identifier given to the event in the field. Often serves as a link between field notes and the Event.","RV Sol 87-03-08","String",NA,NA,NA,NA,NA,NA
+3,"Event",NA,NA,NA,NA,NA,"Comments or notes about the Event.","after the recent rains the river is nearly at flood stage","String",NA,NA,NA,NA,NA,NA
 3,"Event",NA,NA,NA,NA,"Field Status Notes","One of a) an indicator of the existence of, b) a reference to (publication, URI), or c) the text of notes taken in the field about the Event.","notes available in Grinnell-Miller Library","String",NA,NA,NA,NA,NA,NA
 3,"Event",NA,NA,NA,"ResultsID",NA,"Unique (GUI) identifer for each result generatd for each data value when the datasets are merged.",NA,NA,NA,NA,NA,NA,NA,NA
 4,"MeasurementOrFact",NA,5,NA,NA,NA,"The description of the potential error associated with the measurementValue.","0.01, ""normal distribution with variation of 2 m""","String",NA,NA,NA,NA,NA,NA

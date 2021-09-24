@@ -18,7 +18,7 @@ metadata <- readxl::read_excel("Data/Metadata.xlsx", sheet = 3)
 Data exchange specifications are a set of guidelines and rules for using and combining information. Rigorous data exchange specifications support reuse, promote interoperability, and reduce data integration costs (Morris and Frechette 2008, Hamm 2019). 
 
 # Summary 
-We use [observation data model 2 (ODM)](https://github.com/ODM2/ODM2) and [Darwin Core](https://www.gbif.org/sampling-event-data) to define data exchange specifications and data model (Figure 1) for stream habitat monitoring data. We apply controlled vocabularies from ODM2 and define a controlled vocabulary for stream habitat monitoring variables. As a use case we cross walk four federally funded stream habitat monitoring programs to the exchange specifications and wrote R code to to build a data set, this is documented in a GIT Repository here: https://github.com/rascully/Integrating-Stream-Monitoring-Data-From-Multiple-Programs=
+We use [observation data model 2 (ODM)](https://github.com/ODM2/ODM2) and [Darwin Core](https://www.gbif.org/sampling-event-data) to define data exchange specifications and data model (Figure 1) for stream habitat monitoring data. We apply controlled vocabularies from ODM2 and define a controlled vocabulary for stream habitat monitoring variables. As a use case we cross walk four federally funded stream habitat monitoring programs to the exchange specifications and wrote R code to to build a data set, the use case is described in detail in the here: https://github.com/rascully/Integrating-Stream-Monitoring-Data-From-Multiple-Programs=
  
  ![Figure 1](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Figures/HabiatDataSharingSchema.png)
   *Figure 1* 
@@ -57,17 +57,23 @@ These four monitoring programs have structured implementation, core indicators c
 
 
 # Data Model  
-The general structure for this type of monitoring is a dataset contains multiple locations, some locations are sampled multiple times, those sampling efforts we refer to as events, at each event, programs collect multiple measurements, producing numerous metrics (Figure 1)[]. This type of information lends itself to a relational database model so information is not repeated, this will optimize data retrieval for integrated analysis (CITE). Therefore a location will be stored once and linked to multiple events.  
+The general structure for this type of monitoring is a data set contains multiple locations. Programs sample a subset of sites numerous times; those sampling efforts we refer to as events, at each event, programs collect multiple measurements, producing numerous metrics (Figure 1). This type of information lends itself to a relational database model, so instead of repeating data, store data once in individual tables, linked together using primary keys. This approach optimizes data retrieval for analysis (CITE). So, for example, with stream monitoring habitat data, a location will be stored once and related to multiple events.  
 
-We did not want to build a new data model from scratch so in the future an integrated dataset can be link into exiting data models, repository and resources. We started with the Observation Data Model 2 (ODM2).  ODM2 takes features from the Open Geospatial Consortium (OGC) Observations & Measurements (O&M) standard (Cox, 2007a; Cox 2007b; Cox 2011a; Cox 2011b) and the Horsburgh et al, 2008 observation Data Model (ODM) desciring a data model for hydrologic data and the CUAHSI Hydrologic Information System. ODM2 is a generic model for observations and designed for interoperability among disciplines (http://www.odm2.org/). ODM2 has a “core” and multiple “extension” and established controlled vocabularies.  An observation is defined as an act associated with a descript time or instant, through which a number, term or other symbol is ascribed to an event (Horsburgh et al. 2008). Observations require contextual information, location where the observation was made, date and time, the type of variable and other metadata method used for observation. This OBM2 (https://github.com/ODM2) is highly flexible and provides a good starting point for integrating these data sets. Based on the needs for bringing data sets together and these examples we collapsed ODM2 tables, limited the fields to one important for stream habitat monitoring data and added a few fields from the Darwin Core principles as outlined by Wieczorek et al. in 2012. The Darwin Core standard is maintained at the GitHub repository https://github.com/tdwg/dwc. 
+We did not want to build a new data model (data standards) from square one. Instead, with input from the project team, we reused existing data models and made changes to accommodate stream habitat monitoring data.  We used the Observation Data Model 2 (ODM2) and Darwin Core.  ODM2 takes features from the Open Geospatial Consortium (OGC) Observations & Measurements (O&M) standard (Cox, 2007a; Cox 2007b; Cox 2011a; Cox 2011b) and the Horsburgh et al, 2008 observation Data Model (ODM) desiring a data model for hydrologic data and the CUAHSI Hydrologic Information System. ODM2 is a generic model for observations and designed for interoperability among disciplines (http://www.odm2.org/). ODM2 has a “core” and multiple “extensions” and established controlled vocabularies.  It defines observations are an act associated with a descriptor time or instant, through which a number, term, or other symbol are ascribed to an event (Horsburgh et al. 2008). In addition, observations require contextual information, the location of the observation, date and time, the type of variable, and other metadata methods used for observation. The ODM2 (https://github.com/ODM2) is highly flexible and provides a good starting point for integrating these data sets. Based on the example data sets and working group input, we collapsed ODM2 tables, limited the fields to one necessary for stream habitat monitoring data. We found a subset of field definitions from ODM2 did not support our data type, and we needed additional fields, so we supplemented ODM2 with the Darwin Core principles outlined by Wieczorek et al. in 2012. The Darwin Core standard is maintained by the Darwin Core maintenance group here: https://github.com/tdwg/dwc.  Data managed in the working group provided the feedback in a series of facilitated working groups to finalize the fields included.  To ensure that the final data set is comparable with Darwin Core and ODM2 we maintained a crosswalk between this implementation of the data models and the original ODM2 and Darwin Core.   
+
 
 #### Definitions: 
-  * Primary Key 
-  * Feature Key 
-  * Controlled Vocabulary 
+  * Controlled Vocabulary-  
+  * Primary Key- 
+  * Feature Key- 
+  * Controlled Vocabulary- 
+  * Verbatiam- a field name that begins with verbatim it indicate the field is directly from the original data sets, we include verbatim fields to provide provenance back to the original data. This is critical for fields such as locationID. locationID within each data set is unique, but as part of the pilot when we combined data there were duplicate locationIDs. Therefore we store the locaiton identifier from the original data set in the verbatimLocationID field and for duplicate IDs contoncintate 
 
 # Structure 
-To streamline the data storing and data retaliate we selected a relational data model based on ODM2, we simplified some relationships, removed fields that are not approperate for this datatype and added a few fields from the DarwinCore. See our version of the data schema here: ADD LINK 
+To streamline the data storing and data retaliate we apply a relational data model based on ODM2, we simplified some relationships, removed fields that are not approperate for this datatype and added a few fields from the DarwinCore[Figure 1]
+
+ ![Figure 1](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Figures/HabiatDataSharingSchema.png)
+  *Figure 1*
 
 #### The original data schemas are documented in the ODM2 Git Repository here: 
 * Core schema: http://odm2.github.io/ODM2/schemas/ODM2_Current/diagrams/ODM2Core.html
@@ -77,9 +83,14 @@ To streamline the data storing and data retaliate we selected a relational data 
 # Details of the Data Model 
 
 ## ODM Core.Datasets Level Class 
-The Record Level Class documents the core elements of a data set, including information about the origin of the data set, who collected the data, and how to cite the data set. See details in the [Dataset table](Tables/ODMDataset_table.csv). A data set is a collection of locations, at each location a collection events, at each event a collection of metrics; for example, a program releases a data set every five years containing all the data collection locations, events and metrics occurring in the previous five years. We recommend storing metadata about the data sets in a trusted online data repository ensuring we have sufficient information about data sets’ origins. If a program does not have the resources to build a repository, we recommend using USGS ScienceBase, which is available to all. Find more information about ScienceBase here https://www.sciencebase.gov/about/. 
 
-Details of the ODM2 implementation of the Dataset table : https://github.com/ODM2/ODM2/blob/master/doc/ODM2Docs/core_datasets.md  
+The Data Sets Class documents the core elements of a data set, including information about the origin of the data set, who collected the data, and how to cite the data set. See details of our implementation in the [Data set table](Tables/ODMDataset_table.csv). A data sets are a collection of locations. At each location, there can be a series of collection events or data collection actions. At each event, programs collect various metrics. 
+
+Access to robust metadata documentation on the provenance of the data sets we combined is critical for the trust of the end data users (CITE). We recommend storing metadata about the data set in an accessible, searchable repository. Include information such as where the data is stored, how often it is updated, and information about the ownership of the data, ensuring accessibility to information about the origins of data sets in the integrated data set. We use the USGS ScienceBase data repository to document metadata about the data set. ScienceBase is available to all. Find more information about ScienceBase go here https://www.sciencebase.gov/about/. 
+
+Details of the ODM2 implementation of the Dataset table: https://github.com/ODM2/ODM2/blob/master/doc/ODM2Docs/core_datasets.md 
+
+
 
 ### The Stream Habitat Monitoring Implentation 
 
@@ -109,7 +120,9 @@ kable(datasets, caption = "Datasets Table")
 ```
 
 ## Sampling Feature 
-Understanding where data are collected is critical to interpreting biological monitoring data.  The Sampling Feature class describes where information are collected, see the list of terms in the [Sampling Feature table](Tables/ODMSamplingFeature_table.csv). In this data type often this is refered to as the sampling location, but to be compadable with the ODM2 we now refer to this as the Sampling Feature. Each data set contains mutiple sample features (locations). The actionID is the key to link locations to events. To view and analysis data from various sources, latitudes and longitude information must be consistent among data sets; therefore, for this data all latitude and longitudes are converted to WGS1984.
+Understanding where data are collected is critical to interpreting stream habitat monitoring data. In the ODM2 the Sampling Feature class describes where information are collected. See the list of terms we use in this implementation in the [Sampling Feature table](Tables/ODMSamplingFeature_table.csv). For this type of monitoring data, the SamplingFeatureID is often referred to as locationID, to support our user community and minimize confusion, we substituted locationID for SampleFeatureID.  We tract the crosswalk from our implementation of the ODM2 to the original ODM2 so, in the future, we can easily integrate this data set into other data sets using the ODM2 standard. 
+
+Each data set contains multiple locations. The eventID is the key to link locations to events. To view and analysis data from various sources, latitudes and longitude information must be consistent across the combined data sets; therefore, for this data, all latitude and longitudes are converted to WGS1984.
 
 ### The Stream Habitat Monitoring Implentation 
 
@@ -120,18 +133,16 @@ Understanding where data are collected is critical to interpreting biological mo
   * Longitude 
   * SpatialReferenceID 
   
-For the integrated data sets all locations Latitude, Longitude are transformed into WGS1984 in Decimal Degrees but in the original data sets the locations are in a variety of spatial references based on each program's needs, therefor we added the verbatim fields to track the data before transformation. 
 
 #### From DarwinCore we added to the Sample Feature table:  
-  * VerbatimLatitude 
-  * VerbatimLongitude 
-  * VerbatimSpatialReferenceID
+  *locationID 
+  *verbatimLocationID 
 
 #### The primary key is: 
-  * SamplingFeatureID 
+  * locationID 
   
 #### Added a foreign key: 
-  * datasetID to link the Dataset table to the Sample Features table
+  * datasetID to link the Data Set table to the Sample Features table
   
 #### Controlled Vocabularies: 
   *  SamplingFeatureType
@@ -148,8 +159,8 @@ For the integrated data sets all locations Latitude, Longitude are transformed i
 sampling_feature <- read.csv("Tables/ODMSamplingFeature_table.csv")
 kable(sampling_feature)
 ```
-## Action 
-The Action describes an action that occurs at a specific time frame see the [Action table](Tables/ODMAction_table.csv) for the terms.  In this data type often this is refered to as the sampling event, but to make our data comparable with the ODM2 we adopoted the term action.  To assess the status and trend of a resource as a response to management actions, stream habitat monitoring programs often implement a rotating panel design, meaning that the project returns to a single location multiple times during the study duration.  Therefore, a data set will contain numerous locations, and each location can include numerous events.
+## Action Class 
+The ODM2 the Action Class describes an action that occurs at a specific time frame see the [Action table](Tables/ODMAction_table.csv) for the terms.  In this data type often this is refered to as the sampling event, but to make our data comparable with the ODM2 we adopoted the term action.  To assess the status and trend of a resource as a response to management actions, stream habitat monitoring programs often implement a rotating panel design, meaning that the project returns to a single location multiple times during the study duration.  Therefore, a data set will contain numerous locations, and each location can include numerous events.
 
 ### The Stream Habitat Monitoring Implentation 
 

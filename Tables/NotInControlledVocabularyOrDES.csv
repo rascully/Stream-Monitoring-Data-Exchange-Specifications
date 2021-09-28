@@ -313,11 +313,11 @@ degree days","Interannual standard deviation in date of 50% of degree days",NA,"
 5,"ControlledVocabulary","Temperature",50,59,"NumberDaysDec75","Date of 75% degree days","Number of days from December 1 until 75% of degree days are accumulated",NA,"Numeric",NA,NA,NA,NA,NA,NA
 5,"ControlledVocabulary","Macroinvertebrates",51,9,NA,"Scraper abundance",NA,NA,NA,NA,"scraper_abd",NA,NA,NA,NA
 5,"ControlledVocabulary","Macroinvertebrates",52,9,NA,"Number of collector-filterer taxa",NA,NA,NA,NA,"collector_filterer_num_tx",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",52,9,NA,"Collector-filterer abundance",NA,NA,NA,NA,"collector_filterer_abd",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",53,9,NA,"Number of collector-gatherer taxa",NA,NA,NA,NA,"collector_gatherer_num_tx",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",54,9,NA,"Collector-gatherer abundance",NA,NA,NA,NA,"collector_gatherer_abd",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",55,9,NA,"Number of predator taxa",NA,NA,NA,NA,"predator_num_tx",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",56,9,NA,"Predator abundance",NA,NA,NA,NA,"predator_abd",NA,NA,NA,NA
+5,"ControlledVocabulary","Macroinvertebrates",56,9,NA,"Collector-filterer abundance",NA,NA,NA,NA,"collector_filterer_abd",NA,NA,NA,NA
+5,"ControlledVocabulary","Macroinvertebrates",55,9,NA,"Number of collector-gatherer taxa",NA,NA,NA,NA,"collector_gatherer_num_tx",NA,NA,NA,NA
+5,"ControlledVocabulary","Macroinvertebrates",5,9,NA,"Collector-gatherer abundance",NA,NA,NA,NA,"collector_gatherer_abd",NA,NA,NA,NA
+5,"ControlledVocabulary","Macroinvertebrates",53,9,NA,"Number of predator taxa",NA,NA,NA,NA,"predator_num_tx",NA,NA,NA,NA
+5,"ControlledVocabulary","Macroinvertebrates",54,9,NA,"Predator abundance",NA,NA,NA,NA,"predator_abd",NA,NA,NA,NA
 5,"ControlledVocabulary","Macroinvertebrates",57,9,NA,"Number of Ephemeroptera taxa",NA,NA,"Integer",NA,"Marcos Metrics",NA,NA,NA,"Ephet"
 5,"ControlledVocabulary","Macroinvertebrates",58,9,NA,"Number of Ephemeroptera taxa",NA,NA,NA,NA,"Ephemeroptera_num_tx",NA,NA,"EPHENTAX",NA
 5,"ControlledVocabulary","Macroinvertebrates",59,9,NA,"% Ephemeroptera taxa",NA,NA,NA,NA,NA,NA,NA,"EPHEPTAX",NA

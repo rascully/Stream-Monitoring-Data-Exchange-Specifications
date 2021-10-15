@@ -18,7 +18,7 @@ metadata <- readxl::read_excel("Data/Metadata.xlsx", sheet = 3)
 Data exchange specifications are a set of guidelines and rules for using and combining information. Rigorous data exchange specifications support reuse, promote interoperability, and reduce data integration costs (Morris and Frechette 2008, Hamm 2019). 
 
 # Summary 
-We use [observation data model 2 (ODM)](https://github.com/ODM2/ODM2) and [Darwin Core](https://www.gbif.org/sampling-event-data) to define data exchange specifications and data model (Figure 1) for stream habitat monitoring data. We apply controlled vocabularies from ODM2 and define a controlled vocabulary for stream habitat monitoring variables. As a use case we cross walk four federally funded stream habitat monitoring programs to the exchange specifications and wrote R code to to build a data set, the use case is described in detail in the here: https://github.com/rascully/Integrating-Stream-Monitoring-Data-From-Multiple-Programs=
+We use [observation data model 2 (ODM)](https://github.com/ODM2/ODM2) and [Darwin Core](https://www.gbif.org/sampling-event-data) to define data exchange specifications and data model (Figure 1) for stream habitat monitoring data. We apply controlled vocabularies from ODM2 and define a controlled vocabulary for stream habitat monitoring variables. As a use case we cross walk data from four federally funded stream habitat monitoring programs to the exchange specifications and wrote R code to to build a data set, the use case is described in detail in the here: https://github.com/rascully/Integrating-Stream-Monitoring-Data-From-Multiple-Programs=
  
  ![Figure 1](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Figures/HabiatDataSharingSchema.png)
   *Figure 1* 
@@ -82,24 +82,26 @@ To streamline the data storing and data retaliate we apply a relational data mod
 
 # Details of the Data Model 
 
-## ODM Core.Datasets Level Class 
+## Record Level  
 
-The Data Sets Class documents the core elements of a data set, including information about the origin of the data set, who collected the data, and how to cite the data set. See details of our implementation in the [Data set table](Tables/ODMDataset_table.csv). A data sets are a collection of locations. At each location, there can be a series of collection events or data collection actions. At each event, programs collect various metrics. 
+Record Level documents the core elements of a data set, including information about the origin of the data set, who collected the data, and how to cite the data set. See details of our implementation in the [Data set table](Tables/RecordLevel_table.csv). A data sets are the collection of locations. At each location, there can be a series of collection events or data collection actions. At each event, programs collect various metrics. 
 
-Access to robust metadata documentation on the provenance of the data sets we combined is critical for the trust of the end data users (CITE). We recommend storing metadata about the data set in an accessible, searchable repository. Include information such as where the data is stored, how often it is updated, and information about the ownership of the data, ensuring accessibility to information about the origins of data sets in the integrated data set. We use the USGS ScienceBase data repository to document metadata about the data set. ScienceBase is available to all. Find more information about ScienceBase go here https://www.sciencebase.gov/about/. 
+Access to robust metadata documenting the provenance of the data sets we combined are critical for the trust of the end data users (CITE). We recommend storing metadata about the data set in an accessible, searchable repository. Include information such as where the data is stored, how often it is updated, and information about the ownership of the data, ensuring accessibility to information about the origins of data sets in the integrated data set. We use the USGS ScienceBase data repository to document metadata about the origin data sets and integrated data set. ScienceBase can be accessed by everybody. To find more information about ScienceBase go here https://www.sciencebase.gov/about/. 
 
+We used ODM2 and Darwin Core to shape these data exchange specifications. 
 Details of the ODM2 implementation of the Dataset table: https://github.com/ODM2/ODM2/blob/master/doc/ODM2Docs/core_datasets.md 
 
+Detials of the Darwin Core implementation of the Record Level table: https://dwc.tdwg.org/terms/#record-level
 
 
 ### The Stream Habitat Monitoring Implentation 
 
-#### [Dataset table](Tables/ODMDataset_table.csv)
+#### [Record Level table](Tables/RecordLevel_table.csv)
 
 #### To the Datasets table from ODME2 Metadata table we added:
   * MetadataLink 
 
-#### From DarwinCore we added to the Record Level table:
+#### From DarwinCore we added to the table:
   * DatasetOrginization
   * Modified 
 
@@ -113,26 +115,33 @@ Details of the ODM2 implementation of the Dataset table: https://github.com/ODM2
 
 ```{r echo=FALSE, results= 'asis'}
 
-datasets <- read.csv("Tables/ODMDatasets_table.csv")
+datasets <- read.csv("Tables/RecrodLevel_table.csv")
 
-kable(datasets, caption = "Datasets Table")
+kable(datasets, caption = "Recrod Level Table")
 
 ```
 
-## Sampling Feature 
-Understanding where data are collected is critical to interpreting stream habitat monitoring data. In the ODM2 the Sampling Feature class describes where information are collected. See the list of terms we use in this implementation in the [Sampling Feature table](Tables/ODMSamplingFeature_table.csv). For this type of monitoring data, the SamplingFeatureID is often referred to as locationID, to support our user community and minimize confusion, we substituted locationID for SampleFeatureID.  We tract the crosswalk from our implementation of the ODM2 to the original ODM2 so, in the future, we can easily integrate this data set into other data sets using the ODM2 standard. 
+## Location  
+Understanding where data are collected is critical to interpreting stream habitat monitoring data. In the ODM2 the Sampling Feature class describes where information are collected. See the list of terms we use in this implementation in the [Location table](Tables/Location_table.csv). For this type of monitoring data, the SamplingFeatureID is often referred to as locationID, to support our user community and minimize confusion, we substituted locationID for SampleFeatureID.  We tract the crosswalk from our implementation to the original ODM2 and Darwin Core, so, in the future, we can easily integrate this data set into other data tools using the ODM2 or Darwin Core standard. 
 
 Each data set contains multiple locations. The eventID is the key to link locations to events. To view and analysis data from various sources, latitudes and longitude information must be consistent across the combined data sets; therefore, for this data, all latitude and longitudes are converted to WGS1984.
 
+
+We used ODM2 and Darwin Core to shape these data exchange specifications. 
+
+Details of the ODM2 implementation of the Sampling Feature table: http://odm2.github.io/ODM2/schemas/ODM2_Current/tables/ODM2Results_CategoricalResultValues.html 
+
+Detials of the Darwin Core implementation of the Location Class: https://dwc.tdwg.org/terms/#location 
+
+
 ### The Stream Habitat Monitoring Implentation 
 
-#### [Sampling Feature table](Tables/ODMSamplingFeature_table.csv)
+#### [Location table](Tables/Location_table.csv)
 
-#### To the Sample Feature Table from ODME2 SampleFeature.Site we added:  
+#### From the Sample Feature Table from ODME2 SampleFeature.Site we added:  
   * Latitude 
   * Longitude 
   * SpatialReferenceID 
-  
 
 #### From DarwinCore we added to the Sample Feature table:  
   *locationID 
@@ -159,21 +168,27 @@ Each data set contains multiple locations. The eventID is the key to link locati
 sampling_feature <- read.csv("Tables/ODMSamplingFeature_table.csv")
 kable(sampling_feature)
 ```
-## Action Class 
-The ODM2 the Action Class describes an action that occurs at a specific time frame see the [Action table](Tables/ODMAction_table.csv) for the terms.  In this data type often this is refered to as the sampling event, but to make our data comparable with the ODM2 we adopoted the term action.  To assess the status and trend of a resource as a response to management actions, stream habitat monitoring programs often implement a rotating panel design, meaning that the project returns to a single location multiple times during the study duration.  Therefore, a data set will contain numerous locations, and each location can include numerous events.
+## Event  
+In ODM2 Action describes an action that occurs at a specific time frame, in this data type this is refered to as the sampling event [Event table](Tables/Event_table.csv). To assess the status and trend of a resource as a response to management, stream habitat monitoring programs often implement a rotating panel design, meaning that the a single location is visited multiple times during the study duration.  Therefore, a data set will contain numerous locations, and each location can include numerous events.
+
+We used ODM2 and Darwin Core to shape these data exchange specifications. 
+
+Details of the ODM2 implementation of the Actions table:http://odm2.github.io/ODM2/schemas/ODM2_Current/tables/ODM2Core_Actions.html 
+
+Detials of the Darwin Core implementation of the Event Class: https://dwc.tdwg.org/terms/#event
 
 ### The Stream Habitat Monitoring Implentation 
 
-#### [Action table](Tables/ODMAction_table.csv)
+#### [Event table](Tables/Event_table.csv)
 
 #### To the Core Action table from ODME2 Core Feature Action we added:
   * SampleFeatureID 
 
 #### From DarwinCore we added to the Record Level table:
-  * Added VerbatimActionID based on the DarwinCore, because when implementing these data exchange specification we found that there are duplicate ActionIDs between two or more of the source data sets. 
+  * Added VerbatimEventID based on the DarwinCore, because when implementing these data exchange specification we found that there are duplicate EventIDs between two or more of the source data sets. 
 
 #### The primary key is: 
-  * ActionID
+  * EventID
 
 #### Controlled Vocabularies: 
   *  ActionTypeCV 
@@ -184,15 +199,20 @@ The ODM2 the Action Class describes an action that occurs at a specific time fra
 actions <- read.csv("Tables/ODMAction_table.csv")
 kable(actions)
 ```
-## Results 
-A metric is a value resulting from the reduction or processing of measurements taken at an event based on the procedures defined by the response design. Programs derive a variety of metrics from a single measurement. For stream habitat data at each event, programs take multiple types of measurements and produce various metrics from one measurement; for example, the measurement for pools produces both percent pools and pool frequency. Events are associated with measurements by the eventID, see the [Results Table](Tables/ODMResults_table.csv) for the full definitions of terms. 
+## Measurment or Facts  
+A metric is a value resulting from the reduction or processing of measurements taken at an event based on the procedures defined by the response design. Programs derive a variety of metrics from a single measurement. For stream habitat data at each event, programs take multiple types of measurements and produce various metrics from one measurement; for example, the measurement of pools produces both percent pools and pool frequency. Events are associated with measurements by the eventID, see the [Measurement or Fact Table](Tables/MeasurementORFact_table.csv) for the full definitions of terms. 
 
+We used ODM2 and Darwin Core to shape these data exchange specifications. 
+
+Details of the ODM2 implementation of the Results table: http://odm2.github.io/ODM2/schemas/ODM2_Current/tables/ODM2Results_CategoricalResultValues.html 
+
+Detials of the Darwin Core implementation of the Measurement Or Fact Class: https://dwc.tdwg.org/terms/#measurementorfact 
 
 ### The Stream Habitat Monitoring Implentation 
 
-#### [Results Table](Tables/ODMResults_table.csv)
+#### [MeasurmentOrFact Table](Tables/ODMResults_table.csv)
 
-#### To the Core Results from Results. MeasurementsResultsValues to Core Resoutls added:
+#### To the ODM2 Core Results we add from Results.MeasurementsResultsValues added:
   * MethodID 
   * MeasurementRemark 
   * DataValue 
@@ -202,7 +222,7 @@ A metric is a value resulting from the reduction or processing of measurements t
   * ResultsID 
 
 #### Added foregin key:
-  * ActionID 
+  * EventID 
 
 #### Controlled Vocabularies: 
   * VariableID 
@@ -216,15 +236,15 @@ A metric is a value resulting from the reduction or processing of measurements t
 
 
 ```{r echo=FALSE}
-results <- read.csv("Tables/ODMResults_table.csv")
+results <- read.csv("Tables/MeasurmentORFact_table.csv")
 
 kable(results)
 ```
 ### VariableID  Controlled Vocabularies for Results Table 
 
-Critical to implementing the observation data model (ODM) for stream habitat monitoring, is solving semantic heterogeneity, or the differences in languages used to describe observations between datasets (CITE). There needs to be a controlled vocabularies for each data type integrated. The standard language enables the integration of multiple habitat monitoring program metrics into one data set. 
+Critical to implementing the stream habitat monitoring data exchange specifiction, is solving semantic heterogeneity, or the differences in languages used to describe observations between datasets (CITE). There needs to be a controlled vocabularies for each metrics integrated. The standard language enables the integration of multiple habitat monitoring program metrics into one data set. 
 
-We built the variable controlled vocabulary  using metadata and metrics from four large scale, long-running federal stream habitat monitoring programs: Environmental Protection Agency (EPA) National Rivers & Streams Assessment (NRSA), Bureau of Land Management (BLM) Aquatic Assessment, Inventory, and Monitoring (AIM), the Forest Service Aquatic and Riparian Effective Monitoring Program (AREMP) and PACFISH/INFISH Biological Opinion (PIBO) Effectiveness Monitoring. Each program has unique objectives, spatial, temporal, response, and inference designs; yet, they produce similar metrics.  These four programs collectively produce over 300 metrics but have only a subset of metrics in common across programs. The program leads and data managers from the four programs agreed on a subset of the metrics that can be shared across the programs; these can be found in the first draft of the [controlled vocabulary](Tables/StandardVocabulary.csv).
+We built the metric controlled vocabulary  using metadata and metrics from four large scale, long-running federal stream habitat monitoring programs: Environmental Protection Agency (EPA) National Rivers & Streams Assessment (NRSA), Bureau of Land Management (BLM) Aquatic Assessment, Inventory, and Monitoring (AIM), the Forest Service Aquatic and Riparian Effective Monitoring Program (AREMP) and PACFISH/INFISH Biological Opinion (PIBO) Effectiveness Monitoring. Each program has unique objectives, spatial, temporal, response, and inference designs; yet, they produce similar metrics.  These four programs collectively produce over 300 metrics but have only a subset of metrics in common across programs. The program leads and data managers from the four programs agreed on a subset of the metrics that can be shared across the programs; these can be found in the first draft of the [controlled vocabulary](Tables/StandardVocabulary.csv).
 
 We focused on defining a set of metric we would integrate.  Previous work has been completed compare some of these data sets and field collection procedures. (CITE) For our initial assessment of metric compadability There have been efforts in the past to comparei field processes for these programs, but we wanted to confirm with the project lead that fields were comparable. PNAMP lead an effort to facilitate conversations with data experts from the four programs to define the metrics that can be shared across the programs. The conversations are documented in Appendix A. We agreed that data in the same colume is compadable, even with this agreement we want to provide documentation of the field methods for each of the metrics included in the controlled vocabulary. To make this effective each individual data collection method needs to be documented in a stand alone, machine readable way. This means when the data set is reused the data collection methology can be accessed via APIs. Simplifying the creation of data portals, web maps and other user interfaces. We used MonitoringResources.org an online tool for documenting field data collection or analysis methods to so for each metric and program we document the field protocols (ADD TABLE OF CONTROLLED VOCABULARY AND METRIC IDs). 
 
@@ -260,7 +280,7 @@ If partners wish to exchange additional metrics, the controlled vocabulary must 
 We wrote code based on these data exchange specifications to share habitat metrics from three federal habitat monitoring programs: Environmental Protection Agency (EPA) National Rivers & Streams Assessment (NRSA), Bureau of Land Management (BLM) Aquatic Assessment, Inventory, and Monitoring (AIM),and the Forest Service Aquatic and Riparian Effective Monitoring Program (AREMP). The work flow pulls program information from ScienceBase, the exchange specifications and the field crosswalk from this repository, and data collection metrics documented from MonitoringResources.org [work flow diagram](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Figures/WorkFlow.png). The R code to integrate data sets can be found at https://github.com/rascully/Integrating-Stream-Monitoring-Data-From-Multiple-Programs and the data set documentation in ScinceBase at ADD SCIENCEBAES LINK WHEN I CAN 
 
 # Conclusion
-The data exchange specifications contain the details of what will be share and the format to be shared. We recognize preparing data to be shared requires an investment of time, resources, expertise, and careful documentation of the data collection process and the results.  A recent opinion piece in Nature by Barend Mons (2020), the director of a Global Open FAIR office, recommends that '5% of research funds be invested in making data reusable'. Projects producing this type of data are already working beyond their capacity, so to integrate data between habitat programs, there needs to be support in project budgets or for a centralized data manager to help implement and updated the necessary documentation and code to share data. 
+The data exchange specifications contain the details of what will be share and the format to be shared. We recognize preparing data to be shared requires an investment of time, resources, expertise, and careful documentation of the data collection process and the results.  An opinion piece in Nature by Barend Mons (2020), the director of a Global Open FAIR office, recommends that '5% of research funds be invested in making data reusable'. Projects producing this type of data are already working beyond their capacity, so to integrate data between habitat programs, there needs to be support in project budgets or for a centralized data manager to help implement and updated the necessary documentation and code to share data. 
 
 # References 
 Mons, B. (2020). Invest 5% of research funds in ensuring data are reusable. Nature, 578(7796), 491.

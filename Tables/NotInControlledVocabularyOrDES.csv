@@ -316,48 +316,48 @@ degree days","Interannual standard deviation in date of 50% of degree days",NA,"
 5,"ControlledVocabulary","Temperature",50,59,"NumberDaysDec75","Date of 75% degree days","Number of days from December 1 until 75% of degree days are accumulated",NA,"Numeric",NA,NA,NA,NA,NA,NA
 5,"ControlledVocabulary","Macroinvertebrates",51,9,NA,"Scraper abundance",NA,NA,NA,NA,"scraper_abd",NA,NA,NA,NA
 5,"ControlledVocabulary","Macroinvertebrates",52,9,NA,"Number of collector-filterer taxa",NA,NA,NA,NA,"collector_filterer_num_tx",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",56,9,NA,"Collector-filterer abundance",NA,NA,NA,NA,"collector_filterer_abd",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",55,9,NA,"Number of collector-gatherer taxa",NA,NA,NA,NA,"collector_gatherer_num_tx",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",5,9,NA,"Collector-gatherer abundance",NA,NA,NA,NA,"collector_gatherer_abd",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",53,9,NA,"Number of predator taxa",NA,NA,NA,NA,"predator_num_tx",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",54,9,NA,"Predator abundance",NA,NA,NA,NA,"predator_abd",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",57,9,NA,"Number of Ephemeroptera taxa",NA,NA,"Integer",NA,"Marcos Metrics",NA,NA,NA,"Ephet"
-5,"ControlledVocabulary","Macroinvertebrates",58,9,NA,"Number of Ephemeroptera taxa",NA,NA,NA,NA,"Ephemeroptera_num_tx",NA,NA,"EPHENTAX",NA
-5,"ControlledVocabulary","Macroinvertebrates",59,9,NA,"% Ephemeroptera taxa",NA,NA,NA,NA,NA,NA,NA,"EPHEPTAX",NA
-5,"ControlledVocabulary","Macroinvertebrates",60,9,NA,"Ephemeroptera abundance",NA,NA,NA,NA,"Ephemeroptera_abd",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",61,9,NA,"Number of distinct Ephemeroptera, Plecoptera, and Trichoptera taxa",NA,NA,NA,NA,NA,NA,NA,"EPT_NTAX",NA
-5,"ControlledVocabulary","Macroinvertebrates",62,9,NA,"% Ephemeroptera, Plecoptera, and Trichoptera individuals",NA,NA,NA,NA,NA,NA,NA,"EPT_PIND",NA
-5,"ControlledVocabulary","Macroinvertebrates",63,9,NA,"Percent of  Ephemeroptera, Plecoptera, and Trichoptera taxa",NA,NA,NA,NA,NA,NA,NA,"EPT_PTAX",NA
-5,"ControlledVocabulary","Macroinvertebrates",64,9,NA,"Number of Plecoptera taxa",NA,NA,"Integer",NA,"Plecoptera_num_tx",NA,NA,NA,"Plect"
-5,"ControlledVocabulary","Macroinvertebrates",65,9,NA,"Plecoptera abundance",NA,NA,NA,NA,"Plecoptera_abd",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",66,9,NA,"Number of Trichoptera taxa",NA,NA,"Integer",NA,"Trichoptera_num_tx",NA,NA,NA,"Trict"
-5,"ControlledVocabulary","Macroinvertebrates",67,9,NA,"Trichoptera abundance",NA,NA,NA,NA,"Trichoptera_abd",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",68,9,NA,"Number of Coleoptera taxa",NA,NA,NA,NA,"Coleoptera_num_tx",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",69,9,NA,"Coleoptera abundance",NA,NA,NA,NA,"Coleoptera_abd",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",70,9,NA,"Number of Elmidae taxa",NA,NA,NA,NA,"Elmidae_num_tx",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",71,9,NA,"Elmidae abundance",NA,NA,NA,NA,"Elmidae_abd",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",72,9,NA,"Number of Megaloptera taxa",NA,NA,NA,NA,"Megaloptera_num_tx",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",73,9,NA,"Megaloptera abundance",NA,NA,NA,NA,"Megaloptera_abd",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",74,9,NA,"Number of Diptera taxa",NA,NA,NA,NA,"Diptera_num_tx",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",75,9,NA,"Diptera abundance",NA,NA,NA,NA,"Diptera_abd",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",76,9,NA,"Number of Chironomidae taxa",NA,NA,NA,NA,"Chironomidae_num_tx",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",77,9,NA,"Percent Chironomidae taxa",NA,NA,NA,NA,NA,NA,NA,"CHIRPTAX",NA
-5,"ControlledVocabulary","Macroinvertebrates",78,9,NA,"Chironomidae abundance",NA,NA,NA,NA,"Chironomidae_abd",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",79,9,NA,"Number of Crustacea taxa",NA,NA,NA,NA,"crustacea_num_tx",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",80,9,NA,"Crustacea abundance",NA,NA,NA,NA,"crustacea_abd",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",81,9,NA,"Number of Oligochaete taxa",NA,NA,NA,NA,"Oligochaete_num_tx",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",82,9,NA,"% burrower taxa, based on WSA autecology",NA,NA,NA,NA,NA,NA,NA,"BURRPTAX",NA
-5,"ControlledVocabulary","Macroinvertebrates",83,9,NA,"Oligochaete abundance",NA,NA,NA,NA,"Oligochaete_abd",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",84,9,NA,"Number of Mollusca taxa",NA,NA,NA,NA,"Mollusca_num_tx",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",85,9,NA,"Mollusca abundance",NA,NA,NA,NA,"Mollusca_abd",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",86,9,NA,"Number of Insect taxa",NA,NA,NA,NA,"insect_num_tx",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",87,9,NA,"Insect abundance",NA,NA,NA,NA,"insect_abd",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",88,9,NA,"Number of non-insect taxa",NA,NA,NA,NA,"noninsect_num_tx",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",89,9,NA,"Non-insect abundance",NA,NA,NA,NA,"noninsect_abd",NA,NA,NA,NA
-5,"ControlledVocabulary","Macroinvertebrates",90,9,NA,"% non-insect individuals",NA,NA,NA,NA,NA,NA,NA,"NOINPIND",NA
-5,"ControlledVocabulary","Macroinvertebrates",91,9,NA,"Number of Intolerant taxa",NA,NA,"Integer",NA,"intolerant_num_tx",NA,NA,"INTLNTAX","Intol"
-5,"ControlledVocabulary","Macroinvertebrates",92,9,NA,"% individuals in dominant 5 taxa",NA,NA,NA,NA,NA,NA,NA,"DOM5PIND",NA
-5,"ControlledVocabulary","Macroinvertebrates",93,9,NA,"RIVPAC's score of observed / expected taxa",NA,NA,NA,NA,NA,NA,NA,NA,"RIVPACS"
+5,"ControlledVocabulary","Macroinvertebrates",15,9,NA,"Collector-filterer abundance",NA,NA,NA,NA,"collector_filterer_abd",NA,NA,NA,NA
+5,"ControlledVocabulary","Macroinvertebrates",52,9,NA,"Number of collector-gatherer taxa",NA,NA,NA,NA,"collector_gatherer_num_tx",NA,NA,NA,NA
+5,"ControlledVocabulary","Macroinvertebrates",56,9,NA,"Collector-gatherer abundance",NA,NA,NA,NA,"collector_gatherer_abd",NA,NA,NA,NA
+5,"ControlledVocabulary","Macroinvertebrates",55,9,NA,"Number of predator taxa",NA,NA,NA,NA,"predator_num_tx",NA,NA,NA,NA
+5,"ControlledVocabulary","Macroinvertebrates",53,9,NA,"Predator abundance",NA,NA,NA,NA,"predator_abd",NA,NA,NA,NA
+5,"ControlledVocabulary","Macroinvertebrates",54,9,NA,"Number of Ephemeroptera taxa",NA,NA,"Integer",NA,"Marcos Metrics",NA,NA,NA,"Ephet"
+5,"ControlledVocabulary","Macroinvertebrates",55,9,NA,"Number of Ephemeroptera taxa",NA,NA,NA,NA,"Ephemeroptera_num_tx",NA,NA,"EPHENTAX",NA
+5,"ControlledVocabulary","Macroinvertebrates",56,9,NA,"% Ephemeroptera taxa",NA,NA,NA,NA,NA,NA,NA,"EPHEPTAX",NA
+5,"ControlledVocabulary","Macroinvertebrates",57,9,NA,"Ephemeroptera abundance",NA,NA,NA,NA,"Ephemeroptera_abd",NA,NA,NA,NA
+5,"ControlledVocabulary","Macroinvertebrates",58,9,NA,"Number of distinct Ephemeroptera, Plecoptera, and Trichoptera taxa",NA,NA,NA,NA,NA,NA,NA,"EPT_NTAX",NA
+5,"ControlledVocabulary","Macroinvertebrates",59,9,NA,"% Ephemeroptera, Plecoptera, and Trichoptera individuals",NA,NA,NA,NA,NA,NA,NA,"EPT_PIND",NA
+5,"ControlledVocabulary","Macroinvertebrates",60,9,NA,"Percent of  Ephemeroptera, Plecoptera, and Trichoptera taxa",NA,NA,NA,NA,NA,NA,NA,"EPT_PTAX",NA
+5,"ControlledVocabulary","Macroinvertebrates",61,9,NA,"Number of Plecoptera taxa",NA,NA,"Integer",NA,"Plecoptera_num_tx",NA,NA,NA,"Plect"
+5,"ControlledVocabulary","Macroinvertebrates",62,9,NA,"Plecoptera abundance",NA,NA,NA,NA,"Plecoptera_abd",NA,NA,NA,NA
+5,"ControlledVocabulary","Macroinvertebrates",63,9,NA,"Number of Trichoptera taxa",NA,NA,"Integer",NA,"Trichoptera_num_tx",NA,NA,NA,"Trict"
+5,"ControlledVocabulary","Macroinvertebrates",64,9,NA,"Trichoptera abundance",NA,NA,NA,NA,"Trichoptera_abd",NA,NA,NA,NA
+5,"ControlledVocabulary","Macroinvertebrates",65,9,NA,"Number of Coleoptera taxa",NA,NA,NA,NA,"Coleoptera_num_tx",NA,NA,NA,NA
+5,"ControlledVocabulary","Macroinvertebrates",66,9,NA,"Coleoptera abundance",NA,NA,NA,NA,"Coleoptera_abd",NA,NA,NA,NA
+5,"ControlledVocabulary","Macroinvertebrates",67,9,NA,"Number of Elmidae taxa",NA,NA,NA,NA,"Elmidae_num_tx",NA,NA,NA,NA
+5,"ControlledVocabulary","Macroinvertebrates",68,9,NA,"Elmidae abundance",NA,NA,NA,NA,"Elmidae_abd",NA,NA,NA,NA
+5,"ControlledVocabulary","Macroinvertebrates",69,9,NA,"Number of Megaloptera taxa",NA,NA,NA,NA,"Megaloptera_num_tx",NA,NA,NA,NA
+5,"ControlledVocabulary","Macroinvertebrates",70,9,NA,"Megaloptera abundance",NA,NA,NA,NA,"Megaloptera_abd",NA,NA,NA,NA
+5,"ControlledVocabulary","Macroinvertebrates",71,9,NA,"Number of Diptera taxa",NA,NA,NA,NA,"Diptera_num_tx",NA,NA,NA,NA
+5,"ControlledVocabulary","Macroinvertebrates",72,9,NA,"Diptera abundance",NA,NA,NA,NA,"Diptera_abd",NA,NA,NA,NA
+5,"ControlledVocabulary","Macroinvertebrates",73,9,NA,"Number of Chironomidae taxa",NA,NA,NA,NA,"Chironomidae_num_tx",NA,NA,NA,NA
+5,"ControlledVocabulary","Macroinvertebrates",74,9,NA,"Percent Chironomidae taxa",NA,NA,NA,NA,NA,NA,NA,"CHIRPTAX",NA
+5,"ControlledVocabulary","Macroinvertebrates",75,9,NA,"Chironomidae abundance",NA,NA,NA,NA,"Chironomidae_abd",NA,NA,NA,NA
+5,"ControlledVocabulary","Macroinvertebrates",76,9,NA,"Number of Crustacea taxa",NA,NA,NA,NA,"crustacea_num_tx",NA,NA,NA,NA
+5,"ControlledVocabulary","Macroinvertebrates",77,9,NA,"Crustacea abundance",NA,NA,NA,NA,"crustacea_abd",NA,NA,NA,NA
+5,"ControlledVocabulary","Macroinvertebrates",78,9,NA,"Number of Oligochaete taxa",NA,NA,NA,NA,"Oligochaete_num_tx",NA,NA,NA,NA
+5,"ControlledVocabulary","Macroinvertebrates",79,9,NA,"% burrower taxa, based on WSA autecology",NA,NA,NA,NA,NA,NA,NA,"BURRPTAX",NA
+5,"ControlledVocabulary","Macroinvertebrates",80,9,NA,"Oligochaete abundance",NA,NA,NA,NA,"Oligochaete_abd",NA,NA,NA,NA
+5,"ControlledVocabulary","Macroinvertebrates",81,9,NA,"Number of Mollusca taxa",NA,NA,NA,NA,"Mollusca_num_tx",NA,NA,NA,NA
+5,"ControlledVocabulary","Macroinvertebrates",82,9,NA,"Mollusca abundance",NA,NA,NA,NA,"Mollusca_abd",NA,NA,NA,NA
+5,"ControlledVocabulary","Macroinvertebrates",83,9,NA,"Number of Insect taxa",NA,NA,NA,NA,"insect_num_tx",NA,NA,NA,NA
+5,"ControlledVocabulary","Macroinvertebrates",84,9,NA,"Insect abundance",NA,NA,NA,NA,"insect_abd",NA,NA,NA,NA
+5,"ControlledVocabulary","Macroinvertebrates",85,9,NA,"Number of non-insect taxa",NA,NA,NA,NA,"noninsect_num_tx",NA,NA,NA,NA
+5,"ControlledVocabulary","Macroinvertebrates",86,9,NA,"Non-insect abundance",NA,NA,NA,NA,"noninsect_abd",NA,NA,NA,NA
+5,"ControlledVocabulary","Macroinvertebrates",87,9,NA,"% non-insect individuals",NA,NA,NA,NA,NA,NA,NA,"NOINPIND",NA
+5,"ControlledVocabulary","Macroinvertebrates",88,9,NA,"Number of Intolerant taxa",NA,NA,"Integer",NA,"intolerant_num_tx",NA,NA,"INTLNTAX","Intol"
+5,"ControlledVocabulary","Macroinvertebrates",89,9,NA,"% individuals in dominant 5 taxa",NA,NA,NA,NA,NA,NA,NA,"DOM5PIND",NA
+5,"ControlledVocabulary","Macroinvertebrates",90,9,NA,"RIVPAC's score of observed / expected taxa",NA,NA,NA,NA,NA,NA,NA,NA,"RIVPACS"
 5,"ControlledVocabulary",NA,NA,NA,NA,"Bank angle",NA,NA,NA,NA,NA,NA,NA,"XBKA",NA
 5,"ControlledVocabulary","Substrate",NA,6,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA

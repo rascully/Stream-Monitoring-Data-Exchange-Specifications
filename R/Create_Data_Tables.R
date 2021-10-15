@@ -8,42 +8,65 @@ library(openxlsx)
 metadata <- readxl::read_excel("Data/Metadata.xlsx", sheet = 3)
 
 #Create the data exchange specifications tables 
-DES_tables <- c("RecordLevel", "Location","Event", "MeasurementOrFact")
+DES_tables <- c("Datasets", "SamplingFeature","Action", "Results")
+tables <- c("RecordLevel", "Location", "Event", "MeasurementORFact")
+
+
+
 for (i in 1:length(DES_tables)){ 
-  file_name =paste0(DES_tables[i], "_table")
-   write.csv(assign(DES_tables[i], metadata %>% 
-                           select(CategoryID, TermID, Table,measurementType, InDES, measurementTerm,Description,Examples, DataType ) %>% 
-                           filter(Table== DES_tables[i], InDES=="x") %>% 
-                           select(-InDES)), file=paste0("Tables/",file_name,".csv" ), row.names = F )
-     }
+  
+  file_name = paste0(tables[i], "_table")
+  print(paste0(tables[i], "_table"))
+  write.csv(assign(DES_tables[i], metadata %>% 
+                     dplyr::select(TermID, InDES, Term , Description,Examples, DataType, 
+                                   PrimaryKey, ForeginKey, ControlledVocabulary, ControlledVocabularyAPI, 
+                                   MinimamPossibleValue,MaximamPossibleValue,DarwinCoreTerm, DarwinCoreClass, ODM2Term, ODMTable) %>% 
+                     filter(ODMTable== DES_tables[i], InDES=="x") %>% 
+                     select(-InDES, -ODMTable)) , file=paste0("Tables/",file_name,".csv" ), row.names = F )
+      }
+
+
+metadata %>% 
+  dplyr::select(CategoryID, TermID, Term, ODMTable, Table,measurementType, InDES, Term,Description,Examples, DataType )%>% 
+  filter(ODMTable== DES_tables[1], InDES=="x")
+
 
 #create a vocabulary table 
 vocabulary<- metadata %>% 
-                  select(CategoryID,Table,measurementType, measurementID, SubsetOfMetrics,
-                         measurementTerm,LongName, Description,Examples, DataType, measurementUnit, MaximamPossibleValue, MaximamPossibleValue ) %>% 
-                  filter(Table== "ControlledVocabulary", SubsetOfMetrics=="x") %>% 
-                  select(-SubsetOfMetrics)
+  select(CategoryID,Table,measurementType, measurementID, SubsetOfMetrics,
+         Term,LongName, Description,Examples, DataType, measurementUnit, MaximamPossibleValue, MaximamPossibleValue ) %>% 
+  filter(Table== "ControlledVocabulary", SubsetOfMetrics=="x") %>% 
+  select(-SubsetOfMetrics)
 
 write.csv(vocabulary, file=paste0("Tables/ControlledVocabulary.csv" ), row.names=F) 
 
 #Create the crosswalk table 
-
 crosswalk<- metadata %>% 
-        select(c("Table","measurementType", "measurementID", "measurementTerm", "SubsetOfMetrics", "InDES", 
-          "LongName", "Description", "Examples", "DataType", "measurementUnit")|contains("CW")) %>% 
-        filter(SubsetOfMetrics=="x"| InDES=="x"  ) %>% 
-        select(-SubsetOfMetrics, -InDES) 
-        
-crosswalk[str_detect(crosswalk$measurementTerm, c("sampingProtocol")),]
-  
+  select(c("Table","measurementType", "measurementID", "Term", "SubsetOfMetrics", "InDES", 
+           "LongName", "Description", "Examples", "DataType", "measurementUnit")|contains("CW")) %>% 
+  filter(SubsetOfMetrics=="x"| InDES=="x"  ) %>% 
+  select(-SubsetOfMetrics, -InDES) 
+
+crosswalk[str_detect(crosswalk$Term, c("sampingProtocol")),]
+
 names(crosswalk) <- str_remove_all(names(crosswalk), "CW")
 write.csv(crosswalk, file=paste0("Tables/Crosswalk.csv" ), row.names=F)
+
+
+#####Create one file
+list_of_datasets <- list("RecordLevel" = RecordLevel, "Location"= Location, "Event"= Event,
+                         "MeasurementOrFact"= MeasurementOrFact, "VariableCV"= vocabulary,  "Crosswalk"= crosswalk) 
+
+file.remove("Tables/Stream_Habitat_ExchangeSpecifications.xlsx")
+
+openxlsx::write.xlsx(list_of_datasets, file = "Tables/Stream_Habitat_ExchangeSpecifications.xlsx") 
+
 
 #Short crosswalk for the project team
 
 short_crosswalk <- metadata %>% 
   select(c("measurementType", "SubsetOfMetrics", "InDES", 
-           "measurementTerm", "LongName", "Description", "Examples", "DataType", "measurementUnit")|contains("CW")) %>% 
+           "Term", "LongName", "Description", "Examples", "DataType", "measurementUnit")|contains("CW")) %>% 
   filter(SubsetOfMetrics=="x"| InDES=="x"  ) %>% 
   select(-SubsetOfMetrics, -InDES, -contains("Method")) %>% 
   filter(measurementType != "Temperature")
@@ -55,13 +78,13 @@ write.csv(short_crosswalk, file=paste0("Tables/CrosswalkForReview.csv" ), row.na
 #Create a list of metrics from the programs not in the controlled vocabulary 
 vocabulary<- metadata %>% 
   select(CategoryID,Table,measurementType, measurementID, SubsetOfMetrics,
-         measurementTerm,LongName, Description,Examples, DataType, measurementUnit, MaximamPossibleValue, MinimamPossibleValue, PickList ) %>% 
+         Term,LongName, Description,Examples, DataType, measurementUnit, MaximamPossibleValue, MinimamPossibleValue, ControlledVocabulary, ControlledVocabularyAPI ) %>% 
   filter(Table== "ControlledVocabulary", SubsetOfMetrics=="x") %>% 
   select(-SubsetOfMetrics)
 
 notInVocab<- metadata %>% 
   select(c(CategoryID,Table,measurementType, TermID, measurementID, SubsetOfMetrics,
-           measurementTerm,LongName, Description,Examples, DataType, measurementUnit, InDES) | contains("FieldCW")) %>% 
+           Term,LongName, Description,Examples, DataType, measurementUnit, InDES) | contains("FieldCW")) %>% 
   filter(is.na(SubsetOfMetrics)& is.na(InDES))  %>% 
   select(-SubsetOfMetrics, -InDES)
 
@@ -92,13 +115,12 @@ EPA_names <- names(EPA)
 one= as.df(EPA[1])
 
 
-list_of_datasets <- list("Record_level" = RecordLevel, "location"= Location, "Event"= Event,
-                          "Measurment_or_Fact"= MeasurementOrFact, "Vocabulary"= vocabulary,  "Crosswalk"= crosswalk, "BLM"= BLM, "AREMP"= AREMP, "PIBO" = PIBO)
+list_of_datasets <- list("RecordLevel" = RecordLevel, "Location"= Location, "Event"= Event,
+                         "MeasurementOrFact"= MeasurementOrFact, "VariableCV"= vocabulary,  "Crosswalk"= crosswalk, 
+                         "BLM"= BLM, "AREMP"= AREMP, "PIBO" = PIBO) 
 list_of_datasets <- append(list_of_datasets, EPA)
 
+file.remove("Tables/PropertyRegistry.xlsx")
 openxlsx::write.xlsx(list_of_datasets, file = "Tables/PropertyRegistry.xlsx") 
-##### Data exhange specifications 
 
-list_of_datasets <- list("Record_level" = RecordLevel, "location"= Location, "Event"= Event,
-                                         "Measurment_or_Fact"= MeasurementOrFact, "Vocabulary"= vocabulary) 
 

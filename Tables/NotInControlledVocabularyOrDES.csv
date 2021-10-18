@@ -14,6 +14,8 @@
 2,"Location",NA,8,NA,"verbatimSpatialReferenceID","From the DatasetCoordinateSystem","The spatial coordinate system for the verbatimLatitude and verbatimLongitude or the verbatimCoordinates of the Location.",NA,"String",NA,NA,NA,NA,NA,NA
 2,"Location",NA,9,NA,"verbatimLongitude","From the dataset Longitude","The verbatim original longitude of the Location. The coordinate ellipsoid, geodeticDatum, or full Spatial Reference System (SRS) for these coordinates should be stored in verbatimSRS and the coordinate system should be stored in verbatimCoordinateSystem.",NA,"Numeric",NA,"longitude","MIDLONG","MiddleReachLongitude","LON_DD83","Long"
 2,"Location",NA,10,NA,"verbatimSpatialReferenceID","Spatial Reference System (SRS)","The ellipsoid, geodetic datum, or spatial reference system (SRS) upon which coordinates given in verbatimLatitude and verbatimLongitude, or verbatimCoordinates are based.",NA,"String",NA,NA,NA,NA,NA,NA
+2,"Location",NA,10,NA,"samplingFeatureTypeCV",NA,NA,NA,"String",NA,NA,NA,NA,NA,NA
+2,"Location",NA,11,NA,"samplingFeatureGeotype",NA,NA,NA,"String",NA,NA,NA,NA,NA,NA
 2,"Location",NA,11,NA,NA,"FS Region or BLM State Office",NA,NA,"String",NA,"STATES","State",NA,NA,"Region"
 2,"Location",NA,12,NA,NA,"FS Forest or BLM District",NA,NA,"String",NA,NA,"District",NA,NA,"Forest"
 2,"Location",NA,13,NA,NA,"Forest Service District or BLM Field Office/Resource Area",NA,NA,"String",NA,NA,"FieldOffice",NA,NA,"District"
@@ -52,6 +54,7 @@
 3,"Event",NA,NA,NA,NA,"Field Status Notes","One of a) an indicator of the existence of, b) a reference to (publication, URI), or c) the text of notes taken in the field about the Event.","notes available in Grinnell-Miller Library","String",NA,NA,NA,NA,NA,NA
 3,"Event",NA,NA,NA,"ResultsID",NA,"Unique (GUI) identifer for each result generatd for each data value when the datasets are merged.",NA,NA,NA,NA,NA,NA,NA,NA
 4,"MeasurementOrFact",NA,5,NA,NA,NA,"The description of the potential error associated with the measurementValue.","0.01, ""normal distribution with variation of 2 m""","String",NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,"measurementDeterminedBy",NA,NA,NA,"String",NA,NA,NA,NA,NA,NA
 4,"MeasurementOrFact",NA,NA,NA,NA,NA,"A field name for the MeasurementOrFact. Term from the stream habitat controlled vocabulary.","Grad, WetWidth, ReachLen","String",NA,NA,NA,NA,NA,NA
 4,"MeasurementOrFact",NA,NA,NA,NA,NA,"The units associated with the measurementValue. Recommended best practice is to use the International System of Units (SI).","mm, ""C"", ""km"", ""ha""","String",NA,NA,NA,NA,NA,NA
 4,"MeasurementOrFact",NA,NA,NA,"validDateTime",NA,"The date on which the MeasurementOrFact was made. Recommended best practice is to use an encoding scheme, such as ISO 8601:2004(E).","1963-03-08T14:07-0600, ""2009-02-20T08:40Z"", ""1809-02-12"", ""1906-06"", ""1971"", ""2007-03-01T13:00:00Z/2008-05-11T15:30:00Z"", ""2007-11-13/15""","String",NA,NA,NA,NA,NA,NA

@@ -8,3 +8,4 @@
 8,"datasetOrginizationCode","The name (or acronym) in use by the institution having custody of the object(s) or information referred to in the record","BLM AIM, EPA NRSA , USFS AREMP, USFS PIBO","String",NA,NA,NA,NA,"NA","NA","institutionCode","RecordLevel","DatasetOrginizationCode","Datasets"
 9,"datasetLink","An identifier for the collection or dataset from which the record was derived.","https://www.epa.gov/national-aquatic-resource-surveys","String",NA,"X",NA,NA,"NA","NA",NA,"RecordLevel",NA,"Datasets"
 10,"metadataID","Integer identifier referencing the record in the ISOMetadata table for this source.",NA,"String",NA,"X",NA,NA,"NA","NA",NA,"RecordLevel","MetadataID","Datasets"
+11,"preProcessingCode","Code to pre-process the data sets before being integrated into this data set.",NA,"String",NA,"X",NA,NA,"NA","NA",NA,NA,NA,NA

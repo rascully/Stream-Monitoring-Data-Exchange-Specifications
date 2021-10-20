@@ -9,20 +9,20 @@ metadata <- readxl::read_excel("Data/Metadata.xlsx", sheet = 3)
 
 #Create the data exchange specifications tables 
 DES_tables <- c("Datasets", "SamplingFeature","Action", "Results")
-tables <- c("RecordLevel", "Location", "Event", "MeasurementORFact")
+tables <- c("RecordLevel", "Location", "Event", "MeasurementOrFact")
 
 
 
-for (i in 1:length(DES_tables)){ 
+for (i in 1:length(tables)){ 
   
   file_name = paste0(tables[i], "_table")
   print(paste0(tables[i], "_table"))
-  write.csv(assign(DES_tables[i], metadata %>% 
-                     dplyr::select(TermID, InDES, Term , Description,Examples, DataType, 
+  write.csv(assign(tables[i], metadata %>% 
+                     dplyr::select(Table, TermID, InDES, Term, Description,Examples, DataType, 
                                    PrimaryKey, ForeginKey, ControlledVocabulary, ControlledVocabularyAPI, 
                                    MinimamPossibleValue,MaximamPossibleValue,DarwinCoreTerm, DarwinCoreClass, ODM2Term, ODMTable) %>% 
-                     filter(ODMTable== DES_tables[i], InDES=="x") %>% 
-                     select(-InDES, -ODMTable)) , file=paste0("Tables/",file_name,".csv" ), row.names = F )
+                     filter(Table== tables[i], InDES=="x") %>% 
+                     select(-InDES, -Table)) , file=paste0("Tables/",file_name,".csv" ), row.names = F )
       }
 
 

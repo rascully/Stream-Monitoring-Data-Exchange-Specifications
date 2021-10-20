@@ -8,6 +8,7 @@
 "RecordLevel",NA,NA,"datasetOrginizationCode","Institution Code","The name (or acronym) in use by the institution having custody of the object(s) or information referred to in the record","BLM AIM, EPA NRSA , USFS AREMP, USFS PIBO","String",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "RecordLevel",NA,NA,"datasetLink","CollectionID","An identifier for the collection or dataset from which the record was derived.","https://www.epa.gov/national-aquatic-resource-surveys","String",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "RecordLevel",NA,NA,"metadataID","MetadataID","Integer identifier referencing the record in the ISOMetadata table for this source.",NA,"String",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"RecordLevel",NA,NA,"preProcessingCode","Pre Processing Code","Code to pre-process the data sets before being integrated into this data set.",NA,"String",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "Location",NA,NA,"locationID","Location Identification","An identifier for the set of location information. Must be a global unique identifier.","5483AIM, 88963AREMP, WtR563EPA","String",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "Location",NA,NA,"verbatimLocationID","Site Identification","Verbatim from the orgial data set  code or number that identifies a unique sampling location. A site is a stream segment with a fixed starting and ending location for sampling. Code will remain the same across all sampling events.
 

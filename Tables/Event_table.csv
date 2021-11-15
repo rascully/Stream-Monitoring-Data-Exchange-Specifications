@@ -1,14 +1,13 @@
-Term,Description,Examples,DataType,PrimaryKey,ForeginKey,ControlledVocabulary,ControlledVocabularyAPI,MinimamPossibleValue,MaximamPossibleValue,DarwinCoreTerm,DarwinCoreClass,ODM2Term,ODMTable
-eventID,"This is the identifier for an Event (something that occurs at a place and time). Must be a global unique identifer. 
+"TermID","Term","Description","Examples","DataType","PrimaryKey","ForeginKey","ControlledVocabulary","ControlledVocabularyAPI","MinimamPossibleValue","MaximamPossibleValue","DarwinCoreTerm","DarwinCoreClass","ODM2Term","ODMTable"
+1,"eventID","This is the identifier for an Event (something that occurs at a place and time). Must be a global unique identifer. 
 
-","FFFE9F28-60DB-40C0-B9C0-4AFC753A9880, 10002-PIBO",String,X,NA,NA,NA,NA,NA,NA,Event,actionID,Action
-verbatimEventID,"Verbatim from the orgial data set unique identifer that represents a single samping occurance at location. 
+","FFFE9F28-60DB-40C0-B9C0-4AFC753A9880, 10002-PIBO","String","X",NA,NA,NA,"NA","NA","eventID","Event","actionID","Action"
+2,"verbatimEventID","Verbatim from the orgial data set unique identifer that represents a single samping occurance at location. 
 
  An identifier specific to the orgial data set. 
 
 
-","FFFE9F28-60DB-40C0-B9C0-4AFC753A9880, 10002",String,NA,NA,NA,NA,NA,NA,NA,Event,NA,Action
-actionType,NA,NA,String,NA,NA,NA,http://vocabulary.odm2.org/api/v1/actiontype/?format=skos,NA,NA,NA,Event,NA,Action
-eventDate,"The date-time or interval during which an Event occurred. For occurrences, this is the date-time when the event was recorded. Not suitable for a time in a geological context. Recommended best practice is to use an encoding scheme, such as ISO 8601:2004(E). Format YYYY-MM-DD",23078,Date,NA,NA,NA,NA,NA,NA,eventDate,Event,beginDataTime,Action
-samplingProtocol,"The name of, reference to, or description of the method or protocol used during an Event.","UV light trap, ""mist net"", ""bottom trawl"", ""ad hoc observation"", ""point count"", ""Penguins from space: faecal stains reveal the location of emperor penguin colonies, http://dx.doi.org/10.1111/j.1466-8238.2009.00467.x"", ""Takats et al. 2001. Guidelines for Nocturnal Owl Monitoring in North America. Beaverhill Bird Observatory and Bird Studies Canada, Edmonton, Alberta. 32 pp."", ""http://www.bsc-eoc.org/download/Owl.pdf""",Interger,NA,NA,"Wadable, Botable",NA,NA,NA,NA,Event,NA,Action
-year,"The four-digit year in which the Event occurred, according to the Common Era Calendar.",2008,Interger,NA,NA,NA,NA,NA,NA,NA,Event,NA,Action
+","FFFE9F28-60DB-40C0-B9C0-4AFC753A9880, 10002","String",NA,NA,NA,NA,"NA","NA",NA,"Event",NA,"Action"
+4,"eventDate","The date-time or interval during which an Event occurred. For occurrences, this is the date-time when the event was recorded. Not suitable for a time in a geological context. Recommended best practice is to use an encoding scheme, such as ISO 8601:2004(E). Format YYYY-MM-DD","23078","Date",NA,NA,NA,NA,"NA","NA","eventDate","Event","beginDataTime","Action"
+5,"samplingProtocol","The name of, reference to, or description of the method or protocol used during an Event.","UV light trap, ""mist net"", ""bottom trawl"", ""ad hoc observation"", ""point count"", ""Penguins from space: faecal stains reveal the location of emperor penguin colonies, http://dx.doi.org/10.1111/j.1466-8238.2009.00467.x"", ""Takats et al. 2001. Guidelines for Nocturnal Owl Monitoring in North America. Beaverhill Bird Observatory and Bird Studies Canada, Edmonton, Alberta. 32 pp."", ""http://www.bsc-eoc.org/download/Owl.pdf""","Interger",NA,NA,"Wadable, Botable",NA,"NA","NA","samplingProtocol","Event",NA,"Action"
+6,"year","The four-digit year in which the Event occurred, according to the Common Era Calendar.","2008","Interger",NA,NA,NA,NA,"NA","NA","year","Event",NA,"Action"

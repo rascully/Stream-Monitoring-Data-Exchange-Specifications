@@ -1,4 +1,4 @@
-"TermID","Term","Description","Examples","DataType","PrimaryKey","ForeginKey","ControlledVocabulary","ControlledVocabularyAPI","MinimamPossibleValue","MaximamPossibleValue","DarwinCoreTerm","DarwinCoreClass","ODM2Term","ODMTable"
+"termID","term","description","examples","dataType","primaryKey","foreginKey","controlledVocabulary","controlledVocabularyAPI","minimamPossibleValue","maximamPossibleValue","darwinCoreTerm","darwinCoreClass","ODM2Term","ODMTable"
 1,"resultsID","Unique integer identifier for each
 data value. Generated when the datasets are combind","5","Interger","X",NA,NA,NA,"NA","NA",NA,"MeasurementOrFact",NA,"Results"
 2,"resultTypeCV","The nature of the measurement, fact, characteristic, or assertion. Recommended best practice is to use a controlled vocabulary.","tail length, ""temperature"", ""trap line length"", ""survey area"", ""trap type""","String",NA,"X","http://vocabulary.odm2.org/resulttype/","http://vocabulary.odm2.org/api/v1/resulttype/?format=skos","NA","NA",NA,"MeasurementOrFact",NA,"Results"

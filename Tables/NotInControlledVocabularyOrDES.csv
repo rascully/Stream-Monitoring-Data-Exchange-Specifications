@@ -1,4 +1,4 @@
-"CategoryID","Table","measurementType","TermID","measurementID","Term","LongName","Description","Examples","DataType","measurementUnit","AREMPField","AIMField","NewAIMField","NRSAField","PIBOField"
+"categoryID","table","measurementType","termID","measurementID","term","longName","description","examples","dataType","measurementUnit","AREMPField","AIMField","NewAIMField","NRSAField","PIBOField"
 1,"RecordLevel",NA,4,NA,"datasetAbstract",NA,NA,NA,"String",NA,NA,NA,NA,NA,NA
 1,"RecordLevel",NA,8,NA,"institutionCode","Institution Code","The name (or acronym) in use by the institution having custody of the object(s) or information referred to in the record","BLM AIM, EPA NRSA , USFS AREMP, USFS PIBO","String",NA,NA,NA,NA,NA,NA
 1,"RecordLevel",NA,NA,NA,"collectionCode","rightsHolder","A person or organization owning or managing rights over the resource.","Example: BLM AIM, EPA NARS, USFS ARMEP","String",NA,NA,NA,NA,NA,NA

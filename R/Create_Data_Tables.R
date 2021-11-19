@@ -18,7 +18,7 @@ for (i in 1:length(tables)){
   file_name = paste0(tables[i], "_table")
   print(paste0(tables[i], "_table"))
   write.csv(assign(tables[i], metadata %>% 
-                     dplyr::select(table, termID, inDES, term, description,examples, dataType, 
+                     dplyr::select(table, termID, inDES, term,  description,examples, dataType, 
                                    primaryKey, foreginKey, controlledVocabulary, controlledVocabularyAPI, 
                                    minimamPossibleValue,maximamPossibleValue,darwinCoreTerm, darwinCoreClass, ODM2Term, ODMTable) %>% 
                      filter(table== tables[i], inDES=="x") %>% 
@@ -33,31 +33,61 @@ for (i in 1:length(tables)){
 
 #create a vocabulary table 
 vocabulary<- metadata %>% 
-  select(categoryID,table,measurementType, measurementID, subsetOfMetrics,
-         term, description, examples, dataType, measurementUnit, maximamPossibleValue, minimamPossibleValue ) %>% 
+  select(categoryID,table,measurementType,subsetOfMetrics, termID, 
+         term, longName , description, examples, dataType, measurementUnit, minimamPossibleValue, maximamPossibleValue ) %>% 
   filter(table== "ControlledVocabulary", subsetOfMetrics=="x") %>% 
   select(-subsetOfMetrics, -categoryID, -table)
 
 write.csv(vocabulary, file=paste0("Tables/ControlledVocabulary.csv" ), row.names=F) 
 
-#Create the crosswalk table 
+old_crosswalk <- metadata %>% 
+          select(c("table","measurementType", "measurementID", "term","termID",  "subsetOfMetrics", "inDES", 
+          "longName", "description", "examples", "dataType", "measurementUnit")|contains("CW")) %>% 
+          filter(subsetOfMetrics=="x"| inDES=="x"  ) %>% 
+          select(-subsetOfMetrics, -inDES) 
+
+#Create the crosswalk table (Add back in "measurementID" once create UID for each value)
 crosswalk<- metadata %>% 
-  select(c("table","measurementType", "measurementID", "term", "subsetOfMetrics", "inDES", 
-           "description", "examples", "dataType", "measurementUnit")|contains("CW")) %>% 
+  select(c("termID", "term", "subsetOfMetrics", "inDES")|contains(c("FieldCW"))) %>% 
   filter(subsetOfMetrics=="x"| inDES=="x"  ) %>% 
   select(-subsetOfMetrics, -inDES) 
 
+cw_long <- crosswalk %>% 
+       pivot_longer(cols=contains("Field"), names_to= "program", values_to = "orginalField", values_drop_na = T) %>% 
+        mutate(program, program = str_remove_all(program, "FieldCW"))
+
+methods <- crosswalk<- metadata %>% 
+  select(c("termID", "subsetOfMetrics", "inDES")|contains("MethodIDCW")) %>% 
+  filter(subsetOfMetrics=="x"| inDES=="x"  ) %>% 
+  select(-subsetOfMetrics, -inDES) %>% 
+  pivot_longer(cols= contains("Method"), names_to="program", values_to= "method", values_drop_na = T)
+
+method_type = c("Collection", "Analysis")
+
+for (type in method_type) {
+  print(type)
+  
+  method_flat <- methods %>% 
+    filter(str_detect(program,type)) %>% 
+    rename(!!paste0(type,"Method") := method) %>% 
+    mutate(program, program = str_remove_all(program, paste0(type, "MethodIDCW")))
+  
+  cw_long <- full_join(cw_long, method_flat, by= c("termID", "program"))
+  
+}
+  
+
 crosswalk[str_detect(crosswalk$term, c("sampingProtocol")),]
 
-names(crosswalk) <- str_remove_all(names(crosswalk), "CW")
-write.csv(crosswalk, file=paste0("Tables/Crosswalk.csv" ), row.names=F)
-
-
+#names(crosswalk) <- str_remove_all(names(crosswalk), "CW")
+write.csv(crosswalk, file=paste0("Tables/Crosswalk_wide.csv" ), row.names=F)
+write.csv(cw_long, file=paste0("Tables/Crosswalk_wide.csv" ), row.names=F)
 
 
 #####Create one file
 list_of_datasets <- list("RecordLevel" = RecordLevel, "Location"= Location, "Event"= Event,
-                         "MeasurementOrFact"= MeasurementOrFact, "VariableCV"= vocabulary,  "Crosswalk"= crosswalk) 
+                         "MeasurementOrFact"= MeasurementOrFact, "metricControlledVocabulary"= vocabulary, 
+                         "Crosswalk_tall"=cw_long  ,  "Crosswalk"= old_crosswalk, "Methods"=methods) 
 
 file.remove("Tables/Stream_Habitat_ExchangeSpecifications.xlsx")
 
@@ -78,11 +108,6 @@ write.csv(short_crosswalk, file=paste0("Tables/CrosswalkForReview.csv" ), row.na
 
 
 #Create a list of metrics from the programs not in the controlled vocabulary 
-vocabulary<- metadata %>% 
-  select(categoryID,table,measurementType, measurementID, subsetOfMetrics,
-         term,longName, description,examples, dataType, measurementUnit, maximamPossibleValue, minimamPossibleValue, controlledVocabulary, controlledVocabularyAPI ) %>% 
-  filter(table== "ControlledVocabulary", subsetOfMetrics=="x") %>% 
-  select(-subsetOfMetrics)
 
 notInVocab<- metadata %>% 
   select(c(categoryID,table,measurementType, termID, measurementID, subsetOfMetrics,

@@ -60,7 +60,9 @@ methods <- crosswalk<- metadata %>%
   select(c("termID", "subsetOfMetrics", "inDES")|contains("MethodIDCW")) %>% 
   filter(subsetOfMetrics=="x"| inDES=="x"  ) %>% 
   select(-subsetOfMetrics, -inDES) %>% 
-  pivot_longer(cols= contains("Method"), names_to="program", values_to= "method", values_drop_na = T)
+  pivot_longer(cols= contains("Method"), names_to="program", values_to= "method", values_drop_na = T) %>% 
+  mutate(program, program = str_remove_all(program, "CollectionMethodIDCW")) %>% 
+  mutate(program, program = str_remove_all(program, "AnalysisMethodIDCW"))
 
 method_type = c("Collection", "Analysis")
 
@@ -71,17 +73,12 @@ for (type in method_type) {
     filter(str_detect(program,type)) %>% 
     rename(!!paste0(type,"Method") := method) %>% 
     mutate(program, program = str_remove_all(program, paste0(type, "MethodIDCW")))
-  
-  cw_long <- full_join(cw_long, method_flat, by= c("termID", "program"))
+    cw_long <- full_join(cw_long, method_flat, by= c("termID", "program"))
   
 }
   
-
-crosswalk[str_detect(crosswalk$term, c("sampingProtocol")),]
-
-#names(crosswalk) <- str_remove_all(names(crosswalk), "CW")
 write.csv(crosswalk, file=paste0("Tables/Crosswalk_wide.csv" ), row.names=F)
-write.csv(cw_long, file=paste0("Tables/Crosswalk_wide.csv" ), row.names=F)
+write.csv(cw_long, file=paste0("Tables/Crosswalk_long.csv" ), row.names=F)
 
 
 #####Create one file
@@ -150,3 +147,4 @@ list_of_datasets <- append(list_of_datasets, EPA)
 
 file.remove("Tables/PropertyRegistry.xlsx")
 openxlsx::write.xlsx(list_of_datasets, file = "Tables/PropertyRegistry.xlsx") 
+

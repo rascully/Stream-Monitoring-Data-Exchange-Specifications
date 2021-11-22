@@ -60,9 +60,11 @@ methods <- crosswalk<- metadata %>%
   select(c("termID", "subsetOfMetrics", "inDES")|contains("MethodIDCW")) %>% 
   filter(subsetOfMetrics=="x"| inDES=="x"  ) %>% 
   select(-subsetOfMetrics, -inDES) %>% 
-  pivot_longer(cols= contains("Method"), names_to="program", values_to= "method", values_drop_na = T) %>% 
-  mutate(program, program = str_remove_all(program, "CollectionMethodIDCW")) %>% 
-  mutate(program, program = str_remove_all(program, "AnalysisMethodIDCW"))
+  pivot_longer(cols= contains("Method"), names_to="ProgramMethodType", values_to= "method", values_drop_na = T)
+
+#%>% 
+#  mutate(program, program = str_remove_all(program, "CollectionMethodIDCW")) %>% 
+ # mutate(program, program = str_remove_all(program, "AnalysisMethodIDCW"))
 
 method_type = c("Collection", "Analysis")
 
@@ -70,10 +72,13 @@ for (type in method_type) {
   print(type)
   
   method_flat <- methods %>% 
-    filter(str_detect(program,type)) %>% 
+    filter(str_detect(ProgramMethodType,type)) %>% 
     rename(!!paste0(type,"Method") := method) %>% 
-    mutate(program, program = str_remove_all(program, paste0(type, "MethodIDCW")))
-    cw_long <- full_join(cw_long, method_flat, by= c("termID", "program"))
+    mutate(ProgramMethodType, program = str_remove_all(ProgramMethodType
+                                             , paste0(type, "MethodIDCW")))
+  
+    cw_long <- full_join(cw_long, method_flat, by= c("termID", "program")) %>% 
+                select(-contains("ProgramMethodType"))
   
 }
   

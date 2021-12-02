@@ -1,5 +1,4 @@
 "categoryID","table","measurementType","termID","measurementID","term","longName","description","examples","dataType","measurementUnit","AREMPField","AIMField","NewAIMField","NRSAField","PIBOField"
-1,"RecordLevel",NA,8,NA,"institutionCode","Institution Code","The name (or acronym) in use by the institution having custody of the object(s) or information referred to in the record","BLM AIM, EPA NRSA , USFS AREMP, USFS PIBO","String",NA,NA,NA,NA,NA,NA
 2,"Location",NA,17,NA,"spatialReferenceID","geodeticDatum","The ellipsoid, geodetic datum, or spatial reference system (SRS) upon which the geographic coordinates given in decimalLatitude and decimalLongitude as based.",NA,"String",NA,NA,NA,NA,NA,NA
 3,"Event",NA,21,NA,"actionType",NA,NA,NA,"String",NA,NA,NA,NA,NA,NA
 5,"ControlledVocabulary","Channel dimensions",45,9,NA,"Count of Transects","Number of transects in the reach.",NA,NA,NA,NA,NA,NA,NA,NA

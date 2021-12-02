@@ -56,11 +56,29 @@ cw_long <- crosswalk %>%
        pivot_longer(cols=contains("Field"), names_to= "program", values_to = "orginalField", values_drop_na = T) %>% 
         mutate(program, program = str_remove_all(program, "FieldCW"))
 
+######Create a table of units
+
+units<- metadata %>% 
+  select(c("termID", "term", "subsetOfMetrics", "inDES")| contains(c("Unit"))) %>% 
+  filter(subsetOfMetrics=="x"| inDES=="x"  ) %>% 
+  select(-subsetOfMetrics, -inDES, -measurementUnit) 
+
+units_long <- units %>%
+  pivot_longer(cols=contains("Unit"), names_to= "program", values_to = "orginalUnit", values_drop_na = T) %>% 
+  mutate(program, program = str_remove_all(program, "Units"))
+
+cw_long <- full_join(cw_long, units_long, by= c("termID", "program", "term")) %>% 
+  select(-contains("ProgramMethodType")) 
+
+#####Create a methods table 
+
 methods <- crosswalk<- metadata %>% 
   select(c("termID", "subsetOfMetrics", "inDES")|contains("MethodIDCW")) %>% 
   filter(subsetOfMetrics=="x"| inDES=="x"  ) %>% 
   select(-subsetOfMetrics, -inDES) %>% 
   pivot_longer(cols= contains("Method"), names_to="ProgramMethodType", values_to= "method", values_drop_na = T)
+
+
 
 #%>% 
 #  mutate(program, program = str_remove_all(program, "CollectionMethodIDCW")) %>% 

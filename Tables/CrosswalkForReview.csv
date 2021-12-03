@@ -1,6 +1,5 @@
 "measurementType","term","longName","description","examples","dataType","measurementUnit","AREMPField","AIMField","NewAIMField","NRSAField","PIBOField"
 "Channel Characteristics","Beaver","Beaver Sign at Reach","Beaver present from the provider dataset.",NA,"Numeric",NA,"beaver_impacted","BVR_SGN",NA,NA,NA
-"Channel Characteristics","PctDry","Percent of Reach that is Dry","Percent of the reach that was dry","min: 0, max: 100","Numeric","%",NA,"PCT_DRY","PctDry","PCT_DRS","StrmFlow"
 "Channel Characteristics","Sin","Sinuosity of Local Stream Reach","Reach sinuosity (reach length along the thalweg divided by straight line distance between the bottom of the reach and the top of the reach)",NA,"Numeric",NA,NA,"SNSTY",NA,"SINU","Sin"
 "Channel Characteristics","StreamOrder","Stream Order","Strahler stream order of the site from the provider dataset",NA,"Numeric","NA","StreamOrder","STRM_ORDR","StreamOrder","STRAHLERORDER",NA
 "Channel dimensions","AvgBFWDRatio","Bankfull width to depth ratio at transects","Average bankfull width/depth ratio for the reach.",NA,"Numeric","m","ave_widthDepth_ratio",NA,NA,"BFWD_RAT","WDTrans"

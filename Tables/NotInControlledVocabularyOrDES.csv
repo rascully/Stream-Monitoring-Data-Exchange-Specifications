@@ -1,6 +1,7 @@
 "categoryID","table","measurementType","termID","measurementID","term","longName","description","examples","dataType","measurementUnit","AREMPField","AIMField","NewAIMField","NRSAField","PIBOField"
 2,"Location",NA,17,NA,"spatialReferenceID","geodeticDatum","The ellipsoid, geodetic datum, or spatial reference system (SRS) upon which the geographic coordinates given in decimalLatitude and decimalLongitude as based.",NA,"String",NA,NA,NA,NA,NA,NA
 3,"Event",NA,21,NA,"actionType",NA,NA,NA,"String",NA,NA,NA,NA,NA,NA
+5,"ControlledVocabulary","Channel Characteristics",34,11,"PctDry","Percent of Reach that is Dry","Percent of the reach that was dry","min: 0, max: 100","Numeric","%",NA,"PCT_DRY","PctDry","PCT_DRS","StrmFlow"
 5,"ControlledVocabulary","Channel dimensions",45,9,NA,"Count of Transects","Number of transects in the reach.",NA,NA,NA,NA,NA,NA,NA,NA
 1,"RecordLevel",NA,64,NA,"datasetAbstract",NA,NA,NA,"String",NA,NA,NA,NA,NA,NA
 1,"RecordLevel",NA,65,NA,"collectionCode","rightsHolder","A person or organization owning or managing rights over the resource.","Example: BLM AIM, EPA NARS, USFS ARMEP","String",NA,NA,NA,NA,NA,NA
@@ -53,7 +54,6 @@
 3,"Event",NA,112,NA,NA,NA,"The integer day of the month on which the Event occurred.","9, ""28""","Date",NA,NA,NA,NA,NA,NA
 3,"Event",NA,113,NA,NA,"Standardized Date","The ordinal month in which the Event occurred.","1 (=January), ""10"" (=October)","Date",NA,NA,NA,NA,NA,NA
 3,"Event",NA,114,NA,NA,NA,"An identifier given to the event in the field. Often serves as a link between field notes and the Event.","RV Sol 87-03-08","String",NA,NA,NA,NA,NA,NA
-3,"Event",NA,115,NA,NA,NA,"Comments or notes about the Event.","after the recent rains the river is nearly at flood stage","String",NA,NA,NA,NA,NA,NA
 3,"Event",NA,116,NA,NA,"Field Status Notes","One of a) an indicator of the existence of, b) a reference to (publication, URI), or c) the text of notes taken in the field about the Event.","notes available in Grinnell-Miller Library","String",NA,NA,NA,NA,NA,NA
 3,"MeasurementOrFact",NA,117,NA,"ResultsID",NA,"Unique (GUI) identifer for each result generatd for each data value when the datasets are merged.",NA,NA,NA,NA,NA,NA,NA,NA
 4,"MeasurementOrFact",NA,118,NA,NA,NA,"The description of the potential error associated with the measurementValue.","0.01, ""normal distribution with variation of 2 m""","String",NA,NA,NA,NA,NA,NA

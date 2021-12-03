@@ -37,10 +37,6 @@
 24,"year","PIBO","Yr","integer",NA,NA
 33,"Beaver","AREMP","beaver_impacted",NA,"www.monitoringresources.org/Document/Method/Details/7003",NA
 33,"Beaver","AIM","BVR_SGN","None","www.monitoringresources.org/Document/Method/Details/7002",NA
-34,"PctDry","AIM","PCT_DRY","%","www.monitoringresources.org/Document/CustomizedMethod/Details/31137","www.monitoringresources.org/Document/Method/Details/7004"
-34,"PctDry","NewAIM","PctDry",NA,NA,NA
-34,"PctDry","NRSA","PCT_DRS",NA,"www.monitoringresources.org/Document/Method/Details/1610","www.monitoringresources.org/Document/Method/Details/7018"
-34,"PctDry","PIBO","StrmFlow",NA,"www.monitoringresources.org/Document/Method/Details/924","tbd"
 35,"Sin","AIM","SNSTY","None","www.monitoringresources.org/Document/Method/Details/3807","www.monitoringresources.org/Document/Method/Details/7007"
 35,"Sin","NRSA","SINU",NA,"www.monitoringresources.org/Document/Method/Details/1610","www.monitoringresources.org/Document/Method/Details/7005"
 35,"Sin","PIBO","Sin","ratio","www.monitoringresources.org/Document/Method/Details/6868","tbd"
@@ -122,6 +118,10 @@
 62,"TotalPhosphorous","NRSA","PTL","ug/L","www.monitoringresources.org/Document/Method/Details/548","tbd"
 63,"Turbidity","AIM","TRBDTY","NTU","www.monitoringresources.org/Document/Method/Details/7012",NA
 63,"Turbidity","NRSA","TURB",NA,"www.monitoringresources.org/Document/Method/Details/7016","tbd"
+115,"fieldNotes","AIM","PCT_DRY","%","www.monitoringresources.org/Document/CustomizedMethod/Details/31137","www.monitoringresources.org/Document/Method/Details/7004"
+115,"fieldNotes","NewAIM","PctDry",NA,NA,NA
+115,"fieldNotes","NRSA","PCT_DRS",NA,"www.monitoringresources.org/Document/Method/Details/1610","www.monitoringresources.org/Document/Method/Details/7018"
+115,"fieldNotes","PIBO","StrmFlow",NA,"www.monitoringresources.org/Document/Method/Details/924","tbd"
 46,"PctPool","NRSA",NA,"%  of reach",NA,NA
 47,"RPD","NRSA",NA,"cm",NA,NA
 48,"BankAngle","NRSA",NA,"degrees",NA,NA

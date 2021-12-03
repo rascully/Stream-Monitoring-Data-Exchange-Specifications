@@ -1,6 +1,5 @@
 "measurementType","termID","term","longName","description","examples","dataType","measurementUnit","minimamPossibleValue","maximamPossibleValue"
 "Channel Characteristics",33,"Beaver","Beaver Sign at Reach","Beaver present from the provider dataset.",NA,"Numeric",NA,"NA","NA"
-"Channel Characteristics",34,"PctDry","Percent of Reach that is Dry","Percent of the reach that was dry","min: 0, max: 100","Numeric","%","0","100"
 "Channel Characteristics",35,"Sin","Sinuosity of Local Stream Reach","Reach sinuosity (reach length along the thalweg divided by straight line distance between the bottom of the reach and the top of the reach)",NA,"Numeric",NA,"1","NA"
 "Channel Characteristics",36,"StreamOrder","Stream Order","Strahler stream order of the site from the provider dataset",NA,"Numeric","NA","1","12"
 "Channel dimensions",37,"AvgBFWDRatio","Bankfull width to depth ratio at transects","Average bankfull width/depth ratio for the reach.",NA,"Numeric","m","0","0"

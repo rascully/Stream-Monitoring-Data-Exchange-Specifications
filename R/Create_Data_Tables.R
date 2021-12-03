@@ -53,7 +53,7 @@ crosswalk<- metadata %>%
   select(-subsetOfMetrics, -inDES) 
 
 cw_long <- crosswalk %>% 
-       pivot_longer(cols=contains("Field"), names_to= "program", values_to = "orginalField", values_drop_na = T) %>% 
+       pivot_longer(cols=contains("Field"), names_to= "program", values_to = "originalField", values_drop_na = T) %>% 
         mutate(program, program = str_remove_all(program, "FieldCW"))
 
 ######Create a table of units
@@ -64,7 +64,7 @@ units<- metadata %>%
   select(-subsetOfMetrics, -inDES, -measurementUnit) 
 
 units_long <- units %>%
-  pivot_longer(cols=contains("Unit"), names_to= "program", values_to = "orginalUnit", values_drop_na = T) %>% 
+  pivot_longer(cols=contains("Unit"), names_to= "program", values_to = "originalUnit", values_drop_na = T) %>% 
   mutate(program, program = str_remove_all(program, "Units"))
 
 cw_long <- full_join(cw_long, units_long, by= c("termID", "program", "term")) %>% 

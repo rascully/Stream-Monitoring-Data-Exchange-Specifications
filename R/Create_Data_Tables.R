@@ -25,6 +25,12 @@ for (i in 1:length(tables)){
                      select(-inDES, -table)) , file=paste0("Tables/",file_name,".csv" ), row.names = F )
       }
 
+des_tall <- metadata %>% 
+                   dplyr::select(table, termID, inDES, term,  description,examples, dataType, 
+                                 primaryKey, foreginKey, controlledVocabulary, controlledVocabularyAPI, 
+                                 minimamPossibleValue,maximamPossibleValue,darwinCoreTerm, darwinCoreClass, ODM2Term, ODMTable) %>% 
+                   filter(inDES=="x") %>% 
+                   select(-inDES)
 
 #metadata %>% 
  # dplyr::select(CategoryID, TermID, Term, ODMTable, Table,measurementType, InDES, Term,Description,Examples, DataType )%>% 
@@ -104,10 +110,19 @@ write.csv(crosswalk, file=paste0("Tables/Crosswalk_wide.csv" ), row.names=F)
 write.csv(cw_long, file=paste0("Tables/Crosswalk_long.csv" ), row.names=F)
 
 
+
+sheets <- openxlsx::getSheetNames("Tables/ControlledVocabularyForFields.xlsx")
+CVFields <- lapply(sheets,openxlsx::read.xlsx, xlsxFile="Tables/ControlledVocabularyForFields.xlsx")
+names(CVFields) <- sheets
+
+
+
 #####Create one file
-list_of_datasets <- list("RecordLevel" = RecordLevel, "Location"= Location, "Event"= Event,
+list_of_datasets <- append(list("RecordLevel" = RecordLevel, "Location"= Location, "Event"= Event,
                          "MeasurementOrFact"= MeasurementOrFact, "metricControlledVocabulary"= vocabulary, 
-                         "Crosswalk_tall"=cw_long  ,  "Crosswalk"= old_crosswalk, "Methods"=methods) 
+                         "Crosswalk_tall"=cw_long  ,  "Crosswalk"= old_crosswalk, "Methods"=methods, "des_tall"= des_tall), CVFields) 
+
+
 
 file.remove("Tables/Stream_Habitat_ExchangeSpecifications.xlsx")
 

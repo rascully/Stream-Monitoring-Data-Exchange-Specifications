@@ -6,8 +6,8 @@
 5,"modified","The most recent date-time on which the datasets were combind.",NA,"Date",NA,NA,NA,NA,"NA","NA","modified","RecordLevel",NA,"Datasets"
 6,"datasetOrginization","An identifier for the institution having custody of the object(s) or information referred to in the record.","http://biocol.org/urn:lsid:biocol.org:col:34777, http://grbio.org/cool/km06-gtbn","String",NA,NA,NA,NA,"NA","NA",NA,"RecordLevel","DatasetOrginization","Datasets"
 8,"institutionCode","The name (or acronym) in use by the institution having custody of the object(s) or information referred to in the record","BLM,  EPA, USFS","String",NA,NA,NA,NA,"NA","NA","institutionCode","RecordLevel","DatasetOrginizationCode","Datasets"
-NA,"ProjectName","The name assigned by the Organization (project leader or principal investigator) to the project.","USFS PacFish/InFish Biological Opinion Monitoring Program","String",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-NA,"ProjectCode","The name (or acronym) in use by the institution having custody of the object(s) or information referred to in the record","PIBO, AIM, USFS, NRSA","String",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+NA,"projectName","The name assigned by the Organization (project leader or principal investigator) to the project.","USFS PacFish/InFish Biological Opinion Monitoring Program","String",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+NA,"projectCode","The name (or acronym) in use by the institution having custody of the object(s) or information referred to in the record","PIBO, AIM, USFS, NRSA","String",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 9,"datasetLink","An identifier for the collection or dataset from which the record was derived.","https://www.epa.gov/national-aquatic-resource-surveys","String",NA,"X",NA,NA,"NA","NA",NA,"RecordLevel",NA,"Datasets"
 10,"metadataID","Integer identifier referencing the record in the ISOMetadata table for this source.",NA,"String",NA,"X",NA,NA,"NA","NA",NA,NA,"MetadataID","Datasets"
 11,"preProcessingCode","Code to pre-process the data sets before being integrated into this data set.",NA,"String",NA,"X",NA,NA,"NA","NA",NA,NA,NA,NA

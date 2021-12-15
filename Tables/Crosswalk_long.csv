@@ -1,129 +1,111 @@
-"termID","term","program","originalField","originalUnit","CollectionMethod","AnalysisMethod"
-13,"verbatimLocationID","AREMP","SITE_ID",NA,NA,NA
-13,"verbatimLocationID","AIM","MS_CD","NA",NA,NA
-13,"verbatimLocationID","NewAIM","PointID",NA,NA,NA
-13,"verbatimLocationID","NRSA","SITE_ID",NA,NA,NA
-13,"verbatimLocationID","PIBO","SiteID","integer",NA,NA
-14,"waterBody","AIM","STRM_NM","NA",NA,NA
-14,"waterBody","NewAIM","StreamName",NA,NA,NA
-14,"waterBody","PIBO","Stream","NA",NA,NA
-15,"latitude","AREMP","lattitude",NA,NA,NA
-15,"latitude","AIM","MIDLAT","decimal degrees",NA,NA
-15,"latitude","NewAIM","MiddleReachLatitude",NA,NA,NA
-15,"latitude","NRSA","LAT_DD83","Decimal Degrees",NA,NA
-15,"latitude","PIBO","Lat","Decimal degree",NA,NA
-16,"longitude","AREMP","longitude",NA,NA,NA
-16,"longitude","AIM","MIDLONG","decimal degrees",NA,NA
-16,"longitude","NewAIM","MiddleReachLongitude",NA,NA,NA
-16,"longitude","NRSA","LON_DD83","Decimal Degrees",NA,NA
-16,"longitude","PIBO","Long","Decimal degree",NA,NA
-20,"verbatimEventID","AREMP","site_survey_id",NA,NA,NA
-20,"verbatimEventID","AIM","UID","NA",NA,NA
-20,"verbatimEventID","NewAIM","EvaluationID",NA,NA,NA
-20,"verbatimEventID","NRSA","UID",NA,NA,NA
-20,"verbatimEventID","PIBO","RchID","integer",NA,NA
-22,"eventDate","AREMP","survey_date",NA,NA,NA
-22,"eventDate","AIM","DT","m/d/yyyy",NA,NA
-22,"eventDate","NewAIM","FieldEvalDate",NA,NA,NA
-22,"eventDate","NRSA","DATE_COL",NA,NA,NA
-22,"eventDate","PIBO","SampDate",NA,NA,NA
-23,"samplingProtocol","AREMP","survey_type",NA,NA,NA
-23,"samplingProtocol","AIM","PRTCL","NA",NA,NA
-23,"samplingProtocol","NewAIM","ProtocolVersion",NA,NA,NA
-23,"samplingProtocol","NRSA","VALXSITE",NA,NA,NA
-23,"samplingProtocol","PIBO","Type",NA,NA,NA
-24,"year","AREMP","survey_year",NA,NA,NA
-24,"year","NRSA","YEAR",NA,NA,NA
-24,"year","PIBO","Yr","integer",NA,NA
-33,"Beaver","AREMP","beaver_impacted",NA,"www.monitoringresources.org/Document/Method/Details/7003",NA
-33,"Beaver","AIM","BVR_SGN","None","www.monitoringresources.org/Document/Method/Details/7002",NA
-35,"Sin","AIM","SNSTY","None","www.monitoringresources.org/Document/Method/Details/3807","www.monitoringresources.org/Document/Method/Details/7007"
-35,"Sin","NRSA","SINU",NA,"www.monitoringresources.org/Document/Method/Details/1610","www.monitoringresources.org/Document/Method/Details/7005"
-35,"Sin","PIBO","Sin","ratio","www.monitoringresources.org/Document/Method/Details/6868","tbd"
-36,"StreamOrder","AREMP","StreamOrder",NA,NA,NA
-36,"StreamOrder","AIM","STRM_ORDR","NA",NA,NA
-36,"StreamOrder","NewAIM","StreamOrder",NA,NA,NA
-36,"StreamOrder","NRSA","STRAHLERORDER",NA,NA,NA
-37,"AvgBFWDRatio","AREMP","ave_widthDepth_ratio",NA,"www.monitoringresources.org/Document/Method/Details/6849 AND https://www.monitoringresources.org/Document/CustomizedMethod/Details/31107","www.monitoringresources.org/Document/Method/Details/1064 OR www.monitoringresources.org/Document/Method/Details/1275"
-37,"AvgBFWDRatio","NRSA","BFWD_RAT","ratio","www.monitoringresources.org/Document/Method/Details/6870 AND www.monitoringresources.org/Document/Method/Details/56","www.monitoringresources.org/Document/Method/Details/1064 OR  www.monitoringresources.org/Document/Method/Details/1275"
-37,"AvgBFWDRatio","PIBO","WDTrans","ratio","www.monitoringresources.org/Document/Method/Details/65 AND https://www.monitoringresources.org/Document/Method/Details/6871","www.monitoringresources.org/Document/Method/Details/1064 OR  www.monitoringresources.org/Document/Method/Details/1275"
-38,"BFHeight","AREMP","average_bfdepth","ratio","www.monitoringresources.org/Document/CustomizedMethod/Details/31107","tbd"
-38,"BFHeight","AIM","BNKFLL_HT","m","www.monitoringresources.org/Document/Method/Details/7013","tbd"
-38,"BFHeight","NewAIM","BankfullHeightAvg",NA,NA,NA
-38,"BFHeight","NRSA","XBKF_H","m","www.monitoringresources.org/Document/Method/Details/56","www.monitoringresources.org/Document/Method/Details/7014"
-39,"BFWidth","AREMP","average_bfwidth","m","www.monitoringresources.org/Document/Method/Details/6849","www.monitoringresources.org/Document/Method/Details/4103"
-39,"BFWidth","AIM","BNKFLL_WT","m","https://www.monitoringresources.org/Document/CustomizedMethod/Details/31137","www.monitoringresources.org/Document/Method/Details/4103"
-39,"BFWidth","NewAIM","BankfullWidthAvg",NA,NA,NA
-39,"BFWidth","NRSA","XBKF_W","m","www.monitoringresources.org/Document/Method/Details/6870","www.monitoringresources.org/Document/Method/Details/4103"
-39,"BFWidth","PIBO","Bf","m","www.monitoringresources.org/Document/Method/Details/6871","www.monitoringresources.org/Document/Method/Details/4103"
-41,"Grad","AREMP","gradient","percent, expressed as a decimal","www.monitoringresources.org/Document/Method/Details/6852",NA
-41,"Grad","AIM","SLPE","%","www.monitoringresources.org/Document/CustomizedMethod/Details/31139","www.monitoringresources.org/Document/Method/Details/4113"
-41,"Grad","NewAIM","PctSlope",NA,NA,NA
-41,"Grad","NRSA","XSLOPE","%","www.monitoringresources.org/Document/Method/Details/6852","www.monitoringresources.org/Document/Method/Details/4113"
-41,"Grad","PIBO","Grad","%","www.monitoringresources.org/Document/Method/Details/6868","www.monitoringresources.org/Document/Method/Details/4113"
-42,"MeanThalwegDepth","AIM","ThalwegDepthMean","m","www.monitoringresources.org/Document/Method/Details/7008","tbd"
-42,"MeanThalwegDepth","NRSA","XDEPTH_CM","cm","www.monitoringresources.org/Document/Method/Details/74","www.monitoringresources.org/Document/Method/Details/7015"
-43,"ReachLen","AREMP","REACH_LENGTH","m","www.monitoringresources.org/Document/Method/Details/3807",NA
-43,"ReachLen","AIM","TOT_RCH_LEN","m","www.monitoringresources.org/Document/Method/Details/7017",NA
-43,"ReachLen","NewAIM","ProtocolReachLength",NA,NA,NA
-43,"ReachLen","NRSA","REACHLEN",NA,"www.monitoringresources.org/Document/Method/Details/1610",NA
-43,"ReachLen","PIBO","RchLen","m","www.monitoringresources.org/Document/Method/Details/6868",NA
-44,"WetWidth","AREMP","wettedWidth_ave","m","www.monitoringresources.org/Document/Method/Details/6849","www.monitoringresources.org/Document/Method/Details/3893"
-44,"WetWidth","AIM","WTTD_WT","m","www.monitoringresources.org/Document/CustomizedMethod/Details/31137","www.monitoringresources.org/Document/Method/Details/3893"
-44,"WetWidth","NewAIM","WettedWidthAvg",NA,NA,NA
-44,"WetWidth","NRSA","XWIDTH","m","www.monitoringresources.org/Document/Method/Details/1610","www.monitoringresources.org/Document/Method/Details/3893"
-46,"PctPool","AREMP","PctReachInPools","%","www.monitoringresources.org/Document/Method/Details/6844","www.monitoringresources.org/Document/Method/Details/3852"
-46,"PctPool","AIM","PCT_PL","%","www.monitoringresources.org/Document/Method/Details/6859","www.monitoringresources.org/Document/Method/Details/4115"
-46,"PctPool","NewAIM","PctPools",NA,NA,NA
-46,"PctPool","PIBO","PoolPct","percent","www.monitoringresources.org/Document/Method/Details/6872","www.monitoringresources.org/Document/Method/Details/55"
-47,"RPD","AREMP","ave_residual_depth","m","www.monitoringresources.org/Document/Method/Details/6844","www.monitoringresources.org/Document/Method/Details/6976"
-47,"RPD","AIM","RES_PL_DEP","m","www.monitoringresources.org/Document/Method/Details/6859","www.monitoringresources.org/Document/Method/Details/6976"
-47,"RPD","NewAIM","ResPoolDepthAvg",NA,NA,NA
-47,"RPD","PIBO","PoolDp","m","www.monitoringresources.org/Document/Method/Details/6872","www.monitoringresources.org/Document/Method/Details/6976"
-48,"BankAngle","AIM","BNK_AN","degrees","www.monitoringresources.org/Document/Method/Details/68",NA
-48,"BankAngle","PIBO","BankAngle","degrees","www.monitoringresources.org/Document/Method/Details/68",NA
-49,"PctStab","AIM","BNK_STBLTY","%","www.monitoringresources.org/Document/Method/Details/69","www.monitoringresources.org/Document/Method/Details/7010"
-49,"PctStab","PIBO","Stab","percent","www.monitoringresources.org/Document/Method/Details/69","tbd"
-50,"D16","AIM","D16","mm","www.monitoringresources.org/Document/Method/Details/6810","www.monitoringresources.org/Document/Method/Details/1730"
-50,"D16","PIBO","D16","m","www.monitoringresources.org/Document/Method/Details/6797","www.monitoringresources.org/Document/Method/Details/1730"
-51,"D50","AREMP","D50","mm","www.monitoringresources.org/Document/Method/Details/6797","www.monitoringresources.org/Document/Method/Details/1730"
-51,"D50","AIM","D50","mm","www.monitoringresources.org/Document/Method/Details/6801","www.monitoringresources.org/Document/Method/Details/1730"
-51,"D50","NewAIM","D50",NA,NA,NA
-51,"D50","NRSA","Sub_dmm",NA,"www.monitoringresources.org/Document/Method/Details/6874","www.monitoringresources.org/Document/Method/Details/1730"
-51,"D50","PIBO","D50","m","www.monitoringresources.org/Document/Method/Details/6797","www.monitoringresources.org/Document/Method/Details/1730"
-52,"D84","AIM","D84","mm","www.monitoringresources.org/Document/Method/Details/6810","www.monitoringresources.org/Document/Method/Details/1730"
-52,"D84","PIBO","D84","m","www.monitoringresources.org/Document/Method/Details/6797","www.monitoringresources.org/Document/Method/Details/1730"
-53,"PctBdrk","AREMP","bedrock_pcnt","%","www.monitoringresources.org/Document/Method/Details/6797","tbd"
-53,"PctBdrk","NRSA","PCT_BDRK","Log 10 mm","www.monitoringresources.org/Document/Method/Details/6874","www.monitoringresources.org/Document/Method/Details/7011"
-54,"PctFines2","AREMP","pcnt_fines_tran2","%","www.monitoringresources.org/Document/Method/Details/6797","www.monitoringresources.org/Document/Method/Details/6977"
-54,"PctFines2","AIM","PCT_FN","%","www.monitoringresources.org/Document/Method/Details/6862","www.monitoringresources.org/Document/Method/Details/6977"
-54,"PctFines2","NewAIM","PctFinesLessThan2mm",NA,NA,NA
-54,"PctFines2","NRSA","PCT_SAFN","%","www.monitoringresources.org/Document/Method/Details/6874","www.monitoringresources.org/Document/Method/Details/7011"
-55,"PctFines6","AREMP","pect_fines_tran6","%","www.monitoringresources.org/Document/Method/Details/6797","www.monitoringresources.org/Document/Method/Details/6977"
-55,"PctFines6","AIM","PCT_FN6","%","www.monitoringresources.org/Document/Method/Details/6801","www.monitoringresources.org/Document/Method/Details/6977"
-55,"PctFines6","NewAIM","PctFinesLessThan6mm",NA,NA,NA
-56,"PoolTailFines2","AREMP","pool_fines",NA,"www.monitoringresources.org/Document/Method/Details/6798","www.monitoringresources.org/Document/Method/Details/868"
-56,"PoolTailFines2","AIM","PL_TL_FN","%","www.monitoringresources.org/Document/Method/Details/6862","www.monitoringresources.org/Document/Method/Details/868"
-56,"PoolTailFines2","PIBO","PTFines2","percent","www.monitoringresources.org/Document/Method/Details/6862","www.monitoringresources.org/Document/Method/Details/868"
-57,"PoolTailFines6","AIM","PL_TL_FN6","%","www.monitoringresources.org/Document/Method/Details/6862","www.monitoringresources.org/Document/Method/Details/868"
-57,"PoolTailFines6","PIBO","PTFines6","percent","www.monitoringresources.org/Document/Method/Details/6862","www.monitoringresources.org/Document/Method/Details/868"
-58,"Conductivity","NRSA","TSS","mg/L","www.monitoringresources.org/Document/Method/Details/3792","tbd"
-58,"Conductivity","PIBO","Cond","Parts per million","www.monitoringresources.org/Document/Method/Details/61","tbd"
-59,"pH","AIM","pH","SU","www.monitoringresources.org/Document/Method/Details/6673","www.monitoringresources.org/Document/Method/Details/6673"
-60,"SpecificConductance","AIM","SpecificConductance","µS/cm","www.monitoringresources.org/Document/Method/Details/6673","www.monitoringresources.org/Document/Method/Details/6673"
-60,"SpecificConductance","NRSA","COND","uS/cm","www.monitoringresources.org/Document/Method/Details/72","tbd"
-61,"TotalNitrogen","AIM","TotalNitrogen","µg/L","www.monitoringresources.org/Document/Method/Details/6673","tbd"
-61,"TotalNitrogen","NRSA","NTL","ug/L","www.monitoringresources.org/Document/Method/Details/548","tbd"
-62,"TotalPhosphorous","AIM","TotalPhosphorous","µg/L","www.monitoringresources.org/Document/Method/Details/6673","tbd"
-62,"TotalPhosphorous","NRSA","PTL","ug/L","www.monitoringresources.org/Document/Method/Details/548","tbd"
-63,"Turbidity","AIM","TRBDTY","NTU","www.monitoringresources.org/Document/Method/Details/7012",NA
-63,"Turbidity","NRSA","TURB",NA,"www.monitoringresources.org/Document/Method/Details/7016","tbd"
-115,"fieldNotes","AIM","PCT_DRY","%","www.monitoringresources.org/Document/CustomizedMethod/Details/31137","www.monitoringresources.org/Document/Method/Details/7004"
-115,"fieldNotes","NewAIM","PctDry",NA,NA,NA
-115,"fieldNotes","NRSA","PCT_DRS",NA,"www.monitoringresources.org/Document/Method/Details/1610","www.monitoringresources.org/Document/Method/Details/7018"
-115,"fieldNotes","PIBO","StrmFlow",NA,"www.monitoringresources.org/Document/Method/Details/924","tbd"
-46,"PctPool","NRSA",NA,"%  of reach",NA,NA
-47,"RPD","NRSA",NA,"cm",NA,NA
-48,"BankAngle","NRSA",NA,"degrees",NA,NA
-52,"D84","AREMP",NA,"%",NA,NA
-55,"PctFines6","NRSA",NA,"%",NA,NA
+"termID","term","dataType","program","originalField","originalUnit","originalDataType","methodCollection","methodAnalysis"
+13,"verbatimLocationID","String","AREMP","SITE_ID",NA,"String",NA,NA
+13,"verbatimLocationID","String","AIM","MS_CD","NA","String",NA,NA
+13,"verbatimLocationID","String","NRSA","SITE_ID",NA,"String",NA,NA
+13,"verbatimLocationID","String","PIBO","SiteID",NA,"Integer",NA,NA
+14,"waterBody","String","AIM","STRM_NM","NA","String",NA,NA
+14,"waterBody","String","PIBO","Stream","NA","String",NA,NA
+15,"latitude","Numeric","AREMP","lattitude",NA,"double",NA,NA
+15,"latitude","Numeric","AIM","MIDLAT","decimal degrees","double",NA,NA
+15,"latitude","Numeric","NRSA","LAT_DD83","Decimal Degrees","double",NA,NA
+15,"latitude","Numeric","PIBO","Lat","Decimal degree","double",NA,NA
+16,"longitude","Numeric","AREMP","longitude",NA,"double",NA,NA
+16,"longitude","Numeric","AIM","MIDLONG","decimal degrees","double",NA,NA
+16,"longitude","Numeric","NRSA","LON_DD83","Decimal Degrees","double",NA,NA
+16,"longitude","Numeric","PIBO","Long","Decimal degree","double",NA,NA
+20,"verbatimEventID","String","AREMP","site_survey_id",NA,"String",NA,NA
+20,"verbatimEventID","String","AIM","UID","NA","String",NA,NA
+20,"verbatimEventID","String","NRSA","UID",NA,"String",NA,NA
+20,"verbatimEventID","String","PIBO","RchID",NA,"Integer",NA,NA
+22,"eventDate","Date","AREMP","survey_date",NA,"Date",NA,NA
+22,"eventDate","Date","AIM","DT","m/d/yyyy","Date",NA,NA
+22,"eventDate","Date","NRSA","DATE_COL",NA,"Date",NA,NA
+22,"eventDate","Date","PIBO","SampDate",NA,"Date",NA,NA
+23,"samplingProtocol","Integer","AREMP","survey_type",NA,"String",NA,NA
+23,"samplingProtocol","Integer","AIM","PRTCL","NA","String",NA,NA
+23,"samplingProtocol","Integer","NRSA","VALXSITE",NA,NA,NA,NA
+23,"samplingProtocol","Integer","PIBO","Type","Categorical: I, IS, IK, IKS, K, P, R","String",NA,NA
+24,"year","Integer","AREMP","survey_year",NA,"Interger",NA,NA
+24,"year","Integer","NRSA","YEAR",NA,NA,NA,NA
+24,"year","Integer","PIBO","Yr",NA,"Integer",NA,NA
+33,"Beaver","Numeric","AREMP","beaver_impacted",NA,NA,"www.monitoringresources.org/Document/Method/Details/7003",NA
+33,"Beaver","Numeric","AIM","BVR_SGN","None",NA,"www.monitoringresources.org/Document/Method/Details/7002",NA
+35,"Sin","Numeric","AIM","SNSTY",NA,"double","www.monitoringresources.org/Document/Method/Details/3807","www.monitoringresources.org/Document/Method/Details/7007"
+35,"Sin","Numeric","NRSA","SINU",NA,"double","www.monitoringresources.org/Document/Method/Details/1610","www.monitoringresources.org/Document/Method/Details/7005"
+35,"Sin","Numeric","PIBO","Sin","ratio","double","www.monitoringresources.org/Document/Method/Details/6868","tbd"
+36,"StreamOrder","Numeric","AREMP","StreamOrder",NA,NA,NA,NA
+36,"StreamOrder","Numeric","AIM","STRM_ORDR","NA",NA,NA,NA
+36,"StreamOrder","Numeric","NRSA","STRAHLERORDER",NA,"double",NA,NA
+37,"AvgBFWDRatio","Numeric","AREMP","ave_widthDepth_ratio","ratio","double","www.monitoringresources.org/Document/Method/Details/6849 AND https://www.monitoringresources.org/Document/CustomizedMethod/Details/31107","www.monitoringresources.org/Document/Method/Details/1064 OR www.monitoringresources.org/Document/Method/Details/1275"
+37,"AvgBFWDRatio","Numeric","NRSA","BFWD_RAT","ratio","double","www.monitoringresources.org/Document/Method/Details/6870 AND www.monitoringresources.org/Document/Method/Details/56","www.monitoringresources.org/Document/Method/Details/1064 OR  www.monitoringresources.org/Document/Method/Details/1275"
+37,"AvgBFWDRatio","Numeric","PIBO","WDTrans","ratio","double","www.monitoringresources.org/Document/Method/Details/65 AND https://www.monitoringresources.org/Document/Method/Details/6871","www.monitoringresources.org/Document/Method/Details/1064 OR  www.monitoringresources.org/Document/Method/Details/1275"
+38,"BFHeight","Numeric","AREMP","average_bfdepth","ratio",NA,"www.monitoringresources.org/Document/CustomizedMethod/Details/31107","tbd"
+38,"BFHeight","Numeric","AIM","BNKFLL_HT","m",NA,"www.monitoringresources.org/Document/Method/Details/7013","tbd"
+38,"BFHeight","Numeric","NRSA","XBKF_H","m","double","www.monitoringresources.org/Document/Method/Details/56","www.monitoringresources.org/Document/Method/Details/7014"
+39,"BFWidth","Numeric","AREMP","average_bfwidth","m","double","www.monitoringresources.org/Document/Method/Details/6849","www.monitoringresources.org/Document/Method/Details/4103"
+39,"BFWidth","Numeric","AIM","BNKFLL_WT","m","double","https://www.monitoringresources.org/Document/CustomizedMethod/Details/31137","www.monitoringresources.org/Document/Method/Details/4103"
+39,"BFWidth","Numeric","NRSA","XBKF_W","m","double","www.monitoringresources.org/Document/Method/Details/6870","www.monitoringresources.org/Document/Method/Details/4103"
+39,"BFWidth","Numeric","PIBO","Bf","m","double","www.monitoringresources.org/Document/Method/Details/6871","www.monitoringresources.org/Document/Method/Details/4103"
+41,"Grad","Numeric","AREMP","gradient","percent, expressed as a decimal","double","www.monitoringresources.org/Document/Method/Details/6852",NA
+41,"Grad","Numeric","AIM","SLPE","percent","double","www.monitoringresources.org/Document/CustomizedMethod/Details/31139","www.monitoringresources.org/Document/Method/Details/4113"
+41,"Grad","Numeric","NRSA","XSLOPE","percent","double","www.monitoringresources.org/Document/Method/Details/6852","www.monitoringresources.org/Document/Method/Details/4113"
+41,"Grad","Numeric","PIBO","Grad","percent","double","www.monitoringresources.org/Document/Method/Details/6868","www.monitoringresources.org/Document/Method/Details/4113"
+42,"MeanThalwegDepth","Numeric","AIM","ThalwegDepthMean","m",NA,"www.monitoringresources.org/Document/Method/Details/7008","tbd"
+42,"MeanThalwegDepth","Numeric","NRSA","XDEPTH_CM","cm","double","www.monitoringresources.org/Document/Method/Details/74","www.monitoringresources.org/Document/Method/Details/7015"
+43,"ReachLen","Numeric","AREMP","REACH_LENGTH","m","double","www.monitoringresources.org/Document/Method/Details/3807",NA
+43,"ReachLen","Numeric","AIM","TOT_RCH_LEN","m","double","www.monitoringresources.org/Document/Method/Details/7017",NA
+43,"ReachLen","Numeric","NRSA","REACHLEN",NA,"double","www.monitoringresources.org/Document/Method/Details/1610",NA
+43,"ReachLen","Numeric","PIBO","RchLen","m","double","www.monitoringresources.org/Document/Method/Details/6868",NA
+44,"WetWidth","Numeric","AREMP","wettedWidth_ave","m",NA,"www.monitoringresources.org/Document/Method/Details/6849","www.monitoringresources.org/Document/Method/Details/3893"
+44,"WetWidth","Numeric","AIM","WTTD_WT","m",NA,"www.monitoringresources.org/Document/CustomizedMethod/Details/31137","www.monitoringresources.org/Document/Method/Details/3893"
+44,"WetWidth","Numeric","NRSA","XWIDTH","m","double","www.monitoringresources.org/Document/Method/Details/1610","www.monitoringresources.org/Document/Method/Details/3893"
+46,"PctPool","Numeric","AREMP","PctReachInPools","percent","double","www.monitoringresources.org/Document/Method/Details/6844","www.monitoringresources.org/Document/Method/Details/3852"
+46,"PctPool","Numeric","AIM","PCT_PL","percent","double","www.monitoringresources.org/Document/Method/Details/6859","www.monitoringresources.org/Document/Method/Details/4115"
+46,"PctPool","Numeric","PIBO","PoolPct","percent","double","www.monitoringresources.org/Document/Method/Details/6872","www.monitoringresources.org/Document/Method/Details/55"
+47,"RPD","Numeric","AREMP","ave_residual_depth","m","double","www.monitoringresources.org/Document/Method/Details/6844","www.monitoringresources.org/Document/Method/Details/6976"
+47,"RPD","Numeric","AIM","RES_PL_DEP","m","double","www.monitoringresources.org/Document/Method/Details/6859","www.monitoringresources.org/Document/Method/Details/6976"
+47,"RPD","Numeric","PIBO","PoolDp","m","double","www.monitoringresources.org/Document/Method/Details/6872","www.monitoringresources.org/Document/Method/Details/6976"
+48,"BankAngle","Numeric","AIM","BNK_AN","degrees","double","www.monitoringresources.org/Document/Method/Details/68",NA
+48,"BankAngle","Numeric","PIBO","BankAngle","degrees","double","www.monitoringresources.org/Document/Method/Details/68",NA
+49,"PctStab","Numeric","AIM","BNK_STBLTY","percent","double","www.monitoringresources.org/Document/Method/Details/69","www.monitoringresources.org/Document/Method/Details/7010"
+49,"PctStab","Numeric","PIBO","Stab","percent","double","www.monitoringresources.org/Document/Method/Details/69","tbd"
+50,"D16","Numeric","AIM","D16","mm","double","www.monitoringresources.org/Document/Method/Details/6810","www.monitoringresources.org/Document/Method/Details/1730"
+50,"D16","Numeric","PIBO","D16","m","double","www.monitoringresources.org/Document/Method/Details/6797","www.monitoringresources.org/Document/Method/Details/1730"
+51,"D50","Numeric","AREMP","D50","mm","double","www.monitoringresources.org/Document/Method/Details/6797","www.monitoringresources.org/Document/Method/Details/1730"
+51,"D50","Numeric","AIM","D50","mm","double","www.monitoringresources.org/Document/Method/Details/6801","www.monitoringresources.org/Document/Method/Details/1730"
+51,"D50","Numeric","NRSA","Sub_dmm",NA,"double","www.monitoringresources.org/Document/Method/Details/6874","www.monitoringresources.org/Document/Method/Details/1730"
+51,"D50","Numeric","PIBO","D50","m","double","www.monitoringresources.org/Document/Method/Details/6797","www.monitoringresources.org/Document/Method/Details/1730"
+52,"D84","Numeric","AIM","D84","mm","double","www.monitoringresources.org/Document/Method/Details/6810","www.monitoringresources.org/Document/Method/Details/1730"
+52,"D84","Numeric","PIBO","D84","m","double","www.monitoringresources.org/Document/Method/Details/6797","www.monitoringresources.org/Document/Method/Details/1730"
+53,"PctBdrk","Numeric","AREMP","bedrock_pcnt","percent",NA,"www.monitoringresources.org/Document/Method/Details/6797","tbd"
+53,"PctBdrk","Numeric","NRSA","PCT_BDRK","Log 10 mm","double","www.monitoringresources.org/Document/Method/Details/6874","www.monitoringresources.org/Document/Method/Details/7011"
+54,"PctFines2","Numeric","AREMP","pcnt_fines_tran2","percent",NA,"www.monitoringresources.org/Document/Method/Details/6797","www.monitoringresources.org/Document/Method/Details/6977"
+54,"PctFines2","Numeric","AIM","PCT_FN","percent",NA,"www.monitoringresources.org/Document/Method/Details/6862","www.monitoringresources.org/Document/Method/Details/6977"
+54,"PctFines2","Numeric","NRSA","PCT_SAFN","precent","double","www.monitoringresources.org/Document/Method/Details/6874","www.monitoringresources.org/Document/Method/Details/7011"
+55,"PctFines6","Numeric","AREMP","pect_fines_tran6","percent",NA,"www.monitoringresources.org/Document/Method/Details/6797","www.monitoringresources.org/Document/Method/Details/6977"
+55,"PctFines6","Numeric","AIM","PCT_FN6","percent",NA,"www.monitoringresources.org/Document/Method/Details/6801","www.monitoringresources.org/Document/Method/Details/6977"
+56,"PoolTailFines2","Numeric","AREMP","pool_fines","percent","double","www.monitoringresources.org/Document/Method/Details/6798","www.monitoringresources.org/Document/Method/Details/868"
+56,"PoolTailFines2","Numeric","AIM","PL_TL_FN","percent","double","www.monitoringresources.org/Document/Method/Details/6862","www.monitoringresources.org/Document/Method/Details/868"
+56,"PoolTailFines2","Numeric","PIBO","PTFines2","percent","double","www.monitoringresources.org/Document/Method/Details/6862","www.monitoringresources.org/Document/Method/Details/868"
+57,"PoolTailFines6","Numeric","AIM","PL_TL_FN6","percent","double","www.monitoringresources.org/Document/Method/Details/6862","www.monitoringresources.org/Document/Method/Details/868"
+57,"PoolTailFines6","Numeric","PIBO","PTFines6","percent","double","www.monitoringresources.org/Document/Method/Details/6862","www.monitoringresources.org/Document/Method/Details/868"
+58,"Conductivity","Numeric","NRSA","TSS","mg/L","double","www.monitoringresources.org/Document/Method/Details/3792","tbd"
+58,"Conductivity","Numeric","PIBO","Cond","Parts per million","double","www.monitoringresources.org/Document/Method/Details/61","tbd"
+59,"pH","Numeric","AIM","pH","SU",NA,"www.monitoringresources.org/Document/Method/Details/6673","www.monitoringresources.org/Document/Method/Details/6673"
+60,"SpecificConductance","Numeric","AIM","SpecificConductance","µS/cm",NA,"www.monitoringresources.org/Document/Method/Details/6673","www.monitoringresources.org/Document/Method/Details/6673"
+60,"SpecificConductance","Numeric","NRSA","COND","uS/cm","double","www.monitoringresources.org/Document/Method/Details/72","tbd"
+61,"TotalNitrogen","Numeric","AIM","TotalNitrogen","µg/L",NA,"www.monitoringresources.org/Document/Method/Details/6673","tbd"
+61,"TotalNitrogen","Numeric","NRSA","NTL","ug/L","double","www.monitoringresources.org/Document/Method/Details/548","tbd"
+62,"TotalPhosphorous","Numeric","AIM","TotalPhosphorous","µg/L",NA,"www.monitoringresources.org/Document/Method/Details/6673","tbd"
+62,"TotalPhosphorous","Numeric","NRSA","PTL","ug/L","double","www.monitoringresources.org/Document/Method/Details/548","tbd"
+63,"Turbidity","Numeric","AIM","TRBDTY","NTU",NA,"www.monitoringresources.org/Document/Method/Details/7012",NA
+63,"Turbidity","Numeric","NRSA","TURB",NA,"double","www.monitoringresources.org/Document/Method/Details/7016","tbd"
+115,"fieldNotes","String","AIM","PCT_DRY","percent","double","www.monitoringresources.org/Document/CustomizedMethod/Details/31137","www.monitoringresources.org/Document/Method/Details/7004"
+115,"fieldNotes","String","NRSA","PCT_DRS","percent","double","www.monitoringresources.org/Document/Method/Details/1610","www.monitoringresources.org/Document/Method/Details/7018"
+115,"fieldNotes","String","PIBO","StrmFlow","Categorical: Flow, No Flow, Other","String","www.monitoringresources.org/Document/Method/Details/924","tbd"
+46,"PctPool",NA,"NRSA",NA,"percent  of reach",NA,NA,NA
+47,"RPD",NA,"NRSA",NA,"cm",NA,NA,NA
+48,"BankAngle",NA,"NRSA",NA,"degrees",NA,NA,NA
+52,"D84",NA,"AREMP",NA,"percent",NA,NA,NA
+55,"PctFines6",NA,"NRSA",NA,"percent",NA,NA,NA
+58,NA,NA,"AIM",NA,NA,"double",NA,NA

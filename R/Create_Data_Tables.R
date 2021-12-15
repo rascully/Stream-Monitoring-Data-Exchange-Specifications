@@ -11,26 +11,40 @@ metadata <- readxl::read_excel("Data/Metadata.xlsx", sheet = 3)
 DES_tables <- c("Datasets", "SamplingFeature","Action", "Results")
 tables <- c("RecordLevel", "Location", "Event", "MeasurementOrFact")
 
-
-
 for (i in 1:length(tables)){ 
   
   file_name = paste0(tables[i], "_table")
   print(paste0(tables[i], "_table"))
   write.csv(assign(tables[i], metadata %>% 
                      dplyr::select(table, termID, inDES, term,  description,examples, dataType, 
-                                   primaryKey, foreginKey, controlledVocabulary, controlledVocabularyAPI, 
-                                   minimamPossibleValue,maximamPossibleValue,darwinCoreTerm, darwinCoreClass, ODM2Term, ODMTable) %>% 
+                                   primaryKey, foreignKey, controlledVocabulary, controlledVocabularyAPI, 
+                                   minimumPossibleValue,maximumPossibleValue,darwinCoreTerm, darwinCoreClass, ODM2Term, ODMTable) %>% 
                      filter(table== tables[i], inDES=="x") %>% 
                      select(-inDES, -table)) , file=paste0("Tables/",file_name,".csv" ), row.names = F )
       }
 
+
+
+### Create a tall table of the DES terms an
+
 des_tall <- metadata %>% 
                    dplyr::select(table, termID, inDES, term,  description,examples, dataType, 
-                                 primaryKey, foreginKey, controlledVocabulary, controlledVocabularyAPI, 
-                                 minimamPossibleValue,maximamPossibleValue,darwinCoreTerm, darwinCoreClass, ODM2Term, ODMTable) %>% 
+                                 primaryKey, foreignKey, controlledVocabulary, controlledVocabularyAPI, 
+                                 minimumPossibleValue,maximumPossibleValue,darwinCoreTerm, darwinCoreClass, ODM2Term, ODMTable) %>% 
                    filter(inDES=="x") %>% 
                    select(-inDES)
+
+
+des_test <- metadata %>% 
+          select(c("table", "termID", "inDES", "term", "dataType")|contains("DataType")|contains("Unit"))  %>% 
+          filter(inDES=="x") %>% 
+          select(-inDES)
+
+metric_cv <- metadata %>% 
+  select(c("table", "termID", "inDES","fullCV",  "term", "dataType")|contains("DataType")|contains("Unit"))  %>% 
+  filter(fullCV=="x") %>% 
+  select(-fullCV)
+
 
 #metadata %>% 
  # dplyr::select(CategoryID, TermID, Term, ODMTable, Table,measurementType, InDES, Term,Description,Examples, DataType )%>% 
@@ -39,8 +53,8 @@ des_tall <- metadata %>%
 
 #create a vocabulary table 
 vocabulary<- metadata %>% 
-  select(categoryID,table,measurementType,subsetOfMetrics, termID, 
-         term, longName , description, examples, dataType, measurementUnit, minimamPossibleValue, maximamPossibleValue ) %>% 
+  select(c(categoryID,table,measurementType,subsetOfMetrics, termID, 
+         term, longName , description, examples, dataType, measurementUnit, minimumPossibleValue, maximumPossibleValue)) %>% 
   filter(table== "ControlledVocabulary", subsetOfMetrics=="x") %>% 
   select(-subsetOfMetrics, -categoryID, -table)
 
@@ -52,9 +66,9 @@ old_crosswalk <- metadata %>%
           filter(subsetOfMetrics=="x"| inDES=="x"  ) %>% 
           select(-subsetOfMetrics, -inDES) 
 
-#Create the crosswalk table (Add back in "measurementID" once create UID for each value)
+##### Build a tall crosswalk 
 crosswalk<- metadata %>% 
-  select(c("termID", "term", "subsetOfMetrics", "inDES")|contains(c("FieldCW"))) %>% 
+  select(c("termID", "term", "subsetOfMetrics", "inDES", "dataType")|contains(c("FieldCW"))) %>% 
   filter(subsetOfMetrics=="x"| inDES=="x"  ) %>% 
   select(-subsetOfMetrics, -inDES) 
 
@@ -62,8 +76,7 @@ cw_long <- crosswalk %>%
        pivot_longer(cols=contains("Field"), names_to= "program", values_to = "originalField", values_drop_na = T) %>% 
         mutate(program, program = str_remove_all(program, "FieldCW"))
 
-######Create a table of units
-
+#Create a table of units
 units<- metadata %>% 
   select(c("termID", "term", "subsetOfMetrics", "inDES")| contains(c("Unit"))) %>% 
   filter(subsetOfMetrics=="x"| inDES=="x"  ) %>% 
@@ -76,58 +89,51 @@ units_long <- units %>%
 cw_long <- full_join(cw_long, units_long, by= c("termID", "program", "term")) %>% 
   select(-contains("ProgramMethodType")) 
 
-#####Create a methods table 
-
-methods <- crosswalk<- metadata %>% 
-  select(c("termID", "subsetOfMetrics", "inDES")|contains("MethodIDCW")) %>% 
+##### Create a data type table 
+dataType <- metadata %>% 
+  select(c("termID","term", "subsetOfMetrics", "inDES")|contains("DataType")) %>% 
   filter(subsetOfMetrics=="x"| inDES=="x"  ) %>% 
-  select(-subsetOfMetrics, -inDES) %>% 
-  pivot_longer(cols= contains("Method"), names_to="ProgramMethodType", values_to= "method", values_drop_na = T)
+  select(-subsetOfMetrics, -inDES, -"dataType", -"term") %>% 
+  pivot_longer(cols= contains("DataType"), names_to="program", values_to= "originalDataType", values_drop_na = T) %>% 
+  mutate(program, program = str_remove_all(program, "DataType"))
 
+cw_long <- full_join(cw_long, dataType, by = c("termID", "program"))
+                    
 
-
-#%>% 
-#  mutate(program, program = str_remove_all(program, "CollectionMethodIDCW")) %>% 
- # mutate(program, program = str_remove_all(program, "AnalysisMethodIDCW"))
-
+#####Create a method table 
 method_type = c("Collection", "Analysis")
 
 for (type in method_type) {
   print(type)
+
+  method <- metadata %>% 
+    select(c("termID","term", "subsetOfMetrics", "inDES", contains(type))) %>% 
+    filter(subsetOfMetrics=="x"| inDES=="x"  ) %>% 
+    select(-subsetOfMetrics, -inDES, -"term") %>% 
+    pivot_longer(cols= contains("Method"), names_to="programMethods", values_to= paste0("method", type), values_drop_na = T) %>% 
+    mutate(programMethods, program = str_remove_all(programMethods, paste0(type, "MethodIDCW")))
   
-  method_flat <- methods %>% 
-    filter(str_detect(ProgramMethodType,type)) %>% 
-    rename(!!paste0(type,"Method") := method) %>% 
-    mutate(ProgramMethodType, program = str_remove_all(ProgramMethodType
-                                             , paste0(type, "MethodIDCW")))
-  
-    cw_long <- full_join(cw_long, method_flat, by= c("termID", "program")) %>% 
-                select(-contains("ProgramMethodType"))
+    cw_long <- full_join(cw_long, method, by= c("termID", "program")) %>% 
+                select(-contains("programMethods"))
   
 }
+
+cw_long <- cw_long %>% arrange("program", "termID", "term", "datatype", "orginalField", "orginalUnit", "originalDataType", "methodCollection", "methodAnalysis")
   
 write.csv(crosswalk, file=paste0("Tables/Crosswalk_wide.csv" ), row.names=F)
 write.csv(cw_long, file=paste0("Tables/Crosswalk_long.csv" ), row.names=F)
-
-
 
 sheets <- openxlsx::getSheetNames("Tables/ControlledVocabularyForFields.xlsx")
 CVFields <- lapply(sheets,openxlsx::read.xlsx, xlsxFile="Tables/ControlledVocabularyForFields.xlsx")
 names(CVFields) <- sheets
 
-
-
 #####Create one file
 list_of_datasets <- append(list("RecordLevel" = RecordLevel, "Location"= Location, "Event"= Event,
                          "MeasurementOrFact"= MeasurementOrFact, "metricControlledVocabulary"= vocabulary, 
-                         "Crosswalk_tall"=cw_long  ,  "Crosswalk"= old_crosswalk, "Methods"=methods, "des_tall"= des_tall), CVFields) 
+                         "Crosswalk_tall"=cw_long  ,  "Crosswalk"= old_crosswalk, "Methods"=method, "des_tall"= des_tall), CVFields) 
 
-
-
-file.remove("Tables/Stream_Habitat_ExchangeSpecifications.xlsx")
-
-openxlsx::write.xlsx(list_of_datasets, file = "Tables/Stream_Habitat_ExchangeSpecifications.xlsx") 
-
+file.remove("Tables/StreamHabitatExchangeSpecifications.xlsx")
+write.xlsx(list_of_datasets, file = "Tables/StreamHabitatSpecifications.xlsx") 
 
 #Short crosswalk for the project team
 

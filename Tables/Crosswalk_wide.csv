@@ -31,7 +31,7 @@ NA,"eventRemarks",NA,NA,NA,NA,NA
 30,"measurementValue","double",NA,NA,NA,NA
 31,"measurementType","String",NA,NA,NA,NA
 32,"measurementUnit","String",NA,NA,NA,NA
-33,"Beaver","Numeric","beaver_impacted","BVR_SGN",NA,NA
+33,"EventRemarks","Numeric","beaver_impacted","BVR_SGN",NA,NA
 35,"Sin","Numeric",NA,"SNSTY","SINU","Sin"
 36,"StreamOrder","Numeric","StreamOrder","STRM_ORDR","STRAHLERORDER",NA
 37,"AvgBFWDRatio","Numeric","ave_widthDepth_ratio",NA,"BFWD_RAT","WDTrans"

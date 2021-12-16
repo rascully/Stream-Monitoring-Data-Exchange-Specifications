@@ -28,8 +28,8 @@
 24,"year","Integer","AREMP","survey_year",NA,"Interger",NA,NA
 24,"year","Integer","NRSA","YEAR",NA,NA,NA,NA
 24,"year","Integer","PIBO","Yr",NA,"Integer",NA,NA
-33,"Beaver","Numeric","AREMP","beaver_impacted",NA,NA,"www.monitoringresources.org/Document/Method/Details/7003",NA
-33,"Beaver","Numeric","AIM","BVR_SGN","None",NA,"www.monitoringresources.org/Document/Method/Details/7002",NA
+33,"EventRemarks","Numeric","AREMP","beaver_impacted",NA,NA,"www.monitoringresources.org/Document/Method/Details/7003",NA
+33,"EventRemarks","Numeric","AIM","BVR_SGN","None",NA,"www.monitoringresources.org/Document/Method/Details/7002",NA
 35,"Sin","Numeric","AIM","SNSTY",NA,"double","www.monitoringresources.org/Document/Method/Details/3807","www.monitoringresources.org/Document/Method/Details/7007"
 35,"Sin","Numeric","NRSA","SINU",NA,"double","www.monitoringresources.org/Document/Method/Details/1610","www.monitoringresources.org/Document/Method/Details/7005"
 35,"Sin","Numeric","PIBO","Sin","ratio","double","www.monitoringresources.org/Document/Method/Details/6868","tbd"

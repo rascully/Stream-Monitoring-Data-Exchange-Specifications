@@ -28,7 +28,7 @@ for (i in 1:length(tables)){
 ### Create a tall table of the DES terms an
 
 des_tall <- metadata %>% 
-                   dplyr::select(table, termID, inDES, term,  description,examples, dataType, 
+                   dplyr::select(table, termID, inDES, term,  description,examples, dataType,measurementUnit , 
                                  primaryKey, foreignKey, controlledVocabulary, controlledVocabularyAPI, 
                                  minimumPossibleValue,maximumPossibleValue,darwinCoreTerm, darwinCoreClass, ODM2Term, ODMTable) %>% 
                    filter(inDES=="x") %>% 
@@ -132,7 +132,7 @@ list_of_datasets <- append(list("RecordLevel" = RecordLevel, "Location"= Locatio
                          "MeasurementOrFact"= MeasurementOrFact, "metricControlledVocabulary"= vocabulary, 
                          "Crosswalk_tall"=cw_long  ,  "Crosswalk"= old_crosswalk, "Methods"=method, "des_tall"= des_tall), CVFields) 
 
-file.remove("Tables/StreamHabitatExchangeSpecifications.xlsx")
+file.remove("Tables/StreamHabitatSpecifications.xlsx")
 write.xlsx(list_of_datasets, file = "Tables/StreamHabitatSpecifications.xlsx") 
 
 #Short crosswalk for the project team

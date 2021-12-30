@@ -1,0 +1,30 @@
+"measurementType","term","longName","description","examples","dataType","measurementUnit","AREMPField","AIMField","NRSAField","PIBOField"
+"Channel Characteristics","EventRemarks","Beaver Sign at Reach","Beaver present from the provider dataset.",NA,"Numeric",NA,"beaver_impacted","BVR_SGN",NA,NA
+"Channel Characteristics","Sin","Sinuosity of Local Stream Reach","Reach sinuosity (reach length along the thalweg divided by straight line distance between the bottom of the reach and the top of the reach)",NA,"Numeric",NA,NA,"SNSTY","SINU","Sin"
+"Channel Characteristics","StreamOrder","Stream Order","Strahler stream order of the site from the provider dataset",NA,"Numeric","NA","StreamOrder","STRM_ORDR","STRAHLERORDER",NA
+"Channel dimensions","AvgBFWDRatio","Bankfull width to depth ratio at transects","Average bankfull width/depth ratio for the reach.",NA,"Numeric","m","ave_widthDepth_ratio",NA,"BFWD_RAT","WDTrans"
+"Channel dimensions","BFHeight","Bankfull Height","Average bankfull height measured from water surface across transects.",NA,"Numeric","m","average_bfdepth","BNKFLL_HT","XBKF_H",NA
+"Channel dimensions","BFWidth","Average bankfull width from transects","Average bankfull width across transects for the reach.",NA,"Numeric","m","average_bfwidth","BNKFLL_WT","XBKF_W","Bf"
+"Channel dimensions","countTransectsBFWidth","Count of cross sections","Number of cross sections included in the average bankfull width calculation",NA,"Numeric","count of measurments",NA,NA,NA,NA
+"Channel dimensions","Grad","Gradient of stream reach","Mean slope of water surface (percent) from the bottom of the reach to the top of the reach.","min: 0, max: 100","Numeric","percent","gradient","SLPE","XSLOPE","Grad"
+"Channel dimensions","MeanThalwegDepth","Average Thalweg Depth","Mean thalweg depth. Metric of how deep water was at the site.",NA,"Numeric","m",NA,"ThalwegDepthMean","XDEPTH_CM",NA
+"Channel dimensions","ReachLen","Length of sampling reach","Length of sampling reach measured along the thalweg",NA,"Numeric","m","REACH_LENGTH","TOT_RCH_LEN","REACHLEN","RchLen"
+"Channel dimensions","WetWidth","Average wetted width from transects","Average wetted width across transects.",NA,"Numeric","m","wettedWidth_ave","WTTD_WT","XWIDTH",NA
+"Pools","PctPool","percent pools","percent of the sample reach (linear extent) classified as pool habitat","min: 0, max: 100","Numeric","percent","PctReachInPools","PCT_PL",NA,"PoolPct"
+"Pools","RPD","Residual pool depth","Average of the residual pool depth values for all pools in a reach. Residual pool depth the difference of the pool tail depth from the max depth.",NA,"Numeric","m","ave_residual_depth","RES_PL_DEP",NA,"PoolDp"
+"Streambanks","BankAngle","Bank angle","Measured angle of the stream bank;","min: 0, max: 180","Numeric","degrees",NA,"BNK_AN",NA,"BankAngle"
+"Streambanks","PctStab","percent stable banks","percent of 42 banks lacking visible signs of active erosion (e.g., slump, slough, fracture) (units: percent, min: 0, max: 100, n= 42)","min: 0, max: 100","Numeric","percent",NA,"BNK_STBLTY",NA,"Stab"
+"Substrate","D16","Diameter of the 16th percentile streambed particle","Bed surface particle size corresponding to the 16th percentile of measured particles","min: 1, max: 4098","Numeric","mm",NA,"D16",NA,"D16"
+"Substrate","D50","Diameter of the 50th percentile streambed particle","Median diameter of bed surface particle size corresponding to the areal median (50th percentile of measured particles) .","min: 1, max: 4098","Numeric","mm","D50","D50","Sub_dmm","D50"
+"Substrate","D84","Diameter of the 84th percentile streambed particle","Bed surface particle size corresponding to the 84th percentile of measured particles","min: 1, max: 4098","Numeric","mm",NA,"D84",NA,"D84"
+"Substrate","PctBdrk","percent Bed Surface Bedrock","percent of the stream bed area that is composed of particles with a b-axis > 4098mm (bedrock)","min: 0, max: 100","Numeric","percent","bedrock_pcnt",NA,"PCT_BDRK",NA
+"Substrate","PctFines2","percent of streambed particles <2mm","percent of the stream bed area that is comprised of particles with a b-axis < 2 mm","min: 0, max: 100","Numeric","percent","pcnt_fines_tran2","PCT_FN","PCT_SAFN",NA
+"Substrate","PctFines6","percent of streambed particles <6mm","percent of the stream bed area that is composed of particles with a b-axis < 6 mm","min: 0, max: 100","Numeric","percent","pect_fines_tran6","PCT_FN6",NA,NA
+"Substrate","PoolTailFines2","percent pool tail fines < 2mm","Average percent fine sediment (< 2mm) on the pool tail","min: 0, max: 100","Numeric","percent","pool_fines","PL_TL_FN",NA,"PTFines2"
+"Substrate","PoolTailFines6","percent pool tail fines < 6mm","Average percent fine sediment (< 6mm) on the pool tail","min: 0, max: 100","Numeric","percent",NA,"PL_TL_FN6",NA,"PTFines6"
+"Water chemistry","Conductivity","Conductivity","Measure of the concentration of ionized materials in water, or the ability of water to conduct electrical current. Used as a measure of mineral / ionic concentration.",NA,"Numeric","ppm",NA,NA,"TSS","Cond"
+"Water chemistry","pH","pH","Measured pH value","min: 0, max: 14","Numeric","NA",NA,"pH",NA,NA
+"Water chemistry","SpecificConductance","Specific Conductance","Measured specific conductance value. The specific conductance is conductivity standardized to 25 degrees C.","min: 0, max: 65500","Numeric","uS/cm",NA,"SpecificConductance","COND",NA
+"Water chemistry","TotalNitrogen","Total Nitrogen","Measured total nitrogen value",NA,"Numeric","ug/L",NA,"TotalNitrogen","NTL",NA
+"Water chemistry","TotalPhosphorous","Total Phosphorous","Measured total phosphorous value",NA,"Numeric","ug/L",NA,"TotalPhosphorous","PTL",NA
+"Water chemistry","Turbidity","Turbidity","Average water clarity as measured by the suspended solids in the water column",NA,"Numeric","NTU",NA,"TRBDTY","TURB",NA

@@ -29,6 +29,13 @@ vocabulary<- metadata %>%
   filter(table== "ControlledVocabulary", subsetOfMetrics=="x") %>% 
   select(-subsetOfMetrics, -categoryID, -table)
 
+
+old_crosswalk <- metadata %>% 
+  select(c("table","measurementType", "measurementID", "term","termID",  "subsetOfMetrics", "inDES", 
+          "examples", "dataType", "measurementUnit")|contains("CW")| contains("Units")) %>% 
+  filter(subsetOfMetrics=="x"| inDES=="x"  ) %>% 
+  select(-subsetOfMetrics, -inDES) 
+
 ##### Build a tall crosswalk 
 crosswalk<- metadata %>% 
   select(c("termID", "term", "subsetOfMetrics", "inDES", "dataType")|contains(c("FieldCW"))) %>% 
@@ -41,26 +48,27 @@ cw_long <- crosswalk %>%
 
 #Create a table of units
 units<- metadata %>% 
-  select(c("termID", "term", "subsetOfMetrics", "inDES")| contains(c("Unit"))) %>% 
+  select(c("termID","term","subsetOfMetrics", "inDES")| contains(c("Unit"))) %>% 
   filter(subsetOfMetrics=="x"| inDES=="x"  ) %>% 
-  select(-subsetOfMetrics, -inDES, -measurementUnit) 
-
+  select(-subsetOfMetrics, -inDES, -measurementUnit) %>% 
+  drop_na(termID)
+  
 units_long <- units %>%
   pivot_longer(cols=contains("Unit"), names_to= "program", values_to = "originalUnit", values_drop_na = T) %>% 
   mutate(program, program = str_remove_all(program, "Units"))
 
-cw_long <- full_join(cw_long, units_long, by= c("termID", "program", "term")) %>% 
+cw_long <- left_join(cw_long, units_long, by= c("termID", "program", "term")) %>% 
   select(-contains("ProgramMethodType")) 
 
 ##### Create a data type table 
 dataType <- metadata %>% 
   select(c("termID","term", "subsetOfMetrics", "inDES")|contains("DataType")) %>% 
   filter(subsetOfMetrics=="x"| inDES=="x"  ) %>% 
-  select(-subsetOfMetrics, -inDES, -"dataType", -"term") %>% 
+  select(-subsetOfMetrics, -inDES, -"dataType") %>% 
   pivot_longer(cols= contains("DataType"), names_to="program", values_to= "originalDataType", values_drop_na = T) %>% 
   mutate(program, program = str_remove_all(program, "DataType"))
 
-cw_long <- full_join(cw_long, dataType, by = c("termID", "program"))
+cw_long <- left_join(cw_long, dataType, by = c("termID", "program", "term"))
                     
 
 #####Create a method table 
@@ -72,11 +80,11 @@ for (type in method_type) {
   method <- metadata %>% 
     select(c("termID","term", "subsetOfMetrics", "inDES", contains(type))) %>% 
     filter(subsetOfMetrics=="x"| inDES=="x"  ) %>% 
-    select(-subsetOfMetrics, -inDES, -"term") %>% 
+    select(-subsetOfMetrics, -inDES) %>% 
     pivot_longer(cols= contains("Method"), names_to="programMethods", values_to= paste0("method", type), values_drop_na = T) %>% 
     mutate(programMethods, program = str_remove_all(programMethods, paste0(type, "MethodIDCW")))
   
-    cw_long <- full_join(cw_long, method, by= c("termID", "program")) %>% 
+    cw_long <- full_join(cw_long, method, by= c("termID","term",  "program")) %>% 
                 select(-contains("programMethods"))
   
 }
@@ -92,7 +100,7 @@ write.csv(cw_long, file=paste0("Tables/Crosswalk_long.csv" ), row.names=F)
 
 #####Create one file
 list_of_datasets <- list("RecordLevel" = RecordLevel, "Location"= Location, "Event"= Event,
-                         "MeasurementOrFact"= MeasurementOrFact, "metricControlledVocabulary"= vocabulary, 
+                         "MeasurementorFact"= MeasurementorFact, "metricControlledVocabulary"= vocabulary, 
                          "Crosswalk"=cw_long)
 
 file.remove("Tables/StreamHabitatSpecifications.xlsx")
@@ -146,7 +154,7 @@ EPA_names <- names(EPA)
 one= as.df(EPA[1])
 
 list_of_datasets <- list("RecordLevel" = RecordLevel, "Location"= Location, "Event"= Event,
-                         "MeasurementOrFact"= MeasurementOrFact, "VariableCV"= vocabulary,  "Crosswalk"= crosswalk, 
+                         "MeasurementorFact"= MeasurementorFact, "VariableCV"= vocabulary,  "Crosswalk"= crosswalk, 
                          "BLM"= BLM, "AREMP"= AREMP, "PIBO" = PIBO) 
 
 list_of_datasets <- append(list_of_datasets, EPA)

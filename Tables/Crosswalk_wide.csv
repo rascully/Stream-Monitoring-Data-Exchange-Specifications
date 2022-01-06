@@ -19,7 +19,7 @@ NA,"projectName","String",NA,NA,NA,NA
 7,"waterBody","String",NA,"STRM_NM",NA,"Stream"
 8,"eventDate","Date","survey_date","DT","DATE_COL","SampDate"
 9,"eventID","String",NA,NA,NA,NA
-NA,"eventRemarks",NA,NA,NA,NA,NA
+NA,"eventRemarks","String",NA,NA,NA,NA
 1,"fieldNotes","String",NA,"PCT_DRY","PCT_DRS","StrmFlow"
 2,"samplingProtocol","Integer","survey_type","PRTCL","VALXSITE","Type"
 3,"verbatimEventID","String","site_survey_id","UID","UID","RchID"
@@ -27,10 +27,11 @@ NA,"eventRemarks",NA,NA,NA,NA,NA
 5,"measurementMethod","String",NA,NA,NA,NA
 6,"measurementRemarks","String",NA,NA,NA,NA
 7,"measurementType","String",NA,NA,NA,NA
-9,"measurementValue","double",NA,NA,NA,NA
+9,"measurementValue","Numeric",NA,NA,NA,NA
 10,"resultsID","Integer",NA,NA,NA,NA
 11,"resultTypeCV","String",NA,NA,NA,NA
 12,"EventRemarks","Numeric","beaver_impacted","BVR_SGN",NA,NA
+13,"PctDry","Numeric",NA,"PCT_DRY","PCT_DRS","StrmFlow"
 14,"Sin","Numeric",NA,"SNSTY","SINU","Sin"
 15,"StreamOrder","Numeric","StreamOrder","STRM_ORDR","STRAHLERORDER",NA
 16,"AvgBFWDRatio","Numeric","ave_widthDepth_ratio",NA,"BFWD_RAT","WDTrans"
@@ -59,4 +60,4 @@ NA,"eventRemarks",NA,NA,NA,NA,NA
 40,"TotalNitrogen","Numeric",NA,"TotalNitrogen","NTL",NA
 41,"TotalPhosphorous","Numeric",NA,"TotalPhosphorous","PTL",NA
 42,"Turbidity","Numeric",NA,"TRBDTY","TURB",NA
-93,"year","Integer","survey_year",NA,"YEAR","Yr"
+93,"year","Numeric","survey_year",NA,"YEAR","Yr"

@@ -13,7 +13,7 @@ NA,"projectCode","String",NA,NA,NA,NA
 NA,"projectName","String",NA,NA,NA,NA
 1,"latitude","Numeric","lattitude","MIDLAT","LAT_DD83","Lat"
 2,"locationID","String",NA,NA,NA,NA
-3,"locationRemark","String",NA,NA,NA,NA
+3,"locationRemarks","String",NA,NA,NA,NA
 4,"longitude","Numeric","longitude","MIDLONG","LON_DD83","Long"
 5,"verbatimLocationID","String","SITE_ID","MS_CD","SITE_ID","SiteID"
 7,"waterBody","String",NA,"STRM_NM",NA,"Stream"
@@ -27,7 +27,6 @@ NA,"eventRemarks",NA,NA,NA,NA,NA
 5,"measurementMethod","String",NA,NA,NA,NA
 6,"measurementRemarks","String",NA,NA,NA,NA
 7,"measurementType","String",NA,NA,NA,NA
-8,"measurementUnit","String",NA,NA,NA,NA
 9,"measurementValue","double",NA,NA,NA,NA
 10,"resultsID","Integer",NA,NA,NA,NA
 11,"resultTypeCV","String",NA,NA,NA,NA

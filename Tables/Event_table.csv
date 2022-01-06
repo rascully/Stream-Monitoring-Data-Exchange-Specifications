@@ -1,15 +1,10 @@
-"termID","term","description","examples","dataType","primaryKey","foreignKey","controlledVocabulary","controlledVocabularyAPI","minimumPossibleValue","maximumPossibleValue","darwinCoreTerm","darwinCoreClass","ODM2Term","ODMTable"
-8,"eventDate","The date-time or interval during which an Event occurred. For occurrences, this is the date-time when the event was recorded. Not suitable for a time in a geological context. Recommended best practice is to use an encoding scheme, such as ISO 8601:2004(E). Format YYYY-MM-DD","23078","Date",NA,NA,NA,NA,"NA","NA","eventDate","Event","beginDataTime","Action"
-9,"eventID","This is the identifier for an Event (something that occurs at a place and time). Must be a global unique identifer. 
-
-","FFFE9F28-60DB-40C0-B9C0-4AFC753A9880, 10002-PIBO","String","X",NA,NA,NA,"NA","NA","eventID","Event","actionID","Action"
-NA,"eventRemarks","Comments or notes about the Event.",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-1,"fieldNotes","Comments or notes about the Event. Fill in with if the reach has flow, partial flow or dry.","dry, wet","String",NA,NA,NA,NA,"0","100",NA,NA,NA,NA
-2,"samplingProtocol","The name of, reference to, or description of the method or protocol used during an Event.","UV light trap, ""mist net"", ""bottom trawl"", ""ad hoc observation"", ""point count"", ""Penguins from space: faecal stains reveal the location of emperor penguin colonies, http://dx.doi.org/10.1111/j.1466-8238.2009.00467.x"", ""Takats et al. 2001. Guidelines for Nocturnal Owl Monitoring in North America. Beaverhill Bird Observatory and Bird Studies Canada, Edmonton, Alberta. 32 pp."", ""http://www.bsc-eoc.org/download/Owl.pdf""","Integer",NA,NA,"Wadable, Botable",NA,"NA","NA","samplingProtocol","Event",NA,"Action"
-3,"verbatimEventID","Verbatim from the orgial data set unique identifer that represents a single samping occurance at location. 
-
- An identifier specific to the orgial data set. 
-
-
-","FFFE9F28-60DB-40C0-B9C0-4AFC753A9880, 10002","String",NA,NA,NA,NA,"NA","NA","verbatimEventID","Event",NA,"Action"
-93,"year","The four-digit year in which the Event occurred, according to the Common Era Calendar.","2008","Integer",NA,NA,NA,NA,"NA","NA","year","Event",NA,"Action"
+"tblname","label","definition","rdommin","rdommax","dataType","examples","standard"
+"Event",NA,"Comma Separated Value (CSV) file containing Event data for the Integrated Stream Habitat Data. This table corresponds to the 'Event' table in the database (.accdb) file.",NA,NA,NA,NA,NA
+"Event","eventDate","The calendar date of the event.","2000-05-20","2020-10-20","Date",NA,"Darwin Core"
+"Event","eventID","Global unique identifier assigned to an Event (something that occurs at a place and time, such as a survey or measurement).",NA,NA,"String","FFFE9F28-60DB-40C0-B9C0-4AFC753A9880, 10002-PIBO","Darwin Core"
+"Event","eventRemarks","Comments or notes about the Event. The description of flow for the reach flow, partial flow or dry.",NA,NA,"String",NA,"Darwin Core"
+"Event","fieldNotes","One of notes taken in the field about the Event.",NA,NA,"String","dry, wet","Darwin Core"
+"Event","locationID","Unique global identifier assigned to the location where the event occurred.",NA,NA,NA,NA,NA
+"Event","samplingProtocol","The name of, reference to, or description of the stream survey method or protocol used during an Event.",NA,NA,"String","UV light trap, ""mist net"", ""bottom trawl"", ""ad hoc observation"", ""point count"", ""Penguins from space: faecal stains reveal the location of emperor penguin colonies, http://dx.doi.org/10.1111/j.1466-8238.2009.00467.x"", ""Takats et al. 2001. Guidelines for Nocturnal Owl Monitoring in North America. Beaverhill Bird Observatory and Bird Studies Canada, Edmonton, Alberta. 32 pp."", ""http://www.bsc-eoc.org/download/Owl.pdf""","Darwin Core"
+"Event","verbatimEventID","The verbatim event ID from the originating source dataset assigned by the program.",NA,NA,"String","FFFE9F28-60DB-40C0-B9C0-4AFC753A9880, 10002","Producer defned"
+"Event","year","The four-digit year in which the event occurred.","2000","2020","Integer","2008","Darwin Core"

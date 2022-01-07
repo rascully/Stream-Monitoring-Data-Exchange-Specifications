@@ -30,9 +30,6 @@
 3,"verbatimEventID","String","PIBO","RchID",NA,"Integer",NA,NA
 12,"EventRemarks","Numeric","AREMP","beaver_impacted",NA,"string","www.monitoringresources.org/Document/Method/Details/7003",NA
 12,"EventRemarks","Numeric","AIM","BVR_SGN",NA,"string","www.monitoringresources.org/Document/Method/Details/7002",NA
-13,"PctDry","Numeric","AIM","PCT_DRY","percent","double","www.monitoringresources.org/Document/CustomizedMethod/Details/31137","www.monitoringresources.org/Document/Method/Details/7004"
-13,"PctDry","Numeric","NRSA","PCT_DRS","percent","double","www.monitoringresources.org/Document/Method/Details/1610","www.monitoringresources.org/Document/Method/Details/7018"
-13,"PctDry","Numeric","PIBO","StrmFlow","cataogry","String","www.monitoringresources.org/Document/Method/Details/924","tbd"
 14,"Sin","Numeric","AIM","SNSTY",NA,"double","www.monitoringresources.org/Document/Method/Details/3807","www.monitoringresources.org/Document/Method/Details/7007"
 14,"Sin","Numeric","NRSA","SINU",NA,"double","www.monitoringresources.org/Document/Method/Details/1610","www.monitoringresources.org/Document/Method/Details/7005"
 14,"Sin","Numeric","PIBO","Sin","ratio","double","www.monitoringresources.org/Document/Method/Details/6868","tbd"

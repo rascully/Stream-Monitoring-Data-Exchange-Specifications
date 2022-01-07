@@ -2,6 +2,7 @@
 2,"Location",NA,6,NA,"spatialReferenceID","geodeticDatum","The ellipsoid, geodetic datum, or spatial reference system (SRS) upon which the geographic coordinates given in decimalLatitude and decimalLongitude as based.",NA,"String",NA,NA,NA,NA,NA
 3,"Event",NA,10,NA,"actionType",NA,NA,NA,"String",NA,NA,NA,NA,NA
 4,"MeasurementOrFact",NA,8,NA,"measurementUnit",NA,"The units associated with the measurementValue. Recommended best practice is to use the International System of Units (SI).","mm, ""C"", ""km"", ""ha""","String",NA,NA,NA,NA,NA
+5,"ControlledVocabulary","Channel Characteristics",13,11,"PctDry","Percent of Reach that is Dry","Percent of the reach that was dry","min: 0, max: 100","Numeric","percent",NA,"PCT_DRY","PCT_DRS","StrmFlow"
 5,"ControlledVocabulary","Channel dimensions",24,9,NA,"Count of Transects","Number of transects in the reach.",NA,NA,NA,NA,NA,NA,NA
 1,"RecordLevel",NA,43,NA,"datasetAbstract",NA,NA,NA,"String",NA,NA,NA,NA,NA
 1,"RecordLevel",NA,44,NA,"collectionCode","rightsHolder","A person or organization owning or managing rights over the resource.","Example: BLM AIM, EPA NARS, USFS ARMEP","String",NA,NA,NA,NA,NA

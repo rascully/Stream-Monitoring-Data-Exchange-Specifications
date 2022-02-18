@@ -8,16 +8,18 @@ metadataDict <- readxl::read_excel("Data/MetadataDictionary_v1.xlsx", sheet = 1)
 
 #Create the data exchange specifications tables 
 tables <- c("RecordLevel", "Location", "Event", "MeasurementorFact")
+tables <- pull(unique(metadataDict %>% 
+                   select(tblname)))
 
 for (i in 1:length(tables)){ 
-  
+#  table = pull(tables[i])
   file_name = paste0(tables[i], "_table")
   print(paste0(tables[i], "_table"))
   
   write.csv(assign(tables[i], metadataDict %>% 
                       select(tblname,label, definition, rdommin, rdommax, dataType, examples, standard) %>% 
-                      filter(tblname== tables[i])), file=paste0("Tables/",file_name,".csv" ), row.names = F ) 
-      }
+                      filter(tblname == tables[i])), file=paste0("Tables/",file_name,".csv" ), row.names = F ) 
+}
 
 #Open the metadata file 
 metadata <- readxl::read_excel("Data/Metadata.xlsx", sheet = 3)

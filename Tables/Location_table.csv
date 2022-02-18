@@ -1,9 +1,9 @@
 "tblname","label","definition","rdommin","rdommax","dataType","examples","standard"
 "Location",NA,"Comma Separated Value (CSV) file containing location data for the Integrated Stream Habitat Data. This table corresponds to the 'Location' table in the database (.accdb) file.",NA,NA,NA,NA,NA
-"Location","datasetID","A unique numeric identifier assigned to the originating source data's program.",NA,NA,NA,NA,NA
-"Location","latitude","The geographic latitude (ed: insert spatial reference system when known) of the geographic center of a location.","25.848932980000001","71.268600000000006","Numeric",NA,"Darwin Core"
+"Location","datasetID","A unique numeric identifier assigned to the originating source data's program.",NA,NA,"Integer",NA,NA
+"Location","latitude","The geographic latitude (ed: insert spatial reference system when known) of the geographic center of a location.","25.848932980000001","71.268600000000006","Float",NA,"Darwin Core"
 "Location","locationID","Unique global identifier assigned to the location where the event occurred.",NA,NA,"String","5483AIM, 88963AREMP, WtR563EPA","Darwin Core"
 "Location","locationRemarks","Comments or notes about the Location.",NA,NA,"String",NA,"Darwin Core"
-"Location","longitude","The geographic longitude (ed: insert spatial reference system when known) of the geographic center of a location.","-163.74230800000001","-67.498393539999995","Numeric",NA,"Darwin Core"
+"Location","longitude","The geographic longitude (ed: insert spatial reference system when known) of the geographic center of a location.","-163.74230800000001","-67.498393539999995","Float",NA,"Darwin Core"
 "Location","verbatimLocationID","The verbatim location ID from the originating source dataset assigned by the monitoring program.",NA,NA,"String","5483, 88693. WtR563","Producer defned"
 "Location","waterBody","The name of the water body in which the location occurs.",NA,NA,"String",NA,"Darwin Core"

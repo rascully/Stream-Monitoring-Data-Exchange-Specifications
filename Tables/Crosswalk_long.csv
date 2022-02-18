@@ -1,9 +1,9 @@
 "termID","term","dataType","program","originalField","originalUnit","originalDataType","methodCollection","methodAnalysis"
-1,"latitude","Numeric","AREMP","lattitude",NA,"double",NA,NA
+1,"latitude","Numeric","AREMP","lattitude","decimal degrees","double",NA,NA
 1,"latitude","Numeric","AIM","MIDLAT","decimal degrees","double",NA,NA
 1,"latitude","Numeric","NRSA","LAT_DD83","decimal degrees","double",NA,NA
 1,"latitude","Numeric","PIBO","Lat","decimal degrees","double",NA,NA
-4,"longitude","Numeric","AREMP","longitude",NA,"double",NA,NA
+4,"longitude","Numeric","AREMP","longitude","decimal degrees","double",NA,NA
 4,"longitude","Numeric","AIM","MIDLONG","decimal degrees","double",NA,NA
 4,"longitude","Numeric","NRSA","LON_DD83","decimal degrees","double",NA,NA
 4,"longitude","Numeric","PIBO","Long","decimal degrees","double",NA,NA
@@ -39,7 +39,7 @@
 16,"AvgBFWDRatio","Numeric","AREMP","ave_widthDepth_ratio","ratio","double","www.monitoringresources.org/Document/Method/Details/6849 AND https://www.monitoringresources.org/Document/CustomizedMethod/Details/31107","www.monitoringresources.org/Document/Method/Details/1064 OR www.monitoringresources.org/Document/Method/Details/1275"
 16,"AvgBFWDRatio","Numeric","NRSA","BFWD_RAT","ratio","double","www.monitoringresources.org/Document/Method/Details/6870 AND www.monitoringresources.org/Document/Method/Details/56","www.monitoringresources.org/Document/Method/Details/1064 OR  www.monitoringresources.org/Document/Method/Details/1275"
 16,"AvgBFWDRatio","Numeric","PIBO","WDTrans","ratio","double","www.monitoringresources.org/Document/Method/Details/65 AND https://www.monitoringresources.org/Document/Method/Details/6871","www.monitoringresources.org/Document/Method/Details/1064 OR  www.monitoringresources.org/Document/Method/Details/1275"
-17,"BFHeight","Numeric","AREMP","average_bfdepth","ratio",NA,"www.monitoringresources.org/Document/CustomizedMethod/Details/31107","tbd"
+17,"BFHeight","Numeric","AREMP","average_bfdepth","m","double","www.monitoringresources.org/Document/CustomizedMethod/Details/31107","tbd"
 17,"BFHeight","Numeric","AIM","BNKFLL_HT","m","double","www.monitoringresources.org/Document/Method/Details/7013","tbd"
 17,"BFHeight","Numeric","NRSA","XBKF_H","m","double","www.monitoringresources.org/Document/Method/Details/56","www.monitoringresources.org/Document/Method/Details/7014"
 18,"BFWidth","Numeric","AREMP","average_bfwidth","m","double","www.monitoringresources.org/Document/Method/Details/6849","www.monitoringresources.org/Document/Method/Details/4103"

@@ -27,7 +27,6 @@
 2,"Location",NA,63,NA,NA,"Nominal latitude in decimal degrees",NA,NA,NA,NA,NA,NA,"LAT_DD83",NA
 2,"Location",NA,64,NA,NA,"Nominal longitude in decimal degrees",NA,NA,NA,NA,NA,NA,"LON_DD83",NA
 2,"Location",NA,65,NA,NA,"Creek Code",NA,NA,NA,NA,"creek_code",NA,NA,NA
-2,"Identification",NA,66,NA,NA,"Targeted or Random",NA,NA,NA,NA,NA,"Targeted",NA,NA
 2,"Location",NA,67,NA,NA,"Mid Reach Latitude",NA,NA,NA,NA,NA,"MidLat",NA,NA
 2,"Location",NA,68,NA,NA,"Mid Reach Longitude",NA,NA,NA,NA,NA,"MidLong",NA,NA
 2,"Location",NA,69,NA,NA,"Top of Reach Latitude",NA,NA,NA,NA,NA,"TRLat",NA,NA

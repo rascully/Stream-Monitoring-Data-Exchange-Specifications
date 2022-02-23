@@ -6,4 +6,5 @@
 "Location","locationRemarks","Comments or notes about the Location.",NA,NA,"String",NA,"Darwin Core"
 "Location","longitude","The geographic longitude (WGS84) of the geographic center of a location.","-163.74230800000001","-67.498393539999995","Float",NA,"Darwin Core"
 "Location","verbatimLocationID","The verbatim location ID from the originating source dataset assigned by the monitoring program.",NA,NA,"String","5483, 88693. WtR563","Producer defned"
+"Location","siteSelectionType","Specifies whether the site was a part of a probabilistic random design (Random) or whether it was selected as a targeted site to address a specific management concern (Targeted)",NA,NA,"String","Randome","Producer defned"
 "Location","waterBody","The name of the water body in which the location occurs.",NA,NA,"String",NA,"Darwin Core"

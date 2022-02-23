@@ -30,7 +30,7 @@ NA,"eventRemarks","String",NA,NA,NA,NA
 9,"measurementValue","Numeric",NA,NA,NA,NA
 10,"resultsID","Integer",NA,NA,NA,NA
 11,"resultTypeCV","String",NA,NA,NA,NA
-12,"EventRemarks","Numeric","beaver_impacted","BVR_SGN",NA,NA
+12,"beaverImpact","Numeric","beaver_impacted","BVR_SGN",NA,NA
 14,"Sin","Numeric",NA,"SNSTY","SINU","Sin"
 15,"StreamOrder","Numeric","StreamOrder","STRM_ORDR","STRAHLERORDER",NA
 16,"AvgBFWDRatio","Numeric","ave_widthDepth_ratio",NA,"BFWD_RAT","WDTrans"
@@ -59,4 +59,5 @@ NA,"eventRemarks","String",NA,NA,NA,NA
 40,"TotalNitrogen","Numeric",NA,"TotalNitrogen","NTL",NA
 41,"TotalPhosphorous","Numeric",NA,"TotalPhosphorous","PTL",NA
 42,"Turbidity","Numeric",NA,"TRBDTY","TURB",NA
+66,NA,"string",NA,"Targeted",NA,NA
 93,"year","Numeric","survey_year",NA,"YEAR","Yr"

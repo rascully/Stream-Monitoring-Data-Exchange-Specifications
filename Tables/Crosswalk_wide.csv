@@ -30,7 +30,7 @@ NA,"eventRemarks","String",NA,NA,NA,NA
 9,"measurementValue","Numeric",NA,NA,NA,NA
 10,"resultsID","Integer",NA,NA,NA,NA
 11,"resultTypeCV","String",NA,NA,NA,NA
-12,"beaverImpact","Numeric","beaver_impacted","BVR_SGN",NA,NA
+12,"beaverImpact","Numeric","beaver_impacted","BeaverFlowMod",NA,NA
 14,"Sin","Numeric",NA,"SNSTY","SINU","Sin"
 15,"StreamOrder","Numeric","StreamOrder","STRM_ORDR","STRAHLERORDER",NA
 16,"AvgBFWDRatio","Numeric","ave_widthDepth_ratio",NA,"BFWD_RAT","WDTrans"

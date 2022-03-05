@@ -21,7 +21,7 @@ NA,"projectName","String",NA,NA,NA,NA
 9,"eventID","String",NA,NA,NA,NA
 NA,"eventRemarks","String",NA,NA,NA,NA
 1,"fieldNotes","String",NA,"PCT_DRY","PCT_DRS","StrmFlow"
-2,"samplingProtocol","Integer","survey_type","PRTCL","VALXSITE","Type"
+2,"samplingProtocol","Integer","survey_type","PRTCL","PROTOCOL","Type"
 3,"verbatimEventID","String","site_survey_id","UID","UID","RchID"
 4,"measurementID","Numeric",NA,NA,NA,NA
 5,"measurementMethod","String",NA,NA,NA,NA
@@ -30,7 +30,7 @@ NA,"eventRemarks","String",NA,NA,NA,NA
 9,"measurementValue","Numeric",NA,NA,NA,NA
 10,"resultsID","Integer",NA,NA,NA,NA
 11,"resultTypeCV","String",NA,NA,NA,NA
-12,"beaverImpact","Numeric","beaver_impacted","BeaverFlowMod",NA,NA
+12,"beaverImpactFlow","Numeric","beaver_impacted","BeaverFlowMod",NA,NA
 14,"Sin","Numeric",NA,"SNSTY","SINU","Sin"
 15,"StreamOrder","Numeric","StreamOrder","STRM_ORDR","STRAHLERORDER",NA
 16,"AvgBFWDRatio","Numeric","ave_widthDepth_ratio",NA,"BFWD_RAT","WDTrans"

@@ -101,6 +101,7 @@
 42,"Turbidity","Numeric","AIM","TRBDTY","NTU","double","www.monitoringresources.org/Document/Method/Details/7012",NA
 42,"Turbidity","Numeric","NRSA","TURB",NA,"double","www.monitoringresources.org/Document/Method/Details/7016","tbd"
 66,"siteSelectionType","string","AIM","DSGN_TYP","NA",NA,NA,NA
+66,"siteSelectionType","string","PIBO","Project",NA,NA,NA,NA
 93,"year","Numeric","AREMP","survey_year","year","Interger",NA,NA
 93,"year","Numeric","NRSA","YEAR","year","integer",NA,NA
 93,"year","Numeric","PIBO","Yr","year","Integer",NA,NA

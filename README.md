@@ -13,6 +13,12 @@ metadata <- readxl::read_excel("Data/Metadata.xlsx", sheet = 3)
 
 ```
 ## R Markdown
+# About
+# Getting Started 
+# How to Contriubte 
+# License
+# Funding and Acknowledgments
+# Recommended Citation
 
 # Stream Monitoring Habitat Data Exchange Specifications 
 Data exchange specifications are a set of guidelines and rules for using and combining information. Rigorous data exchange specifications support reuse, promote interoperability, and reduce data integration costs (Morris and Frechette 2008, Hamm 2019). 

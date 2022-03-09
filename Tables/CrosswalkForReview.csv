@@ -1,6 +1,6 @@
 "measurementType","term","longName","description","examples","dataType","measurementUnit","AREMPField","AIMField","NRSAField","PIBOField"
 "Channel Characteristics","beaverImpactFlow","Beaver alter the flow of the reach","Beaver impact the flow of the reach.","Yes, No","Numeric","NA","beaver_impacted","BeaverFlowMod",NA,NA
-"Channel Characteristics","Sin","Sinuosity of Local Stream Reach","Reach sinuosity (reach length along the thalweg divided by straight line distance between the bottom of the reach and the top of the reach)",NA,"Numeric",NA,NA,"SNSTY","SINU","Sin"
+"Channel Characteristics","Sin","Sinuosity of Local Stream Reach","Reach sinuosity (reach length along the thalweg divided by straight line distance between the bottom of the reach and the top of the reach)",NA,"Numeric","ratio",NA,"SNSTY","SINU","Sin"
 "Channel Characteristics","StreamOrder","Stream Order","Strahler stream order of the site from the provider dataset",NA,"Numeric","NA","StreamOrder","STRM_ORDR","STRAHLERORDER",NA
 "Channel dimensions","AvgBFWDRatio","Bankfull width to depth ratio at transects","Average bankfull width/depth ratio for the reach.",NA,"Numeric","m","ave_widthDepth_ratio",NA,"BFWD_RAT","WDTrans"
 "Channel dimensions","BFHeight","Bankfull Height","Average bankfull height measured from water surface across transects.",NA,"Numeric","m","average_bfdepth","BNKFLL_HT","XBKF_H",NA

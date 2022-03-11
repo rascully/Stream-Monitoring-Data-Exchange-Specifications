@@ -4,14 +4,6 @@ contact: "Becca Scully"
 contact information: rscully@usgs.gov 
 ---
 
-```{r include= FALSE}
-library(tidyverse)
-library(knitr)
-library(readxl)
-
-metadata <- readxl::read_excel("Data/Metadata.xlsx", sheet = 3)
-
-```
 ## R Markdown
 # About
 
@@ -96,23 +88,24 @@ To maintain provenance to the original data sources, we retained UID for each ev
 ### Event Data Mapping Notes 
 #### eventID 
 eventID is a unique identifiers integer generated when the datasets are combined into the single dataset.
+
 #### verbatimEventID 
 verbatimEventID are the unique identifiers from the original datasets all convert to data type string. By maintaining the link to location and event identifiers from the original datasets the data user can trace information back to the source. 
+
 #### fieldNotes 
 fieldNotes is a string field that we will in with the stream flow at the time of sampling. Each example dataset stories flow in a different format. Some share percent dry, an integer, while others share stream flow as a string. For the integrated dataset all stream flows are transformed to a string, category “No Flow (Dry)”, “Flow (Whole Reach)”, “Other”. For programs reporting stream flow  as percent dry, we transform the data such that: 
 •	0 = Flow (Whole Reach)  
 •	100= No Flow (Dry) 
 •	All other values are reported as “Other” 
 For programs that report percent of the reach with flow, we transform the data in inverse.
+
 #### samplingProtocol 
 Discussion with project team 
+
 #### beaverImpact 
 Discussion with project team 
 
-```{r echo= FALSE}
-actions <- read.csv("Tables/ODMAction_table.csv")
-kable(actions)
-```
+
 ## Measurment or Facts  
 The Measurement or Fact Darwin Core class/extension stores the results of a measurement at an event Table # { Measurement or Fact}). }). eventID is the foreign key linking Event table to MeasurementOrFact table. measurementID is the primary key and numeric UIDs were generated for each row. Data values were stored in the dataValue field and the measurementType field defined the "nature of the measure, fact, characteristic or assertion" and filled in from the metric controlled vocabulary (Darwin Core Maintenance Group 2021). 
 
@@ -125,30 +118,9 @@ measurementID is a unique identifiers integer generated when the datasets are co
 #### measurementMethod  
 measurementMethod is filled in with the link to the data collection and analysis methodology documented in MonitoringResources.org. This supports reuse and trust by the end-users. The methods were published on MonitoringResources.org, an online, publicly accessible suite of information and tools for natural resource monitoring programs and professionals to document the who, what, where, when, and how of data collection and analysis (Bayer et al. 2018). MonitoringResources.org provides a standard structure for documenting data collection and analysis methods and APIs to access the method's documentation via a UID assigned to each method and allows for version control. For example, AREMP and PIBO MP collect substrate information using different field methods, but working group experts and past data agreed that the methodology used in the field produces comparable results, allowing the two program's metrics to be integrated.  
 
-
-
-```{r echo=FALSE}
-results <- read.csv("Tables/MeasurmentORFact_table.csv")
-
-kable(results)
-```
 ### Metric Controlled Vocabualry VariableID  Controlled Vocabularies for Results Table 
 
 	The metric-controlled vocabulary defines the metrics included in the MeasurementOrFact table. The controlled vocabulary was formatted as a flat .csv table containing term names, definitions, data type (.e.g, numeric), measurement units (e.g., meters) and acceptable values (e.g., a percent must fall between 0 and 100) for all metrics in the dataset ({Table # MetricCV}). A metric is a term in the controlled vocabulary and the measurementType was linked to the Measurement or Fact table's termID (fig # {stream monitoring data exchange spec schematic}).  [controlled vocabulary](Tables/StandardVocabulary.csv).
-
-
-
-```{r echo=FALSE}
-#create a vocabulary table 
-vocabulary<- metadata %>% 
-                  select(Table, SubsetOfMetrics,
-                         measurementTerm,LongName, Description,Examples, DataType,measurementUnit) %>% 
-                  filter(Table== "ControlledVocabulary", SubsetOfMetrics=="x") %>% 
-                  select(-SubsetOfMetrics, -Table)
-
-kable(vocabulary)
-
-```
 
 
 # Use Case Guide 
@@ -158,11 +130,23 @@ We wrote code based on these data exchange specifications to share habitat metri
 The data exchange specifications contain the details of what will be share and the format to be shared. We recognize preparing data to be shared requires an investment of time, resources, expertise, and careful documentation of the data collection process and the results.  An opinion piece in Nature by Barend Mons (2020), the director of a Global Open FAIR office, recommends that '5% of research funds be invested in making data reusable'. Projects producing this type of data are already working beyond their capacity, so to integrate data between habitat programs, there needs to be support in project budgets or for a centralized data manager to help implement and updated the necessary documentation and code to share data. 
 
 # Funding 
+
 # License
+
+# Cititation 
+Scully, R., 2022b. Stream Monitoring Data Exchange Standards, GitHub repository. https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications 
 
 # Reference Resourecs 
 
-Scully et. al 2022 
+Scully, R., et al., 2022a. Methods for Building and Applying a Data Exchange Standard for Integrating Stream Habitat Data from Multiple Monitoring Programs (working title). U.S. Geological Survey Techniques and Methods, manuscript in preparation. 
+
+Scully, R., et al 2022b. Physical Stream Habitat Data Integrated from Mutiple Monitoring Programs for the U.S. from, 2000-2020 (working title). U.S. Geological Survey data release, data release in preparation. 
+
+Scully, R., 2022a. Integrating Stream Habitat Monitoring Data From Multiple Monitoring Programs, GitHub repository. https://github.com/rascully/Integrating-Stream-Monitoring-Data-From-Multiple-Programs 
+
+Scully, R., 2022b. Stream Monitoring Data Exchange Standards, GitHub repository. https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications 
+
+
 
 # References 
 Mons, B. (2020). Invest 5% of research funds in ensuring data are reusable. Nature, 578(7796), 491.

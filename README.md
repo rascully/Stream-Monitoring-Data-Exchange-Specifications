@@ -30,10 +30,10 @@ The original datasets need to be mapped to the standard to combine datasets from
 
 ## Data Structure 
 The data is structured as a relational database model. Primary keys area unique value for each record or row in the table are identified and foreign keys are included in the child tables to define the relationship between tables (DAMA 2009), including the following:
-•	Record Level table primary key is datasetID, foreign key in the Location table 
-•	Location Table primary key is locationID, foreign key in Event table 
-•	Event Table primary key is Event, foreign key in Measurement or Fact table 
-•	Metric Controlled Vocabulary primary key is TermID, foreign key in Measurement or Fact table 
+*Record Level table primary key is datasetID, foreign key in the Location table 
+*Location Table primary key is locationID, foreign key in Event table 
+*Event Table primary key is Event, foreign key in Measurement or Fact table 
+*Metric Controlled Vocabulary primary key is TermID, foreign key in Measurement or Fact table 
 This resulted in a series of five tables (RecordLevel, Location, Event, MeasurementorFact, Metric Controlled Vocabulary) linked together in a relational data model, stored and shared as an MS Access Database.  ![Figure 1](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Figures/HabiatDataSharingSchema.png)
   *Figure 1* 
   
@@ -81,9 +81,10 @@ verbatimEventID are the unique identifiers from the original datasets all conver
 
 #### fieldNotes 
 fieldNotes is a string field that we will in with the stream flow at the time of sampling. Each example dataset stories flow in a different format. Some share percent dry, an integer, while others share stream flow as a string. For the integrated dataset all stream flows are transformed to a string, category “No Flow (Dry)”, “Flow (Whole Reach)”, “Other”. For programs reporting stream flow  as percent dry, we transform the data such that: 
-•	0 = Flow (Whole Reach)  
-•	100= No Flow (Dry) 
-•	All other values are reported as “Other” 
+* 0 = Flow (Whole Reach)  
+* 100= No Flow (Dry) 
+*All other values are reported as “Other” 
+
 For programs that report percent of the reach with flow, we transform the data in inverse.
 
 #### samplingProtocol 

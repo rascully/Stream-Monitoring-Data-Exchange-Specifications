@@ -14,110 +14,52 @@ metadata <- readxl::read_excel("Data/Metadata.xlsx", sheet = 3)
 ```
 ## R Markdown
 # About
-# Getting Started 
-# How to Contriubte 
-# License
-# Funding and Acknowledgments
-# Recommended Citation
 
-# Stream Monitoring Habitat Data Exchange Specifications 
-Data exchange specifications are a set of guidelines and rules for using and combining information. Rigorous data exchange specifications support reuse, promote interoperability, and reduce data integration costs (Morris and Frechette 2008, Hamm 2019). 
+##Mission and Goal of Standard 
+The Stream Habitat Data exchange standard provides content and structure for integrating stream habitat monitoring metrics and metadata from multiple programs. When we refer to stream habitat data, we are referring to the instream physical characteristics. These values are measured at a linear reach defined by a starting and end point, but in datasets are represented as a point. Metrics are values resulting from reducing measurements taken one or more times during the study period according to procedures defined by the response design (Stevens & Urquhart 2000). 
 
-# Summary 
-We use [observation data model 2 (ODM)](https://github.com/ODM2/ODM2) and [Darwin Core](https://www.gbif.org/sampling-event-data) to define data exchange specifications and data model (Figure 1) for stream habitat monitoring data. We apply controlled vocabularies from ODM2 and define a controlled vocabulary for stream habitat monitoring variables. As a use case we cross walk data from four federally funded stream habitat monitoring programs to the exchange specifications and wrote R code to to build a data set, the use case is described in detail in the here: https://github.com/rascully/Integrating-Stream-Monitoring-Data-From-Multiple-Programs=
- 
- ![Figure 1](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Figures/HabiatDataSharingSchema.png)
+##Relationship to Existing Standards 
+The stream habitat metric exchange standard was developed by a PNAMP working group composed of experts from four federally funded stream habitat monitoring programs. The fields are based on the data sources, the Darwin Core, ODM2, and WQX standards. The structure is based on a relational database model as employed by ODM2. 
+
+##Description of Standard 
+The stream habitat metric exchange standard includes the fields, data structure, and metric controlled vocabulary necessary to describe, exchange, and use stream habitat data across four specific federally-funded stream habitat monitoring programs (Table 1). The standard focuses on the core set of metadata fields, including locations, protocols, dataset information necessary to represent the sampling efforts accurately, and a subset of metrics produced by each program. 
+
+##Application and Intended Use of Standard 
+The stream habitat metric standard is applicable for sharing and integrating metrics and metadata for stream habitat physical characteristics. This standard addresses differences in response designs between the source datasets but do not account for different spatial designs. Additionally, data users need to be aware variability in training and crews can be impact measurement and data collection consistency and resulting metrics. Therefore, users analyzing datasets resulting from this standard should pay care and attention to these limitations.
+##Standard Development Procedures 
+The standard was developed by a working group led by PNAMP, the details are in Methods for Building and Applying a Data Exchange Standard for Stream Habitat Data From Multiple Monitoring Programs (Scully et al 2022a; in preparation) 
+
+##Maintenance of Standard 
+This standard is published and maintained in GitLab. GitLab is a version control system used for collaborative software development and suited for collaborative development of data standards (Ornelas et al. 2021) If the standard is updated, the GitLab software is designed to track changes, and collaborators can use the GitLab tools to submit suggestions and changes. 
+
+##Data Mapping  
+The original datasets need to be mapped to the standard to combine datasets from multiple sources. Data mapping is the assignment of fields from the original datasets to the fields and metrics described in the data exchange specifications (DAMA 2009). Some mapping from the sources to the data exchange standard are simple, while others require a transformation to be combined information into a single dataset.
+
+##Data Structure 
+The data is structured as a relational database model. Primary keys area unique value for each record or row in the table are identified and foreign keys are included in the child tables to define the relationship between tables (DAMA 2009), including the following:
+•	Record Level table primary key is datasetID, foreign key in the Location table 
+•	Location Table primary key is locationID, foreign key in Event table 
+•	Event Table primary key is Event, foreign key in Measurement or Fact table 
+•	Metric Controlled Vocabulary primary key is TermID, foreign key in Measurement or Fact table 
+This resulted in a series of five tables (RecordLevel, Location, Event, MeasurementorFact, Metric Controlled Vocabulary) linked together in a relational data model, stored and shared as an MS Access Database.  ![Figure 1](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Figures/HabiatDataSharingSchema.png)
   *Figure 1* 
   
-Specifics on each table is outline below or for full documentation go here:  https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Tables/ODM2_DarwinCore_StreamHabitat_ExchangeSpecifications.xlsx   
   
-# Introduction 
-Streams are critical to fish, aquatic community structure, and overall watershed health. State, Federal and Tribal entities collect in-stream habitat data to assess the resources' status and trends unique to their management questions.  Due to climate change, urbanization, and multi-use land management, there is a need to determine the resources' quality and trends across jurisdictional boundaries by using information from multiple collection efforts (Katz et al. 2012). It is not straightforward to combine data from various monitoring programs due to differences in response and survey (spatial and temporal) designs. Additionally, data produced by these programs are not always findable, accessible, interoperable, and reusable (FAIR) (Wilkinson et al. 2016).  There is no centralized repository, data model or data dictionary for this type of information.  A standard theory in data science states researchers spend 80% of their time organizing, fixing mistakes, and cleaning data, leaving only 20% of their time to analyze data (Mons 2020).   Well established rules for integrating and sharing stream habitat data from multiple sources will decrease the time spent finding and organizing data providing accurate and timely information for building indicators, completing analysis, and making decisions. 
-
-Data integration requires a set of business rules to flow data from sources to a target data set. Data needs to be accessed, extracted, moved, validated and cleansed, standardized, transformed, documented and published.  (DAMA Dictionary, CITE OTHER DATA INTEGRATION EFFOTRS)  Rigorous data exchange specifications support reuse, promote interoperability, and reduce integration data cost (Morris and Frechette 2008, Hamm 2019). 
-
-The biggest challenges to data integration are heterogeneity issues (Beran & Piasecki 2009). Stream habitat monitoring data is not immune to these challenges, the data has both semantic heterogeny, disagreement about the meaning of the same or related term (Sheth & Larson 1990) and structural heterogeneity, information system storing their day in different formats and layouts (Ouskel and Sheth 1999). To overcome these issues we undertook a facilitated effort to agree on a controlled vocabulary, fields and definitions, and data model, format of the data to be integrated, from a set of pilot programs.  We then mapped the data from the individual programs to the data model and controlled vocabulary and wrote code to build an integrated data set. The integrated data set is published on USGS ScienceBase, so SAY SOMETHING ABOUT API ACCESS.  We modeled the data exchange specification for stream habitat data based on the observation data model (ODM), but added a table to capture data collection events. Building on existing standards and past research will allow this data to be integrated existing into other tools. 
-
-
-# Methods 
-To integrate data, we need to establish business rules to flow data from the sources to a target data sets. Data must be accessed, extricated, moved, validated, cleaned, standardized, transformed, and loaded (DAMA Dictionary). At the start of this project there is no target data set or rules to integrate stream habitat data. Therefore, to build an integrated data set we define the structure and fields to include in the target data set and define business rules to flow data from sources. 
-
-Before starting the integration work, we need to understand what data and metadata from the desperate data sets needs to be integrated. There are two approaches:
-1.	Look for a specific regulatory management question that needs to be answered in order to inform a decision and provide the data to answer those specific questions. (CITE EXAMPLE CAX) 
-2.	Let the data guide the integration, identify a subset of like data that provide value and could be use together to answer a variety of management or research question
-
-For stream habitat monitoring data we took the second approach and used the data, metadata and program experts to guide the structure and fields of the target data set. Fields refer to the column headers in the data set.   
-
-We invited four large scale, long term, well documented stream habitat monitoring programs to collaborate in defining a method for integrating data from there stream habitat monitoring programs that can be adapted to similar Federal, State and Tribal programs as needed. 
-
-#### Coordinated with:
-* The Assessment, Inventory, and Monitoring (AIM) Strategy provides a framework for the Bureau of Land Management (BLM) to inventory and quantitatively assess the condition and trend of natural resources on the nation's public lands.  This program gathers information to determine ecosystem conditions and how they are changing over time. Such information is actively used by the BLM to guide and justify land uses, policy actions, and adaptive management decisions. (AIM Strategy website) LINK TO THE SCIENCEBASE ITEM 
-
-* The USFS Aquatic and Riparian Effectiveness Monitoring Program (AREMP) was developed to track changes that occurred as a result of active and passive management on the landscape. The Aquatic and Riparian Effectiveness Monitoring Program focuses on assessing the degree to which federal land management under the aquatic conservation strategy (ACS) of the Northwest Forest Plan (NWFP) has been effective in maintaining and improving watershed conditions. (USFS AREMP website)  LINK TO THE SCIENCEBASE ITEM 
-
-*	The USFS PacFish/InFish Biological Opinion Monitoring Program (PIBO MP) is to monitor stream and riparian habitats within the PIBO MP study area, in order to determine if the PacFish (Pacific Anadromous Fish) and InFish (Inland Fish) aquatic conservation strategies can effectively maintain or restore the structure and function of riparian and aquatic systems. (USFS PIBO website)  LINK TO THE SCIENCEBASE ITEM 
-
-*	EPA The National Aquatic Resource Surveys (NARS) are collaborative programs between EPA, states, and tribes designed to assess the quality of the nation's coastal waters, lakes and reservoirs, rivers and streams, and wetlands using a statistical survey design. The NARS provide critical, groundbreaking, and nationally consistent data on the nation's waters. (EPA website)  LINK TO THE SCIENCEBASE ITEM 
-
-These four monitoring programs have structured implementation, core indicators collected with a consistent methodology, statistically valid designs, and effective data management. In addition, based on past work we know there is a subset of consistent metrics and indicators produced across these programs, creating an opportunity to combine data from multiple programs (CITE ). 
-
-
-# Data Model  
-The general structure for this type of monitoring is a data set contains multiple locations. Programs sample a subset of sites numerous times; those sampling efforts we refer to as events, at each event, programs collect multiple measurements, producing numerous metrics (Figure 1). This type of information lends itself to a relational database model, so instead of repeating data, store data once in individual tables, linked together using primary keys. This approach optimizes data retrieval for analysis (CITE). So, for example, with stream monitoring habitat data, a location will be stored once and related to multiple events.  
-
-We did not want to build a new data model (data standards) from square one. Instead, with input from the project team, we reused existing data models and made changes to accommodate stream habitat monitoring data.  We used the Observation Data Model 2 (ODM2) and Darwin Core.  ODM2 takes features from the Open Geospatial Consortium (OGC) Observations & Measurements (O&M) standard (Cox, 2007a; Cox 2007b; Cox 2011a; Cox 2011b) and the Horsburgh et al, 2008 observation Data Model (ODM) desiring a data model for hydrologic data and the CUAHSI Hydrologic Information System. ODM2 is a generic model for observations and designed for interoperability among disciplines (http://www.odm2.org/). ODM2 has a “core” and multiple “extensions” and established controlled vocabularies.  It defines observations are an act associated with a descriptor time or instant, through which a number, term, or other symbol are ascribed to an event (Horsburgh et al. 2008). In addition, observations require contextual information, the location of the observation, date and time, the type of variable, and other metadata methods used for observation. The ODM2 (https://github.com/ODM2) is highly flexible and provides a good starting point for integrating these data sets. Based on the example data sets and working group input, we collapsed ODM2 tables, limited the fields to one necessary for stream habitat monitoring data. We found a subset of field definitions from ODM2 did not support our data type, and we needed additional fields, so we supplemented ODM2 with the Darwin Core principles outlined by Wieczorek et al. in 2012. The Darwin Core standard is maintained by the Darwin Core maintenance group here: https://github.com/tdwg/dwc.  Data managed in the working group provided the feedback in a series of facilitated working groups to finalize the fields included.  To ensure that the final data set is comparable with Darwin Core and ODM2 we maintained a crosswalk between this implementation of the data models and the original ODM2 and Darwin Core.   
-
-
-#### Definitions: 
-  * Controlled Vocabulary-  
-  * Primary Key- 
-  * Feature Key- 
-  * Controlled Vocabulary- 
-  * Verbatiam- a field name that begins with verbatim it indicate the field is directly from the original data sets, we include verbatim fields to provide provenance back to the original data. This is critical for fields such as locationID. locationID within each data set is unique, but as part of the pilot when we combined data there were duplicate locationIDs. Therefore we store the locaiton identifier from the original data set in the verbatimLocationID field and for duplicate IDs contoncintate 
-
 # Structure 
 To streamline the data storing and data retaliate we apply a relational data model based on ODM2, we simplified some relationships, removed fields that are not approperate for this datatype and added a few fields from the DarwinCore[Figure 1]
 
  ![Figure 1](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Figures/HabiatDataSharingSchema.png)
   *Figure 1*
 
-#### The original data schemas are documented in the ODM2 Git Repository here: 
-* Core schema: http://odm2.github.io/ODM2/schemas/ODM2_Current/diagrams/ODM2Core.html
-* Results Extension: http://odm2.github.io/ODM2/schemas/ODM2_Current/diagrams/ODM2Results.html
-* Sampling Feature Extension: http://odm2.github.io/ODM2/schemas/ODM2_Current/diagrams/ODM2SamplingFeatures.html
+##Record Level Table
+The Record Level table documents the core elements of a dataset, including information about the origin of the dataset, who collected the data, and how to cite the source dataset (Table # {RecordLevel}). datasetID is the primary key. 
 
-# Details of the Data Model 
+[Data set table](Tables/RecordLevel_table.csv). 
 
-## Record Level  
+###Record Level Data Mapping Notes 
+####datasetID
+datasetID is a unique identifiers integer generated when the datasets are combined into the single datasets. 
 
-Record Level documents the core elements of a data set, including information about the origin of the data set, who collected the data, and how to cite the data set. See details of our implementation in the [Data set table](Tables/RecordLevel_table.csv). A data sets are the collection of locations. At each location, there can be a series of collection events or data collection actions. At each event, programs collect various metrics. 
-
-Access to robust metadata documenting the provenance of the data sets we combined are critical for the trust of the end data users (CITE). We recommend storing metadata about the data set in an accessible, searchable repository. Include information such as where the data is stored, how often it is updated, and information about the ownership of the data, ensuring accessibility to information about the origins of data sets in the integrated data set. We use the USGS ScienceBase data repository to document metadata about the origin data sets and integrated data set. ScienceBase can be accessed by everybody. To find more information about ScienceBase go here https://www.sciencebase.gov/about/. 
-
-We used ODM2 and Darwin Core to shape these data exchange specifications. 
-Details of the ODM2 implementation of the Dataset table: https://github.com/ODM2/ODM2/blob/master/doc/ODM2Docs/core_datasets.md 
-
-Detials of the Darwin Core implementation of the Record Level table: https://dwc.tdwg.org/terms/#record-level
-
-
-### The Stream Habitat Monitoring Implentation 
-
-#### [Record Level table](Tables/RecordLevel_table.csv)
-
-#### To the Datasets table from ODME2 Metadata table we added:
-  * MetadataLink 
-
-#### From DarwinCore we added to the table:
-  * DatasetOrginization
-  * Modified 
-
-#### The primary key is: 
-  * DatasetID 
-  
-#### Controlled Vocabularies:  
-  *  DatasetType
-      * http://vocabulary.odm2.org/datasettype/
-      * SKOS API: http://vocabulary.odm2.org/api/v1/datasettype/?format=skos 
 
 ```{r echo=FALSE, results= 'asis'}
 
@@ -128,45 +70,20 @@ kable(datasets, caption = "Recrod Level Table")
 ```
 
 ## Location  
-Understanding where data are collected is critical to interpreting stream habitat monitoring data. In the ODM2 the Sampling Feature class describes where information are collected. See the list of terms we use in this implementation in the [Location table](Tables/Location_table.csv). For this type of monitoring data, the SamplingFeatureID is often referred to as locationID, to support our user community and minimize confusion, we substituted locationID for SampleFeatureID.  We tract the crosswalk from our implementation to the original ODM2 and Darwin Core, so, in the future, we can easily integrate this data set into other data tools using the ODM2 or Darwin Core standard. 
+Location Class describes where information was collected in the field (Table # {Location}). datasetID is the foreign key linking Location table to Record Level table. locationID is the primary key Each Record Level dataset contained multiple locations linked from the Location Table to the Record Level Table by the datasetID field. LocationID was the primary key for the Location table and was used to associate locations with events in the Event table, allowing for multiple events to be tied to a single location. Unique, consistent locationID numbers were generated for each unique location in the integrated dataset. Source data program-specific locationIDs were non-standardized across programs and could not be used when integrating due to the inherent risk of UID duplication. However, program locationIDs were preserved in the integrated data in the verbatimLocationID column to trace back to the original datasets. 
 
-Each data set contains multiple locations. The eventID is the key to link locations to events. To view and analysis data from various sources, latitudes and longitude information must be consistent across the combined data sets; therefore, for this data, all latitude and longitudes are converted to WGS1984.
-
-
-We used ODM2 and Darwin Core to shape these data exchange specifications. 
-
-Details of the ODM2 implementation of the Sampling Feature table: http://odm2.github.io/ODM2/schemas/ODM2_Current/tables/ODM2Results_CategoricalResultValues.html 
-
-Detials of the Darwin Core implementation of the Location Class: https://dwc.tdwg.org/terms/#location 
-
-
-### The Stream Habitat Monitoring Implentation 
 
 #### [Location table](Tables/Location_table.csv)
 
-#### From the Sample Feature Table from ODME2 SampleFeature.Site we added:  
-  * Latitude 
-  * Longitude 
-  * SpatialReferenceID 
-
-#### From DarwinCore we added to the Sample Feature table:  
-  *locationID 
-  *verbatimLocationID 
-
-#### The primary key is: 
-  * locationID 
-  
-#### Added a foreign key: 
-  * datasetID to link the Data Set table to the Sample Features table
-  
-#### Controlled Vocabularies: 
-  *  SamplingFeatureType
-      * http://vocabulary.odm2.org/samplingfeaturetype/
-      * SKOS API http://vocabulary.odm2.org/api/v1/samplingfeaturetype/?format=skos
-  * SamplingFeatureGeotype
-      * http://vocabulary.odm2.org/samplingfeaturegeotype/
-      * SKOS API http://vocabulary.odm2.org/api/v1/samplingfeaturegeotype/?format=skos
-  * SpatialReferenceID 
+###Location Data Mapping Notes 
+####locationID 
+locationID is a unique identifiers integer generated when the datasets are combined into the single dataset.
+####verbatimLocationID 
+verbatimLocaitonID are the unique identifiers from the original datasets all convert to data type string. By maintaining the link to location and event identifiers from the original datasets the data user can trace information back to the source. 
+####latitude and longitude 
+All latitude and longitudes need to be in the coordinate reference system is World Geodetic System 1984 (WGS84), not projected. 
+####siteSelectionType
+Discussion with project team 
 
 ```{r echo=FALSE}
 
@@ -175,70 +92,43 @@ sampling_feature <- read.csv("Tables/ODMSamplingFeature_table.csv")
 kable(sampling_feature)
 ```
 ## Event  
-In ODM2 Action describes an action that occurs at a specific time frame, in this data type this is refered to as the sampling event [Event table](Tables/Event_table.csv). To assess the status and trend of a resource as a response to management, stream habitat monitoring programs often implement a rotating panel design, meaning that the a single location is visited multiple times during the study duration.  Therefore, a data set will contain numerous locations, and each location can include numerous events.
-
-We used ODM2 and Darwin Core to shape these data exchange specifications. 
-
-Details of the ODM2 implementation of the Actions table:http://odm2.github.io/ODM2/schemas/ODM2_Current/tables/ODM2Core_Actions.html 
-
-Detials of the Darwin Core implementation of the Event Class: https://dwc.tdwg.org/terms/#event
-
-### The Stream Habitat Monitoring Implentation 
+Event Class describes an action that occurs at some location during some time (Darwin Core, ).  Table # {Event}).}). locationID is the foreign key linking Location table to Event table. eventID is the primary key assigned to each row in the Event table and will be used to link an event to multiple measurements. 
+To maintain provenance to the original data sources, we retained UID for each event from the source data in the column verbatimEventID. We did not use the sources eventIDs as the primary key due to the variety of formats, mixes of data type, and potential for repeated value between two programs. 
 
 #### [Event table](Tables/Event_table.csv)
 
-#### To the Core Action table from ODME2 Core Feature Action we added:
-  * SampleFeatureID 
+###Event Data Mapping Notes 
+####eventID 
+eventID is a unique identifiers integer generated when the datasets are combined into the single dataset.
+####verbatimEventID 
+verbatimEventID are the unique identifiers from the original datasets all convert to data type string. By maintaining the link to location and event identifiers from the original datasets the data user can trace information back to the source. 
+####fieldNotes 
+fieldNotes is a string field that we will in with the stream flow at the time of sampling. Each example dataset stories flow in a different format. Some share percent dry, an integer, while others share stream flow as a string. For the integrated dataset all stream flows are transformed to a string, category “No Flow (Dry)”, “Flow (Whole Reach)”, “Other”. For programs reporting stream flow  as percent dry, we transform the data such that: 
+•	0 = Flow (Whole Reach)  
+•	100= No Flow (Dry) 
+•	All other values are reported as “Other” 
+For programs that report percent of the reach with flow, we transform the data in inverse.
+####samplingProtocol 
+Discussion with project team 
+####beaverImpact 
+Discussion with project team 
 
-#### From DarwinCore we added to the Record Level table:
-  * Added VerbatimEventID based on the DarwinCore, because when implementing these data exchange specification we found that there are duplicate EventIDs between two or more of the source data sets. 
-
-#### The primary key is: 
-  * EventID
-
-#### Controlled Vocabularies: 
-  *  ActionTypeCV 
-      * http://vocabulary.odm2.org/actiontype/
-      * SKOS API: http://vocabulary.odm2.org/api/v1/actiontype/?format=skos
-  
 ```{r echo= FALSE}
 actions <- read.csv("Tables/ODMAction_table.csv")
 kable(actions)
 ```
 ## Measurment or Facts  
-A metric is a value resulting from the reduction or processing of measurements taken at an event based on the procedures defined by the response design. Programs derive a variety of metrics from a single measurement. For stream habitat data at each event, programs take multiple types of measurements and produce various metrics from one measurement; for example, the measurement of pools produces both percent pools and pool frequency. Events are associated with measurements by the eventID, see the [Measurement or Fact Table](Tables/MeasurementORFact_table.csv) for the full definitions of terms. 
+The Measurement or Fact Darwin Core class/extension stores the results of a measurement at an event Table # { Measurement or Fact}). }). eventID is the foreign key linking Event table to MeasurementOrFact table. measurementID is the primary key and numeric UIDs were generated for each row. Data values were stored in the dataValue field and the measurementType field defined the "nature of the measure, fact, characteristic or assertion" and filled in from the metric controlled vocabulary (Darwin Core Maintenance Group 2021). 
 
-We used ODM2 and Darwin Core to shape these data exchange specifications. 
+[Measurement or Fact Table](Tables/MeasurementORFact_table.csv) for the full definitions of terms.
 
-Details of the ODM2 implementation of the Results table: http://odm2.github.io/ODM2/schemas/ODM2_Current/tables/ODM2Results_CategoricalResultValues.html 
+###Measurement or Fact Mapping Notes 
+####measurementID 
+measurementID is a unique identifiers integer generated when the datasets are combined into the single datasets.
 
-Detials of the Darwin Core implementation of the Measurement Or Fact Class: https://dwc.tdwg.org/terms/#measurementorfact 
+####measurementMethod  
+measurementMethod is filled in with the link to the data collection and analysis methodology documented in MonitoringResources.org. This supports reuse and trust by the end-users. The methods were published on MonitoringResources.org, an online, publicly accessible suite of information and tools for natural resource monitoring programs and professionals to document the who, what, where, when, and how of data collection and analysis (Bayer et al. 2018). MonitoringResources.org provides a standard structure for documenting data collection and analysis methods and APIs to access the method's documentation via a UID assigned to each method and allows for version control. For example, AREMP and PIBO MP collect substrate information using different field methods, but working group experts and past data agreed that the methodology used in the field produces comparable results, allowing the two program's metrics to be integrated.  
 
-### The Stream Habitat Monitoring Implentation 
-
-#### [MeasurmentOrFact Table](Tables/ODMResults_table.csv)
-
-#### To the ODM2 Core Results we add from Results.MeasurementsResultsValues added:
-  * MethodID 
-  * MeasurementRemark 
-  * DataValue 
-  
-
-#### The primary key is: 
-  * ResultsID 
-
-#### Added foregin key:
-  * EventID 
-
-#### Controlled Vocabularies: 
-  * VariableID 
-      *  see below 
-  * ResultsType: 
-      * http://vocabulary.odm2.org/resulttype/
-      SKOS API: http://vocabulary.odm2.org/api/v1/resulttype/?format=skos 
-  * UnitID: 
-      * http://vocabulary.odm2.org/units/
-    
 
 
 ```{r echo=FALSE}
@@ -246,15 +136,9 @@ results <- read.csv("Tables/MeasurmentORFact_table.csv")
 
 kable(results)
 ```
-### VariableID  Controlled Vocabularies for Results Table 
+### Metric Controlled Vocabualry VariableID  Controlled Vocabularies for Results Table 
 
-Critical to implementing the stream habitat monitoring data exchange specifiction, is solving semantic heterogeneity, or the differences in languages used to describe observations between datasets (CITE). There needs to be a controlled vocabularies for each metrics integrated. The standard language enables the integration of multiple habitat monitoring program metrics into one data set. 
-
-We built the metric controlled vocabulary  using metadata and metrics from four large scale, long-running federal stream habitat monitoring programs: Environmental Protection Agency (EPA) National Rivers & Streams Assessment (NRSA), Bureau of Land Management (BLM) Aquatic Assessment, Inventory, and Monitoring (AIM), the Forest Service Aquatic and Riparian Effective Monitoring Program (AREMP) and PACFISH/INFISH Biological Opinion (PIBO) Effectiveness Monitoring. Each program has unique objectives, spatial, temporal, response, and inference designs; yet, they produce similar metrics.  These four programs collectively produce over 300 metrics but have only a subset of metrics in common across programs. The program leads and data managers from the four programs agreed on a subset of the metrics that can be shared across the programs; these can be found in the first draft of the [controlled vocabulary](Tables/StandardVocabulary.csv).
-
-We focused on defining a set of metric we would integrate.  Previous work has been completed compare some of these data sets and field collection procedures. (CITE) For our initial assessment of metric compadability There have been efforts in the past to comparei field processes for these programs, but we wanted to confirm with the project lead that fields were comparable. PNAMP lead an effort to facilitate conversations with data experts from the four programs to define the metrics that can be shared across the programs. The conversations are documented in Appendix A. We agreed that data in the same colume is compadable, even with this agreement we want to provide documentation of the field methods for each of the metrics included in the controlled vocabulary. To make this effective each individual data collection method needs to be documented in a stand alone, machine readable way. This means when the data set is reused the data collection methology can be accessed via APIs. Simplifying the creation of data portals, web maps and other user interfaces. We used MonitoringResources.org an online tool for documenting field data collection or analysis methods to so for each metric and program we document the field protocols (ADD TABLE OF CONTROLLED VOCABULARY AND METRIC IDs). 
-
-Using the metadata from each program we build a comprehensive list of the metrics produced across the programs and then facilitated discussion with experts from each program to define where metrics are comparable across programs (SEE METHOD REPORT). Use this approach we defined a controlled vocabulary of metrics to be integrated. Additional we defined a subset of metadata for data sets, locations, and events to include in the integrated data sets. Using all this information we build a data schema defining a relation data base observation and measurement model based on Darwin core and CAUSI data models. We then created a schema cross walk from the original data sets to the integrate data schema, and wrote code to pull the data from the orgial locations to be intergrated in the final data sets. 
+	The metric-controlled vocabulary defines the metrics included in the MeasurementOrFact table. The controlled vocabulary was formatted as a flat .csv table containing term names, definitions, data type (.e.g, numeric), measurement units (e.g., meters) and acceptable values (e.g., a percent must fall between 0 and 100) for all metrics in the dataset ({Table # MetricCV}). A metric is a term in the controlled vocabulary and the measurementType was linked to the Measurement or Fact table's termID (fig # {stream monitoring data exchange spec schematic}).  [controlled vocabulary](Tables/StandardVocabulary.csv).
 
 
 
@@ -270,17 +154,6 @@ kable(vocabulary)
 
 ```
 
-The working group crosswalked each of their program's field names to the controlled vocabulary. We documented details of the metric compatibility discussions between the four programs in Appendix A of the [Data Exchange Specification](MetricLevelExchangeSpecifications.docx) document. 
-
-```{r echo=FALSE}
-crosswalk<- metadata %>% 
-        select(c("SubsetOfMetrics", "InDES", 
-           "measurementTerm", "LongName", "Description", "Examples", "DataType", "measurementUnit")|contains("CW")) %>% 
-        filter(SubsetOfMetrics=="x"| InDES=="x"  ) %>% 
-        select(-SubsetOfMetrics, -InDES)  
-```
-
-If partners wish to exchange additional metrics, the controlled vocabulary must be updated and cross-walk. The list of metrics from the four programs not included in the first draft of the standard vocabulary or data exchange specifications is here: [list of metrics not in the controlled vocabulary ](Tables/NotInControlledVocabularyOrDES.csv) 
 
 # Use Case 
 We wrote code based on these data exchange specifications to share habitat metrics from three federal habitat monitoring programs: Environmental Protection Agency (EPA) National Rivers & Streams Assessment (NRSA), Bureau of Land Management (BLM) Aquatic Assessment, Inventory, and Monitoring (AIM),and the Forest Service Aquatic and Riparian Effective Monitoring Program (AREMP). The work flow pulls program information from ScienceBase, the exchange specifications and the field crosswalk from this repository, and data collection metrics documented from MonitoringResources.org [work flow diagram](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Figures/WorkFlow.png). The R code to integrate data sets can be found at https://github.com/rascully/Integrating-Stream-Monitoring-Data-From-Multiple-Programs and the data set documentation in ScinceBase at ADD SCIENCEBAES LINK WHEN I CAN 

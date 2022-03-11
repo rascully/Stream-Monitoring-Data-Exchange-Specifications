@@ -38,6 +38,7 @@ old_crosswalk <- metadata %>%
   filter(subsetOfMetrics=="x"| inDES=="x"  ) %>% 
   select(-subsetOfMetrics, -inDES) 
 
+
 ##### Build a tall crosswalk 
 crosswalk<- metadata %>% 
   select(c("termID", "term", "subsetOfMetrics", "inDES", "dataType")|contains(c("FieldCW"))) %>% 

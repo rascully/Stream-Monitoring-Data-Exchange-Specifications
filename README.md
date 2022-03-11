@@ -47,15 +47,6 @@ The Record Level table documents the core elements of a dataset, including infor
 #### datasetID
 datasetID is a unique identifiers integer generated when the datasets are combined into the single datasets. 
 
-
-```{r echo=FALSE, results= 'asis'}
-
-datasets <- read.csv("Tables/RecrodLevel_table.csv")
-
-kable(datasets, caption = "Recrod Level Table")
-
-```
-
 ## Location  
 Location Class describes where information was collected in the field (Table # {Location}). datasetID is the foreign key linking Location table to Record Level table. locationID is the primary key Each Record Level dataset contained multiple locations linked from the Location Table to the Record Level Table by the datasetID field. LocationID was the primary key for the Location table and was used to associate locations with events in the Event table, allowing for multiple events to be tied to a single location. Unique, consistent locationID numbers were generated for each unique location in the integrated dataset. Source data program-specific locationIDs were non-standardized across programs and could not be used when integrating due to the inherent risk of UID duplication. However, program locationIDs were preserved in the integrated data in the verbatimLocationID column to trace back to the original datasets. 
 
@@ -75,10 +66,6 @@ All latitude and longitudes need to be in the coordinate reference system is Wor
 #### siteSelectionType
 Discussion with project team 
 
-```{r echo=FALSE}
-sampling_feature <- read.csv("Tables/ODMSamplingFeature_table.csv")
-kable(sampling_feature)
-```
 ## Event  
 Event Class describes an action that occurs at some location during some time (Darwin Core, ).  Table # {Event}).}). locationID is the foreign key linking Location table to Event table. eventID is the primary key assigned to each row in the Event table and will be used to link an event to multiple measurements. 
 To maintain provenance to the original data sources, we retained UID for each event from the source data in the column verbatimEventID. We did not use the sources eventIDs as the primary key due to the variety of formats, mixes of data type, and potential for repeated value between two programs. 

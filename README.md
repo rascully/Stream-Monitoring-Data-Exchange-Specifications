@@ -108,7 +108,9 @@ measurementMethod is filled in with the link to the data collection and analysis
 
 ### Metric Controlled Vocabualry VariableID  Controlled Vocabularies for Results Table 
 
-	The metric-controlled vocabulary defines the metrics included in the MeasurementOrFact table. The controlled vocabulary was formatted as a flat .csv table containing term names, definitions, data type (.e.g, numeric), measurement units (e.g., meters) and acceptable values (e.g., a percent must fall between 0 and 100) for all metrics in the dataset ({Table # MetricCV}). A metric is a term in the controlled vocabulary and the measurementType was linked to the Measurement or Fact table's termID (fig # {stream monitoring data exchange spec schematic}).  [controlled vocabulary](Tables/StandardVocabulary.csv).
+The metric-controlled vocabulary defines the metrics included in the MeasurementOrFact table. The controlled vocabulary was formatted as a flat .csv table containing term names, definitions, data type (.e.g, numeric), measurement units (e.g., meters) and acceptable values (e.g., a percent must fall between 0 and 100) for all metrics in the dataset ({Table # MetricCV}). A metric is a term in the controlled vocabulary and the measurementType was linked to the Measurement or Fact table's termID (fig # {stream monitoring data exchange spec schematic}).  
+
+[controlled vocabulary](Tables/StandardVocabulary.csv).
 
 
 # Use Case Guide 

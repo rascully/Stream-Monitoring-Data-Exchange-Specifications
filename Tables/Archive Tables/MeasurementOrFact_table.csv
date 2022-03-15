@@ -1,11 +1,6 @@
-"termID","term","description","examples","dataType","primaryKey","foreignKey","controlledVocabulary","controlledVocabularyAPI","minimumPossibleValue","maximumPossibleValue","darwinCoreTerm","darwinCoreClass","ODM2Term","ODMTable"
-25,"resultsID","Unique integer identifier for each
-data value. Generated when the datasets are combind","5","Integer","X",NA,NA,NA,"NA","NA","Conditional 
-(see business rule)","MeasurementOrFact",NA,"Results"
-26,"resultTypeCV","The nature of the measurement, fact, characteristic, or assertion. Recommended best practice is to use a controlled vocabulary.","tail length, ""temperature"", ""trap line length"", ""survey area"", ""trap type""","String",NA,"X","http://vocabulary.odm2.org/resulttype/","http://vocabulary.odm2.org/api/v1/resulttype/?format=skos","NA","NA",NA,"MeasurementOrFact",NA,"Results"
-27,"measurementID","An identifier for the MeasurementOrFact (information pertaining to measurements, facts, characteristics, or assertions). May be a global unique identifier or an identifier specific to the data set.",NA,"Numeric",NA,"X","https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Tables/ControlledVocabulary.csv",NA,"NA","NA","measurementID","MeasurementOrFact","VariableID","Results"
-28,"measurementMethod","A description of or reference to (publication, URI) the method or protocol used to determine the measurement, fact, characteristic, or assertion.","URL of the MonitoringResources.rog field and if avilable calcuation method","String",NA,"X",NA,"https://www.monitoringresources.org/api/v1/methods/","NA","NA","measurementMethod","MeasurementOrFact",NA,"Results"
-29,"measurementRemarks","Comments or notes accompanying the MeasurementOrFact.","tip of tail missing","String",NA,NA,NA,NA,"NA","NA","measurementRemarks","MeasurementOrFact",NA,"Results"
-30,"measurementValue","The value of the measurement, fact, characteristic, or assertion.","45, ""20"", ""1"", ""14.5"", ""UV-light""","double",NA,NA,NA,NA,"NA","NA","measurementValue","MeasurementOrFact","dataValue","Results"
-31,"measurementType","A field name for the MeasurementOrFact. Term from the stream habitat controlled vocabulary.","Grad, WetWidth, ReachLen","String",NA,NA,NA,NA,"0","0","measurementType","MeasurementOrFact",NA,"Results"
-32,"measurementUnit","The units associated with the measurementValue. Recommended best practice is to use the International System of Units (SI).","mm, ""C"", ""km"", ""ha""","String",NA,NA,NA,NA,"0","0","measurementUnit","MeasurementOrFact",NA,"Results"
+"tblname","term","termID","definition","rdommin","rdommax","dataType","examples","standard"
+"MeasurementOrFact","eventID",300,"Global unique identifier assigned to an Event (something that occurs at a place and time, such as a survey or measurement).","1","16280","Integer",NA,"Darwin Core"
+"MeasurementOrFact","measurementID",400,"Global unique identifier assigned to the measurementValue.","1","191982","Integer",NA,"Darwin Core"
+"MeasurementOrFact","measurmentTypeID",401,"Global unique identifier assigned to the term.",NA,NA,NA,NA,NA
+"MeasurementOrFact","measurementValue",403,"The value of the term attribute measured in units given in the term attribute definition.",NA,NA,"Float","45, ""20"", ""1"", ""14.5"", ""UV-light""","Darwin Core"
+"MeasurementOrFact","measurementType",402,"The variable or name of the measurement.",NA,NA,"String","Grad, WetWidth, ReachLen","Darwin Core"

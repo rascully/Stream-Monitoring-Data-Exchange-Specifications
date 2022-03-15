@@ -28,13 +28,9 @@ metadataT<- metadata %>%
 metadataDict <- right_join(DES, metadataT,  by = c("term"))
 
 for (i in 1:length(tables_des)){ 
-  #  table = pull(tables[i])
-  file_name = paste0(tables[i], "_table")
-  print(paste0(tables[i], "_table"))
-  
-  write.csv(assign(tables[i], metadataDict %>% 
+  assign(tables[i], metadataDict %>% 
                      select(tblname,term, termID, definition, rdommin, rdommax, dataType, examples, standard) %>% 
-                     filter(str_detect(tblname, tables[i]))), file=paste0("Tables/",file_name,".csv" ), row.names = F )
+                     filter(str_detect(tblname, tables[i])))
           
 }
 
@@ -70,7 +66,7 @@ vocabulary$table = "MeasuremeorFact"
   vocabulary <- vocabulary %>% 
             relocate("table","termID", "term", "measurementTypeID", "measurementType", "description", "edomvds", "unit","dataType")
 
-  write.csv(vocabulary, file=paste0("Tables/ControlledVocabulary_table.csv" ), row.names=F)
+#  write.csv(vocabulary, file=paste0("Tables/ControlledVocabulary_table.csv" ), row.names=F)
   
 old_crosswalk <- metadata %>% 
   select(c("table","measurementType", "measurementID", "term","termID",  "subsetOfMetrics", "inDES", 
@@ -183,8 +179,8 @@ short_crosswalk <- metadata %>%
   select(-subsetOfMetrics, -inDES, -contains("Method")) %>% 
   filter(measurementType != "Temperature")
 
-names(short_crosswalk) <- str_remove_all(names(short_crosswalk), "CW")
-write.csv(short_crosswalk, file=paste0("Tables/CrosswalkForReview.csv" ), row.names=F)
+#names(short_crosswalk) <- str_remove_all(names(short_crosswalk), "CW")
+#write.csv(short_crosswalk, file=paste0("Tables/CrosswalkForReview.csv" ), row.names=F)
 
 
 #Create a list of metrics from the programs not in the controlled vocabulary 

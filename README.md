@@ -5,6 +5,9 @@ contact information: rscully@usgs.gov
 ---
 
 ## R Markdown
+# USGS Disclaimer for Draft Software and Data Exchange Specifications 
+Although these data have been processed successfully on a computer system at the U.S. Geological Survey (USGS), no warranty expressed or implied is made regarding the display or utility of the data for other purposes, nor on all computer systems, nor shall the act of distribution constitute any such warranty. The USGS or the U.S. Government shall not be held liable for improper or incorrect use of the data described and/or contained herein.
+
 # About
 
 ## Mission and Goal of Standard 

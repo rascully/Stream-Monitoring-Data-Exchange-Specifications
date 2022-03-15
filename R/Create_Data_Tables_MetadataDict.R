@@ -13,22 +13,10 @@ metadataDict <- metadataDict %>%
 tables_des <- c("Record", "Location", "Event", "MeasurementOrFact")
 tables <- pull(unique(metadataDict %>% 
                    select(tblname)))
-
-#for (i in 1:length(tables)){ 
-#  table = pull(tables[i])
- # file_name = paste0(tables[i], "_table")
-  #print(paste0(tables[i], "_table"))
-  
-  #write.csv(assign(tables[i], metadataDict %>% 
-  #                    select(tblname,term, termID, definition, rdommin, rdommax, dataType, examples, standard) %>% 
-   #                   filter(tblname == tables[i])), file=paste0("Tables/",file_name,".csv" ), row.names = F ) 
-#}
-
 DES <-metadataDict %>% 
   filter(str_detect(tblname, paste(tables_des, collapse = "|"))) %>%
   drop_na(term)
-                    
-#DES <- rename(DES, "term"= "label")
+
 
 #Open the metadata file 
 metadata <- readxl::read_excel("Data/Metadata.xlsx", sheet = 3)
@@ -46,9 +34,9 @@ for (i in 1:length(tables_des)){
   
   write.csv(assign(tables[i], metadataDict %>% 
                      select(tblname,term, termID, definition, rdommin, rdommax, dataType, examples, standard) %>% 
-                     filter(tblname == tables[i])), file=paste0("Tables/",file_name,".csv" ), row.names = F ) 
+                     filter(str_detect(tblname, tables[i]))), file=paste0("Tables/",file_name,".csv" ), row.names = F )
+          
 }
-
 
 
 
@@ -57,16 +45,17 @@ vocabulary<- metadata %>%
   select(c(termID,  categoryID, table,measurementType,subsetOfMetrics,
            term, longName , description, examples, dataType, measurementUnit, minimumPossibleValue, maximumPossibleValue)) %>% 
   filter(table== "ControlledVocabulary", subsetOfMetrics=="x") %>% 
-  select(-subsetOfMetrics, -categoryID, -table)
+  select(-subsetOfMetrics, -categoryID, -table) 
+  
 
 
 #create a vocabulary table 
 vocabulary<- metadata %>% 
-  select(c(categoryID, table,measurementType,subsetOfMetrics, termID, 
+  select(c(categoryID, table,subsetOfMetrics, termID, 
          term, longName , description, examples, dataType, measurementUnit, minimumPossibleValue, maximumPossibleValue)) %>% 
   filter(table== "ControlledVocabulary", subsetOfMetrics=="x") %>% 
   select(-"subsetOfMetrics", -"categoryID", -"table") %>%
-  rename("category"="term", "categoryID"="termID", "unit"="measurementUnit") 
+  rename("measurementType"="term", "measurementTypeID"="termID", "unit"="measurementUnit") 
   
 
 vocabulary$term = "term"
@@ -79,9 +68,10 @@ vocabulary$table = "MeasuremeorFact"
 #table	attrlabl	category	definition	edomvds	unit	comment
 
   vocabulary <- vocabulary %>% 
-            relocate("table","termID", "term", "categoryID", "category", "description", "edomvds", "unit","dataType")
+            relocate("table","termID", "term", "measurementTypeID", "measurementType", "description", "edomvds", "unit","dataType")
 
-
+  write.csv(vocabulary, file=paste0("Tables/ControlledVocabulary_table.csv" ), row.names=F)
+  
 old_crosswalk <- metadata %>% 
   select(c("table","measurementType", "measurementID", "term","termID",  "subsetOfMetrics", "inDES", 
           "examples", "dataType", "measurementUnit")|contains("CW")| contains("Units")) %>% 
@@ -142,7 +132,7 @@ for (type in method_type) {
   
 }
 
-cw_long <- cw_long %>% relocate("program", "termID", "term", "datatype", "orginalField", "orginalUnit", "originalDataType", "methodCollection", "methodAnalysis")
+cw_long <- cw_long %>% relocate("program", "termID", "term", "dataType", "originalField", "originalUnit", "originalDataType", "methodCollection", "methodAnalysis")
 
 vocab_cw <- cw_long %>% 
           filter(termID >= 500) %>% 

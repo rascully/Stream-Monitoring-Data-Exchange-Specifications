@@ -25,8 +25,8 @@
 306,"beaverImpactFlow","Numeric","beaver_impacted","BeaverFlowMod",NA,NA
 307,"eventRemarks","String",NA,NA,NA,NA
 400,"measurementID","Numeric",NA,NA,NA,NA
-401,"termID","Integer",NA,NA,NA,NA
-402,"term","String",NA,NA,NA,NA
+401,"measurmentTypeID","Integer",NA,NA,NA,NA
+402,"measurementType","String",NA,NA,NA,NA
 403,"measurementValue","Numeric",NA,NA,NA,NA
 405,"measurementRemarks","String",NA,NA,NA,NA
 500,"Sin","Numeric",NA,"SNSTY","SINU","Sin"

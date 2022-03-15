@@ -1,0 +1,6 @@
+"tblname","term","termID","definition","rdommin","rdommax","dataType","examples","standard"
+"MeasurementOrFact","eventID",300,"Global unique identifier assigned to an Event (something that occurs at a place and time, such as a survey or measurement).","1","16280","Integer",NA,"Darwin Core"
+"MeasurementOrFact","measurementID",400,"Global unique identifier assigned to the measurementValue.","1","191982","Integer",NA,"Darwin Core"
+"MeasurementOrFact","measurmentTypeID",401,"Global unique identifier assigned to the term.",NA,NA,NA,NA,NA
+"MeasurementOrFact","measurementValue",403,"The value of the term attribute measured in units given in the term attribute definition.",NA,NA,"Float","45, ""20"", ""1"", ""14.5"", ""UV-light""","Darwin Core"
+"MeasurementOrFact","measurementType",402,"The variable or name of the measurement.",NA,NA,"String","Grad, WetWidth, ReachLen","Darwin Core"

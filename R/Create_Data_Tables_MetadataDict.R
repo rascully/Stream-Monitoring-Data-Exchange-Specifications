@@ -132,47 +132,46 @@ for (type in method_type) {
   
 }
 
-cw_long <- cw_long %>% relocate("program", "termID", "term", "dataType", "originalField", "originalUnit", "originalDataType", "methodCollection", "methodAnalysis")
+cw_long <- cw_long %>%
+  relocate("program", "termID", "term", "dataType", "originalField", "originalUnit", "originalDataType", "methodCollection", "methodAnalysis")
 
 vocab_cw <- cw_long %>% 
           filter(termID >= 500) %>% 
-          rename("catagoryID" ="termID", "catagory"="term")
+          rename("measurmentTypeID" ="termID", "measurementType"="term")
 
 vocab_cw$term = "term"
 vocab_cw$termID = 401
   
-  des_long <- cw_long %>% 
-            filter(termID <500)
-des_long$catagory = ""
-des_long$catagoryID = NA
+des_long <- cw_long %>% 
+            filter(termID <500)# %>% 
+            #select("term")
 
-
-cw_long <- bind_rows(vocab_cw,des_long )
-
-
-cw_long <- cw_long %>% relocate("termID", "term","catagoryID", "catagory") %>% arrange(("termID"))
   
-#write.csv(crosswalk, file=paste0("Tables/Crosswalk_wide.csv" ), row.names=F)
-#write.csv(cw_long, file=paste0("Tables/Crosswalk_long.csv" ), row.names=F)
+des_long$measurementType = ""
+des_long$measurmentTypeID = NA
 
-#sheets <- openxlsx::getSheetNames("Tables/ControlledVocabularyForFields.xlsx")
-#CVFields <- lapply(sheets,openxlsx::read.xlsx, xlsxFile="Tables/ControlledVocabularyForFields.xlsx")
-#names(CVFields) <- sheets
+cw_long2 <- bind_rows(vocab_cw,des_long )
 
 
+cw_long2 <- cw_long2   %>%
+              relocate("termID", "term","measurmentTypeID", "measurementType", "dataType", "program", "originalField",  "originalUnit") %>% 
+              arrange("measurementTypeID")
+  
 
 #####Create one file
 list_of_datasets <- list("RecordLevel" = Record, "Location"= Location, "Event"= Event,
                          "MeasurementorFact"= MeasurementOrFact, "metricControlledVocabulary"= vocabulary, 
-                         "Crosswalk"=cw_long)
+                         "Crosswalk"=cw_long2)
 
 file.remove("Tables/StreamHabitatSpecifications.xlsx")
 write.xlsx(list_of_datasets, file = "Tables/StreamHabitatSpecifications.xlsx") 
 
-for(i in length(names(list_of_datasets))){ 
+for(i in 1:length(names(list_of_datasets))){ 
   filename = paste0(getwd(),"/Tables/", names(list_of_datasets[i]), ".csv")
-  write.csv(list_of_datasets[i], filename, row.names= FALSE)
-  
+  table_name <- names(list_of_datasets[i])
+  table <- data.frame(list_of_datasets[i])
+  names(table) <- gsub(paste0(table_name,"."), "", names(table))
+  write.csv(table, filename, row.names= FALSE)
 } 
 
 #Short crosswalk for the project team

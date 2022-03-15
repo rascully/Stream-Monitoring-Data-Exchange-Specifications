@@ -1,0 +1,9 @@
+"tblname","term","termID","definition","rdommin","rdommax","dataType","examples","standard"
+"Location","datasetID",100,"A unique numeric identifier assigned to the originating source data's program.",NA,NA,"Integer",NA,NA
+"Location","locationID",200,"Unique global identifier assigned to the location where the event occurred.","1","11584","String","5483AIM, 88963AREMP, WtR563EPA","Darwin Core"
+"Location","verbatimLocationID",201,"The verbatim location ID from the originating source dataset assigned by the monitoring program.",NA,NA,"String","5483, 88693, WtR563","Producer defned"
+"Location","latitude",202,"The geographic latitude (WGS84) of the geographic center of a location.","26.625","71.268600000000006","Float",NA,"Darwin Core"
+"Location","longitude",203,"The geographic longitude (WGS84) of the geographic center of a location.","-163.74230800000001","-67.240600000000001","Float",NA,"Darwin Core"
+"Location","locationRemarks",204,"The location along the reach where geographic coordinates were obtained.",NA,NA,"String",NA,"Darwin Core"
+"Location","siteSelectionType",205,"The type of site selection used according to the program.",NA,NA,"String","Random, Targeted","Producer defned"
+"Location","waterBody",206,"The name of the water body in which the location occurs.",NA,NA,"String",NA,"Darwin Core"

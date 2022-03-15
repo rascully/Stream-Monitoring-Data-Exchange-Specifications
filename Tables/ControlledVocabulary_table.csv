@@ -1,1 +1,29 @@
-"tblname","term","termID","definition","rdommin","rdommax","dataType","examples","standard"
+table,termID,term,categoryID,category,description,edomvds,unit,dataType,measurementType,longName,examples,minimumPossibleValue,maximumPossibleValue
+MeasuremeorFact,401,term,500,Sin,Reach sinuosity (reach length along the thalweg divided by straight line distance between the bottom of the reach and the top of the reach),Producer Defined,ratio,Numeric,Channel Characteristics,Sinuosity of Local Stream Reach,NA,1,NA
+MeasuremeorFact,401,term,501,StreamOrder,Strahler stream order of the site from the provider dataset,Producer Defined,NA,Numeric,Channel Characteristics,Stream Order,NA,1,12
+MeasuremeorFact,401,term,502,AvgBFWDRatio,Average bankfull width/depth ratio for the reach.,Producer Defined,m,Numeric,Channel dimensions,Bankfull width to depth ratio at transects,NA,0,0
+MeasuremeorFact,401,term,503,BFHeight,Average bankfull height measured from water surface across transects.,Producer Defined,m,Numeric,Channel dimensions,Bankfull Height,NA,0,None
+MeasuremeorFact,401,term,504,BFWidth,Average bankfull width across transects for the reach.,Producer Defined,m,Numeric,Channel dimensions,Average bankfull width from transects,NA,0,None
+MeasuremeorFact,401,term,505,countTransectsBFWidth,Number of cross sections included in the average bankfull width calculation,Producer Defined,count of measurments,Numeric,Channel dimensions,Count of cross sections,NA,0,0
+MeasuremeorFact,401,term,506,Grad,Mean slope of water surface (percent) from the bottom of the reach to the top of the reach.,Producer Defined,percent,Numeric,Channel dimensions,Gradient of stream reach,"min: 0, max: 100",0,100
+MeasuremeorFact,401,term,507,MeanThalwegDepth,Mean thalweg depth. Metric of how deep water was at the site.,Producer Defined,m,Numeric,Channel dimensions,Average Thalweg Depth,NA,0,None
+MeasuremeorFact,401,term,508,ReachLen,Length of sampling reach measured along the thalweg,Producer Defined,m,Numeric,Channel dimensions,Length of sampling reach,NA,150,4000
+MeasuremeorFact,401,term,509,WetWidth,Average wetted width across transects.,Producer Defined,m,Numeric,Channel dimensions,Average wetted width from transects,NA,0,None
+MeasuremeorFact,401,term,510,PctPool,percent of the sample reach (linear extent) classified as pool habitat,Producer Defined,percent,Numeric,Pools,percent pools,"min: 0, max: 100",0,100
+MeasuremeorFact,401,term,511,RPD,Average of the residual pool depth values for all pools in a reach. Residual pool depth the difference of the pool tail depth from the max depth.,Producer Defined,m,Numeric,Pools,Residual pool depth,NA,0,None
+MeasuremeorFact,401,term,512,BankAngle,Measured angle of the stream bank;,Producer Defined,degrees,Numeric,Streambanks,Bank angle,"min: 0, max: 180",0,180
+MeasuremeorFact,401,term,513,PctStab,"percent of 42 banks lacking visible signs of active erosion (e.g., slump, slough, fracture) (units: percent, min: 0, max: 100, n= 42)",Producer Defined,percent,Numeric,Streambanks,percent stable banks,"min: 0, max: 100",0,100
+MeasuremeorFact,401,term,514,D16,Bed surface particle size corresponding to the 16th percentile of measured particles,Producer Defined,mm,Numeric,Substrate,Diameter of the 16th percentile streambed particle,"min: 1, max: 4098",1,4098
+MeasuremeorFact,401,term,515,D50,Median diameter of bed surface particle size corresponding to the areal median (50th percentile of measured particles) .,Producer Defined,mm,Numeric,Substrate,Diameter of the 50th percentile streambed particle,"min: 1, max: 4098",1,4098
+MeasuremeorFact,401,term,516,D84,Bed surface particle size corresponding to the 84th percentile of measured particles,Producer Defined,mm,Numeric,Substrate,Diameter of the 84th percentile streambed particle,"min: 1, max: 4098",1,4098
+MeasuremeorFact,401,term,517,PctBdrk,percent of the stream bed area that is composed of particles with a b-axis > 4098mm (bedrock),Producer Defined,percent,Numeric,Substrate,percent Bed Surface Bedrock,"min: 0, max: 100",0,0
+MeasuremeorFact,401,term,518,PctFines2,percent of the stream bed area that is comprised of particles with a b-axis < 2 mm,Producer Defined,percent,Numeric,Substrate,percent of streambed particles <2mm,"min: 0, max: 100",0,100
+MeasuremeorFact,401,term,519,PctFines6,percent of the stream bed area that is composed of particles with a b-axis < 6 mm,Producer Defined,percent,Numeric,Substrate,percent of streambed particles <6mm,"min: 0, max: 100",0,100
+MeasuremeorFact,401,term,520,PoolTailFines2,Average percent fine sediment (< 2mm) on the pool tail,Producer Defined,percent,Numeric,Substrate,percent pool tail fines < 2mm,"min: 0, max: 100",0,100
+MeasuremeorFact,401,term,522,PoolTailFines6,Average percent fine sediment (< 6mm) on the pool tail,Producer Defined,percent,Numeric,Substrate,percent pool tail fines < 6mm,"min: 0, max: 100",0,100
+MeasuremeorFact,401,term,523,Conductivity,"Measure of the concentration of ionized materials in water, or the ability of water to conduct electrical current. Used as a measure of mineral / ionic concentration.",Producer Defined,ppm,Numeric,Water chemistry,Conductivity,NA,0,0
+MeasuremeorFact,401,term,524,pH,Measured pH value,Producer Defined,NA,Numeric,Water chemistry,pH,"min: 0, max: 14",0,14
+MeasuremeorFact,401,term,525,SpecificConductance,Measured specific conductance value. The specific conductance is conductivity standardized to 25 degrees C.,Producer Defined,uS/cm,Numeric,Water chemistry,Specific Conductance,"min: 0, max: 65500",0,65500
+MeasuremeorFact,401,term,526,TotalNitrogen,Measured total nitrogen value,Producer Defined,ug/L,Numeric,Water chemistry,Total Nitrogen,NA,0,None
+MeasuremeorFact,401,term,527,TotalPhosphorous,Measured total phosphorous value,Producer Defined,ug/L,Numeric,Water chemistry,Total Phosphorous,NA,0,None
+MeasuremeorFact,401,term,528,Turbidity,Average water clarity as measured by the suspended solids in the water column,Producer Defined,NTU,Numeric,Water chemistry,Turbidity,NA,0,None

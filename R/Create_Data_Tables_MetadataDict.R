@@ -39,7 +39,7 @@ metadataT<- metadata %>%
 
 metadataDict <- right_join(DES, metadataT,  by = c("term"))
 
-for (i in 1:length(tables)){ 
+for (i in 1:length(tables_des)){ 
   #  table = pull(tables[i])
   file_name = paste0(tables[i], "_table")
   print(paste0(tables[i], "_table"))
@@ -65,20 +65,21 @@ vocabulary<- metadata %>%
   select(c(categoryID, table,measurementType,subsetOfMetrics, termID, 
          term, longName , description, examples, dataType, measurementUnit, minimumPossibleValue, maximumPossibleValue)) %>% 
   filter(table== "ControlledVocabulary", subsetOfMetrics=="x") %>% 
-  select(-subsetOfMetrics, -categoryID, -table) %>%
+  select(-"subsetOfMetrics", -"categoryID", -"table") %>%
   rename("category"="term", "categoryID"="termID", "unit"="measurementUnit") 
+  
 
 vocabulary$term = "term"
 vocabulary$termID = 401
 vocabulary$table = "ControlledVocabulary"
 vocabulary$edomvds = "Producer Defined"
-
+vocabulary$table = "MeasuremeorFact"
 
 
 #table	attrlabl	category	definition	edomvds	unit	comment
 
   vocabulary <- vocabulary %>% 
-            relocate("table", "termID", "term", "categoryID", "category", "description", "edomvds", "unit","dataType")
+            relocate("table","termID", "term", "categoryID", "category", "description", "edomvds", "unit","dataType")
 
 
 old_crosswalk <- metadata %>% 
@@ -167,6 +168,8 @@ write.csv(cw_long, file=paste0("Tables/Crosswalk_long.csv" ), row.names=F)
 #sheets <- openxlsx::getSheetNames("Tables/ControlledVocabularyForFields.xlsx")
 #CVFields <- lapply(sheets,openxlsx::read.xlsx, xlsxFile="Tables/ControlledVocabularyForFields.xlsx")
 #names(CVFields) <- sheets
+
+
 
 #####Create one file
 list_of_datasets <- list("RecordLevel" = Record, "Location"= Location, "Event"= Event,

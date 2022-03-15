@@ -1,5 +1,4 @@
-"tblname","label","definition","rdommin","rdommax","dataType","examples","standard"
-"MetricCV",NA,"Comma Separated Value (CSV) file containing the controlled vocabulary (with definitions) used to integrate the dataset for the Stream Habitat Metric Integration project. This table corresponds to the MetricCV table in the database (.accdb) file.",NA,NA,NA,NA,NA
+"tblname","term","definition","rdommin","rdommax","dataType","examples","standard"
 "MetricCV","measurementType","The category of measurement type to which the measurement belongs. This is the same category as that in the 'resultTypeCV' attribute in the MeasurementorFact table.",NA,NA,"String",NA,NA
 "MetricCV","termID","Global unique identifier assigned to the variable/measurementType. This is the same as the 'variableID' in the MeasurementorFact table.",NA,NA,"Integer",NA,NA
 "MetricCV","term","The variable or name of the measurement. This is the same as the 'measurementTerm' in the MeasurementorFact table.",NA,NA,"String",NA,NA

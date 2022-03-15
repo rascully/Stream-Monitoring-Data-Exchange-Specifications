@@ -1,5 +1,4 @@
-"tblname","label","definition","rdommin","rdommax","dataType","examples","standard"
-"RecordLevel",NA,"Comma Separated Value (CSV) file containing information about the originating source datasets from Monitoring Programs for the Stream Habitat Metric Integration project. This table corresponds to the RecordLevel table in the database (.accdb) file.",NA,NA,NA,NA,NA
+"tblname","term","definition","rdommin","rdommax","dataType","examples","standard"
 "RecordLevel","bibilographicCitation","A bibliographic reference for the resource as a statement indicating how this record should be cited (attributed) when used.",NA,NA,"String",NA,"Darwin Core"
 "RecordLevel","datasetID","A unique identifier assigned to the originating source data's program.",NA,NA,"Integer",NA,"Darwin Core"
 "RecordLevel","datasetLink","A URL identifier for the collection or dataset from which the record was derived. The source location for the originating source data.",NA,NA,"String","https://www.epa.gov/national-aquatic-resource-surveys","Producer defned"

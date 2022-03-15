@@ -1,10 +1,9 @@
-"tblname","label","definition","rdommin","rdommax","dataType","examples","standard"
-"Location",NA,"Comma Separated Value (CSV) file containing location data for the Integrated Stream Habitat Data. This table corresponds to the 'Location' table in the database (.accdb) file.",NA,NA,NA,NA,NA
-"Location","datasetID","A unique numeric identifier assigned to the originating source data's program.",NA,NA,"Integer",NA,NA
-"Location","latitude","The geographic latitude (WGS84) of the geographic center of a location.","25.848932980000001","71.268600000000006","Float",NA,"Darwin Core"
-"Location","locationID","Unique global identifier assigned to the location where the event occurred.",NA,NA,"String","5483AIM, 88963AREMP, WtR563EPA","Darwin Core"
-"Location","locationRemarks","Comments or notes about the Location.",NA,NA,"String",NA,"Darwin Core"
-"Location","longitude","The geographic longitude (WGS84) of the geographic center of a location.","-163.74230800000001","-67.498393539999995","Float",NA,"Darwin Core"
-"Location","verbatimLocationID","The verbatim location ID from the originating source dataset assigned by the monitoring program.",NA,NA,"String","5483, 88693. WtR563","Producer defned"
-"Location","siteSelectionType","Specifies whether the site was a part of a probabilistic random design (Random) or whether it was selected as a targeted site to address a specific management concern (Targeted)",NA,NA,"String","Randome","Producer defned"
-"Location","waterBody","The name of the water body in which the location occurs.",NA,NA,"String",NA,"Darwin Core"
+"tblname","term","termID","definition","rdommin","rdommax","dataType","examples","standard"
+"Location","datasetID",100,"A unique numeric identifier assigned to the originating source data's program.",NA,NA,"Integer",NA,NA
+"Location","locationID",200,"Unique global identifier assigned to the location where the event occurred.","1","11584","String","5483AIM, 88963AREMP, WtR563EPA","Darwin Core"
+"Location","verbatimLocationID",201,"The verbatim location ID from the originating source dataset assigned by the monitoring program.",NA,NA,"String","5483, 88693, WtR563","Producer defned"
+"Location","latitude",202,"The geographic latitude (WGS84) of the geographic center of a location.","26.625","71.268600000000006","Float",NA,"Darwin Core"
+"Location","longitude",203,"The geographic longitude (WGS84) of the geographic center of a location.","-163.74230800000001","-67.240600000000001","Float",NA,"Darwin Core"
+"Location","locationRemarks",204,"The location along the reach where geographic coordinates were obtained.",NA,NA,"String",NA,"Darwin Core"
+"Location","siteSelectionType",205,"The type of site selection used according to the program.",NA,NA,"String","Random, Targeted","Producer defned"
+"Location","waterBody",206,"The name of the water body in which the location occurs.",NA,NA,"String",NA,"Darwin Core"

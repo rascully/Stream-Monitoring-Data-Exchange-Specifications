@@ -1,5 +1,4 @@
-"tblname","label","definition","rdommin","rdommax","dataType","examples","standard"
-"Crosswalk",NA,"Comma Separated Value (CSV) file containing the crosswalk between the original source dataset field names and the integrated dataset fields for the Stream Habitat Metric Integration project. References to the collection and analysis methods used by the originating monitoring programs are also included. This table corresponds to the Crosswalk table in the database (.accdb) file.",NA,NA,NA,NA,NA
+"tblname","term","definition","rdommin","rdommax","dataType","examples","standard"
 "Crosswalk","termID","A numeric identifier assigned to the term within this table.",NA,NA,NA,NA,NA
 "Crosswalk","term","Terms used in the integrated dataset and are defined elsewhere in the metadata record.",NA,NA,NA,NA,NA
 "Crosswalk","program","The acronym assigned to the monitoring program from which the term originated.",NA,NA,NA,NA,NA

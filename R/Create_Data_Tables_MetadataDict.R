@@ -5,31 +5,80 @@ library(stringr)
 library(openxlsx)
 
 metadataDict <- readxl::read_excel("Data/MetadataDictionary_v1.xlsx", sheet = 1)
+metadataDict <- metadataDict %>%
+                rename("term"="label") %>% 
+                filter(!is.na(term))
 
 #Create the data exchange specifications tables 
-tables <- c("RecordLevel", "Location", "Event", "MeasurementorFact")
+tables_des <- c("Record", "Location", "Event", "MeasurementOrFact")
 tables <- pull(unique(metadataDict %>% 
                    select(tblname)))
 
-for (i in 1:length(tables)){ 
+#for (i in 1:length(tables)){ 
 #  table = pull(tables[i])
-  file_name = paste0(tables[i], "_table")
-  print(paste0(tables[i], "_table"))
+ # file_name = paste0(tables[i], "_table")
+  #print(paste0(tables[i], "_table"))
   
-  write.csv(assign(tables[i], metadataDict %>% 
-                      select(tblname,label, definition, rdommin, rdommax, dataType, examples, standard) %>% 
-                      filter(tblname == tables[i])), file=paste0("Tables/",file_name,".csv" ), row.names = F ) 
-}
+  #write.csv(assign(tables[i], metadataDict %>% 
+  #                    select(tblname,term, termID, definition, rdommin, rdommax, dataType, examples, standard) %>% 
+   #                   filter(tblname == tables[i])), file=paste0("Tables/",file_name,".csv" ), row.names = F ) 
+#}
+
+DES <-metadataDict %>% 
+  filter(str_detect(tblname, paste(tables_des, collapse = "|"))) %>%
+  drop_na(term)
+                    
+#DES <- rename(DES, "term"= "label")
 
 #Open the metadata file 
 metadata <- readxl::read_excel("Data/Metadata.xlsx", sheet = 3)
 
+metadataT<- metadata %>%  
+            filter(str_detect(term, paste(DES$term, collapse = "|"))) %>% 
+            select(termID, term, table) 
+
+metadataDict <- right_join(DES, metadataT,  by = c("term"))
+
+for (i in 1:length(tables)){ 
+  #  table = pull(tables[i])
+  file_name = paste0(tables[i], "_table")
+  print(paste0(tables[i], "_table"))
+  
+  write.csv(assign(tables[i], metadataDict %>% 
+                     select(tblname,term, termID, definition, rdommin, rdommax, dataType, examples, standard) %>% 
+                     filter(tblname == tables[i])), file=paste0("Tables/",file_name,".csv" ), row.names = F ) 
+}
+
+
+
+
 #create a vocabulary table 
 vocabulary<- metadata %>% 
-  select(c(categoryID,table,measurementType,subsetOfMetrics, termID, 
-         term, longName , description, examples, dataType, measurementUnit, minimumPossibleValue, maximumPossibleValue)) %>% 
+  select(c(termID,  categoryID, table,measurementType,subsetOfMetrics,
+           term, longName , description, examples, dataType, measurementUnit, minimumPossibleValue, maximumPossibleValue)) %>% 
   filter(table== "ControlledVocabulary", subsetOfMetrics=="x") %>% 
   select(-subsetOfMetrics, -categoryID, -table)
+
+
+#create a vocabulary table 
+vocabulary<- metadata %>% 
+  select(c(categoryID, table,measurementType,subsetOfMetrics, termID, 
+         term, longName , description, examples, dataType, measurementUnit, minimumPossibleValue, maximumPossibleValue)) %>% 
+  filter(table== "ControlledVocabulary", subsetOfMetrics=="x") %>% 
+  select(-subsetOfMetrics, -categoryID, -table) %>%
+  rename("category"="term", "categoryID"="termID", "unit"="measurementUnit") 
+
+vocabulary$term = "term"
+vocabulary$termID = 401
+vocabulary$table = "ControlledVocabulary"
+vocabulary$edomvds = "Producer Defined"
+
+
+
+#table	attrlabl	category	definition	edomvds	unit	comment
+
+  vocabulary <- vocabulary %>% 
+            relocate("table", "termID", "term", "categoryID", "category", "description", "edomvds", "unit","dataType")
 
 
 old_crosswalk <- metadata %>% 
@@ -92,7 +141,25 @@ for (type in method_type) {
   
 }
 
-cw_long <- cw_long %>% arrange("program", "termID", "term", "datatype", "orginalField", "orginalUnit", "originalDataType", "methodCollection", "methodAnalysis")
+cw_long <- cw_long %>% relocate("program", "termID", "term", "datatype", "orginalField", "orginalUnit", "originalDataType", "methodCollection", "methodAnalysis")
+
+vocab_cw <- cw_long %>% 
+          filter(termID >= 500) %>% 
+          rename("catagoryID" ="termID", "catagory"="term")
+
+vocab_cw$term = "term"
+vocab_cw$termID = 401
+  
+  des_long <- cw_long %>% 
+            filter(termID <500)
+des_long$catagory = ""
+des_long$catagoryID = NA
+
+
+cw_long <- bind_rows(vocab_cw,des_long )
+
+
+cw_long <- cw_long %>% relocate("termID", "term","catagoryID", "catagory") %>% arrange(("termID"))
   
 write.csv(crosswalk, file=paste0("Tables/Crosswalk_wide.csv" ), row.names=F)
 write.csv(cw_long, file=paste0("Tables/Crosswalk_long.csv" ), row.names=F)
@@ -102,8 +169,8 @@ write.csv(cw_long, file=paste0("Tables/Crosswalk_long.csv" ), row.names=F)
 #names(CVFields) <- sheets
 
 #####Create one file
-list_of_datasets <- list("RecordLevel" = RecordLevel, "Location"= Location, "Event"= Event,
-                         "MeasurementorFact"= MeasurementorFact, "metricControlledVocabulary"= vocabulary, 
+list_of_datasets <- list("RecordLevel" = Record, "Location"= Location, "Event"= Event,
+                         "MeasurementorFact"= MeasurementOrFact, "metricControlledVocabulary"= vocabulary, 
                          "Crosswalk"=cw_long)
 
 file.remove("Tables/StreamHabitatSpecifications.xlsx")
@@ -156,8 +223,8 @@ EPA_names <- names(EPA)
 
 one= as.df(EPA[1])
 
-list_of_datasets <- list("RecordLevel" = RecordLevel, "Location"= Location, "Event"= Event,
-                         "MeasurementorFact"= MeasurementorFact, "VariableCV"= vocabulary,  "Crosswalk"= crosswalk, 
+list_of_datasets <- list("RecordLevel" = Record, "Location"= Location, "Event"= Event,
+                         "MeasurementorFact"= MeasurementOrFact, "VariableCV"= vocabulary,  "Crosswalk"= crosswalk, 
                          "BLM"= BLM, "AREMP"= AREMP, "PIBO" = PIBO) 
 
 list_of_datasets <- append(list_of_datasets, EPA)

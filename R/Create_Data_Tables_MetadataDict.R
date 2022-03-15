@@ -152,8 +152,8 @@ cw_long <- bind_rows(vocab_cw,des_long )
 
 cw_long <- cw_long %>% relocate("termID", "term","catagoryID", "catagory") %>% arrange(("termID"))
   
-write.csv(crosswalk, file=paste0("Tables/Crosswalk_wide.csv" ), row.names=F)
-write.csv(cw_long, file=paste0("Tables/Crosswalk_long.csv" ), row.names=F)
+#write.csv(crosswalk, file=paste0("Tables/Crosswalk_wide.csv" ), row.names=F)
+#write.csv(cw_long, file=paste0("Tables/Crosswalk_long.csv" ), row.names=F)
 
 #sheets <- openxlsx::getSheetNames("Tables/ControlledVocabularyForFields.xlsx")
 #CVFields <- lapply(sheets,openxlsx::read.xlsx, xlsxFile="Tables/ControlledVocabularyForFields.xlsx")
@@ -168,6 +168,12 @@ list_of_datasets <- list("RecordLevel" = Record, "Location"= Location, "Event"= 
 
 file.remove("Tables/StreamHabitatSpecifications.xlsx")
 write.xlsx(list_of_datasets, file = "Tables/StreamHabitatSpecifications.xlsx") 
+
+for(i in length(names(list_of_datasets))){ 
+  filename = paste0(getwd(),"/Tables/", names(list_of_datasets[i]), ".csv")
+  write.csv(list_of_datasets[i], filename, row.names= FALSE)
+  
+} 
 
 #Short crosswalk for the project team
 
@@ -219,6 +225,7 @@ one= as.df(EPA[1])
 list_of_datasets <- list("RecordLevel" = Record, "Location"= Location, "Event"= Event,
                          "MeasurementorFact"= MeasurementOrFact, "VariableCV"= vocabulary,  "Crosswalk"= crosswalk, 
                          "BLM"= BLM, "AREMP"= AREMP, "PIBO" = PIBO) 
+
 
 list_of_datasets <- append(list_of_datasets, EPA)
 

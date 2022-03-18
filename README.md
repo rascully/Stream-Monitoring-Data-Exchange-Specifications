@@ -11,42 +11,45 @@ This software is preliminary or provisional and is subject to revision. It is be
 Although these data have been processed successfully on a computer system at the U.S. Geological Survey (USGS), no warranty expressed or implied is made regarding the display or utility of the data for other purposes, nor on all computer systems, nor shall the act of distribution constitute any such warranty. The USGS or the U.S. Government shall not be held liable for improper or incorrect use of the data described and/or contained herein.
 
 # About
+Below is the first version of the Stream Habitat Metric Data Exchange Standard. The standard is maintained as a GitLab repository Stream Monitoring Data Exchange Standard based on recommendations from Ornelas et al. 2021 for using Git repositories to document and version data standards.
 
 ## Mission and Goal of Standard 
-The Stream Habitat Data exchange standard provides content and structure for integrating stream habitat monitoring metrics and metadata from multiple programs. When we refer to stream habitat data, we are referring to the instream physical characteristics. These values are measured at a linear reach defined by a starting and end point, but in datasets are represented as a point. Metrics are values resulting from reducing measurements taken one or more times during the study period according to procedures defined by the response design (Stevens & Urquhart 2000). 
+The Stream Habitat Data exchange standard provides content and structure for integrating stream habitat monitoring metrics and metadata from multiple programs. When we refer to stream habitat data, we refer to the instream physical characteristics. Values are measured within a linear reach defined by a starting and endpoint, but locations are represented as a point in datasets. Metrics are values resulting from reducing measurements taken one or more times during the study period according to procedures defined by the response design (Stevens & Urquhart 2000).  
 
 ## Relationship to Existing Standards 
-The stream habitat metric exchange standard was developed by a PNAMP working group composed of experts from four federally funded stream habitat monitoring programs. The fields are based on the data sources, the Darwin Core, ODM2, and WQX standards. The structure is based on a relational database model as employed by ODM2. 
+A PNAMP working group of experts developed the stream habitat metric exchange standard from four federally funded stream habitat monitoring programs. We based the fields on the data sources, the Darwin Core, ODM2, and WQX standards. The structure is a relational database model such as ODM2 employees and a tall data format described by Darwin Core. 
 
 ## Description of Standard 
-The stream habitat metric exchange standard includes the fields, data structure, and metric controlled vocabulary necessary to describe, exchange, and use stream habitat data across four specific federally-funded stream habitat monitoring programs (Table 1). The standard focuses on the core set of metadata fields, including locations, protocols, dataset information necessary to represent the sampling efforts accurately, and a subset of metrics produced by each program. 
+The stream habitat metric exchange standard includes the fields, data structure, and metric-controlled vocabulary necessary to describe, exchange, and use stream habitat data across four specific federally-funded stream habitat monitoring programs (Table 1). The standard focuses on the core set of metadata fields, including locations, protocols, dataset information necessary to represent the sampling efforts accurately, and a subset of metrics produced by each program. 
 
 ## Application and Intended Use of Standard 
 The stream habitat metric standard is applicable for sharing and integrating metrics and metadata for stream habitat physical characteristics. This standard addresses differences in response designs between the source datasets but do not account for different spatial designs. Additionally, data users need to be aware variability in training and crews can be impact measurement and data collection consistency and resulting metrics. Therefore, users analyzing datasets resulting from this standard should pay care and attention to these limitations.
 
 ## Standard Development Procedures 
-The standard was developed by a working group led by PNAMP, the details are in Methods for Building and Applying a Data Exchange Standard for Stream Habitat Data From Multiple Monitoring Programs (Scully et al 2022a; in preparation) 
+A working group led by PNAMP developed the standard, the details are in the XXX chapter of this document.  
 
 ## Maintenance of Standard 
-This standard is published and maintained in GitLab. GitLab is a version control system used for collaborative software development and suited for collaborative development of data standards (Ornelas et al. 2021) If the standard is updated, the GitLab software is designed to track changes, and collaborators can use the GitLab tools to submit suggestions and changes. 
+This standard is published and maintained in GitLab. GitLab is a version control system used for collaborative software development and suited for the joint development of data standards (Ornelas et al. 2021). As the standard is updated, the GitLab software is designed to track changes, and collaborators can use the GitLab tools to submit suggestions and changes.
+Editor's note for review: the standard is currently on GitHub (Scully, 2022d) but this text refers to GitLab, which is where it will eventually be released.
+
 
 ## Data Mapping  
-The original datasets need to be mapped to the standard to combine datasets from multiple sources. Data mapping is the assignment of fields from the original datasets to the fields and metrics described in the data exchange specifications (DAMA 2009). Some mapping from the sources to the data exchange standard are simple, while others require a transformation to be combined information into a single dataset.
+The source datasets need to be mapped to the standard to combine datasets from multiple sources. Data mapping is the assignment of fields from the source datasets to the fields and metrics described in the data exchange standard (DAMA 2009). Some mapping from the sources to the data exchange standard are simple, while others require a transformation to be combined information into a single dataset.
 
 ## Data Structure 
-The data is structured as a relational database model. Primary keys area unique value for each record or row in the table are identified and foreign keys are included in the child tables to define the relationship between tables (DAMA 2009), including the following:
-*Record Level table primary key is datasetID, foreign key in the Location table 
-*Location Table primary key is locationID, foreign key in Event table 
-*Event Table primary key is Event, foreign key in Measurement or Fact table 
-*Metric Controlled Vocabulary primary key is TermID, foreign key in Measurement or Fact table 
-This resulted in a series of five tables (RecordLevel, Location, Event, MeasurementorFact, Metric Controlled Vocabulary) linked together in a relational data model, stored and shared as an MS Access Database.  ![Figure 1](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Figures/HabiatDataSharingSchema.png)
+The data is structured as a relational database model. Primary keys are unique values for each record or row in the table, and foreign keys are included in the child tables to define the relationship between tables (DAMA 2009). The primary and foreign keys in the integrated dataset are as follows (also see Figure 3 {entity relationship diagram}):
+*	Record Level table primary key is datasetID, foreign key in the Location table 
+*	Location Table primary key is locationID, foreign key in Event table 
+*	Event Table primary key is EventID, foreign key in Measurement or Fact table 
+*	Metric Controlled Vocabulary primary key is measurementTypeID, foreign key in Measurement or Fact table 
+This resulted in six tables (RecordLevel, Location, Event, MeasurementorFact, Metric Controlled Vocabulary, and DataMapping) linked together in a relational data   ![Figure 1](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Figures/HabiatDataSharingSchema.png)
   *Figure 1* 
   
 
 ## Record Level Table
 The Record Level table documents the core elements of a dataset, including information about the origin of the dataset, who collected the data, and how to cite the source dataset (Table # {RecordLevel}). datasetID is the primary key. 
 
-[Data set table](Tables/RecordLevel_table.csv). 
+[Record Level Table](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Data%20Exchange%20Specifications%20Tables/RecordLevel.csv). 
 
 ### Record Level Data Mapping Notes 
 #### datasetID
@@ -56,7 +59,7 @@ datasetID is a unique identifiers integer generated when the datasets are combin
 Location Class describes where information was collected in the field (Table # {Location}). datasetID is the foreign key linking Location table to Record Level table. locationID is the primary key Each Record Level dataset contained multiple locations linked from the Location Table to the Record Level Table by the datasetID field. LocationID was the primary key for the Location table and was used to associate locations with events in the Event table, allowing for multiple events to be tied to a single location. Unique, consistent locationID numbers were generated for each unique location in the integrated dataset. Source data program-specific locationIDs were non-standardized across programs and could not be used when integrating due to the inherent risk of UID duplication. However, program locationIDs were preserved in the integrated data in the verbatimLocationID column to trace back to the original datasets. 
 
 
-#### [Location table](Tables/Location_table.csv)
+#### [Location table](Data Exchange Specifications Tables/Location.csv)
 
 ### Location Data Mapping Notes 
 #### locationID 
@@ -75,7 +78,7 @@ Discussion with project team
 Event Class describes an action that occurs at some location during some time (Darwin Core, ).  Table # {Event}).}). locationID is the foreign key linking Location table to Event table. eventID is the primary key assigned to each row in the Event table and will be used to link an event to multiple measurements. 
 To maintain provenance to the original data sources, we retained UID for each event from the source data in the column verbatimEventID. We did not use the sources eventIDs as the primary key due to the variety of formats, mixes of data type, and potential for repeated value between two programs. 
 
-#### [Event table](Tables/Event_table.csv)
+#### [Event table](Data Exchange Specifications Tables/Event.csv)
 
 ### Event Data Mapping Notes 
 #### eventID 
@@ -102,7 +105,7 @@ Discussion with project team
 ## Measurment or Facts  
 The Measurement or Fact Darwin Core class/extension stores the results of a measurement at an event Table # { Measurement or Fact}). }). eventID is the foreign key linking Event table to MeasurementOrFact table. measurementID is the primary key and numeric UIDs were generated for each row. Data values were stored in the dataValue field and the measurementType field defined the "nature of the measure, fact, characteristic or assertion" and filled in from the metric controlled vocabulary (Darwin Core Maintenance Group 2021). 
 
-[Measurement or Fact Table](Tables/MeasurementORFact_table.csv) for the full definitions of terms.
+[Measurement or Fact Table](Data Exchange Specifications Tables/MeasurementorFact_table.csv) for the full definitions of terms.
 
 ### Measurement or Fact Mapping Notes 
 #### measurementID 
@@ -115,7 +118,7 @@ measurementMethod is filled in with the link to the data collection and analysis
 
 The metric-controlled vocabulary defines the metrics included in the MeasurementOrFact table. The controlled vocabulary was formatted as a flat .csv table containing term names, definitions, data type (.e.g, numeric), measurement units (e.g., meters) and acceptable values (e.g., a percent must fall between 0 and 100) for all metrics in the dataset ({Table # MetricCV}). A metric is a term in the controlled vocabulary and the measurementType was linked to the Measurement or Fact table's termID (fig # {stream monitoring data exchange spec schematic}).  
 
-[controlled vocabulary](Tables/StandardVocabulary.csv).
+[controlled vocabulary](Data Exchange Specifications Tables/metricControlledVocabulary.csv).
 
 
 # Use Case Guide 

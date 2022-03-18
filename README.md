@@ -59,7 +59,7 @@ datasetID is a unique identifiers integer generated when the datasets are combin
 Location Class describes where information was collected in the field (Table # {Location}). datasetID is the foreign key linking Location table to Record Level table. locationID is the primary key Each Record Level dataset contained multiple locations linked from the Location Table to the Record Level Table by the datasetID field. LocationID was the primary key for the Location table and was used to associate locations with events in the Event table, allowing for multiple events to be tied to a single location. Unique, consistent locationID numbers were generated for each unique location in the integrated dataset. Source data program-specific locationIDs were non-standardized across programs and could not be used when integrating due to the inherent risk of UID duplication. However, program locationIDs were preserved in the integrated data in the verbatimLocationID column to trace back to the original datasets. 
 
 
-#### [Location table](Data Exchange Specifications Tables/Location.csv)
+#### [Location table](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Data%20Exchange%20Specifications%20Tables/Location.csv)
 
 ### Location Data Mapping Notes 
 #### locationID 
@@ -78,7 +78,7 @@ Discussion with project team
 Event Class describes an action that occurs at some location during some time (Darwin Core, ).  Table # {Event}).}). locationID is the foreign key linking Location table to Event table. eventID is the primary key assigned to each row in the Event table and will be used to link an event to multiple measurements. 
 To maintain provenance to the original data sources, we retained UID for each event from the source data in the column verbatimEventID. We did not use the sources eventIDs as the primary key due to the variety of formats, mixes of data type, and potential for repeated value between two programs. 
 
-#### [Event table](Data Exchange Specifications Tables/Event.csv)
+#### [Event table](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Data%20Exchange%20Specifications%20Tables/Event.csv)
 
 ### Event Data Mapping Notes 
 #### eventID 
@@ -105,7 +105,7 @@ Discussion with project team
 ## Measurment or Facts  
 The Measurement or Fact Darwin Core class/extension stores the results of a measurement at an event Table # { Measurement or Fact}). }). eventID is the foreign key linking Event table to MeasurementOrFact table. measurementID is the primary key and numeric UIDs were generated for each row. Data values were stored in the dataValue field and the measurementType field defined the "nature of the measure, fact, characteristic or assertion" and filled in from the metric controlled vocabulary (Darwin Core Maintenance Group 2021). 
 
-[Measurement or Fact Table](Data Exchange Specifications Tables/MeasurementorFact_table.csv) for the full definitions of terms.
+[Measurement or Fact Table](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Data%20Exchange%20Specifications%20Tables/MeasurementorFact.csv) for the full definitions of terms.
 
 ### Measurement or Fact Mapping Notes 
 #### measurementID 
@@ -118,8 +118,13 @@ measurementMethod is filled in with the link to the data collection and analysis
 
 The metric-controlled vocabulary defines the metrics included in the MeasurementOrFact table. The controlled vocabulary was formatted as a flat .csv table containing term names, definitions, data type (.e.g, numeric), measurement units (e.g., meters) and acceptable values (e.g., a percent must fall between 0 and 100) for all metrics in the dataset ({Table # MetricCV}). A metric is a term in the controlled vocabulary and the measurementType was linked to the Measurement or Fact table's termID (fig # {stream monitoring data exchange spec schematic}).  
 
-[controlled vocabulary](Data Exchange Specifications Tables/metricControlledVocabulary.csv).
+[controlled vocabulary](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Data%20Exchange%20Specifications%20Tables/metricControlledVocabulary.csv).
 
+#Data Mapping 
+Mapping
+We map the field names in the source datasets to the fields in the data exchange standard. Sources metrics are mapped to the metric-controlled vocabulary. The program reviewed and approved the mapping. The working group agreed that all metrics included in the data mapping and integrated dataset were compatible across the programs.
+
+[Data Mapping](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Data%20Exchange%20Specifications%20Tables/DataMapping.csv) 
 
 # Use Case Guide 
 We wrote code based on these data exchange specifications to share habitat metrics from three federal habitat monitoring programs: Environmental Protection Agency (EPA) National Rivers & Streams Assessment (NRSA), Bureau of Land Management (BLM) Aquatic Assessment, Inventory, and Monitoring (AIM),and the Forest Service Aquatic and Riparian Effective Monitoring Program (AREMP). The work flow pulls program information from ScienceBase, the exchange specifications and the field crosswalk from this repository, and data collection metrics documented from MonitoringResources.org [work flow diagram](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Figures/WorkFlow.png). The R code to integrate data sets can be found at https://github.com/rascully/Integrating-Stream-Monitoring-Data-From-Multiple-Programs and the data set documentation in ScinceBase at ADD SCIENCEBAES LINK WHEN I CAN 

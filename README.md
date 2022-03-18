@@ -120,7 +120,7 @@ The metric-controlled vocabulary defines the metrics included in the Measurement
 
 [controlled vocabulary](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Data%20Exchange%20Specifications%20Tables/metricControlledVocabulary.csv).
 
-#Data Mapping 
+# Data Mapping 
 Mapping
 We map the field names in the source datasets to the fields in the data exchange standard. Sources metrics are mapped to the metric-controlled vocabulary. The program reviewed and approved the mapping. The working group agreed that all metrics included in the data mapping and integrated dataset were compatible across the programs.
 

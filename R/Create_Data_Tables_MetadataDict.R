@@ -9,7 +9,7 @@ metadataDict <- metadataDict %>%
                 rename("term"="label") %>% 
                 filter(!is.na(term))
 
-#Create the data exchange specifications tables 
+#Create the Data Exchange Standard Tables 
 tables_des <- c("Record", "Location", "Event", "MeasurementOrFact")
 tables <- pull(unique(metadataDict %>% 
                    select(tblname)))
@@ -159,11 +159,13 @@ list_of_datasets <- list("RecordLevel" = Record, "Location"= Location, "Event"= 
                          "MeasurementorFact"= MeasurementOrFact, "metricControlledVocabulary"= vocabulary, 
                          "DataMapping"=cw_long2)
 
-file.remove("Tables/StreamHabitatSpecifications.xlsx")
-write.xlsx(list_of_datasets, file = "Data Exchange Specifications Tables/StreamHabitatSpecifications.xlsx") 
+
+file.remove("Data Exchange Standard Tables/StreamHabitatSpecifications.xlsx")
+
+write.xlsx(list_of_datasets, file = "Data Exchange Standard Tables/StreamHabitatStandard.xlsx") 
 
 for(i in 1:length(names(list_of_datasets))){ 
-  filename = paste0(getwd(),"/Data Exchange Specifications Tables/", names(list_of_datasets[i]), ".csv")
+  filename = paste0(getwd(),"/Data Exchange Standard Tables/", names(list_of_datasets[i]), ".csv")
   table_name <- names(list_of_datasets[i])
   table <- data.frame(list_of_datasets[i])
   names(table) <- gsub(paste0(table_name,"."), "", names(table))

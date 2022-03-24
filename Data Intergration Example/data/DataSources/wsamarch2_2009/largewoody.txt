@@ -1,0 +1,60 @@
+                                                                       13:38 Monday, March 2, 2009   9
+
+The CONTENTS Procedure
+
+Data Set Name        NWSA.LARGEWOODY                       Observations          13895
+Member Type          DATA                                  Variables             31   
+Engine               V9                                    Indexes               0    
+Created              Wed, Feb 18, 2009 05:00:01 PM         Observation Length    328  
+Last Modified        Monday, March 02, 2009 11:32:56 AM    Deleted Observations  0    
+Protection                                                 Compressed            NO   
+Data Set Type                                              Sorted                NO   
+Label                Large Woody Debris                                               
+Data Representation  WINDOWS_32                                                       
+Encoding             wlatin1  Western (Windows)                                       
+
+
+
+                           Alphabetic List of Variables and Attributes
+ 
+ #   Variable   Type   Len   Format        Informat      Label
+
+31   COM_FLDF   Char     3                               Flag                                    
+ 5   DATE_COL   Num      8   MMDDYY10.                   Date of data collection in field        
+24   DRYLDLL    Num      8                               Count of dry large dia long length lwd  
+23   DRYLDML    Num      8                               Count of dry large dia med. length lwd  
+22   DRYLDSL    Num      8                               Count of dry large dia short length lwd 
+18   DRYMDLL    Num      8                               Count of dry med. dia long length lwd   
+17   DRYMDML    Num      8                               Count of dry med. dia med. length lwd   
+16   DRYMDSL    Num      8                               Count of dry med. dia short length lwd  
+12   DRYSDLL    Num      8                               Count of dry small dia long length lwd  
+11   DRYSDML    Num      8                               Count of dry small dia med. length lwd  
+10   DRYSDSL    Num      8                               Count of dry small dia short length lwd 
+30   DRYXDLL    Num      8                               Count of dry xlarge dia long length lwd 
+29   DRYXDML    Num      8                               Count of dry xlrg dia medium length lwd 
+28   DRYXDSL    Num      8                               Count of dry xlarge dia short length lwd
+ 1   SITE_ID    Char    25   $VARYING25.   $VARYING25.   Site Identification Code                
+ 6   TEAM_ID    Char    80                               Number identifying the field personnel  
+ 4   TRANSECT   Char     2                               Transect label A-K (sidechannels XA-XK) 
+ 3   VISIT_NO   Num      8   BEST8.        BEST8.        Within Year Site Visit Number           
+21   WETLDLL    Num      8                               Count of wet large dia long length lwd  
+20   WETLDML    Num      8                               Count of wet large dia med. length lwd  
+19   WETLDSL    Num      8                               Count of wet large dia short length lwd 
+15   WETMDLL    Num      8                               Count of wet med. dia long length lwd   
+                                                                       13:38 Monday, March 2, 2009  10
+
+The CONTENTS Procedure
+
+                           Alphabetic List of Variables and Attributes
+ 
+ #   Variable   Type   Len   Format        Informat      Label
+
+14   WETMDML    Num      8                               Count of wet med. dia med. length lwd   
+13   WETMDSL    Num      8                               Count of wet med. dia short length lwd  
+ 9   WETSDLL    Num      8                               Count of wet small dia long length lwd  
+ 8   WETSDML    Num      8                               Count of wet small dia med. length lwd  
+ 7   WETSDSL    Num      8                               Count of wet small dia short length lwd 
+27   WETXDLL    Num      8                               Count of wet xlarge dia long length lwd 
+26   WETXDML    Num      8                               Count of wet xlarge dia med length lwd  
+25   WETXDSL    Num      8                               Count of wet xlarge dia shrt length lwd 
+ 2   YEAR       Num      8   BEST12.       F12.          Year of Site Visit                      

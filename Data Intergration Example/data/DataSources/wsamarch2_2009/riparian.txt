@@ -1,0 +1,76 @@
+                                                                       13:38 Monday, March 2, 2009  33
+
+The CONTENTS Procedure
+
+Data Set Name        NWSA.RIPARIAN                         Observations          30682
+Member Type          DATA                                  Variables             47   
+Engine               V9                                    Indexes               0    
+Created              Wed, Feb 18, 2009 05:00:07 PM         Observation Length    200  
+Last Modified        Monday, March 02, 2009 11:32:57 AM    Deleted Observations  0    
+Protection                                                 Compressed            NO   
+Data Set Type                                              Sorted                NO   
+Label                Visual Riparian Estimates                                        
+Data Representation  WINDOWS_32                                                       
+Encoding             wlatin1  Western (Windows)                                       
+
+
+
+                           Alphabetic List of Variables and Attributes
+ 
+ #   Variable   Type   Len   Format        Informat      Label
+
+28   BLDG       Char     1                               presence of buildings (O,P,C,B)         
+29   BLDG_F     Char     2                               Presence of buildings flag              
+10   BTRE       Char     1                               dens. of big (<0.3m DBH) trees in canopy
+11   BTRE_F     Char     2                               density of big trees in canopy flag     
+ 8   CANV       Char     1                               Type of canopy veg                      
+ 9   CANV_F     Char     2                               Type of canopy veg : flag               
+40   CROP       Char     1                               presence of row crops (O,P,C,B)         
+41   CROP_F     Char     2                               Presence of row crops : flag            
+ 6   DATE_COL   Num      8   MMDDYY10.                   Date of data collection in field        
+24   GCB        Char     1                               ground surface which is bare            
+25   GCB_F      Char     2                               Ground surface which is bare : flag     
+22   GCNW       Char     1                               ground cover (<0.5m) by nonwoody veg    
+23   GCNW_F     Char     2                               Ground cover by nonwoody veg : flag     
+20   GCW        Char     1                               ground cover (<0.5m) by woody veg       
+21   GCW_F      Char     2                               Ground cover by woody veg : flag        
+36   LDFL       Char     1                               presence of landfill or trash (O,P,C,B) 
+37   LDFL_F     Char     2                               Human influence landfill flag           
+44   LOG        Char     1                               presence of logging operations (O,P,C,B)
+45   LOG_F      Char     2                               Human influence logging operations flag 
+46   MINACT     Char     1                               presence of mining activity (O,P,C,B)   
+47   MINACT_F   Char     2                               Human influence mining activity flag    
+18   NONW       Char     1                               understory (0.5-5m)cover by nonwoody veg
+                                                                       13:38 Monday, March 2, 2009  34
+
+The CONTENTS Procedure
+
+                           Alphabetic List of Variables and Attributes
+ 
+ #   Variable   Type   Len   Format        Informat      Label
+
+19   NONW_F     Char     2                               Understory non-woody flag               
+38   PARK       Char     1                               presence of park or lawn (O,P,C,B)      
+39   PARK_F     Char     2                               Human influence park flag               
+34   PIPE       Char     1                               presence of intake of outlet (O,P,C,B)  
+35   PIPE_F     Char     2                               Human influence pipe flag               
+42   PSTR       Char     1                               presence of pasture/range/hay (O,P,C,B) 
+43   PSTR_F     Char     2                               Human influence pasture flag            
+30   PVMT       Char     1                               presence of pavement (O,P,C,B)          
+31   PVMT_F     Char     2                               Human influence pavement flag           
+32   ROAD       Char     1                               presence of road/railroad (O,P,C,B)     
+33   ROAD_F     Char     2                               Human influence road flag               
+ 1   SITE_ID    Char    25   $VARYING25.   $VARYING25.   Site Identification Code                
+12   STRE       Char     1                               dens. of small (>0.3 DBH) trees in can. 
+13   STRE_F     Char     2                               Canopy small trees flag                 
+ 7   TEAM_ID    Char    80                               Team identifier                         
+ 5   TRANSDIR   Char     2                               location along transect = RT,RC,CT,LC,LF
+ 4   TRANSECT   Char     2                               Transect label A-K (sidechannels XA-XK) 
+14   UNDV       Char     1                               type of understory veg                  
+15   UNDV_F     Char     2                               Understory veg type flag                
+ 3   VISIT_NO   Num      8   BEST8.        BEST8.        Within Year Site Visit Number           
+26   WALL       Char     1                               Presence of wall/dam/other (O,P,C,B)    
+27   WALL_F     Char     2                               Human influence wall flag               
+16   WOOD       Char     1                               understory  (0.5-5m) cover by woody veg 
+17   WOOD_F     Char     2                               Understory woody flag                   
+ 2   YEAR       Num      8   BEST12.       F12.          Year of Site Visit                      

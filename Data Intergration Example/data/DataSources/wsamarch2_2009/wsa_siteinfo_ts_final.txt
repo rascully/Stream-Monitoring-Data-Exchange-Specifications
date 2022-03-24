@@ -1,0 +1,126 @@
+                                                                       13:38 Monday, March 2, 2009  48
+
+The CONTENTS Procedure
+
+Data Set Name        NWSA.WSA_SITEINFO_TS_FINAL                 Observations          2003
+Member Type          DATA                                       Variables             61  
+Engine               V9                                         Indexes               0   
+Created              Wed, Feb 18, 2009 03:40:37 PM              Observation Length    816 
+Last Modified        Monday, March 02, 2009 11:32:57 AM         Deleted Observations  0   
+Protection                                                      Compressed            NO  
+Data Set Type                                                   Sorted                NO  
+Label                Post-Sampling Site Info & Survey Design                              
+Data Representation  WINDOWS_32                                                           
+Encoding             wlatin1  Western (Windows)                                           
+
+                              
+
+
+                             Alphabetic List of Variables and Attributes
+ 
+ # Variable  Type Len Format      Informat    Label
+
+40 COUNTY    Char  25                         County                                                 
+14 DATE_COL  Num    8 MMDDYY10.   MMDDYY10.   Date of Site Visit                                     
+46 ECO3      Char   2                         Omernik Level 3 Ecoregion                              
+47 ECO3_NM   Char  50                         Omernik Level 3 Ecoregion Name                         
+54 ECOREPORT Char  50                         Aggregated NAECO2 Name used for reporting              
+49 ECOWSA3   Char   6 $6.         $6.         WSA Mega Reporting Unit (3 aggregated ecoregions)      
+48 ECOWSA9   Char   3 $4.         $4.         WSA Reporting Unit (9 aggregated ecoregions)           
+41 EPAREGION Char  15                         EPA Region                                             
+20 EVALSTATU Char   3                         Site evaluation classification                         
+   S                                                                                                 
+17 FLOWSITE  Char  20                         Target Class of Site (WADEABLE/BOATABLE/INTERRUPTED    
+                                              WADEABLE/PARTIAL WADEABLE/PARTIAL BOATABLE/ALTERED)    
+55 HUC2      Char   2 $2.         $2.         2-digit HUC Catalog Unit Number                        
+56 HUC4      Char   4 $4.         $4.         4-digit HUC Catalog Unit Number                        
+57 HUC6      Char   6 $6.         $6.         6-digit HUC Catalog Unit Number                        
+58 HUC8      Char   8 $8.         $8.         8-digit HUC Catalog Unit Number                        
+59 HUC8_NM   Char  60                         HUC Catalog Unit Name                                  
+61 IM_       Char  80 $VARYING80. $VARYING80. Comments regarding data validation                     
+   COMMENT                                                                                           
+60 IM_FLAG   Char  12 $12.        $12.        Flag assigned during data validation                   
+32 INDEXVIS_ Num    8                         Visit Number Concidered Index for Benthic Sampling     
+   BENT                                                                                              
+                                                                       13:38 Monday, March 2, 2009  49
+
+The CONTENTS Procedure
+
+                             Alphabetic List of Variables and Attributes
+ 
+ # Variable  Type Len Format      Informat    Label
+
+28 INDEXVIS_ Num    8                         Visit Number Concidered Index for Chemistry Sampling   
+   CHEM                                                                                              
+37 INDEXVIS_ Num    8                         Visit Number Concidered Index                          
+   PHAB                                       for Physical Habitat Sampling                          
+31 INDEXYR_  Num    8                         Year Considered Index for Benthic Sampling             
+   BENT                                                                                              
+27 INDEXYR_  Num    8                          Year Considered Index for Chemistry Sampling          
+   CHEM                                                                                              
+36 INDEXYR_  Num    8                         Year Considered Index for Physical Habitat Sampling    
+   PHAB                                                                                              
+30 INDEX_    Char  20                         Benthic Sample Type to Use as Index                    
+   SAMPTYPE                                                                                          
+33 INDXVIS_  Char   3                         Index visit used for population estimates for          
+   BENT                                       benthic macroinvertebrate variabless (YES/NO)          
+26 INDXVIS_  Char   3                         Index visit used for population estimates              
+   CHEM                                       for water chemistry variables(YES/NO                   
+24 INDXVIS_  Char   3                         Index visit used to estimate EXTENT (YES/NO)           
+   EXTENT                                                                                            
+35 INDXVIS_  Char   3                         Index visit used for population estimates              
+   PHAB                                       for physical habitat variables (YES/NO)                
+ 8 LAT_DD    Num    8                         Official Latitude in Decimal Degrees equal             
+                                              to  DLON_DD, or MLON_DD, or XLON_DD                    
+ 7 LON_DD    Num    8                         Official Longitude in Decimal Degrees equal            
+                                              to  DLON_DD, or MLON_DD, or XLON_DD                    
+53 NAECO1    Char   6                         North American Level 1 Ecoregion code                  
+51 NAECO2    Char   8                         North American Level 2 Ecoregion code                  
+50 NAECO3    Char  10                         North American Level 3 Ecoregion code                  
+52 NAECO2_NM Char  60                         North American Level 2 Ecoregion Name                  
+ 6 REPEAT    Char   1                         Was this a Repeat Visit (Y/blank)                      
+43 RT_WSA    Char   1                         Reference Condition (ATH screen; R=Reference,          
+                                              S=Somewhat Disturbed, T=Highly Disturbed               
+                                              [trashed], B=R W/Failed/insufficient                   
+                                              benthic sampling or < 250 organisms)                   
+29 SAMPBENT  Char   8                         Benthic Sample Collected - YES/NO/NA (NA indicates     
+                                              benthic sample low effort or not analyzed for WSA)     
+25 SAMPCHEM  Char   8                          Chemistry Sample Collected - YES/NO/NA/PENDING        
+                                              ('NA'indicates chemistry sample lost or not analyzed)  
+34 SAMPPHAB  Char   8                         Physical Habitat Sample Collected - YES/PENDING        
+ 4 SITENAME  Char  80                         Site Name                                              
+16 SITESAMP  Char   1                         Was Site Sampled (Y/N)                                 
+ 5 SITETYPE  Char   8                         Site Type (EMAP PROBablilty/EMAP                       
+                                              HAND-picked/STAR HAND-picked)                          
+ 1 SITE_ID   Char  25 $VARYING25. $VARYING25. Site Identification Code                               
+38 STATE     Char   2                         State                                                  
+39 STATE_NM  Char  15                         State Name                                             
+12 STRAHLER  Num    8                          Strahler Order from RF3 Stream Data                   
+22 STRATUM   Char   4                         Stratum from the survey design for the site            
+                                                                       13:38 Monday, March 2, 2009  50
+
+The CONTENTS Procedure
+
+                             Alphabetic List of Variables and Attributes
+ 
+ # Variable  Type Len Format      Informat    Label
+
+13 ST_ORDER  Char   8 $8.         $8.         RF3 STRAHLER ORDER CLASS                               
+21 TNT       Char   2                         Site is a target stream (perennial                     
+                                              wadeable) or a non-target site                         
+15 USED      Char   1                         Used as a probability survey design site               
+19 VALXSTAT  Char  12                         X-site Sampling Status Sub-Category                    
+ 3 VISIT_NO  Num    8 BEST8.      BEST8.      Within Year Site Visit Number                          
+42 WESTEAST  Char   4                         Site comes from EMAP-West (WEST)                       
+                                              vs. WSA-east study (EAST)                              
+23 WGT_WSA   Num    8                         Weight for statistical population estimation in km     
+45 WSAREA    Num    8                          Watershed Area Digitized from Maps (km2). Local       
+                                              Watershed Area if INTERBASIN                           
+                                              TRANSFERS Noted in IM Comment                          
+11 XCOORD_   Char  16 $VARYING16. $VARYING16. Source for X-site coordinates (GPS,                    
+   SOURCE                                     MAP, DESIGN, PREV. VISIT)                              
+44 XELEV     Num    8                         Elevation at the X-site (m)                            
+10 XLAT_DD   Num    8                         X-site GPS Latitiude - Decimal Degrees                 
+ 9 XLON_DD   Num    8                         X-site GPS Longitude - Decimal Degrees                 
+18 XSTATUS   Char  12                         X-site Sampling Status Category                        
+ 2 YEAR      Num    8 BEST12.     F12.        Year of Site Visit                                     

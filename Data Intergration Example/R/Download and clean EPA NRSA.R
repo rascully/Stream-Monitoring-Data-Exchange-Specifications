@@ -450,14 +450,16 @@ data_locations <- data_locations %>%
   
   
 #####Delete the old EPA data file & save the new file ####
-  files <- list.files(paste0(getwd(), "/data/DataSources"))
-  files_remove <- paste0(getwd(), "/data/DataSources/", files[str_detect(files, "NRSA")])
+
+
+  files <- list.files(paste0(getwd(), "/Data Intergration Example/data/DataSources"))
+  files_remove <- paste0(getwd(), "/Data Intergration Example/data/DataSources/", files[str_detect(files, "NRSA")])
   file.remove(files_remove)
   
-  write.csv(data_locations, "data/DataSources/NRSA_Processed_Dataset.csv", row.names=FALSE)
+  write.csv(data_locations, paste0(getwd(), "/Data Intergration Example/data/DataSources/NRSA_Processed_Dataset.csv"), row.names=FALSE)
 
 # Save a data.table of datafiles and metadata used to build this dataset
-  write.csv(dataset_table, paste0(getwd(), "/data/DataSources/NRSA_Table_of_Dataset.csv"), row.names = FALSE)
+  write.csv(dataset_table, paste0(getwd(), "/Data Intergration Example/data/DataSources/NRSA_Table_of_Dataset.csv"), row.names = FALSE)
  
   return(data_locations)
 }

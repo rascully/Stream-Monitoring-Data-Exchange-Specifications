@@ -13,20 +13,22 @@ download_AREMP<- function(){
    library(geojsonio)
    library(sjmisc)
    library(raster)
+   library(utils)
 
 CRS_DES <-  "+proj=longlat +datum=WGS84 +no_defs"
 
 fileURL <- "https://www.fs.fed.us/r6/reo/monitoring/downloads/watershed/NwfpWatershedCondition20yrReport.gdb.zip"
 
 #Download the file to the Data file in the local repository 
-df <- paste0(getwd(),"/Data/DataSources/NwfpWatershedCondition20yrReport.gdb.zip" )
-download(fileURL, destfile=df )
+df <- paste0(getwd(),"/Data Intergration Example/data/DataSources/NwfpWatershedCondition20yrReport.gdb.zip")  
+
+download(fileURL, destfile=df)
 
 #Unzip the file into the Data file in the local repository
-unzip("Data/DataSources/NwfpWatershedCondition20yrReport.gdb.zip", exdir="Data")
+unzip(paste0(getwd(),"/Data Intergration Example/data/DataSources/NwfpWatershedCondition20yrReport.gdb.zip") , exdir= paste0(getwd(), "/Data Integration Example/Data/DataSources")) 
 
 #Define the file path to the geodata base, if the ARAMP changes their file structure this will need to be updated 
-path <- '/Data/NwfpWatershedCondition20yrReport.gdb'
+path <- '/Data Intergration Example/Data/NwfpWatershedCondition20yrReport.gdb'
 fgdb <- paste0(getwd(), path)
 
 #investigate the layers in the AREMP geodatabase 
@@ -49,8 +51,6 @@ names(data)[names(data) == "site_id"] <- "SITE_ID"
 #Join the location information and the metric data 
 AREMP <- right_join(locations, data, by="SITE_ID")
 
-#projection <-  "+proj=longlat +datum=WGS84 +no_defs"
-#rm(projection)
 
 if(compareCRS(CRS_DES, st_crs(locations))==TRUE){
       print("AREMP coordinate reference system matches the coordinate system of the data exchange standards for the intergrated dataset.")
@@ -73,11 +73,11 @@ if(compareCRS(CRS_DES, st_crs(locations))==TRUE){
    
 
 #Delete the old AREMP data file 
-files <- list.files(paste0(getwd(), "/data/DataSources"))
-files_remove <- paste0(getwd(), "/data/DataSources/", files[str_detect(files, "AREMP")])
+files <- list.files(paste0(getwd(), "/Data Intergration Example/data/DataSources"))
+files_remove <- paste0(getwd(), "/Data Intergration Example/data/DataSources/", files[str_detect(files, "AREMP")])
 file.remove(files_remove)
 
-file_name <- paste0(getwd(), "/data/DataSources/AREMP_Processed_Dataset.csv")
+file_name <- paste0(getwd(), "/Data Intergration Example/data/DataSources/AREMP_Processed_Dataset.csv")
 write.csv(AREMP_csv, file=file_name, row.names=FALSE)
 
 return(AREMP_csv)

@@ -17,21 +17,20 @@ library(rgdal)
 library(sjmisc)
 
 # Load functions 
-  source(paste0(getwd(), "/R/data_mapped_field.R")) 
+  source(paste0(getwd(), "/Data Intergration Example/R/data_mapped_field.R")) 
   
-  
-github_link <- "https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Data/MetadataDictionary_v1.xlsx?raw=true"
+#github_link <- "https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Data/MetadataDictionary_v1.xlsx?raw=true"
 
-temp_file <- tempfile(fileext = ".xlsx")
+#temp_file <- tempfile(fileext = ".xlsx")
 
-req <- GET(github_link, 
+#req <- GET(github_link, 
            # authenticate using GITHUB_PAT
-           authenticate(Sys.getenv("GITHUB_PAT"), ""),
+ #          authenticate(Sys.getenv("GITHUB_PAT"), ""),
            # write result to disk
-           write_disk(path = temp_file))
+  #         write_disk(path = temp_file))
 
-sheets      <- openxlsx::getSheetNames(temp_file)
-data        <- lapply(sheets,openxlsx::read.xlsx, xlsxFile=temp_file)
+sheets      <- openxlsx::getSheetNames("Data/MetadataDictionary_v1.xlsx")
+data        <- lapply(sheets,openxlsx::read.xlsx, xlsxFile="Data/MetadataDictionary_v1.xlsx")
 names(data) <- sheets
 
 
@@ -40,7 +39,7 @@ for (n in sheets) {
 }
 
 rm(data)
-unlink(temp_file)
+#unlink(temp_file)
 
 #List of programs to integrated data from.
 program <- c("NRSA","AIM", 'PIBO', "AREMP")
@@ -52,7 +51,6 @@ exchange_tables <- c("RecrordLevel", "Location", "Event", "MeasurementOrFact")
 CRS<-  "+proj=longlat +datum=WGS84 +no_defs"
 
 
-
 # create a list of fields from the data exchange specifications 
 des_names <-MetadataDict %>% 
 filter(str_detect(tblname, c("Record|Location|Event")))%>% 
@@ -62,15 +60,15 @@ filter(str_detect(tblname, c("Record|Location|Event")))%>%
        unique()
 
 # Download and get the controlled vocabulary for the measurement or fact measurementType and measurementTypeID 
-github_link <- "https://raw.githubusercontent.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/master/Data%20Exchange%20Standard%20Tables/metricControlledVocabulary.csv"
-temp_file <- tempfile(fileext = ".csv")
-req <- GET(github_link, 
+#github_link <- "https://raw.githubusercontent.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/master/Data%20Exchange%20Standard%20Tables/metricControlledVocabulary.csv"
+#temp_file <- tempfile(fileext = ".csv")
+#req <- GET(github_link, 
            # authenticate using GITHUB_PAT
-           authenticate(Sys.getenv("GITHUB_PAT"), ""),
+#           authenticate(Sys.getenv("GITHUB_PAT"), ""),
            # write result to disk
-           write_disk(path = temp_file))
+#           write_disk(path = temp_file))
 
-metricControlledVocabularyToSave <- read.csv(temp_file)
+metricControlledVocabularyToSave <- read.csv("Data Exchange Standard Tables/metricControlledVocabulary.csv")
 # create a list of 
 metricControlledVocabulary <- metricControlledVocabularyToSave %>% 
                               dplyr::select("measurementType") %>% 
@@ -84,24 +82,24 @@ colnames(flat_data)  <- flat_data_names
 
 
 #Download the data mapping from the data exchange specifications Git page. Thi sw 
-github_link <- "https://raw.githubusercontent.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/master/Data%20Exchange%20Standard%20Tables/DataMapping.csv"
+#github_link <- "https://raw.githubusercontent.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/master/Data%20Exchange%20Standard%20Tables/DataMapping.csv"
 
-temp_file <- tempfile(fileext = ".csv")
-req <- GET(github_link, 
+#temp_file <- tempfile(fileext = ".csv")
+#req <- GET(github_link, 
            # authenticate using GITHUB_PAT
-           authenticate(Sys.getenv("GITHUB_PAT"), ""),
+#           authenticate(Sys.getenv("GITHUB_PAT"), ""),
            # write result to disk
-           write_disk(path = temp_file))
+#           write_disk(path = temp_file))
 
-Crosswalk_tall <- read.csv(temp_file)
-rm(temp_file)
+Crosswalk_tall <- read.csv("Data Exchange Standard Tables/DataMapping.csv")
+#rm(temp_file)
 
 # Loop to download, reformat the data 
 for(p in program) {
  
   if (p=="NRSA"){
 
-  source(paste0(getwd(), "/R/Download and clean EPA NRSA.R"))
+  source(paste0(getwd(), "/Data Intergration Example/R/Download and clean EPA NRSA.R"))
   data <- download_EPA_NRSA()
   
   # we filter for only the wadeable streams
@@ -124,7 +122,7 @@ for(p in program) {
   } else if (p=="AIM") { 
     
     print("Processing BLM AIM data")
-    source(paste0(getwd(), "/R/Download and clean BLM AIM Data.R"))
+    source(paste0(getwd(), "/Data Intergration Example/R/Download and clean BLM AIM Data.R"))
     data <- download_AIM()
     
     ##### Format data to Data Exchange Standard ####
@@ -164,7 +162,7 @@ for(p in program) {
   
   } else if (p=="PIBO"){ 
     print("Processing USFS PIBO data")  
-    data <- as_tibble(read_xlsx("Data/DataSources/2020_Seasonal_Sum_PIBO.xlsx", 2))
+    data <- as_tibble(read_xlsx("Data Intergration Example/Data/DataSources/2020_Seasonal_Sum_PIBO.xlsx", 2))
     
     #based on Project feedback when data was requested the coordinates system is WGS 84
     PIBO_coordinate <-  "+proj=longlat +datum=WGS84 +no_defs" 
@@ -197,7 +195,7 @@ for(p in program) {
 
   } else if (p== "AREMP") {
     print("Processing USFS AREMP data")
-    source(paste0(getwd(), "/R/Download and clean AREMP Data.R"))
+    source(paste0(getwd(), "/Data Intergration Example/R/Download and clean AREMP Data.R"))
     data <- download_AREMP()
     
     # Create a field Protocol field with WADEABLE based on project feedback that all data is collected in wadeable streamk 
@@ -252,7 +250,7 @@ if (p=="NRSA"){
      SubSetData$projectCode             <- "NRSA"
      SubSetData$datasetLink             <- "https://www.epa.gov/national-aquatic-resource-surveys/data-national-aquatic-resource-surveys"
      SubSetData$metadataID              <- "https://www.epa.gov/national-aquatic-resource-surveys/data-national-aquatic-resource-surveys"
-     SubSetData$preProcessingCode       <- "https://github.com/rascully/Integrating-Stream-Monitoring-Data-rom-Multiple-Programs/blob/master/R/Scrape%20EPA%20data.R"
+     SubSetData$preProcessingCode       <- "https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/tree/master/Data%20Intergration%20Example"
      SubSetData$locationRemarks         <- "Bottom of Reach"
      
     } else if (p=="AIM") { 
@@ -266,7 +264,7 @@ if (p=="NRSA"){
      SubSetData$projectCode             <- "AIM"
      SubSetData$datasetLink             <- "https://gis.blm.gov/arcgis/rest/services/hydrography/BLM_Natl_AIM_AquADat/MapServer"
      SubSetData$metadataID              <- "https://landscape.blm.gov/geoportal/rest/document?id=%7B44F011CC-6E1F-4FDA-AFDF-B29BF1732ACF%7D"
-     SubSetData$preProcessingCode       <- "https://landscape.blm.gov/geoportal/catalog/main/home.page"
+     SubSetData$preProcessingCode       <- "https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/tree/master/Data%20Intergration%20Example"
      SubSetData$locationRemarks         <- "Middle of Reach"
      
    } else if (p=="PIBO"){ 
@@ -301,7 +299,7 @@ if (p=="NRSA"){
      SubSetData$projectCode             <- "AREMP"
      SubSetData$datasetLink             <- "https://www.fs.fed.us/r6/reo/monitoring/downloads/watershed/NwfpWatershedCondition20yrReport.gdb.zip"
      SubSetData$metadataID              <- "https://www.fs.fed.us/r6/reo/monitoring/downloads/watershed/NwfpWatershedCondition20yrReport.gdb.htm"
-     SubSetData$preProcessingCode       <- "https://github.com/rascully/Integrating-Stream-Monitoring-Data-From-Multiple-Programs/blob/master/R/Pull%20AREMP%20Data.R"  
+     SubSetData$preProcessingCode       <- "https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/tree/master/Data%20Intergration%20Example"  
      SubSetData$locationRemarks         <- "Bottom of Reach"
   
    }
@@ -357,8 +355,9 @@ u_locations <- dplyr::select(all_data2, (c(locationID, latitude, longitude,
                                            waterBody, projectCode)))
 unique_locations <- distinct(u_locations)
 
-unique_path <- paste0(getwd(), "/data/Unique Locations for Stream Habitat Metric.csv")
-file.remove(unique_path)
+
+unique_path <- paste0(getwd(), "/Data Intergration Example/data/Unique Locations for Stream Habitat Metric.csv")
+#file.remove(unique_path)
 write.csv(unique_locations, file=unique_path, row.names=FALSE)
 
 
@@ -438,7 +437,7 @@ Results<- Results %>%
   relocate(c("eventID","measurementID", "measurementType", "measurementTypeID","measurementValue")) 
 
 #Write the analysis ready stream monitoring dataset data to a .csv
-file_path <- paste0(getwd(), "/data/Analysis Stream Habitat Monitoring Metric Dataset.csv")
+file_path <- paste0(getwd(), "/Data Intergration Example/data/Analysis Stream Habitat Monitoring Metric Dataset.csv")
 file.remove(file_path)
 write.csv(all_data2, file=file_path, row.names=FALSE)
 
@@ -449,13 +448,13 @@ list_of_datasets <- list("RecordLevel" = RecordLevel_table, "Location"= location
                          "MetricControlledVocabulary" = metricControlledVocabularyToSave
                          ,"DataMapping"= Crosswalk_tall)
 
-file_name = "data/Relational Data Tables Stream Habitat Metrics.xlsx"
+file_name = paste0(getwd(), "/Data Intergration Example/data/Relational Data Tables Stream Habitat Metrics.xlsx") 
 file.remove(file_name)
 openxlsx::write.xlsx(list_of_datasets, file = file_name) 
 
 # Save .csv files for each of the tables in the relational database 
 for(i in 1:length(names(list_of_datasets))){ 
-  filename = paste0(getwd(),"/Data/csv/", names(list_of_datasets[i]), ".csv")
+  filename = paste0(getwd(),"/Data Intergration Example/Data/csv/", names(list_of_datasets[i]), ".csv")
   table_name <- names(list_of_datasets[i])
   table <- data.frame(list_of_datasets[i])
   names(table) <- gsub(paste0(table_name,"."), "", names(table))

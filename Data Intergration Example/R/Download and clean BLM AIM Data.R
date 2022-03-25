@@ -47,7 +47,7 @@ download_AIM<- function(){
   
   
   
-  file_name <- paste0(getwd(), "/data/DataSources/AIM_Processed_Dataset.csv")
+  file_name <- paste0(getwd(), "/Data Intergration Example/data/DataSources/AIM_Processed_Dataset.csv")
   write.csv(data, file=file_name, row.names=FALSE)
   
   return(data)

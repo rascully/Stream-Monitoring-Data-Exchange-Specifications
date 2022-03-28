@@ -127,7 +127,7 @@ We map the field names in the source datasets to the fields in the data exchange
 [Data Mapping](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Data%20Exchange%20Specifications%20Tables/DataMapping.csv) 
 
 # Data Inergration Examples 
-[Data Intergration Example](/Data Intergration Example.md) details and example of using this data exchange standard. To share habitat metrics from four federal habitat monitoring programs: Environmental Protection Agency (EPA) National Rivers & Streams Assessment (NRSA), Bureau of Land Management (BLM) Aquatic Assessment, Inventory, and Monitoring (AIM), and the Forest Service Aquatic and Riparian Effective Monitoring Program (AREMP) and PacFish/InFish Biological Monitoring Opinion Monitoring Program (PIBO MP). 
+[Data Intergration Example](/Data-Intergration-Example.md) details and example of using this data exchange standard. To share habitat metrics from four federal habitat monitoring programs: Environmental Protection Agency (EPA) National Rivers & Streams Assessment (NRSA), Bureau of Land Management (BLM) Aquatic Assessment, Inventory, and Monitoring (AIM), and the Forest Service Aquatic and Riparian Effective Monitoring Program (AREMP) and PacFish/InFish Biological Monitoring Opinion Monitoring Program (PIBO MP). 
 
 # Conclusion
 The data exchange specifications contain the details of what will be share and the format to be shared. We recognize preparing data to be shared requires an investment of time, resources, expertise, and careful documentation of the data collection process and the results.  An opinion piece in Nature by Barend Mons (2020), the director of a Global Open FAIR office, recommends that '5% of research funds be invested in making data reusable'. 

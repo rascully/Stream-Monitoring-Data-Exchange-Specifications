@@ -49,7 +49,9 @@ This resulted in six tables (RecordLevel, Location, Event, MeasurementorFact, Me
 ## Record Level Table
 The Record Level table documents the core elements of a dataset, including information about the origin of the dataset, who collected the data, and how to cite the source dataset (Table # {RecordLevel}). datasetID is the primary key. 
 
-[Record Level Table](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Data%20Exchange%20Specifications%20Tables/RecordLevel.csv). 
+[Record Level Table](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Data%20Exchange%20Standard%20Tables/RecordLevel.csv) 
+
+[Record Level Table](Data Exchange Standard Tables/RecordLevel.csv). 
 
 ### Record Level Data Mapping Notes 
 #### datasetID

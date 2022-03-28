@@ -51,7 +51,7 @@ The Record Level table documents the core elements of a dataset, including infor
 
 [Record Level Table](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Data%20Exchange%20Standard%20Tables/RecordLevel.csv) 
 
-[Record Level Table](Data Exchange Standard Tables/RecordLevel.csv). 
+[Record Level Table](Data-Exchange-Standard-Tables/RecordLevel.csv). 
 
 ### Record Level Data Mapping Notes 
 #### datasetID

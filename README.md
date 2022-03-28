@@ -11,7 +11,7 @@ This software is preliminary or provisional and is subject to revision. It is be
 Although these data have been processed successfully on a computer system at the U.S. Geological Survey (USGS), no warranty expressed or implied is made regarding the display or utility of the data for other purposes, nor on all computer systems, nor shall the act of distribution constitute any such warranty. The USGS or the U.S. Government shall not be held liable for improper or incorrect use of the data described and/or contained herein.
 
 # About
-Below is the first version of the Stream Habitat Metric Data Exchange Standard. The standard is maintained as a GitLab repository Stream Monitoring Data Exchange Standard based on recommendations from Ornelas et al. 2021 for using Git repositories to document and version data standards.
+This is the Stream Habitat Metric Data Exchange Standard. The standard is maintained as a GitLab repository Stream Monitoring Data Exchange Standard based on recommendations from Ornelas et al. 2021 for using Git repositories to document and version data standards.
 
 ## Mission and Goal of Standard 
 The Stream Habitat Data exchange standard provides content and structure for integrating stream habitat monitoring metrics and metadata from multiple programs. When we refer to stream habitat data, we refer to the instream physical characteristics. Values are measured within a linear reach defined by a starting and endpoint, but locations are represented as a point in datasets. Metrics are values resulting from reducing measurements taken one or more times during the study period according to procedures defined by the response design (Stevens & Urquhart 2000).  
@@ -33,9 +33,6 @@ This standard is published and maintained in GitLab. GitLab is a version control
 Editor's note for review: the standard is currently on GitHub (Scully, 2022d) but this text refers to GitLab, which is where it will eventually be released.
 
 
-## Data Mapping  
-The source datasets need to be mapped to the standard to combine datasets from multiple sources. Data mapping is the assignment of fields from the source datasets to the fields and metrics described in the data exchange standard (DAMA 2009). Some mapping from the sources to the data exchange standard are simple, while others require a transformation to be combined information into a single dataset.
-
 ## Data Structure 
 The data is structured as a relational database model. Primary keys are unique values for each record or row in the table, and foreign keys are included in the child tables to define the relationship between tables (DAMA 2009). The primary and foreign keys in the integrated dataset are as follows (also see Figure 3 {entity relationship diagram}):
 *	Record Level table primary key is datasetID, foreign key in the Location table 
@@ -50,8 +47,6 @@ This resulted in six tables (RecordLevel, Location, Event, MeasurementorFact, Me
 The Record Level table documents the core elements of a dataset, including information about the origin of the dataset, who collected the data, and how to cite the source dataset. datasetID is the primary key. 
 
 [Record Level Table](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Data%20Exchange%20Standard%20Tables/RecordLevel.csv) 
-
-
 
 ### Record Level Data Mapping Notes 
 #### datasetID
@@ -122,12 +117,11 @@ The metric-controlled vocabulary defines the metrics included in the Measurement
 [controlled vocabulary](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Data%20Exchange%20Standard%20Tables/metricControlledVocabulary.csv)
 
 # Data Mapping 
-Mapping
-We map the field names in the source datasets to the fields in the data exchange standard. Sources metrics are mapped to the metric-controlled vocabulary. The program reviewed and approved the mapping. The working group agreed that all metrics included in the data mapping and integrated dataset were compatible across the programs.
+We map the field names in the source datasets to the fields in the data exchange standard. Sources metrics are mapped to the metric-controlled vocabulary (DAMA 2009). The program reviewed and approved the mapping. The working group agreed that all metrics included in the data mapping and integrated dataset were compatible across the programs.Some mapping from the sources to the data exchange standard are simple, while others require a transformation to be combined information into a single dataset.
 
 [Data Mapping](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Data%20Exchange%20Standard%20Tables/DataMapping.csv) 
 
-# Data Inergration Examples 
+## Data Inergration Examples 
 [Data Intergration Example](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/tree/master/Data%20Intergration%20Example) details and example of using this data exchange standard. To share habitat metrics from four federal habitat monitoring programs: Environmental Protection Agency (EPA) National Rivers & Streams Assessment (NRSA), Bureau of Land Management (BLM) Aquatic Assessment, Inventory, and Monitoring (AIM), and the Forest Service Aquatic and Riparian Effective Monitoring Program (AREMP) and PacFish/InFish Biological Monitoring Opinion Monitoring Program (PIBO MP). 
 
 # Conclusion

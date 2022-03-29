@@ -110,9 +110,11 @@ measurementID is a unique identifiers integer generated when the datasets are co
 #### measurementMethod  
 measurementMethod is filled in with the link to the data collection and analysis methodology documented in MonitoringResources.org. This supports reuse and trust by the end-users. The methods were published on MonitoringResources.org, an online, publicly accessible suite of information and tools for natural resource monitoring programs and professionals to document the who, what, where, when, and how of data collection and analysis (Bayer et al. 2018). MonitoringResources.org provides a standard structure for documenting data collection and analysis methods and APIs to access the method's documentation via a UID assigned to each method and allows for version control. For example, AREMP and PIBO MP collect substrate information using different field methods, but working group experts and past data agreed that the methodology used in the field produces comparable results, allowing the two program's metrics to be integrated.  
 
-### Metric Controlled Vocabualry VariableID  Controlled Vocabularies for Results Table 
+### Metric Controlled Vocabualry 
 
-The metric-controlled vocabulary defines the metrics included in the MeasurementOrFact table. The controlled vocabulary was formatted as a flat .csv table containing term names, definitions, data type (.e.g, numeric), measurement units (e.g., meters) and acceptable values (e.g., a percent must fall between 0 and 100) for all metrics in the dataset. A metric is a term in the controlled vocabulary and the measurementType was linked to the Measurement or Fact table's termID (fig # {stream monitoring data exchange spec schematic}).  
+VariableID  Controlled Vocabularies for Results Table 
+
+The metric-controlled vocabulary defines the metrics included in the MeasurementOrFact table. The controlled vocabulary was formatted as a flat .csv table containing term names, definitions, data type (.e.g, numeric), measurement units (e.g., meters) and acceptable values (e.g., a percent must fall between 0 and 100) for all metrics in the dataset. A metric is a term in the controlled vocabulary and the measurementType was linked to the Measurement or Fact table's termID.  
 
 [controlled vocabulary](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Data%20Exchange%20Standard%20Tables/metricControlledVocabulary.csv)
 

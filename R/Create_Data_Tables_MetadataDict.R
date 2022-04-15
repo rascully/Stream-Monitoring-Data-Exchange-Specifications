@@ -4,7 +4,7 @@ library(tidyverse)
 library(stringr)
 library(openxlsx)
 
-metadataDict <- readxl::read_excel("Data/MetadataDictionary_v1.xlsx", sheet = 1)
+metadataDict <- readxl::read_excel("Data/MetadataDictionary.xlsx", sheet = 1)
 metadataDict <- metadataDict %>%
                 rename("term"="label") %>% 
                 filter(!is.na(term))
@@ -22,8 +22,8 @@ DES <-metadataDict %>%
 metadata <- readxl::read_excel("Data/Metadata.xlsx", sheet = 3)
 
 metadataT<- metadata %>%  
-            filter(str_detect(term, paste(DES$term, collapse = "|"))) %>% 
-            select(termID, term, table) 
+            #filter(str_detect(term, paste(DES$term, collapse = "|"))) %>% 
+            #select(termID, term, table) 
 
 metadataDict <- right_join(DES, metadataT,  by = c("term"))
 
@@ -33,7 +33,6 @@ for (i in 1:length(tables_des)){
                      filter(str_detect(tblname, tables[i])))
           
 }
-
 
 
 #create a vocabulary table 
@@ -154,15 +153,6 @@ cw_long2 <- cw_long2   %>%
               arrange("measurementTypeID")
   
 
-#####Create one file
-list_of_datasets <- list("RecordLevel" = Record, "Location"= Location, "Event"= Event,
-                         "MeasurementorFact"= MeasurementOrFact, "metricControlledVocabulary"= vocabulary, 
-                         "DataMapping"=cw_long2)
-
-
-file.remove("Data Exchange Standard Tables/StreamHabitatSpecifications.xlsx")
-
-write.xlsx(list_of_datasets, file = "Data Exchange Standard Tables/StreamHabitatStandard.xlsx") 
 
 for(i in 1:length(names(list_of_datasets))){ 
   filename = paste0(getwd(),"/Data Exchange Standard Tables/", names(list_of_datasets[i]), ".csv")

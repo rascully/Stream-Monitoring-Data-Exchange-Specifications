@@ -21,7 +21,7 @@ DES <-metadataDict %>%
 #Open the metadata file 
 metadata <- readxl::read_excel("Data/Metadata.xlsx", sheet = 3)
 
-metadataT<- metadata %>%  
+#metadataT<- metadata %>%  
             #filter(str_detect(term, paste(DES$term, collapse = "|"))) %>% 
             #select(termID, term, table) 
 

@@ -34,6 +34,31 @@ for (i in 1:length(tables_des)){
           
 }
 
+#####Create a controlled vocabulary table 
+EmunDict <- readxl::read_excel("Data/MetadataDictionary.xlsx", sheet = 2)
+
+cv <- EmunDict %>% 
+    filter(entity == "MetricControlledVocabulary")
+
+measurementType <- cv %>% 
+  filter(attribute == "measurementType")
+
+measurementTypeID <- cv %>% 
+  filter(attribute == "measurementTypeID")
+
+x <- measurementTypeID %>% 
+        mutate(attribute, measurementType = str_remove(enumerateddefinition, "A unique numeric identifier assigned to the measurementType"))
+
+x$measurementType[1]
+
+
+
+str_remove(x$measurementType[2], ".")
+
+x <-str_remove(measurementTypeID$enumerateddefinition[2], "A unique numeric identifier assigned to the measurementType") 
+y <- str_remove(x, ".")
+
+
 
 #create a vocabulary table 
 vocabulary<- metadata %>% 

@@ -46,14 +46,26 @@ measurementType <- cv %>%
 measurementTypeID <- cv %>% 
   filter(attribute == "measurementTypeID")
 
-x <- measurementTypeID %>% 
-        mutate(attribute, measurementType = str_remove(enumerateddefinition, "A unique numeric identifier assigned to the measurementType"))
+measurementTypeID <- measurementTypeID %>% 
+        mutate(attribute, measurementType = str_remove(enumerateddefinition, "A unique numeric identifier assigned to the measurementType")) 
 
-x$measurementType[1]
+measurementTypeID
+        
+measurementTypeID$measurementType <- measurementTypeID$measurementType %>% 
+                    str_replace_all(fixed("."), "") %>% 
+                    trimws() %>% 
+                    rename(measurementID = enumerateddomain)
+
+measurementTypeID
+
+x <- full_join(measurementType, measurementTypeID, by.x = 'enumerateddomain',  by.y = 'measurementType')
+
+
+str_replace_all(x$measurementType, fixed("."), "")
 
 
 
-str_remove(x$measurementType[2], ".")
+xstr_remove(x$measurementType[2], ".")
 
 x <-str_remove(measurementTypeID$enumerateddefinition[2], "A unique numeric identifier assigned to the measurementType") 
 y <- str_remove(x, ".")

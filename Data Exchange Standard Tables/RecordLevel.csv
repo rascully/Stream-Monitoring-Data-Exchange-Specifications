@@ -1,10 +1,2 @@
-tblname,term,termID,definition,rdommin,rdommax,dataType,examples,standard
-Record,datasetID,100,A unique identifier assigned to the originating source data's program.,NA,NA,Integer,NA,Darwin Core
-Record,bibilographicCitation,105,A bibliographic reference for the resource as a statement indicating how this record should be cited (attributed) when used.,NA,NA,String,NA,Darwin Core
-Record,datasetLink,107,A URL identifier for the collection or dataset from which the record was derived. The source location for the originating source data.,NA,NA,String,https://www.epa.gov/national-aquatic-resource-surveys,Producer defned
-Record,datasetName,108,The name of the originating data set from which the record was derived.,NA,NA,String,EPA NARS 2018 dataset,Darwin Core
-Record,institutionCode,101,The name (or acronym) in use by the institution having custody of the object(s) or information referred to in the record.,NA,NA,String,"BLM,  EPA, USFS",Darwin Core
-Record,metadataID,102,A URL identifier for the metadata for the originating source dataset or note how to access metadata.,NA,NA,String,NA,ODM2
-Record,preProcessingCode,104,"URL identifier for access to the code used to pre-process (download, standardize and tidy) the data sets before integration into the destination dataset.",NA,NA,String,NA,Producer defned
-Record,projectCode,110,"The acronym of the name assigned by the Institution (project leader or principal investigator) to the project, from which the source data originates from.",NA,NA,String,"PIBO, AIM, USFS, NRSA",Producer defned
-Record,projectName,109,"The name assigned by the Institution (project leader or principal investigator) to the project, from which the source data originates from.",NA,NA,String,USFS PacFish/InFish Biological Opinion Monitoring Program,ODM2
+"x"
+"Record"

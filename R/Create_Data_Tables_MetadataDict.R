@@ -6,59 +6,86 @@ library(openxlsx)
 
 metadataDict <- readxl::read_excel("Data/MetadataDictionary.xlsx", sheet = 1)
 metadataDict <- metadataDict %>%
-                rename("term"="label") %>% 
+                rename("term"="attribute") %>% 
                 filter(!is.na(term))
 
 #Create the Data Exchange Standard Tables 
 tables_des <- c("Record", "Location", "Event", "MeasurementOrFact")
 tables <- pull(unique(metadataDict %>% 
-                   select(tblname)))
+                   select(entity)))
+
 DES <-metadataDict %>% 
-  filter(str_detect(tblname, paste(tables_des, collapse = "|"))) %>%
+  filter(str_detect(entity, paste(tables_des, collapse = "|"))) %>%
   drop_na(term)
 
 
 #Open the metadata file 
-metadata <- readxl::read_excel("Data/Metadata.xlsx", sheet = 3)
+#metadata <- readxl::read_excel("Data/Metadata.xlsx", sheet = 3)
 
 #metadataT<- metadata %>%  
             #filter(str_detect(term, paste(DES$term, collapse = "|"))) %>% 
             #select(termID, term, table) 
 
-metadataDict <- right_join(DES, metadataT,  by = c("term"))
+#metadataDict <- right_join(DES, metadataT,  by = c("term"))
 
 for (i in 1:length(tables_des)){ 
   assign(tables[i], metadataDict %>% 
-                     select(tblname,term, termID, definition, rdommin, rdommax, dataType, examples, standard) %>% 
-                     filter(str_detect(tblname, tables[i])))
-          
+                     relocate('entity', 'termID', 'term', 'definition', 'dataType') %>% 
+                     filter(str_detect(entity, tables[i]))) %>% 
+                     arrange(termID)
+  
+  filename = paste0(getwd(),"/Data Exchange Standard Tables/",  tables_des[i], ".csv")
+  
+  write.csv(tables[i], filename, row.names = FALSE)
+  
 }
+
+for(i in 1:length(names(tables_des))){ 
+  filename = paste0(getwd(),"/Data Exchange Standard Tables/", names(list_of_datasets[i]), ".csv")
+  table_name <- names(list_of_datasets[i])
+  table <- data.frame(list_of_datasets[i])
+  names(table) <- gsub(paste0(table_name,"."), "", names(table))
+  write.csv(table, filename, row.names= FALSE)
+} 
+
+
+
 
 #####Create a controlled vocabulary table 
 EmunDict <- readxl::read_excel("Data/MetadataDictionary.xlsx", sheet = 2)
 
 cv <- EmunDict %>% 
-    filter(entity == "MetricControlledVocabulary")
+  filter(entity == "MetricControlledVocabulary")
 
 measurementType <- cv %>% 
-  filter(attribute == "measurementType")
+    filter(attribute == "measurementType") %>% 
+    rename("description" = "enumerateddefinition") %>% 
+    rename("measurementType" = "enumerateddomain")
+
 
 measurementTypeID <- cv %>% 
   filter(attribute == "measurementTypeID")
 
+measurementTypeID
+
 measurementTypeID <- measurementTypeID %>% 
-        mutate(attribute, measurementType = str_remove(enumerateddefinition, "A unique numeric identifier assigned to the measurementType")) 
+                          mutate(attribute, measurementType = str_remove(enumerateddefinition, "A unique numeric identifier assigned to the measurementType")) 
 
 measurementTypeID
-        
+
 measurementTypeID$measurementType <- measurementTypeID$measurementType %>% 
-                    str_replace_all(fixed("."), "") %>% 
-                    trimws() %>% 
-                    rename(measurementID = enumerateddomain)
+                                        str_replace_all(fixed("."), "") %>% 
+                                        trimws() 
+                                        
+measurementTypeID <- rename(measurementTypeID, "measurementTypeID" = "enumerateddomain") %>% 
+                        select("measurementTypeID", "measurementType") 
 
-measurementTypeID
+x <- right_join(measurementType, measurementTypeID, by= "measurementType")
 
-x <- full_join(measurementType, measurementTypeID, by.x = 'enumerateddomain',  by.y = 'measurementType')
+x$dataType  <-  "Numeric"
+x$term <- "term"
+x$termID    <- "401"
+x <- relocate(x,"termID","term", "measurementTypeID", "measurementType","description", "units", "dataType")
 
 
 str_replace_all(x$measurementType, fixed("."), "")
@@ -78,17 +105,17 @@ vocabulary<- metadata %>%
            term, longName , description, examples, dataType, measurementUnit, minimumPossibleValue, maximumPossibleValue)) %>% 
   filter(table== "ControlledVocabulary", subsetOfMetrics=="x") %>% 
   select(-subsetOfMetrics, -categoryID, -table) 
-  
+
 
 
 #create a vocabulary table 
 vocabulary<- metadata %>% 
   select(c(categoryID, table,subsetOfMetrics, termID, 
-         term, longName , description, examples, dataType, measurementUnit, minimumPossibleValue, maximumPossibleValue)) %>% 
+           term, longName , description, examples, dataType, measurementUnit, minimumPossibleValue, maximumPossibleValue)) %>% 
   filter(table== "ControlledVocabulary", subsetOfMetrics=="x") %>% 
   select(-"subsetOfMetrics", -"categoryID", -"table") %>%
   rename("measurementType"="term", "measurementTypeID"="termID", "unit"="measurementUnit") 
-  
+
 
 vocabulary$term = "term"
 vocabulary$termID = 401
@@ -99,14 +126,14 @@ vocabulary$table = "MeasuremeorFact"
 
 #table	attrlabl	category	definition	edomvds	unit	comment
 
-  vocabulary <- vocabulary %>% 
-            relocate("table","termID", "term", "measurementTypeID", "measurementType", "description", "edomvds", "unit","dataType")
+vocabulary <- vocabulary %>% 
+  relocate("table","termID", "term", "measurementTypeID", "measurementType", "description", "edomvds", "unit","dataType")
 
 #  write.csv(vocabulary, file=paste0("Tables/ControlledVocabulary_table.csv" ), row.names=F)
-  
+
 old_crosswalk <- metadata %>% 
   select(c("table","measurementType", "measurementID", "term","termID",  "subsetOfMetrics", "inDES", 
-          "examples", "dataType", "measurementUnit")|contains("CW")| contains("Units")) %>% 
+           "examples", "dataType", "measurementUnit")|contains("CW")| contains("Units")) %>% 
   filter(subsetOfMetrics=="x"| inDES=="x"  ) %>% 
   select(-subsetOfMetrics, -inDES) 
 
@@ -118,8 +145,8 @@ crosswalk<- metadata %>%
   select(-subsetOfMetrics, -inDES) 
 
 cw_long <- crosswalk %>% 
-       pivot_longer(cols=contains("Field"), names_to= "program", values_to = "originalField", values_drop_na = T) %>% 
-        mutate(program, program = str_remove_all(program, "FieldCW"))
+  pivot_longer(cols=contains("Field"), names_to= "program", values_to = "originalField", values_drop_na = T) %>% 
+  mutate(program, program = str_remove_all(program, "FieldCW"))
 
 #Create a table of units
 units<- metadata %>% 
@@ -127,7 +154,7 @@ units<- metadata %>%
   filter(subsetOfMetrics=="x"| inDES=="x"  ) %>% 
   select(-subsetOfMetrics, -inDES, -measurementUnit) %>% 
   drop_na(termID)
-  
+
 units_long <- units %>%
   pivot_longer(cols=contains("Unit"), names_to= "program", values_to = "originalUnit", values_drop_na = T) %>% 
   mutate(program, program = str_remove_all(program, "Units"))
@@ -144,14 +171,14 @@ dataType <- metadata %>%
   mutate(program, program = str_remove_all(program, "DataType"))
 
 cw_long <- left_join(cw_long, dataType, by = c("termID", "program", "term"))
-                    
+
 
 #####Create a method table 
 method_type = c("Collection", "Analysis")
 
 for (type in method_type) {
   print(type)
-
+  
   method <- metadata %>% 
     select(c("termID","term", "subsetOfMetrics", "inDES", contains(type))) %>% 
     filter(subsetOfMetrics=="x"| inDES=="x"  ) %>% 
@@ -159,8 +186,8 @@ for (type in method_type) {
     pivot_longer(cols= contains("Method"), names_to="programMethods", values_to= paste0("method", type), values_drop_na = T) %>% 
     mutate(programMethods, program = str_remove_all(programMethods, paste0(type, "MethodIDCW")))
   
-    cw_long <- full_join(cw_long, method, by= c("termID","term",  "program")) %>% 
-                select(-contains("programMethods"))
+  cw_long <- full_join(cw_long, method, by= c("termID","term",  "program")) %>% 
+    select(-contains("programMethods"))
   
 }
 
@@ -168,17 +195,17 @@ cw_long <- cw_long %>%
   relocate("program", "termID", "term", "dataType", "originalField", "originalUnit", "originalDataType", "methodCollection", "methodAnalysis")
 
 vocab_cw <- cw_long %>% 
-          filter(termID >= 500) %>% 
-          rename("measurmentTypeID" ="termID", "measurementType"="term")
+  filter(termID >= 500) %>% 
+  rename("measurmentTypeID" ="termID", "measurementType"="term")
 
 vocab_cw$term = "term"
 vocab_cw$termID = 401
-  
-des_long <- cw_long %>% 
-            filter(termID <500)# %>% 
-            #select("term")
 
-  
+des_long <- cw_long %>% 
+  filter(termID <500)# %>% 
+#select("term")
+
+
 des_long$measurementType = ""
 des_long$measurmentTypeID = NA
 
@@ -186,9 +213,9 @@ cw_long2 <- bind_rows(vocab_cw,des_long )
 
 
 cw_long2 <- cw_long2   %>%
-              relocate("termID", "term","measurmentTypeID", "measurementType", "dataType", "program", "originalField",  "originalUnit") %>% 
-              arrange("measurementTypeID")
-  
+  relocate("termID", "term","measurmentTypeID", "measurementType", "dataType", "program", "originalField",  "originalUnit") %>% 
+  arrange("measurementTypeID")
+
 
 
 for(i in 1:length(names(list_of_datasets))){ 
@@ -255,4 +282,3 @@ list_of_datasets <- append(list_of_datasets, EPA)
 
 file.remove("Other Tables/PropertyRegistry.xlsx")
 openxlsx::write.xlsx(list_of_datasets, file = "Other Tables/PropertyRegistry.xlsx") 
-

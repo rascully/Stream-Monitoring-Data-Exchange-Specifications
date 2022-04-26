@@ -13,24 +13,18 @@ metadataDict <- metadataDict %>%
 #Create the Data Exchange Standard Tables 
 tables_des <- c("RecordLevel", "Location", "Event", "MeasurementOrFact")
 
-#tables <- pull(unique(metadataDict %>% 
-#                   select(entity)))
-
 DES <-metadataDict %>% 
   filter(str_detect(entity, paste(tables_des, collapse = "|"))) %>%
   drop_na(term)
 
-
 for (i in 1:length(tables_des)){ 
-  
-  assign(tables_des[i], metadataDict %>% 
+  filename = paste0(getwd(),"/Data Exchange Standard Tables/",  tables_des[i], ".csv")
+  write.csv( assign(tables_des[i], metadataDict %>% 
                      relocate('entity', 'termID', 'term', 'definition', 'dataType') %>% 
                      filter(str_detect(entity, tables_des[i])) %>% 
-                     arrange(termID)) 
-  
-  filename = paste0(getwd(),"/Data Exchange Standard Tables/",  tables_des[i], ".csv")
-  write.csv(tables_des[i], filename, row.names = FALSE)
-  print(tables_des[i])
+                     arrange(termID)), filename, row.names = FALSE)
+
+
 }
 
 
@@ -72,6 +66,7 @@ metricControlledVocabulary$term <- "term"
 metricControlledVocabulary$termID    <- "401"
 metricControlledVocabulary <- relocate(metricControlledVocabulary,"termID","term", "measurementTypeID", "measurementType","description", "units", "dataType")
 
+#Save the metricControlledVocabulary 
 write.csv(metricControlledVocabulary, paste0(getwd(),"/Data Exchange Standard Tables/metricControlledVocabulary.csv"), row.names= FALSE)
 
 #####################

@@ -1,9 +1,0 @@
-"tblname","term","termID","definition","rdommin","rdommax","dataType","examples","standard"
-"Event","locationID",200,"Unique global identifier assigned to the location where the event occurred.","1","11585","Integer",NA,NA
-"Event","eventDate",302,"The calendar date of the event from the source data.","2000-05-20","2020-10-20","Date",NA,"Darwin Core"
-"Event","eventID",300,"Global unique identifier assigned to an Event (something that occurs at a place and time, such as a survey or measurement).","1","16280","String","FFFE9F28-60DB-40C0-B9C0-4AFC753A9880, 10002-PIBO","Darwin Core"
-"Event","fieldNotes",305,"The description of flow for the reach (flow, partial flow or dry).",NA,NA,"String","dry, wet","Darwin Core"
-"Event","samplingProtocol",304,"The name of, reference to, or description of the stream survey method or protocol used during an Event.",NA,NA,"String","UV light trap, ""mist net"", ""bottom trawl"", ""ad hoc observation"", ""point count"", ""Penguins from space: faecal stains reveal the location of emperor penguin colonies, http://dx.doi.org/10.1111/j.1466-8238.2009.00467.x"", ""Takats et al. 2001. Guidelines for Nocturnal Owl Monitoring in North America. Beaverhill Bird Observatory and Bird Studies Canada, Edmonton, Alberta. 32 pp."", ""http://www.bsc-eoc.org/download/Owl.pdf""","Darwin Core"
-"Event","verbatimEventID",301,"The verbatim event ID from the originating source dataset assigned by the program.",NA,NA,"String","FFFE9F28-60DB-40C0-B9C0-4AFC753A9880, 10002","Producer defned"
-"Event","beaverImpactFlow",306,"Beaver impact the flow of the reach.",NA,NA,"String",NA,"Producer defned"
-"Event","year",303,"The four-digit year in which the event occurred.","2000","2020","Date","2008","Darwin Core"

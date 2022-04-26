@@ -1,8 +1,0 @@
-"tblname","term","definition","rdommin","rdommax","dataType","examples","standard"
-"Crosswalk","termID","A numeric identifier assigned to the term within this table.",NA,NA,NA,NA,NA
-"Crosswalk","term","Terms used in the integrated dataset and are defined elsewhere in the metadata record.",NA,NA,NA,NA,NA
-"Crosswalk","program","The acronym assigned to the monitoring program from which the term originated.",NA,NA,NA,NA,NA
-"Crosswalk","orginalField","The original name assigned to the term in the monitoring program's source dataset. Further information about the originalField can be found in the source data's metadata (if available) referenced in the RecordLevel table.",NA,NA,NA,NA,NA
-"Crosswalk","orginalUnit","The original unit associated with the term in the monitoring program's source dataset. Further information about the originalUnit can be found in the source data's metadata (if available) referenced in the RecordLevel table.",NA,NA,NA,NA,NA
-"Crosswalk","CollectionMethod","URL for the originating source Monitoring Program's collection method used on-site in the field to obtain the value for the term.",NA,NA,NA,NA,NA
-"Crosswalk","AnalysisMethod","URL for the originating source Monitoring Program's analysis method used on-site in the field and/or lab to obtain the value for the term.",NA,NA,NA,NA,NA

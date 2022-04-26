@@ -1,8 +1,0 @@
-"TermID","Term","Description","Examples","DataType","PrimaryKey","ForeginKey","ControlledVocabulary","ControlledVocabularyAPI","MinimamPossibleValue","MaximamPossibleValue"
-1,"ResultID","Unique integer identifier for each
-data value.","5","Interger","X",NA,NA,NA,"NA","NA"
-2,"ResultTypeCV","The nature of the measurement, fact, characteristic, or assertion. Recommended best practice is to use a controlled vocabulary.","tail length, ""temperature"", ""trap line length"", ""survey area"", ""trap type""","String",NA,"X","http://vocabulary.odm2.org/resulttype/","http://vocabulary.odm2.org/api/v1/resulttype/?format=skos","NA","NA"
-3,"VariableID","An identifier for the MeasurementOrFact (information pertaining to measurements, facts, characteristics, or assertions). May be a global unique identifier or an identifier specific to the data set.",NA,"Numeric",NA,"X","https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Tables/ControlledVocabulary.csv",NA,"NA","NA"
-4,"MethodID","A description of or reference to (publication, URI) the method or protocol used to determine the measurement, fact, characteristic, or assertion.","URL of the MonitoringResources.rog field and if avilable calcuation method","String",NA,"X",NA,"https://www.monitoringresources.org/api/v1/methods/","NA","NA"
-5,"measurementRemarks","Comments or notes accompanying the MeasurementOrFact.","tip of tail missing","String",NA,NA,NA,NA,"NA","NA"
-6,"DataValue","The value of the measurement, fact, characteristic, or assertion.","45, ""20"", ""1"", ""14.5"", ""UV-light""",NA,NA,NA,NA,NA,"NA","NA"

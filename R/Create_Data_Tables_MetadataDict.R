@@ -12,8 +12,9 @@ metadataDict <- metadataDict %>%
 
 #Create the Data Exchange Standard Tables 
 tables_des <- c("RecordLevel", "Location", "Event", "MeasurementOrFact")
-tables <- pull(unique(metadataDict %>% 
-                   select(entity)))
+
+#tables <- pull(unique(metadataDict %>% 
+#                   select(entity)))
 
 DES <-metadataDict %>% 
   filter(str_detect(entity, paste(tables_des, collapse = "|"))) %>%
@@ -21,18 +22,19 @@ DES <-metadataDict %>%
 
 
 for (i in 1:length(tables_des)){ 
-  assign(tables[i], metadataDict %>% 
+  
+  assign(tables_des[i], metadataDict %>% 
                      relocate('entity', 'termID', 'term', 'definition', 'dataType') %>% 
-                     filter(str_detect(entity, tables[i]))) %>% 
-                     arrange(termID)
+                     filter(str_detect(entity, tables_des[i])) %>% 
+                     arrange(termID)) 
   
   filename = paste0(getwd(),"/Data Exchange Standard Tables/",  tables_des[i], ".csv")
-  write.csv(tables[i], filename, row.names = FALSE)
-  
+  write.csv(tables_des[i], filename, row.names = FALSE)
+  print(tables_des[i])
 }
 
 
-#####Create a controlled vocabulary table 
+#####Create a controlled vocabulary table from the EmunDict 
 EmunDict <- readxl::read_excel("Data/MetadataDictionary.xlsx", sheet = 2)
 
 cv <- EmunDict %>% 
@@ -58,17 +60,19 @@ measurementTypeID$measurementType <- measurementTypeID$measurementType %>%
                                         str_replace_all(fixed("."), "") %>% 
                                         trimws() 
                                         
-measurementTypeID <- rename(measurementTypeID, "measurementTypeID" = "enumerateddomain") %>% 
+measurementTypeID <- measurementTypeID %>% 
+                        dplyr::rename("measurementTypeID" = "enumerateddomain") %>% 
                         dplyr::select("measurementTypeID", "measurementType") 
 
-x <- right_join(measurementType, measurementTypeID, by= "measurementType")
+# Join the measurementType to the ID numbers 
+metricControlledVocabulary  <- right_join(measurementType, measurementTypeID, by= "measurementType")
 
-x$dataType  <-  "Numeric"
-x$term <- "term"
-x$termID    <- "401"
-x <- relocate(x,"termID","term", "measurementTypeID", "measurementType","description", "units", "dataType")
+metricControlledVocabulary$dataType  <-  "Numeric"
+metricControlledVocabulary$term <- "term"
+metricControlledVocabulary$termID    <- "401"
+metricControlledVocabulary <- relocate(metricControlledVocabulary,"termID","term", "measurementTypeID", "measurementType","description", "units", "dataType")
 
-write.csv(x, paste0(getwd(),"/Data Exchange Standard Tables/metricControlledVocabulary.csv"), row.names= FALSE)
+write.csv(metricControlledVocabulary, paste0(getwd(),"/Data Exchange Standard Tables/metricControlledVocabulary.csv"), row.names= FALSE)
 
 #####################
 

@@ -1,4 +1,5 @@
 "termID","term","measurementTypeID","measurementType","description","units","dataType","entity","attribute","sourcedefinition","minimumPossibleValue","maximumPossibleValue"
+401,"term",500,"Sin","Reach sinuosity (reach length along the thalweg divided by straight line distance between the bottom of the reach and the top of the reach, unit: none)","ratio","Numeric","MetricControlledVocabulary","measurementType","Producer defined",NA,NA
 401,"term",501,"StreamOrder","Strahler stream order of the site from the provider dataset (unit: none).",NA,"Numeric","MetricControlledVocabulary","measurementType","Producer defined",1,12
 401,"term",502,"AvgBFWDRatio","Average bankfull width depth ratio for the reach (unit: meters).","meters","Numeric","MetricControlledVocabulary","measurementType","Producer defined",0,NA
 401,"term",503,"BFHeight","Average bankfull height measured from water surface across transects (unit: meters).","meters","Numeric","MetricControlledVocabulary","measurementType","Producer defined",NA,NA
@@ -26,4 +27,3 @@
 401,"term",526,"TotalNitrogen","Measured total nitrogen value (unit: ug/L or micrograms per liter).","ug/L","Numeric","MetricControlledVocabulary","measurementType","Producer defined",NA,NA
 401,"term",527,"TotalPhosphorous","Measured total phosphorous value (unit: ug/L or micrograms per liter).","ug/L","Numeric","MetricControlledVocabulary","measurementType","Producer defined",NA,NA
 401,"term",528,"Turbidity","Average water clarity as measured by the suspended solids in the water column (unit: NTU or Nephelometric Turbidity unit)","NTU","Numeric","MetricControlledVocabulary","measurementType","Producer defined",NA,NA
-401,"term",500,"Sin",NA,NA,"Numeric",NA,NA,NA,NA,NA

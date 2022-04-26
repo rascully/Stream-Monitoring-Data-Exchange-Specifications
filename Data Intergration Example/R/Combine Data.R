@@ -19,18 +19,9 @@ library(sjmisc)
 # Load functions 
   source(paste0(getwd(), "/Data Intergration Example/R/data_mapped_field.R")) 
   
-#github_link <- "https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/Data/MetadataDictionary_v1.xlsx?raw=true"
-
-#temp_file <- tempfile(fileext = ".xlsx")
-
-#req <- GET(github_link, 
-           # authenticate using GITHUB_PAT
- #          authenticate(Sys.getenv("GITHUB_PAT"), ""),
-           # write result to disk
-  #         write_disk(path = temp_file))
-
-sheets      <- openxlsx::getSheetNames("Data/MetadataDictionary_v1.xlsx")
-data        <- lapply(sheets,openxlsx::read.xlsx, xlsxFile="Data/MetadataDictionary_v1.xlsx")
+# Open metadata file 
+sheets      <- openxlsx::getSheetNames("Data/MetadataDictionary.xlsx")
+data        <- lapply(sheets,openxlsx::read.xlsx, xlsxFile="Data/MetadataDictionary.xlsx")
 names(data) <- sheets
 
 
@@ -53,48 +44,30 @@ CRS<-  "+proj=longlat +datum=WGS84 +no_defs"
 
 # create a list of fields from the data exchange specifications 
 des_names <-MetadataDict %>% 
-filter(str_detect(tblname, c("Record|Location|Event")))%>% 
-        drop_na(label)%>%  
-        dplyr::select(label)%>% 
+        filter(str_detect(entity, c("Record|Location|Event")))%>% 
+        drop_na(attribute)%>%  
+        dplyr::select(attribute)%>% 
         unlist(use.names = F) %>% 
-       unique()
+        unique()
 
-# Download and get the controlled vocabulary for the measurement or fact measurementType and measurementTypeID 
-#github_link <- "https://raw.githubusercontent.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/master/Data%20Exchange%20Standard%20Tables/metricControlledVocabulary.csv"
-#temp_file <- tempfile(fileext = ".csv")
-#req <- GET(github_link, 
-           # authenticate using GITHUB_PAT
-#           authenticate(Sys.getenv("GITHUB_PAT"), ""),
-           # write result to disk
-#           write_disk(path = temp_file))
 
 metricControlledVocabularyToSave <- read.csv("Data Exchange Standard Tables/metricControlledVocabulary.csv")
-# create a list of 
+
 metricControlledVocabulary <- metricControlledVocabularyToSave %>% 
                               dplyr::select("measurementType") %>% 
                               unlist(use.names=F) %>%  
                              unique()
 
-
+#create a dataframe 
 flat_data_names     <- c(des_names, metricControlledVocabulary) %>%  trimws()
 flat_data           <- data.frame(matrix(ncol=length(flat_data_names), nrow=1))
 colnames(flat_data)  <- flat_data_names
 
+# Read the the data mapping 
+DataMapping <- read.csv("Data Exchange Standard Tables/DataMapping.csv")
 
-#Download the data mapping from the data exchange specifications Git page. Thi sw 
-#github_link <- "https://raw.githubusercontent.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/master/Data%20Exchange%20Standard%20Tables/DataMapping.csv"
 
-#temp_file <- tempfile(fileext = ".csv")
-#req <- GET(github_link, 
-           # authenticate using GITHUB_PAT
-#           authenticate(Sys.getenv("GITHUB_PAT"), ""),
-           # write result to disk
-#           write_disk(path = temp_file))
-
-Crosswalk_tall <- read.csv("Data Exchange Standard Tables/DataMapping.csv")
-#rm(temp_file)
-
-# Loop to download, reformat the data 
+# Loop to download, and pull information from the original datasets into one file. Add record level information. 
 for(p in program) {
  
   if (p=="NRSA"){
@@ -126,17 +99,11 @@ for(p in program) {
     data <- download_AIM()
     
     ##### Format data to Data Exchange Standard ####
-    #Filter out the PRTCOl = BOATABLE
+    #Filter out the PRTCOl = BOATABLE, we agree to only share wadable data 
     field <- dataMapVariable("samplingProtocol", p)
-    
     data <- data %>% 
       filter(!!as.name(field) == "Wadeable")
     
-    
-  #  data <- data %>% 
-   #   filter(ProtocolType == "Wadeable")
-    
-
   # from the datamapping find the field name that contains the percent dry for AIM
     field <- dataMapVariable("fieldNotes", p)
     
@@ -171,7 +138,7 @@ for(p in program) {
       print(paste( p, "coordinate reference system matches the coordinate system of the data exchange standards for the integrated dataset."))
     } else{ 
       print(paste(p, "coordinate reference system does not match the coordinate system of the data exchange standards for the integrated dataset.")) 
-      #Write code to reproject if 
+      #Write code to reproject if needed 
     }
     
     
@@ -188,7 +155,7 @@ for(p in program) {
   # Create a field Protocol field with WADEABLE based on project feedback that all data is collected in wadeable stream 
     data$Type ="WADEABLE"
    
-  #Update the Type to the standard Targeted or Random -> need to confirm with Carl 
+  #Talk to projects about adding this field. Update the Type to the standard Targeted or Random -> need to confirm with Carl 
   # data$Project <- str_replace(data$Project,c("CRB|MRB"),"Random")
   # data$Project <- str_replace(data$Project, c("PILOT|CNTRCT|SPCL|OTHER|FWNF"),"Targeted")
 
@@ -205,11 +172,10 @@ for(p in program) {
   
 
 ##### Rename the SubSetData from the original fields to the terms (field names) from the data exchange standard #####
-  term <- Crosswalk_tall %>% 
+  term <- DataMapping %>% 
     filter(program == p) %>% 
     filter(originalField %in% names(data)) 
   
-
   SubSetData <- data %>% 
     dplyr::select(all_of(term$originalField)) 
   
@@ -326,11 +292,6 @@ all_data2$year              <- as.integer(all_data2$year)
 
 ##### Generate UIDs for the integrated dataset 
 
-#test <- all_data2[duplicated(all_data2$verbatimEventID),]
-
-#all_data2 %>% 
-#  filter(eventID==19676)
-
 #Enter an eventID for the integrated dataset, based on the structure of this dataset we know that each row is a different data collection event, so therefore we generate a UID in the eventID
 all_data2 <- all_data2 %>% 
   mutate(temp_eventID = paste0(verbatimEventID,projectCode)) %>% 
@@ -365,9 +326,9 @@ write.csv(unique_locations, file=unique_path, row.names=FALSE)
 #Record level table 
 #Subset the sampling features/locations 
 RecordLevel<- MetadataDict %>% 
-  filter(str_detect(tblname, "Record")) %>% 
-  drop_na(label)%>%  
-  dplyr::select(label)%>% 
+  filter(str_detect(entity, "Record")) %>% 
+  drop_na(attribute)%>%  
+  dplyr::select(attribute)%>% 
   unlist(use.names = F) %>% 
   unique() %>% trimws()
 
@@ -377,9 +338,9 @@ RecordLevel_table <- all_data2 %>%
 
 
 location <- MetadataDict %>%  
-    filter(str_detect(tblname, "Location"))%>% 
-    drop_na(label)%>%  
-    dplyr::select(label)%>% 
+    filter(str_detect(entity, "Location"))%>% 
+    drop_na(attribute)%>%  
+    dplyr::select(attribute)%>% 
     unlist(use.names = F) %>% 
     unique() %>% trimws()
 
@@ -391,9 +352,9 @@ location_table <- all_data2 %>%
 
 #Build the event table/action table 
 event<- MetadataDict %>% 
-  filter(str_detect(tblname, "Event")) %>% 
-  drop_na(label)%>%  
-  dplyr::select(label)%>% 
+  filter(str_detect(entity, "Event")) %>% 
+  drop_na(attribute)%>%  
+  dplyr::select(attribute)%>% 
   unlist(use.names = F) %>% 
   unique() %>% trimws()
 
@@ -446,7 +407,7 @@ write.csv(all_data2, file=file_path, row.names=FALSE)
 list_of_datasets <- list("RecordLevel" = RecordLevel_table, "Location"= location_table, "Event"= event_table,
                          "MeasurmentOrFact"= Results, 
                          "MetricControlledVocabulary" = metricControlledVocabularyToSave
-                         ,"DataMapping"= Crosswalk_tall)
+                         ,"DataMapping"= DataMapping)
 
 file_name = paste0(getwd(), "/Data Intergration Example/data/Relational Data Tables Stream Habitat Metrics.xlsx") 
 file.remove(file_name)

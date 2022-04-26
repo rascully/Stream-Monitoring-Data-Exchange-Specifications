@@ -25,7 +25,7 @@ df <- paste0(getwd(),"/Data Intergration Example/data/DataSources/NwfpWatershedC
 download(fileURL, destfile=df)
 
 #Unzip the file into the Data file in the local repository
-unzip(paste0(getwd(),"/Data Intergration Example/data/DataSources/NwfpWatershedCondition20yrReport.gdb.zip") , exdir= paste0(getwd(), "/Data Integration Example/Data/DataSources")) 
+unzip(paste0(getwd(),"/Data Intergration Example/data/DataSources/NwfpWatershedCondition20yrReport.gdb.zip") , exdir= paste0(getwd(), "/Data Intergration Example/Data/DataSources")) 
 
 #Define the file path to the geodata base, if the ARAMP changes their file structure this will need to be updated 
 path <- '/Data Intergration Example/Data/NwfpWatershedCondition20yrReport.gdb'

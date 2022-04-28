@@ -18,7 +18,7 @@ DES <-metadataDict %>%
   drop_na(term)
 
 for (i in 1:length(tables_des)){ 
-  filename = paste0(getwd(),"/Data Exchange Standard Tables/",  tables_des[i], ".csv")
+  filename = paste0(getwd(),"/Data Exchange Standard Tables/",  tables_des[i], "DES.csv")
   write.csv( assign(tables_des[i], metadataDict %>% 
                      relocate('entity', 'termID', 'term', 'definition', 'dataType') %>% 
                      filter(str_detect(entity, tables_des[i])) %>% 

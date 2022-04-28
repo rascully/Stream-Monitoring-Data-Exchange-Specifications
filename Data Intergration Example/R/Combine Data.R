@@ -223,7 +223,7 @@ if (p=="NRSA"){
      
      # SubSetData$datasetName
       SubSetData$datasetID               <- 2
-     SubSetData$bibilographicCitation   <- "BLM AIM Aquatic Data (AquADat) Map Service"
+     SubSetData$bibilographicCitation   <- paste("Bureau of Land Management AIM Aquatic Data (AquADat) Map Server, https://landscape.blm.gov/geoportal/rest/document?id=%7B44F011CC-6E1F-4FDA-AFDF-B29BF1732ACF%7D, accessed", Sys.Date()) 
      SubSetData$datasetOrginization     <- "Bureau of Land Management"
      SubSetData$institutionCode         <- "BLM"
      SubSetData$projectName             <- "Asssessment, Inventory, and Monitoring"
@@ -253,11 +253,11 @@ if (p=="NRSA"){
      SubSetData$datasetName             <- "Northwest Forest Plan-the first 
                                               20 years (1994 to 2008): watershed condition status and trend" 
      
-     SubSetData$bibilographicCitation   <- 'Miller, Stephanie A.; Gordon, Sean N.; Eldred, Peter; 
+     SubSetData$bibilographicCitation   <- paste('Miller, Stephanie A.; Gordon, Sean N.; Eldred, Peter; 
                                             Beloin, Ronald M.; Wilcox, Steve; Raggon, Mark;Andersen, 
                                             Heidi; Muldoon, Ariel. 2017. Northwest Forest Plan the first 
                                             20 years (1994 to 2013): watershed condition status and trends. Gen. Tech. Rep. PNW GTR 932.
-                                            Portland, OR: U.S. Department of Agriculture, Forest Service, Pacific Northwest Research Station. 74 p.'
+                                            Portland, OR: U.S. Department of Agriculture, Forest Service, Pacific Northwest Research Station. 74 p., accessed', Sys.Date()) 
  
      SubSetData$datasetOrginization     <- "United States Forest Service"
      SubSetData$institutionCode         <- "USFS"
@@ -310,6 +310,8 @@ all_data2 <- all_data2 %>%
 #Remove rows that are exact duplicate from the combind dataset
 all_data2 <-  all_data2 %>% 
               distinct()
+
+all_data2 <- trimws(all_data2)
 
 # Create a list of unique locations for the combind dataset 
 u_locations <- dplyr::select(all_data2, (c(locationID, latitude, longitude,

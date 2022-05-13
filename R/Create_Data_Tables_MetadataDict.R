@@ -5,9 +5,6 @@ library(tidyverse)
 library(stringr)
 library(openxlsx)
 
-#metadataDict <- readxl::read_excel("Data/MetadataDictionary.xlsx", sheet = 1)
-#write.csv(metadataDict, "Data/MetadataDictionary.csv", row.names = FALSE)
-
 metadataDict <- read.csv("Data/MetadataDictionary.csv")
 
 metadataDict <- metadataDict %>%
@@ -33,8 +30,6 @@ for (i in 1:length(tables_des)){
 
 
 #####Create a controlled vocabulary table from the EmunDict 
-#EmunDict <- readxl::read_excel("Data/MetadataDictionary.xlsx", sheet = 2)
-#write.csv(EmunDict, "Data/EmunDictionary.csv", row.names = FALSE)
 EmunDict <- read.csv("Data/EmunDictionary.csv")
 
 

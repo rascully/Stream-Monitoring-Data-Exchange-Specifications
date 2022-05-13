@@ -1,0 +1,6 @@
+"entity","termID","term","definition","dataType","minrange","maxrange","units","sourcedefinition","unboundeddefinition","enumerateddomain","NAorBlankcell","NAdefinition","examples","standard"
+"MeasurementOrFact",300,"eventID","Global unique identifier assigned to an Event (something that occurs at a place and time, such as a survey or measurement).","Integer","1","16280",NA,"Producer defined",NA,NA,NA,NA,NA,"Darwin Core"
+"MeasurementOrFact",400,"measurementID","Unique identifier assigned to the measurementValue.","Integer","1","198891",NA,"Producer defined",NA,NA,NA,NA,NA,"Darwin Core"
+"MeasurementOrFact",401,"measurmentTypeID","Unique identifier assigned to the measurementType.","Integer",NA,NA,NA,"Producer defined",NA,"y",NA,NA,NA,NA
+"MeasurementOrFact",403,"measurementType","The variable, name or type of measurement for which the value is reported in measurementValue. Definitions are in the MetricControlledVocabulary.","String",NA,NA,NA,"Producer defined",NA,"y",NA,NA,"Grad, WetWidth, ReachLen","Darwin Core"
+"MeasurementOrFact",403,"measurementValue","The value of the measurementType attribute measured in units given in the measurementType attribute definition and in the MetricControlledVocabulary.","Float",NA,NA,NA,"Producer defined","Unbounded list of numbers",NA,NA,NA,"45, ""20"", ""1"", ""14.5"", ""UV-light""","Darwin Core"

@@ -1,10 +1,12 @@
 #Script to create tables for the the data exchange specifications and the publications
 
+build_vocab_tables {
 library(tidyverse)
 library(stringr)
 library(openxlsx)
 
 metadataDict <- readxl::read_excel("Data/MetadataDictionary.xlsx", sheet = 1)
+write.csv(metadataDict, "Data/MetadataDictionary.csv")
 
 metadataDict <- metadataDict %>%
                dplyr::rename(term = attribute) %>% 
@@ -63,11 +65,26 @@ metricControlledVocabulary  <- right_join(measurementType, measurementTypeID, by
 
 metricControlledVocabulary$dataType  <-  "Numeric"
 metricControlledVocabulary$term <- "term"
-metricControlledVocabulary$termID    <- "401"
+metricControlledVocabulary$termID    <-  401
 metricControlledVocabulary <- relocate(metricControlledVocabulary,"termID","term", "measurementTypeID", "measurementType","description", "units", "dataType")
 
 #Save the metricControlledVocabulary 
 write.csv(metricControlledVocabulary, paste0(getwd(),"/Data Exchange Standard Tables/metricControlledVocabulary.csv"), row.names= FALSE)
 
+#####Build mapping table for the lessons learned paper and project review 
+
+dataMapping <- read.csv("Data Exchange Standard Tables/DataMapping.csv")
+
+wideDataMapping <- dataMapping %>% 
+  pivot_wider(names_from = program, values_from = c(originalField,originalUnit, originalDataType, methodCollection, methodAnalysis))
+
+controlledVocbularyDataMapping <- right_join(wideDataMapping, metricControlledVocabulary)
+
+write.csv(controlledVocbularyDataMapping, paste0(getwd(),"/Data Exchange Standard Tables/controlledVocabularyDataMappingTableForManuscript.csv")) 
+
+desDataMapping <- right_join(wideDataMapping, DES)
+write.csv(desDataMapping, paste0(getwd(),"/Data Exchange Standard Tables/desDataMappingTableForManuscript.csv"))
+
+} 
 #####################
 

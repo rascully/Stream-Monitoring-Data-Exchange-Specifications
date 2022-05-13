@@ -1,6 +1,6 @@
 #Script to create tables for the the data exchange specifications and the publications
 
-build_vocab_tables {
+build_vocab_tables <-function() {
 library(tidyverse)
 library(stringr)
 library(openxlsx)
@@ -87,5 +87,5 @@ desDataMapping <- right_join(wideDataMapping, DES)
 write.csv(desDataMapping, paste0(getwd(),"/Data Exchange Standard Tables/desDataMappingTableForManuscript.csv"))
 
 } 
-#####################
+
 

@@ -16,6 +16,10 @@ library(sbtools)
 library(rgdal)
 library(sjmisc)
 
+# Run function to build DES and controlled vocabulary tables from MetadataDict to make sure everything is up to date 
+  source(paste0(getwd(), "/R/Create_Data_tables_MetadataDict.R"))
+  build_vocab_tables()
+  
 # Load functions 
   source(paste0(getwd(), "/Data Intergration Example/R/data_mapped_field.R")) 
   

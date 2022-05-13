@@ -35,6 +35,7 @@ termID,term,measurmentTypeID,measurementType,dataType,program,originalField,orig
 401,term,511,RPD,Numeric,AIM,ResPoolDepthAvg,meters,Double,www.monitoringresources.org/Document/Method/Details/6859,www.monitoringresources.org/Document/Method/Details/6976
 401,term,511,RPD,Numeric,PIBO,PoolDp,meters,Double,www.monitoringresources.org/Document/Method/Details/6872,www.monitoringresources.org/Document/Method/Details/6976
 401,term,512,BankAngle,Numeric,AIM,BankAngleAvg,degrees,Double,www.monitoringresources.org/Document/Method/Details/68,www.monitoringresources.org/Document/Method/Details/7034
+401,term,512,BankAngle,Numeric,NRSA,XBKA,degrees,Double,,
 401,term,512,BankAngle,Numeric,PIBO,BankAngle,degrees,Double,www.monitoringresources.org/Document/Method/Details/68,NA
 401,term,513,PctStab,Numeric,AIM,PctBankStable,percent,Double,www.monitoringresources.org/Document/Method/Details/7026,www.monitoringresources.org/Document/Method/Details/7010
 401,term,513,PctStab,Numeric,PIBO,Stab,percent,Double,www.monitoringresources.org/Document/Method/Details/69,tbd
@@ -68,7 +69,7 @@ termID,term,measurmentTypeID,measurementType,dataType,program,originalField,orig
 401,term,527,TotalPhosphorous,Numeric,AIM,TotalPhosphorous,µg/L,Double,www.monitoringresources.org/Document/Method/Details/7023,www.monitoringresources.org/Document/Method/Details/7024
 401,term,527,TotalPhosphorous,Numeric,NRSA,PTL,ug/L,Double,www.monitoringresources.org/Document/Method/Details/7016,www.monitoringresources.org/Document/Method/Details/7048
 401,term,528,Turbidity,Numeric,AIM,TurbidityAvg,NTU,Double,www.monitoringresources.org/Document/Method/Details/7012,www.monitoringresources.org/Document/Method/Details/4245
-401,term,528,Turbidity,Numeric,NRSA,TURB,NA,Double,www.monitoringresources.org/Document/Method/Details/7016,www.monitoringresources.org/Document/Method/Details/7048
+401,term,528,Turbidity,Numeric,NRSA,TURB,NTU,Double,www.monitoringresources.org/Document/Method/Details/7016,www.monitoringresources.org/Document/Method/Details/7048
 201,verbatimLocationID,NA,,String,AREMP,SITE_ID,NA,String,NA,NA
 201,verbatimLocationID,NA,,String,AIM,PointID,NA,String,NA,NA
 201,verbatimLocationID,NA,,String,NRSA,SITE_ID,NA,String,NA,NA
@@ -105,4 +106,5 @@ termID,term,measurmentTypeID,measurementType,dataType,program,originalField,orig
 305,fieldNotes,NA,,String,PIBO,StrmFlow,"Categorical: Flow, No Flow, Other",String,www.monitoringresources.org/Document/Method/Details/924,NA
 306,beaverImpactFlow,NA,,Numeric,AREMP,beaver_impacted,NA,String,www.monitoringresources.org/Document/Method/Details/7003,NA
 306,beaverImpactFlow,NA,,Numeric,AIM,BeaverFlowMod,NA,String,www.monitoringresources.org/Document/Method/Details/7002,NA
+306,beaverImpactFlow,NA,,Numeric,PIBO,,,String,,
 305,fieldNotes,NA,,NA,AREMP,NA,NA,NA,www.monitoringresources.org/Document/Method/Details/6844,www.monitoringresources.org/Document/Method/Details/4115

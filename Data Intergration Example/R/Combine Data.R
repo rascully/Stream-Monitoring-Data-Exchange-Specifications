@@ -16,21 +16,16 @@ library(sbtools)
 library(rgdal)
 library(sjmisc)
 
+# Run function to build DES and controlled vocabulary tables from MetadataDict to make sure everything is up to date 
+  source(paste0(getwd(), "/R/Create_Data_tables_MetadataDict.R"))
+  build_vocab_tables()
+  
 # Load functions 
   source(paste0(getwd(), "/Data Intergration Example/R/data_mapped_field.R")) 
   
-# Open metadata file 
-sheets      <- openxlsx::getSheetNames("Data/MetadataDictionary.xlsx")
-data        <- lapply(sheets,openxlsx::read.xlsx, xlsxFile="Data/MetadataDictionary.xlsx")
-names(data) <- sheets
+MetadataDict <- read.csv("data/MetadataDictionary.csv")
+EmunDict    <- read.csv("Data/EmunDictionary.csv")
 
-
-for (n in sheets) { 
-  assign(n, tibble(data[[n]]))
-}
-
-rm(data)
-#unlink(temp_file)
 
 #List of programs to integrated data from.
 program <- c("NRSA","AIM", 'PIBO', "AREMP")
@@ -65,7 +60,6 @@ colnames(flat_data)  <- flat_data_names
 
 # Read the the data mapping 
 DataMapping <- read.csv("Data Exchange Standard Tables/DataMapping.csv")
-
 
 # Loop to download, and pull information from the original datasets into one file. Add record level information. 
 for(p in program) {
@@ -310,12 +304,13 @@ all_data2 <- all_data2 %>%
 #Remove rows that are exact duplicate from the combind dataset
 all_data2 <-  all_data2 %>% 
               distinct()
-
-all_data2 <- trimws(all_data2)
+#Remove starting and trailing white space in strings 
+all_data2 <- all_data2 %>%
+  mutate_if(is.character, str_trim)
 
 # Create a list of unique locations for the combind dataset 
-u_locations <- dplyr::select(all_data2, (c(locationID, latitude, longitude,
-                                           waterBody, projectCode)))
+u_locations <- dplyr::select(all_data2, (c("locationID", "latitude", "longitude",
+                                           "waterBody", "projectCode")))
 unique_locations <- distinct(u_locations)
 
 

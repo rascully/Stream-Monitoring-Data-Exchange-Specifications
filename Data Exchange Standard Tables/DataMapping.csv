@@ -59,15 +59,15 @@ termID,term,measurmentTypeID,measurementType,dataType,program,originalField,orig
 401,term,520,PoolTailFines2,Numeric,PIBO,PTFines2,percent,Double,www.monitoringresources.org/Document/Method/Details/6862,www.monitoringresources.org/Document/Method/Details/868
 401,term,522,PoolTailFines6,Numeric,AIM,PctPoolTailFinesLessThan6mm,percent,Double,www.monitoringresources.org/Document/Method/Details/6862,www.monitoringresources.org/Document/CustomizedMethod/Details/32164
 401,term,522,PoolTailFines6,Numeric,PIBO,PTFines6,percent,Double,www.monitoringresources.org/Document/Method/Details/6862,www.monitoringresources.org/Document/Method/Details/868
-401,term,523,Conductivity,Numeric,NRSA,TSS,mg/L,Double,www.monitoringresources.org/Document/Method/Details/7016,www.monitoringresources.org/Document/Method/Details/7048
+401,term,523,Conductivity,Numeric,NRSA,TSS,milligrams per liter,Double,www.monitoringresources.org/Document/Method/Details/7016,www.monitoringresources.org/Document/Method/Details/7048
 401,term,523,Conductivity,Numeric,PIBO,Cond,Parts per million,Double,www.monitoringresources.org/Document/Method/Details/61,tbd
 401,term,524,pH,Numeric,AIM,pH,SU,Double,www.monitoringresources.org/Document/Method/Details/6673,NA
-401,term,525,SpecificConductance,Numeric,AIM,SpecificConductance,µS/cm,Double,www.monitoringresources.org/Document/Method/Details/6673,NA
-401,term,525,SpecificConductance,Numeric,NRSA,COND,uS/cm,Double,www.monitoringresources.org/Document/Method/Details/7016,www.monitoringresources.org/Document/Method/Details/7048
-401,term,526,TotalNitrogen,Numeric,AIM,TotalNitrogen,µg/L,Double,www.monitoringresources.org/Document/Method/Details/7023,www.monitoringresources.org/Document/Method/Details/7024
-401,term,526,TotalNitrogen,Numeric,NRSA,NTL,ug/L,Double,www.monitoringresources.org/Document/Method/Details/7016,www.monitoringresources.org/Document/Method/Details/7048
-401,term,527,TotalPhosphorous,Numeric,AIM,TotalPhosphorous,µg/L,Double,www.monitoringresources.org/Document/Method/Details/7023,www.monitoringresources.org/Document/Method/Details/7024
-401,term,527,TotalPhosphorous,Numeric,NRSA,PTL,ug/L,Double,www.monitoringresources.org/Document/Method/Details/7016,www.monitoringresources.org/Document/Method/Details/7048
+401,term,525,SpecificConductance,Numeric,AIM,SpecificConductance,microSiemens per centimeter,Double,www.monitoringresources.org/Document/Method/Details/6673,NA
+401,term,525,SpecificConductance,Numeric,NRSA,COND,microSiemens per centimeter,Double,www.monitoringresources.org/Document/Method/Details/7016,www.monitoringresources.org/Document/Method/Details/7048
+401,term,526,TotalNitrogen,Numeric,AIM,TotalNitrogen,micrograms per liter,Double,www.monitoringresources.org/Document/Method/Details/7023,www.monitoringresources.org/Document/Method/Details/7024
+401,term,526,TotalNitrogen,Numeric,NRSA,NTL,micrograms per liter,Double,www.monitoringresources.org/Document/Method/Details/7016,www.monitoringresources.org/Document/Method/Details/7048
+401,term,527,TotalPhosphorous,Numeric,AIM,TotalPhosphorous,micrograms per liter,Double,www.monitoringresources.org/Document/Method/Details/7023,www.monitoringresources.org/Document/Method/Details/7024
+401,term,527,TotalPhosphorous,Numeric,NRSA,PTL,micrograms per liter,Double,www.monitoringresources.org/Document/Method/Details/7016,www.monitoringresources.org/Document/Method/Details/7048
 401,term,528,Turbidity,Numeric,AIM,TurbidityAvg,NTU,Double,www.monitoringresources.org/Document/Method/Details/7012,www.monitoringresources.org/Document/Method/Details/4245
 401,term,528,Turbidity,Numeric,NRSA,TURB,NTU,Double,www.monitoringresources.org/Document/Method/Details/7016,www.monitoringresources.org/Document/Method/Details/7048
 201,verbatimLocationID,NA,,String,AREMP,SITE_ID,NA,String,NA,NA

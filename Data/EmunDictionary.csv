@@ -45,23 +45,23 @@ MeasurementOrFact,measurementType,MeanThalwegDepth,Mean thalweg depth. Metric of
 MeasurementOrFact,measurementType,ReachLen,Length of sampling reach measured along the thalweg (unit: meters).,Producer defined,NA,NA,NA,Reach length 
 MeasurementOrFact,measurementType,WetWidth,Average wetted width across transects (unit: meters).,Producer defined,NA,NA,NA,Average wetted widht 
 MeasurementOrFact,measurementType,PctPool,"Percent of the sample reach (linear extent) classified as pool habitat (expressed as a percent, unit: none, min: 0, max: 100).",Producer defined,NA,NA,NA,Percent pools 
-MeasurementOrFact,measurementType,RPD,Average of the residual pool depth values for all pools in a reach. Residual pool depth the difference of the pool tail depth from the max depth (unit: meters).,Producer defined,NA,NA,NA,Average residual pool depth 
+MeasurementOrFact,measurementType,RPD,Average of the residual pool depth values for all pools in a reach. Residual pool depth is the difference between the pool tail depth and the max depth (unit: meters).,Producer defined,NA,NA,NA,Average residual pool depth 
 MeasurementOrFact,measurementType,BankAngle,Measured angle of the stream bank (unit: degrees).,Producer defined,NA,NA,NA,Bank angle 
-MeasurementOrFact,measurementType,PctStab,"Percent of 42 banks lacking visible signs of active erosion (e.g., slump, slough, fracture) expressed as a percent (unit: none, min: 0, max: 100).",Producer defined,NA,NA,NA,Bank Stability 
-MeasurementOrFact,measurementType,D16,Bed surface particle size corresponding to the 16th percentile of measured particles (unit: millimeters).,Producer defined,NA,NA,NA,
-MeasurementOrFact,measurementType,D50,Median diameter of bed surface particle size corresponding to the areal median (50th percentile of measured particles) (unit: millimeters).,Producer defined,NA,NA,NA,
-MeasurementOrFact,measurementType,D84,Bed surface particle size corresponding to the 84th percentile of measured particles (unit: millimeters).,Producer defined,NA,NA,NA,
-MeasurementOrFact,measurementType,PctBdrk,"Percent of the stream bed area that is composed of particles with a b axis greater than 4098 millimeters (expressed as percent, units: none, min: 0, max: 100).",Producer defined,NA,NA,NA,
-MeasurementOrFact,measurementType,PctFines2,"Percent of the stream bed area that is comprised of particles with a b axis less than 2 millimeters (expressed as percent, units: none, min: 0, max: 100).",Producer defined,NA,NA,NA,
-MeasurementOrFact,measurementType,PctFines6,"Average percent fine sediment (less than 6 millimeters) on the pool tail (expressed as a percent, unit: none, min: 0, max: 100).",Producer defined,NA,NA,NA,
-MeasurementOrFact,measurementType,PoolTailFines2,"Average percent fine sediment (less than 2 millimeters) on the pool tail (expressed as percent, unit: none).",Producer defined,NA,NA,NA,
-MeasurementOrFact,measurementType,PoolTailFines6,"Average percent fine sediment (less than 6 millimeters) on the pool tail (expressed as a percent, unit: none).",Producer defined,NA,NA,NA,
-MeasurementOrFact,measurementType,Conductivity,"Measure of the concentration of ionized materials in water, or the ability of water to conduct electrical current. Used as a measure of mineral / ionic concentration (unit: ppm or parts per million).",Producer defined,NA,NA,NA,
-MeasurementOrFact,measurementType,pH,"Measured pH value (unit: none, min: 0, max: 14).",Producer defined,NA,NA,NA,
-MeasurementOrFact,measurementType,SpecificConductance,Measured specific conductance value. The specific conductance is conductivity standardized to 25 degrees C (unit: uS/cm or microSiemens per centimeter).,Producer defined,NA,NA,NA,
-MeasurementOrFact,measurementType,TotalNitrogen,Measured total nitrogen value (unit: ug/L or micrograms per liter).,Producer defined,NA,NA,NA,
-MeasurementOrFact,measurementType,TotalPhosphorous,Measured total phosphorous value (unit: ug/L or micrograms per liter).,Producer defined,NA,NA,NA,
-MeasurementOrFact,measurementType,Turbidity,Average water clarity as measured by the suspended solids in the water column (unit: NTU or Nephelometric Turbidity unit),Producer defined,NA,NA,NA,
+MeasurementOrFact,measurementType,PctStab,"Percent of banks lacking visible signs of active erosion (e.g., slump, slough, fracture) expressed as a percent (unit: none, min: 0, max: 100).",Producer defined,NA,NA,NA,Bank Stability 
+MeasurementOrFact,measurementType,D16,Bed surface particle size corresponding to the 16th percentile of measured particles (unit: millimeters).,Producer defined,NA,NA,NA,D16
+MeasurementOrFact,measurementType,D50,Bed surface particle size corresponding to the 50th percentile of measured particles (unit: millimeters).,Producer defined,NA,NA,NA,D50
+MeasurementOrFact,measurementType,D84,Bed surface particle size corresponding to the 84th percentile of measured particles (unit: millimeters).,Producer defined,NA,NA,NA,D84
+MeasurementOrFact,measurementType,PctBdrk,"Percent of the stream bed area that is composed of particles with a b axis greater than 4098 millimeters (expressed as percent, units: none, min: 0, max: 100).",Producer defined,NA,NA,NA,Percent bedrock 
+MeasurementOrFact,measurementType,PctFines2,"Percent of the stream bed area that is comprised of particles with a b axis less than 2 millimeters (expressed as percent, units: none, min: 0, max: 100).",Producer defined,NA,NA,NA,Percent fines less than 2 millimeters
+MeasurementOrFact,measurementType,PctFines6,"Average percent fine sediment (less than 6 millimeters) on the pool tail (expressed as a percent, unit: none, min: 0, max: 100).",Producer defined,NA,NA,NA,Percent fines less than 6 millimeters
+MeasurementOrFact,measurementType,PoolTailFines2,"Average percent fine sediment (less than 2 millimeters) on the pool tail (expressed as percent, unit: none).",Producer defined,NA,NA,NA,Pool tail fines less than 2 millimeters 
+MeasurementOrFact,measurementType,PoolTailFines6,"Average percent fine sediment (less than 6 millimeters) on the pool tail (expressed as a percent, unit: none).",Producer defined,NA,NA,NA,Pool tail fines less than 6 millimeters 
+MeasurementOrFact,measurementType,Conductivity,"Measure of the concentration of ionized materials in water, or the ability of water to conduct electrical current. Used as a measure of mineral / ionic concentration (unit: ppm or parts per million).",Producer defined,NA,NA,NA,Conductivity
+MeasurementOrFact,measurementType,pH,"Measured pH value (unit: none, min: 0, max: 14).",Producer defined,NA,NA,NA,pH 
+MeasurementOrFact,measurementType,SpecificConductance,Measured specific conductance value. The specific conductance is conductivity standardized to 25 degrees C (unit: uS/cm or microSiemens per centimeter).,Producer defined,NA,NA,NA,Specific conductance 
+MeasurementOrFact,measurementType,TotalNitrogen,Measured total nitrogen value (unit: ug/L or micrograms per liter).,Producer defined,NA,NA,NA,Total nitrogen 
+MeasurementOrFact,measurementType,TotalPhosphorous,Measured total phosphorous value (unit: ug/L or micrograms per liter).,Producer defined,NA,NA,NA,Total phosporous 
+MeasurementOrFact,measurementType,Turbidity,Average water clarity as measured by the suspended solids in the water column (unit: NTU or Nephelometric Turbidity unit),Producer defined,NA,NA,NA,Turbidity 
 MeasurementOrFact,measurmentTypeID,500,A unique numeric identifier assigned to the measurementType Sin.,Producer defined,NA,NA,NA,
 MeasurementOrFact,measurmentTypeID,501,A unique numeric identifier assigned to the measurementType StreamOrder.,Producer defined,NA,NA,NA,
 MeasurementOrFact,measurmentTypeID,502,A unique numeric identifier assigned to the measurementType AvgBFWDRatio.,Producer defined,NA,NA,NA,
@@ -202,7 +202,7 @@ MetricControlledVocabulary,measurementType,SpecificConductance,Measured specific
 MetricControlledVocabulary,measurementType,TotalNitrogen,Measured total nitrogen value (unit: ug/L or micrograms per liter).,Producer defined,ug/L,NA,NA,
 MetricControlledVocabulary,measurementType,TotalPhosphorous,Measured total phosphorous value (unit: ug/L or micrograms per liter).,Producer defined,ug/L,NA,NA,
 MetricControlledVocabulary,measurementType,Turbidity,Average water clarity as measured by the suspended solids in the water column (unit: NTU or Nephelometric Turbidity unit),Producer defined,NTU,NA,NA,
-MetricControlledVocabulary,dataType,Numeric,"The value is numeric in nature, including negative and positive values, integers and doubles. (ed note: this def may change in  future if integers/doubles are split. Not totally sure on definition.)",Producer defined,NA,NA,NA,
+MetricControlledVocabulary,dataType,Numeric,"The value is numeric in nature, including negative and positive values, integers and doubles. (ed note: this def may change in future if integers/doubles are split. Not totally sure on definition.)",Producer defined,NA,NA,NA,
 MetricControlledVocabulary,unit,NA,Measurement units are not applicable to this measurementType.,Producer defined,NA,NA,NA,
 MetricControlledVocabulary,unit,ratio,ratio,Producer defined,NA,NA,NA,
 MetricControlledVocabulary,unit,m,meters,Producer defined,NA,NA,NA,

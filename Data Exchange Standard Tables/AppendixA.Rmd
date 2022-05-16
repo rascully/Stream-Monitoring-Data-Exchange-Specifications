@@ -1,0 +1,56 @@
+---
+title: "Appendix A"
+author: "Becca Scully"
+date: "5/16/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(knitr)
+library(kableExtra)
+library(tidyverse)
+library(sjPlot)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+
+mapping <- read.csv(paste0(getwd(), "/DataMapping.csv")) 
+cv <- read.csv(paste0(getwd(), "/metricControlledVocabulary.csv"))
+
+dataTables <- function(ID) {
+
+  metricCV <- cv %>% 
+          filter(measurementTypeID ==  ID) %>% 
+          select(-c(entity,dataType, sourcedefinition))
+
+return(kable(metricCV, row.names=FALSE, aline = c, caption = paste(metricCV$term, ) )  %>% 
+   kable_styling(latex_options = "striped", font_size = 9) )
+
+} 
+
+dataTablesMapping <- function(ID) {
+
+  metricMap <- mapping %>% 
+        filter(measurementTypeID ==  ID) %>% 
+        select(-c(measuremnetTypeID, measurementType, termID, term, dataType))
+      
+  return(kable(metricMap, row.names=FALSE, aline = c)  %>% 
+   kable_styling(latex_options = "striped", font_size = 9)) 
+}
+
+
+```
+
+```{r}
+dataTables(500)
+dataTablesMapping(500)
+```
+

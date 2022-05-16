@@ -32,8 +32,6 @@ for (i in 1:length(tables_des)){
 #####Create a controlled vocabulary table from the EmunDict 
 EmunDict <- read.csv("Data/EmunDictionary.csv")
 
-
-
 cv <- EmunDict %>% 
   filter(entity == "MetricControlledVocabulary")
 

@@ -2,25 +2,18 @@
 title: "Appendix A"
 author: "Becca Scully"
 date: "5/16/2022"
-output: html_document
+output:
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+#knitr::opts_chunk$set(echo = TRUE)
 
 library(knitr)
 library(kableExtra)
 library(tidyverse)
-library(sjPlot)
-```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r}
+library(pander)
 
 mapping <- read.csv(paste0(getwd(), "/DataMapping.csv")) 
 cv <- read.csv(paste0(getwd(), "/metricControlledVocabulary.csv"))
@@ -28,29 +21,120 @@ cv <- read.csv(paste0(getwd(), "/metricControlledVocabulary.csv"))
 dataTables <- function(ID) {
 
   metricCV <- cv %>% 
-          filter(measurementTypeID ==  ID) %>% 
-          select(-c(entity,dataType, sourcedefinition))
+          filter(measurementTypeID ==  ID ) %>% 
+          select(-c(entity,dataType, sourcedefinition, attribute, title))
 
-kable(metricCV, row.names=FALSE, aline = c, caption = paste0("Controlled vocabulary for ", metricCV$title, "."))  %>% 
+kbl(metricCV, row.names=FALSE) %>% 
    kable_styling(latex_options = "striped", font_size = 9) 
+
+ 
 
 } 
 
 dataTablesMapping <- function(ID) {
-
-  metricMap <- mapping %>% 
+  
+metricMap <- mapping %>% 
         filter(measurementTypeID ==  ID) %>% 
-        select(-c(measuremnetTypeID, measurementType, termID, term, dataType))
-      
-kable(metricMap, row.names=FALSE, aline = c, caption = paste0("Data mapping for ", metricCV$title,"."))  %>% 
-   kable_styling(latex_options = "striped", font_size = 9)
-}
+        dplyr::select(-c(measurementTypeID, measurementType, termID, term, dataType))
+  
+kbl(metricMap, row.names=FALSE) %>% 
+   kable_styling(latex_options = "striped", font_size = 9) 
 
+    }
+
+
+```
+
+
+```{r}
+dataTables(504)
+dataTablesMapping(504)
+```
+
+```{r}
+dataTables(506)
+dataTablesMapping(506)
+```
+
+```{r}
+dataTables(508)
+dataTablesMapping(508)
+```
+
+```{r}
+dataTables(502)
+dataTablesMapping(502)
+```
+
+```{r}
+dataTables(503)
+dataTablesMapping(503)
+```
+
+```{r}
+dataTables(509)
+dataTablesMapping(509)
+```
+
+```{r}
+dataTables(511)
+dataTablesMapping(511)
+```
+
+```{r}
+dataTables(510)
+dataTablesMapping(510)
+```
+
+```{r}
+dataTables(514)
+dataTablesMapping(514)
+
+
+dataTables(515)
+dataTablesMapping(515)
+
+
+dataTables(516)
+dataTablesMapping(516)
+
+
+dataTables(517)
+dataTablesMapping(517)
+
+dataTables(518)
+dataTablesMapping(518)
+
+dataTables(519)
+dataTablesMapping(519)
 
 ```
 
 ```{r}
-dataTables(500)
-dataTablesMapping(500)
+dataTables(520)
+dataTablesMapping(520)
+
+dataTables(522)
+dataTablesMapping(522)
 ```
 
+```{r}
+dataTables(523)
+dataTablesMapping(523)
+
+dataTables(524)
+dataTablesMapping(524)
+
+dataTables(525)
+dataTablesMapping(525)
+
+dataTables(526)
+dataTablesMapping(526)
+
+dataTables(527)
+dataTablesMapping(527)
+
+dataTables(528)
+dataTablesMapping(528)
+
+```

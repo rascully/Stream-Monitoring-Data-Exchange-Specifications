@@ -50,6 +50,23 @@ DESTable <- rawTable %>%
    kable_styling(latex_options = "striped", font_size = 9) 
  
  
+```
+```{r}
+
+
+cv <- read.csv(paste0(getwd(), "/metricControlledVocabulary.csv"))
+
+cv<- cv %>% 
+      select(c(measurementTypeID, measurementType, description, units, dataType, minimumPossibleValue, maximumPossibleValue))
+
+ kable(cv, row.names=FALSE, aline = c)  %>% 
+   kable_styling(latex_options = "striped", font_size = 9) 
+
+```
+
+```{r}
+
+mapping <- read.csv(paste0(getwd(), "/DataMapping.csv")) 
 
 
 ```

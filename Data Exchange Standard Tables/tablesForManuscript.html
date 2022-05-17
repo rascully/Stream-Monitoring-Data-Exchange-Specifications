@@ -173,11 +173,7 @@ pre code {
 </div>
 
 
-<p>Run code to double check that the DES tables are updated to the MetadataDict.csv</p>
-<pre class="r"><code>#setwd(getwd())
-#source(paste0(getwd(), &quot;/R/Create_Data_Tables_MetadataDict.R&quot;)) 
-
-#build_vocab_tables()</code></pre>
+<p>Be sure to run code to double check that the DES tables are updated to the MetadataDict.csv (wrote code here to run this fucntion )</p>
 <pre class="r"><code>tablesDES &lt;- c(&quot;RecordLevel&quot;, &quot;Location&quot;, &quot;Event&quot;, &quot;MeasurementOrFact&quot;)
 
 
@@ -225,10 +221,10 @@ A unique identifier assigned to the originating source data’s program.
 Integer
 </td>
 <td style="text-align:left;">
-NA
+2; 4
 </td>
 <td style="text-align:left;">
-datasetID is a unique identifiers integer generated when the datasets are combined into the single dataset
+generated when the datasets are combined into the single dataset
 </td>
 </tr>
 <tr>
@@ -283,7 +279,7 @@ The name of the originating data set from which the record was derived.
 String
 </td>
 <td style="text-align:left;">
-EPA NARS 2018 dataset
+EPA NARS 2018 Rivers and Streams dataset
 </td>
 <td style="text-align:left;">
 </td>
@@ -302,7 +298,7 @@ The name (or acronym) in use by the institution having custody of the object(s) 
 String
 </td>
 <td style="text-align:left;">
-BLM, EPA, USFS
+BLM; EPA; USFS
 </td>
 <td style="text-align:left;">
 </td>
@@ -359,7 +355,7 @@ The acronym of the name assigned by the Institution (project leader or principal
 String
 </td>
 <td style="text-align:left;">
-PIBO, AIM, USFS, NRSA
+PIBO; AIM
 </td>
 <td style="text-align:left;">
 </td>
@@ -429,7 +425,7 @@ A unique numeric identifier assigned to the originating source data’s program.
 Integer
 </td>
 <td style="text-align:left;">
-NA
+2; 4
 </td>
 <td style="text-align:left;">
 </td>
@@ -448,10 +444,10 @@ Unique global identifier assigned to the location where the event occurred.
 Integer
 </td>
 <td style="text-align:left;">
-5483, 45, 4444
+3145; 6688
 </td>
 <td style="text-align:left;">
-locationID is a unique identifiers integer generated when the datasets are combined into a single dataset
+generated when the datasets are combined into a single dataset
 </td>
 </tr>
 <tr>
@@ -468,10 +464,10 @@ The verbatim location ID from the originating source dataset assigned by the mon
 String
 </td>
 <td style="text-align:left;">
-5483, 88693, WtR563
+88693; WtR563
 </td>
 <td style="text-align:left;">
-verbatimLocationID is the unique identifiers from the source datasets all converted to data type string. Maintaining the link to location and event identifiers from the source datasets.
+from source datasets converted to string. Reference to source datasets unique identifier for location data.  
 </td>
 </tr>
 <tr>
@@ -488,10 +484,10 @@ The geographic latitude (WGS84) of the geographic center of a location.
 Float
 </td>
 <td style="text-align:left;">
-NA
+38.456141
 </td>
 <td style="text-align:left;">
-All latitude and longitudes need to be in the coordinate reference system is World Geodetic System 1984 (WGS84), not projected.
+latitude and longitudes the coordinate reference system is World Geodetic System 1984 (WGS84), not projected.
 </td>
 </tr>
 <tr>
@@ -508,10 +504,10 @@ The geographic longitude (WGS84) of the geographic center of a location.
 Float
 </td>
 <td style="text-align:left;">
-NA
+-106.994586
 </td>
 <td style="text-align:left;">
-All latitude and longitudes need to be in the coordinate reference system is World Geodetic System 1984 (WGS84), not projected.
+latitude and longitudes the coordinate reference system is World Geodetic System 1984 (WGS84), not projected.
 </td>
 </tr>
 <tr>
@@ -547,7 +543,7 @@ The type of site selection used according to the program.
 String
 </td>
 <td style="text-align:left;">
-Random, Targeted
+Random; Targeted
 </td>
 <td style="text-align:left;">
 </td>
@@ -566,7 +562,7 @@ The name of the water body in which the location occurs.
 String
 </td>
 <td style="text-align:left;">
-NA
+Rock Creek; SALT CREEK
 </td>
 <td style="text-align:left;">
 </td>
@@ -617,7 +613,7 @@ Unique global identifier assigned to the location where the event occurred.
 Integer
 </td>
 <td style="text-align:left;">
-NA
+3145; 6688
 </td>
 <td style="text-align:left;">
 </td>
@@ -636,10 +632,10 @@ Global unique identifier assigned to an Event (something that occurs at a place 
 Integer
 </td>
 <td style="text-align:left;">
-NA
+16280; 9347
 </td>
 <td style="text-align:left;">
-eventID is a unique identifiers integer generated when the datasets are combined into a single dataset
+generated when the datasets are combined into a single dataset
 </td>
 </tr>
 <tr>
@@ -656,10 +652,10 @@ The verbatim event ID from the originating source dataset assigned by the progra
 String
 </td>
 <td style="text-align:left;">
-FFFE9F28-60DB-40C0-B9C0-4AFC753A9880, 10002
+FFFE9F28-60DB-40C0-B9C0-4AFC753A9880; 10002
 </td>
 <td style="text-align:left;">
-verbatimEventID are the unique identifiers from the source datasets all convert to data type string. By maintaining the link to location and event identifiers from the source datasets, the data user can trace information back to the source.
+from source datasets converted to string. Reference to source datasets unique identifier for location data.
 </td>
 </tr>
 <tr>
@@ -676,7 +672,7 @@ The calendar date of the event from the source data.
 Date
 </td>
 <td style="text-align:left;">
-NA
+8/2/2014
 </td>
 <td style="text-align:left;">
 </td>
@@ -714,11 +710,9 @@ The name of, reference to, or description of the stream survey method or protoco
 String
 </td>
 <td style="text-align:left;">
-UV light trap, “mist net”, “bottom trawl”, “ad hoc observation”, “point count”, “Penguins from space: faecal stains reveal the location of emperor penguin colonies, <a href="http://dx.doi.org/10.1111/j.1466-8238.2009.00467.x" class="uri">http://dx.doi.org/10.1111/j.1466-8238.2009.00467.x</a>”, “Takats et al. 2001. Guidelines for Nocturnal Owl Monitoring in North America. Beaverhill Bird Observatory and Bird Studies Canada, Edmonton, Alberta. 32 pp.”, “<a href="http://www.bsc-eoc.org/download/Owl.pdf" class="uri">http://www.bsc-eoc.org/download/Owl.pdf</a>”
+Wadeable
 </td>
 <td style="text-align:left;">
-fieldNotes is a field with data type string for this implementation of the data exchange standard fieldNotes is filled in with the streamflow at the time of the sampling event. Some datasets share flow as percent dry an integer, while others share streamflow as a string. For the integrated dataset, transform all stream flows string categorized as “No Flow (Dry)”, “Flow (Whole Reach)”, “Other”. For programs reporting streamflow as percent dry, we transformed the data such that: • 0 = Flow (Whole Reach)<br />
-• 100 = No Flow (Dry) • Other = All other values We transformed the data in inverse for programs that report the percent of the reach with the flow.
 </td>
 </tr>
 <tr>
@@ -735,9 +729,11 @@ The description of flow for the reach (flow, partial flow or dry).
 String
 </td>
 <td style="text-align:left;">
-dry, wet
+Flow (Whole Reach)
 </td>
 <td style="text-align:left;">
+fieldNotes is a field with data type string for this implementation of the data exchange standard fieldNotes is filled in with the streamflow at the time of the sampling event. Some datasets share flow as percent dry an integer, while others share streamflow as a string. For the integrated dataset, transform all stream flows string categorized as “No Flow (Dry)”, “Flow (Whole Reach)”, “Other”. For programs reporting streamflow as percent dry, we transformed the data such that: • 0 = Flow (Whole Reach)<br />
+• 100 = No Flow (Dry) • Other = All other values We transformed the data in inverse for programs that report the percent of the reach with the flow.
 </td>
 </tr>
 <tr>
@@ -748,13 +744,13 @@ beaverImpactFlow
 306
 </td>
 <td style="text-align:left;">
-Beaver impact the flow of the reach.
+Beaver impact on the flow of the reach.
 </td>
 <td style="text-align:left;">
 String
 </td>
 <td style="text-align:left;">
-NA
+Yes; No
 </td>
 <td style="text-align:left;">
 NA = Beaver impacts were not reported in the source data, Yes = Beaver have changed the flow in the reach, No = Beaver have not changed the flow of the reach
@@ -806,7 +802,7 @@ Global unique identifier assigned to an Event (something that occurs at a place 
 Integer
 </td>
 <td style="text-align:left;">
-NA
+16280; 9347
 </td>
 <td style="text-align:left;">
 </td>
@@ -825,10 +821,10 @@ Unique identifier assigned to the measurementValue.
 Integer
 </td>
 <td style="text-align:left;">
-NA
+2; 96888
 </td>
 <td style="text-align:left;">
-measurementID is a unique identifier integer generated when the datasets are combined into the single datasets.
+generated when the datasets are combined into the single datasets.
 </td>
 </tr>
 <tr>
@@ -845,9 +841,10 @@ Unique identifier assigned to the measurementType.
 Integer
 </td>
 <td style="text-align:left;">
-NA
+514
 </td>
 <td style="text-align:left;">
+defined in the metric-controlled vocabulary
 </td>
 </tr>
 <tr>
@@ -864,9 +861,10 @@ The variable, name or type of measurement for which the value is reported in mea
 String
 </td>
 <td style="text-align:left;">
-Grad, WetWidth, ReachLen
+Grad; WetWidth; ReachLen
 </td>
 <td style="text-align:left;">
+defined in the metric-controlled vocabulary
 </td>
 </tr>
 <tr>
@@ -883,13 +881,694 @@ The value of the measurementType attribute measured in units given in the measur
 Float
 </td>
 <td style="text-align:left;">
-45, “20”, “1”, “14.5”, “UV-light”
+1.23; 21.56
 </td>
 <td style="text-align:left;">
 </td>
 </tr>
 </tbody>
 </table>
+<pre class="r"><code>cv &lt;- read.csv(paste0(getwd(), &quot;/metricControlledVocabulary.csv&quot;))
+
+cv&lt;- cv %&gt;% 
+      select(c(measurementTypeID, measurementType, description, units, dataType, minimumPossibleValue, maximumPossibleValue))
+
+ kable(cv, row.names=FALSE, aline = c)  %&gt;% 
+   kable_styling(latex_options = &quot;striped&quot;, font_size = 9) </code></pre>
+<table class="table" style="font-size: 9px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+measurementTypeID
+</th>
+<th style="text-align:left;">
+measurementType
+</th>
+<th style="text-align:left;">
+description
+</th>
+<th style="text-align:left;">
+units
+</th>
+<th style="text-align:left;">
+dataType
+</th>
+<th style="text-align:right;">
+minimumPossibleValue
+</th>
+<th style="text-align:right;">
+maximumPossibleValue
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+500
+</td>
+<td style="text-align:left;">
+Sin
+</td>
+<td style="text-align:left;">
+Reach sinuosity (reach length along the thalweg divided by straight line distance between the bottom of the reach and the top of the reach, unit: none)
+</td>
+<td style="text-align:left;">
+ratio
+</td>
+<td style="text-align:left;">
+Numeric
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+501
+</td>
+<td style="text-align:left;">
+StreamOrder
+</td>
+<td style="text-align:left;">
+Strahler stream order of the site from the provider dataset (unit: none).
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Numeric
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+502
+</td>
+<td style="text-align:left;">
+AvgBFWDRatio
+</td>
+<td style="text-align:left;">
+Average bankfull width depth ratio for the reach (unit: meters).
+</td>
+<td style="text-align:left;">
+meters
+</td>
+<td style="text-align:left;">
+Numeric
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+503
+</td>
+<td style="text-align:left;">
+BFHeight
+</td>
+<td style="text-align:left;">
+Average bankfull height measured from water surface across transects (unit: meters).
+</td>
+<td style="text-align:left;">
+meters
+</td>
+<td style="text-align:left;">
+Numeric
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+504
+</td>
+<td style="text-align:left;">
+BFWidth
+</td>
+<td style="text-align:left;">
+Average bankfull width across transects for the reach (unit: meters).
+</td>
+<td style="text-align:left;">
+meters
+</td>
+<td style="text-align:left;">
+Numeric
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+505
+</td>
+<td style="text-align:left;">
+countTransectsBFWidth
+</td>
+<td style="text-align:left;">
+Number of cross sections included in the average bankfull width calculation (units: count of measurements)
+</td>
+<td style="text-align:left;">
+count of measurments
+</td>
+<td style="text-align:left;">
+Numeric
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+506
+</td>
+<td style="text-align:left;">
+Grad
+</td>
+<td style="text-align:left;">
+Slope of water surface from the bottom of the reach to the top of the reach (expressed as percent, unit: none).
+</td>
+<td style="text-align:left;">
+percent
+</td>
+<td style="text-align:left;">
+Numeric
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+507
+</td>
+<td style="text-align:left;">
+MeanThalwegDepth
+</td>
+<td style="text-align:left;">
+Mean thalweg depth. Metric of how deep the water was at the site (unit: meters).
+</td>
+<td style="text-align:left;">
+meters
+</td>
+<td style="text-align:left;">
+Numeric
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+508
+</td>
+<td style="text-align:left;">
+ReachLen
+</td>
+<td style="text-align:left;">
+Length of sampling reach measured along the thalweg (unit: meters).
+</td>
+<td style="text-align:left;">
+meters
+</td>
+<td style="text-align:left;">
+Numeric
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+509
+</td>
+<td style="text-align:left;">
+WetWidth
+</td>
+<td style="text-align:left;">
+Average wetted width across transects (unit: meters).
+</td>
+<td style="text-align:left;">
+meters
+</td>
+<td style="text-align:left;">
+Numeric
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+510
+</td>
+<td style="text-align:left;">
+PctPool
+</td>
+<td style="text-align:left;">
+Percent of the sample reach (linear extent) classified as pool habitat (expressed as a percent, unit: none, min: 0, max: 100).
+</td>
+<td style="text-align:left;">
+percent
+</td>
+<td style="text-align:left;">
+Numeric
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+511
+</td>
+<td style="text-align:left;">
+RPD
+</td>
+<td style="text-align:left;">
+Average of the residual pool depth values for all pools in a reach. Residual pool depth the difference of the pool tail depth from the max depth (unit: meters).
+</td>
+<td style="text-align:left;">
+meters
+</td>
+<td style="text-align:left;">
+Numeric
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+512
+</td>
+<td style="text-align:left;">
+BankAngle
+</td>
+<td style="text-align:left;">
+Average of the measured angle of the stream bank (unit: degrees).
+</td>
+<td style="text-align:left;">
+degrees
+</td>
+<td style="text-align:left;">
+Numeric
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+180
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+513
+</td>
+<td style="text-align:left;">
+PctStab
+</td>
+<td style="text-align:left;">
+Percent of banks lacking visible signs of active erosion (e.g., slump, slough, fracture) (unit: none, min: 0, max: 100).
+</td>
+<td style="text-align:left;">
+percent
+</td>
+<td style="text-align:left;">
+Numeric
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+514
+</td>
+<td style="text-align:left;">
+D16
+</td>
+<td style="text-align:left;">
+Bed surface particle size corresponding to the 16th percentile of measured particles (unit: millimeters).
+</td>
+<td style="text-align:left;">
+millimeters
+</td>
+<td style="text-align:left;">
+Numeric
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+4098
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+515
+</td>
+<td style="text-align:left;">
+D50
+</td>
+<td style="text-align:left;">
+Bed surface particle size corresponding to the 50th percentile of measured particles (unit: millimeters).
+</td>
+<td style="text-align:left;">
+millimeters
+</td>
+<td style="text-align:left;">
+Numeric
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+4098
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+516
+</td>
+<td style="text-align:left;">
+D84
+</td>
+<td style="text-align:left;">
+Bed surface particle size corresponding to the 84th percentile of measured particles (unit: millimeters).
+</td>
+<td style="text-align:left;">
+millimeters
+</td>
+<td style="text-align:left;">
+Numeric
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+4098
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+517
+</td>
+<td style="text-align:left;">
+PctBdrk
+</td>
+<td style="text-align:left;">
+Percent of the stream bed area that is composed of particles with a b axis greater than 4098 millimeters (expressed as percent, units: none, min: 0, max: 100).
+</td>
+<td style="text-align:left;">
+percent
+</td>
+<td style="text-align:left;">
+Numeric
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+518
+</td>
+<td style="text-align:left;">
+PctFines2
+</td>
+<td style="text-align:left;">
+Percent of the stream bed area that is comprised of particles with a b axis less than 2 millimeters (expressed as percent, units: none, min: 0, max: 100).
+</td>
+<td style="text-align:left;">
+percent
+</td>
+<td style="text-align:left;">
+Numeric
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+519
+</td>
+<td style="text-align:left;">
+PctFines6
+</td>
+<td style="text-align:left;">
+Average percent fine sediment (less than 6 millimeters) on the pool tail (expressed as a percent, unit: none, min: 0, max: 100).
+</td>
+<td style="text-align:left;">
+percent
+</td>
+<td style="text-align:left;">
+Numeric
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+520
+</td>
+<td style="text-align:left;">
+PoolTailFines2
+</td>
+<td style="text-align:left;">
+Average percent fine sediment (less than 2 millimeters) on the pool tail (expressed as percent, unit: none).
+</td>
+<td style="text-align:left;">
+percent
+</td>
+<td style="text-align:left;">
+Numeric
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+522
+</td>
+<td style="text-align:left;">
+PoolTailFines6
+</td>
+<td style="text-align:left;">
+Average percent fine sediment (less than 6 millimeters) on the pool tail (expressed as a percent, unit: none).
+</td>
+<td style="text-align:left;">
+percent
+</td>
+<td style="text-align:left;">
+Numeric
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+523
+</td>
+<td style="text-align:left;">
+Conductivity
+</td>
+<td style="text-align:left;">
+Measure of the concentration of ionized materials in water, or the ability of water to conduct electrical current. Used as a measure of mineral / ionic concentration (unit: ppm or parts per million).
+</td>
+<td style="text-align:left;">
+parts per million
+</td>
+<td style="text-align:left;">
+Numeric
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+524
+</td>
+<td style="text-align:left;">
+pH
+</td>
+<td style="text-align:left;">
+Measured pH value (unit: none, min: 0, max:14).
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Numeric
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+525
+</td>
+<td style="text-align:left;">
+SpecificConductance
+</td>
+<td style="text-align:left;">
+Measured specific conductance value. The specific conductance is conductivity standardized to 25 degrees C (unit: uS/cm or microSiemens per centimeter).
+</td>
+<td style="text-align:left;">
+uS/cm
+</td>
+<td style="text-align:left;">
+Numeric
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+526
+</td>
+<td style="text-align:left;">
+TotalNitrogen
+</td>
+<td style="text-align:left;">
+Measured total nitrogen value (unit: ug/L or micrograms per liter).
+</td>
+<td style="text-align:left;">
+ug/L
+</td>
+<td style="text-align:left;">
+Numeric
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+527
+</td>
+<td style="text-align:left;">
+TotalPhosphorous
+</td>
+<td style="text-align:left;">
+Measured total phosphorous value (unit: ug/L or micrograms per liter).
+</td>
+<td style="text-align:left;">
+ug/L
+</td>
+<td style="text-align:left;">
+Numeric
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+528
+</td>
+<td style="text-align:left;">
+Turbidity
+</td>
+<td style="text-align:left;">
+Average water clarity as measured by the suspended solids in the water column (unit: NTU or Nephelometric Turbidity unit)
+</td>
+<td style="text-align:left;">
+NTU
+</td>
+<td style="text-align:left;">
+Numeric
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>mapping &lt;- read.csv(paste0(getwd(), &quot;/DataMapping.csv&quot;)) </code></pre>
 
 
 

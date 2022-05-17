@@ -45,9 +45,9 @@ MeasurementOrFact,measurementType,MeanThalwegDepth,Mean thalweg depth. Metric of
 MeasurementOrFact,measurementType,ReachLen,Length of sampling reach measured along the thalweg (unit: meters).,Producer defined,NA,NA,NA,Reach length 
 MeasurementOrFact,measurementType,WetWidth,Average wetted width across transects (unit: meters).,Producer defined,NA,NA,NA,Average wetted widht 
 MeasurementOrFact,measurementType,PctPool,"Percent of the sample reach (linear extent) classified as pool habitat (expressed as a percent, unit: none, min: 0, max: 100).",Producer defined,NA,NA,NA,Percent pools 
-MeasurementOrFact,measurementType,RPD,Average of the residual pool depth values for all pools in a reach. Residual pool depth is the difference between the pool tail depth and the max depth (unit: meters).,Producer defined,NA,NA,NA,Average residual pool depth 
+MeasurementOrFact,measurementType,RPD,Average of the residual pool depth values. Residual pool depth is the difference between the pool tail depth and the max depth (unit: meters).,Producer defined,NA,NA,NA,Average residual pool depth 
 MeasurementOrFact,measurementType,BankAngle,Measured angle of the stream bank (unit: degrees).,Producer defined,NA,NA,NA,Bank angle 
-MeasurementOrFact,measurementType,PctStab,"Percent of 42 banks lacking visible signs of active erosion (e.g., slump, slough, fracture) expressed as a percent (unit: none, min: 0, max: 100).",Producer defined,NA,NA,NA,Bank Stability 
+MeasurementOrFact,measurementType,PctStab,"Percent of banks lacking visible signs of active erosion (e.g., slump, slough, fracture) (unit: none, min: 0, max: 100).",Producer defined,NA,NA,NA,Bank Stability 
 MeasurementOrFact,measurementType,D16,Bed surface particle size corresponding to the 16th percentile of measured particles (unit: millimeters).,Producer defined,NA,NA,NA,D16
 MeasurementOrFact,measurementType,D50,Median diameter of bed surface particle size corresponding to the areal median (50th percentile of measured particles) (unit: millimeters).,Producer defined,NA,NA,NA,D50
 MeasurementOrFact,measurementType,D84,Bed surface particle size corresponding to the 84th percentile of measured particles (unit: millimeters).,Producer defined,NA,NA,NA,D84
@@ -186,8 +186,8 @@ MetricControlledVocabulary,measurementType,ReachLen,Length of sampling reach mea
 MetricControlledVocabulary,measurementType,WetWidth,Average wetted width across transects (unit: meters).,Producer defined,meters,NA,NA,Average wetted widht 
 MetricControlledVocabulary,measurementType,PctPool,"Percent of the sample reach (linear extent) classified as pool habitat (expressed as a percent, unit: none, min: 0, max: 100).",Producer defined,percent,0,100,Percent pools 
 MetricControlledVocabulary,measurementType,RPD,Average of the residual pool depth values for all pools in a reach. Residual pool depth the difference of the pool tail depth from the max depth (unit: meters).,Producer defined,meters,NA,NA,Average residual pool depth 
-MetricControlledVocabulary,measurementType,BankAngle,Measured angle of the stream bank (unit: degrees).,Producer defined,degrees,0,180,Bank angle 
-MetricControlledVocabulary,measurementType,PctStab,"Percent of banks lacking visible signs of active erosion (e.g., slump, slough, fracture) expressed as a percent (unit: none, min: 0, max: 100).",Producer defined,percent,0,100,Bank Stability 
+MetricControlledVocabulary,measurementType,BankAngle,Average of the measured angle of the stream bank (unit: degrees).,Producer defined,degrees,0,180,Bank angle 
+MetricControlledVocabulary,measurementType,PctStab,"Percent of banks lacking visible signs of active erosion (e.g., slump, slough, fracture)  (unit: none, min: 0, max: 100).",Producer defined,percent,0,100,Bank Stability 
 MetricControlledVocabulary,measurementType,D16,Bed surface particle size corresponding to the 16th percentile of measured particles (unit: millimeters).,Producer defined,millimeters,0,4098,D16
 MetricControlledVocabulary,measurementType,D50,Bed surface particle size corresponding to the 50th percentile of measured particles (unit: millimeters).,Producer defined,millimeters,0,4098,D50
 MetricControlledVocabulary,measurementType,D84,Bed surface particle size corresponding to the 84th percentile of measured particles (unit: millimeters).,Producer defined,millimeters,0,4098,D84

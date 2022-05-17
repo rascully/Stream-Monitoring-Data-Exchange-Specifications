@@ -23,7 +23,7 @@ library(sjmisc)
 # Load functions 
   source(paste0(getwd(), "/Data Intergration Example/R/data_mapped_field.R")) 
   
-MetadataDict <- read.csv("data/MetadataDictionary.csv")
+MetadataDict <- read.csv("Data/MetadataDictionary.csv")
 EmunDict    <- read.csv("Data/EmunDictionary.csv")
 
 
@@ -167,7 +167,7 @@ for(p in program) {
 
 ##### Rename the SubSetData from the original fields to the terms (field names) from the data exchange standard #####
   term <- DataMapping %>% 
-    filter(program == p) %>% 
+    filter(projectCode == p) %>% 
     filter(originalField %in% names(data)) 
   
   SubSetData <- data %>% 
@@ -423,3 +423,4 @@ for(i in 1:length(names(list_of_datasets))){
 return(list_of_datasets) 
 
 }
+

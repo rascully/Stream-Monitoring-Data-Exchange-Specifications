@@ -32,8 +32,6 @@ for (i in 1:length(tables_des)){
 #####Create a controlled vocabulary table from the EmunDict 
 EmunDict <- read.csv("Data/EmunDictionary.csv")
 
-
-
 cv <- EmunDict %>% 
   filter(entity == "MetricControlledVocabulary")
 
@@ -77,7 +75,7 @@ write.csv(metricControlledVocabulary, paste0(getwd(),"/Data Exchange Standard Ta
 dataMapping <- read.csv("Data Exchange Standard Tables/DataMapping.csv")
 
 wideDataMapping <- dataMapping %>% 
-  pivot_wider(names_from = program, values_from = c(originalField,originalUnit, originalDataType, methodCollection, methodAnalysis))
+  pivot_wider(names_from = projectCode, values_from = c(originalField,originalUnit, originalDataType, methodCollection, methodAnalysis))
 
 metricControlledVocabulary$measurementTypeID <- as.numeric(metricControlledVocabulary$measurementTypeID)
 

@@ -21,7 +21,7 @@ library(tidyverse)
   #
   
   variable <- Crosswalk_tall %>% 
-    filter(term == DES_field & program == Program) %>%  
+    filter(term == DES_field & projectCode == Program) %>%  
     dplyr::select(originalField)   %>% 
     unlist(use.names = F) %>% 
     unique() %>% trimws()

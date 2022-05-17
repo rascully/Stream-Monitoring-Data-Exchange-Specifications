@@ -1,4 +1,4 @@
-termID,term,measurmentTypeID,measurementType,dataType,program,originalField,originalUnit,originalDataType,methodCollection,methodAnalysis
+termID,term,measurementTypeID,measurementType,dataType,program,originalField,originalUnit,originalDataType,methodCollection,methodAnalysis
 401,term,500,Sin,Numeric,AIM,Sinuosity,ratio,Double,www.monitoringresources.org/Document/Method/Details/7017,www.monitoringresources.org/Document/Method/Details/7007
 401,term,500,Sin,Numeric,NRSA,SINU,ratio,Double,www.monitoringresources.org/Document/Method/Details/1610,www.monitoringresources.org/Document/Method/Details/7005
 401,term,500,Sin,Numeric,PIBO,Sin,ratio,Double,www.monitoringresources.org/Document/Method/Details/6868,www.monitoringresources.org/Document/Method/Details/7007

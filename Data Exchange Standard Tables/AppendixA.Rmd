@@ -31,8 +31,8 @@ dataTables <- function(ID) {
           filter(measurementTypeID ==  ID) %>% 
           select(-c(entity,dataType, sourcedefinition))
 
-return(kable(metricCV, row.names=FALSE, aline = c, caption = paste(metricCV$term, ) )  %>% 
-   kable_styling(latex_options = "striped", font_size = 9) )
+kable(metricCV, row.names=FALSE, aline = c, caption = paste0("Controlled vocabulary for ", metricCV$title, "."))  %>% 
+   kable_styling(latex_options = "striped", font_size = 9) 
 
 } 
 
@@ -42,8 +42,8 @@ dataTablesMapping <- function(ID) {
         filter(measurementTypeID ==  ID) %>% 
         select(-c(measuremnetTypeID, measurementType, termID, term, dataType))
       
-  return(kable(metricMap, row.names=FALSE, aline = c)  %>% 
-   kable_styling(latex_options = "striped", font_size = 9)) 
+kable(metricMap, row.names=FALSE, aline = c, caption = paste0("Data mapping for ", metricCV$title,"."))  %>% 
+   kable_styling(latex_options = "striped", font_size = 9)
 }
 
 

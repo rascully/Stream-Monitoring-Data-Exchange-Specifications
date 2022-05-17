@@ -79,6 +79,8 @@ dataMapping <- read.csv("Data Exchange Standard Tables/DataMapping.csv")
 wideDataMapping <- dataMapping %>% 
   pivot_wider(names_from = program, values_from = c(originalField,originalUnit, originalDataType, methodCollection, methodAnalysis))
 
+metricControlledVocabulary$measurementTypeID <- as.numeric(metricControlledVocabulary$measurementTypeID)
+
 controlledVocbularyDataMapping <- right_join(wideDataMapping, metricControlledVocabulary)
 
 write.csv(controlledVocbularyDataMapping, paste0(getwd(),"/Data Exchange Standard Tables/controlledVocabularyDataMappingTableForManuscript.csv")) 

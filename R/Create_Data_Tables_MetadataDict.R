@@ -81,10 +81,10 @@ metricControlledVocabulary$measurementTypeID <- as.numeric(metricControlledVocab
 
 controlledVocbularyDataMapping <- right_join(wideDataMapping, metricControlledVocabulary)
 
-write.csv(controlledVocbularyDataMapping, paste0(getwd(),"/Data Exchange Standard Tables/controlledVocabularyDataMappingTableForManuscript.csv")) 
+write.csv(controlledVocbularyDataMapping, paste0(getwd(),"/Data Exchange Standard Tables/Tables For Manuscripts/controlledVocabularyDataMappingTableForManuscript.csv")) 
 
 desDataMapping <- right_join(wideDataMapping, DES)
-write.csv(desDataMapping, paste0(getwd(),"/Data Exchange Standard Tables/desDataMappingTableForManuscript.csv"))
+write.csv(desDataMapping, paste0(getwd(),"/Data Exchange Standard Tables/Tables for Manuscripts/desDataMappingTableForManuscript.csv"))
 
 } 
 

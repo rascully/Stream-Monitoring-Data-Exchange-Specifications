@@ -15,18 +15,21 @@ download_AIM<- function(){
   # https://services1.arcgis.com/KbxwQRRfWyEYLgp4/arcgis/rest/services/BLM_Natl_AIM_Lotic_Indicators_Hub/FeatureServer/0/query?outFields=*&where=1%3D1
   
   
-  url <- list(hostname = "services1.arcgis.com/KbxwQRRfWyEYLgp4/arcgis/rest/services",
-              scheme = "https",
-              path = "BLM_Natl_AIM_Lotic_Indicators_Hub/FeatureServer/0/query",
-              query = list(
-                where = "1=1",
-                outFields = "*",
-                returnGeometry = "true",
-                f = "geojson")) %>% 
-    setattr("class", "url")
+  #url <- list(hostname = "services1.arcgis.com/KbxwQRRfWyEYLgp4/arcgis/rest/services",
+  #            scheme = "https",
+  #            path = "BLM_Natl_AIM_Lotic_Indicators_Hub/FeatureServer/0/query",
+  #            query = list(
+  #              where = "1=1",
+  #              outFields = "*",
+  #              returnGeometry = "true",
+  #              f = "geojson")) %>% 
+  #  setattr("class", "url")
   
-  request <- build_url(url)
-  BLM <- st_read(request, stringsAsFactors = TRUE) #Load the file from the Data file 
+  #request <- build_url(url)
+  #BLM <- st_read(request, stringsAsFactors = TRUE) #Load the file from the Data file
+  
+  BLM <- geojson_sf("https://services1.arcgis.com/KbxwQRRfWyEYLgp4/arcgis/rest/services/BLM_Natl_AIM_Lotic_Indicators_Hub/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson")
+ 
   data <- as_tibble(BLM)
   
   #Check the projection 

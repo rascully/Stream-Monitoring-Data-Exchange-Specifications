@@ -62,6 +62,7 @@ MeasurementOrFact,measurementType,SpecificConductance,Measured specific conducta
 MeasurementOrFact,measurementType,TotalNitrogen,Measured total nitrogen value (unit: ug/L or micrograms per liter).,Producer defined,ug/L,0,NA,
 MeasurementOrFact,measurementType,TotalPhosphorous,Measured total phosphorous value (unit: ug/L or micrograms per liter).,Producer defined,ug/L,0,NA,
 MeasurementOrFact,measurementType,Turbidity,Average water clarity as measured by the suspended solids in the water column (unit: NTU or Nephelometric Turbidity unit),Producer defined,NTU,0,NA,
+MeasurementOrFact,measurementType,ProtocolReachLen, Total reach length intended to be sampled. Calculated in the app from average widths using the protocol rules (unit: meter).,Producer defined,NTU,0,NA,
 MeasurementOrFact,measurmentTypeID,500,A unique numeric identifier assigned to the measurementType Sin.,Producer defined,NA,NA,NA,
 MeasurementOrFact,measurmentTypeID,501,A unique numeric identifier assigned to the measurementType StreamOrder.,Producer defined,NA,NA,NA,
 MeasurementOrFact,measurmentTypeID,502,A unique numeric identifier assigned to the measurementType AvgBFWDRatio.,Producer defined,NA,NA,NA,
@@ -89,6 +90,7 @@ MeasurementOrFact,measurmentTypeID,525,A unique numeric identifier assigned to t
 MeasurementOrFact,measurmentTypeID,526,A unique numeric identifier assigned to the measurementType TotalNitrogen.,Producer defined,NA,NA,NA,
 MeasurementOrFact,measurmentTypeID,527,A unique numeric identifier assigned to the measurementType TotalPhosphorous.,Producer defined,NA,NA,NA,
 MeasurementOrFact,measurmentTypeID,528,A unique numeric identifier assigned to the measurementType Turbidity.,Producer defined,NA,NA,NA,
+MeasurementOrFact,measurmentTypeID,529,A unique numeric identifier assigned to the measurementType ProtocolReachLen.,Producer defined,NA,NA,NA,
 DataMapping,termID,401,The termID assigned to column header term,Producer defined,NA,NA,NA,
 DataMapping,termID,201,The termID assigned to column header verbatimLocationID,Producer defined,NA,NA,NA,
 DataMapping,termID,202,The termID assigned to column header latitude,Producer defined,NA,NA,NA,
@@ -129,6 +131,7 @@ DataMapping,measurmentTypeID,525,A unique numeric identifier assigned to the mea
 DataMapping,measurmentTypeID,526,A unique numeric identifier assigned to the measurementType TotalNitrogen.,Producer defined,NA,NA,NA,
 DataMapping,measurmentTypeID,527,A unique numeric identifier assigned to the measurementType TotalPhosphorous.,Producer defined,NA,NA,NA,
 DataMapping,measurmentTypeID,528,A unique numeric identifier assigned to the measurementType Turbidity.,Producer defined,NA,NA,NA,
+DataMapping,measurmentTypeID,529,A unique numeric identifier assigned to the measurementType ProtocolReachLen.,Producer defined,NA,NA,NA,
 DataMapping,measurementType,blank cell,There is no measurementType associated with this term.,Producer defined,NA,NA,NA,
 DataMapping,dataType,Date,The data type values are calendar dates (yyyy-mm-dd).,Producer defined,NA,NA,NA,
 DataMapping,dataType,Integer,The data type values are whole number integers.,Producer defined,NA,NA,NA,
@@ -174,6 +177,7 @@ MetricControlledVocabulary,measurementTypeID,525,A unique numeric identifier ass
 MetricControlledVocabulary,measurementTypeID,526,A unique numeric identifier assigned to the measurementType TotalNitrogen.,Producer defined,NA,NA,NA,
 MetricControlledVocabulary,measurementTypeID,527,A unique numeric identifier assigned to the measurementType TotalPhosphorous.,Producer defined,NA,NA,NA,
 MetricControlledVocabulary,measurementTypeID,528,A unique numeric identifier assigned to the measurementType Turbidity.,Producer defined,NA,NA,NA,
+MetricControlledVocabulary,measurementTypeID,529,A unique numeric identifier assigned to the measurementType ProtocolReachLen.,Producer defined,NA,NA,NA,
 MetricControlledVocabulary,measurementType,Sin,"Reach sinuosity (reach length along the thalweg divided by straight line distance between the bottom of the reach and the top of the reach, expressed as a ratio, unit: none)",Producer defined,ratio,1,NA,Reach sinuosity 
 MetricControlledVocabulary,measurementType,StreamOrder,Strahler stream order of the site from the provider dataset (unit: none).,Producer defined,NA,1,12,Strahler stream order
 MetricControlledVocabulary,measurementType,AvgBFWDRatio,Average bankfull width depth ratio for the reach (unit: meters).,Producer defined,meters,NA,NA,Average bankfull width to depth ratio 
@@ -202,6 +206,7 @@ MetricControlledVocabulary,measurementType,SpecificConductance,Measured specific
 MetricControlledVocabulary,measurementType,TotalNitrogen,Measured total nitrogen value (unit: ug/L or micrograms per liter).,Producer defined,ug/L,0,NA,Total nitrogen 
 MetricControlledVocabulary,measurementType,TotalPhosphorous,Measured total phosphorous value (unit: ug/L or micrograms per liter).,Producer defined,ug/L,0,NA,Total phosporous 
 MetricControlledVocabulary,measurementType,Turbidity,Average water clarity as measured by the suspended solids in the water column (unit: NTU or Nephelometric Turbidity unit),Producer defined,NTU,0,NA,Turbidity 
+MetricControlledVocabulary,measurementType,ProtocolReachLen, Total reach length intended to be sampled. Calculated in the app from average widths using the protocol rules (unit: meter).,Producer defined,metrics ,,,Protocol reach length 
 MetricControlledVocabulary,dataType,Numeric,"The value is numeric in nature, including negative and positive values, integers and doubles. (ed note: this def may change in  future if integers/doubles are split. Not totally sure on definition.)",Producer defined,NA,NA,NA,
 MetricControlledVocabulary,unit,NA,Measurement units are not applicable to this measurementType.,Producer defined,NA,NA,NA,
 MetricControlledVocabulary,unit,ratio,ratio,Producer defined,NA,NA,NA,

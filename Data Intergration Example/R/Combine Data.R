@@ -190,7 +190,14 @@ for(p in program) {
   if(any(names(SubSetData) =="eventDate")) {SubSetData$eventDate <- as.Date(SubSetData$eventDate, tryFormats = c("%m/%d/%Y", "%Y-%m-%d")) } 
   if(any(names(SubSetData) =="verbatimLocationID")) {SubSetData$verbatimLocationID <- as.character(SubSetData$verbatimLocationID)} 
   if(any(names(SubSetData) =="verbatimEventID")) {SubSetData$verbatimEventID <- as.character(SubSetData$verbatimEventID)} 
-  
+  if(any(names(SubSetData) =="MeanThalwegDepth")) {SubSetData$MeanThalwegDepth <- as.double(SubSetData$MeanThalwegDepth)}
+  if(any(names(SubSetData) =="BankAngle")) {SubSetData$BankAngle <- as.double(SubSetData$BankAngle)}
+  if(any(names(SubSetData) =="TotalNitrogen")) {SubSetData$TotalNitrogen <- as.double(SubSetData$TotalNitrogen)}
+  if(any(names(SubSetData) =="TotalPhosphorous")) {SubSetData$TotalPhosphorous <- as.double(SubSetData$TotalPhosphorous)}
+  if(any(names(SubSetData) =="PoolTailFines2")) {SubSetData$PoolTailFines2 <- as.double(SubSetData$PoolTailFines2)}
+  if(any(names(SubSetData) =="PoolTailFines6")) {SubSetData$PoolTailFines6 <- as.double(SubSetData$PoolTailFines6)}
+   
+   
    if(any(names(SubSetData) =="StreamOrder")){
       if(typeof(SubSetData$StreamOrder) == "character") {
             SubSetData$StreamOrder <- parse_number(SubSetData$StreamOrder) 

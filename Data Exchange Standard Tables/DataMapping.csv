@@ -22,7 +22,7 @@ termID,term,measurementTypeID,measurementType,dataType,projectCode,originalField
 401,term,507,MeanThalwegDepth,Numeric,AIM,ThalwegDepthAvg,meters,Double,www.monitoringresources.org/Document/Method/Details/7008,www.monitoringresources.org/Document/Method/Details/4245
 401,term,507,MeanThalwegDepth,Numeric,NRSA,XDEPTH_CM,centimeters,Double,www.monitoringresources.org/Document/Method/Details/74,www.monitoringresources.org/Document/Method/Details/7015
 401,term,508,ReachLen,Numeric,AREMP,REACH_LENGTH,meters,Double,www.monitoringresources.org/Document/Method/Details/3807,NA
-401,term,508,ReachLen,Numeric,AIM,ProtocolReachLength,meters,Double,www.monitoringresources.org/Document/Method/Details/7017,NA
+401,term,529,ProtocolReachLen,Numeric,AIM,ProtocolReachLength,meters,Double,www.monitoringresources.org/Document/Method/Details/7017,NA
 401,term,508,ReachLen,Numeric,NRSA,REACHLEN,meters,Double,www.monitoringresources.org/Document/Method/Details/1610,NA
 401,term,508,ReachLen,Numeric,PIBO,RchLen,meters,Double,www.monitoringresources.org/Document/Method/Details/58,NA
 401,term,509,WetWidth,Numeric,AREMP,wettedWidth_ave,meters,Double,www.monitoringresources.org/Document/CustomizedMethod/Details/31107,www.monitoringresources.org/Document/CustomizedMethod/Details/32163
@@ -61,6 +61,7 @@ termID,term,measurementTypeID,measurementType,dataType,projectCode,originalField
 401,term,522,PoolTailFines6,Numeric,PIBO,PTFines6,percent,Double,www.monitoringresources.org/Document/Method/Details/6862,www.monitoringresources.org/Document/Method/Details/868
 401,term,523,Conductivity,Numeric,NRSA,TSS,milligrams per liter,Double,www.monitoringresources.org/Document/Method/Details/7016,www.monitoringresources.org/Document/Method/Details/7048
 401,term,523,Conductivity,Numeric,PIBO,Cond,Parts per million,Double,www.monitoringresources.org/Document/Method/Details/61,tbd
+401,term,524,pH,Numeric,NRSA,PH_Results,SU,Double,www.monitoringresources.org/Document/Method/Details/7023,www.monitoringresources.org/Document/Method/Details/7024
 401,term,524,pH,Numeric,AIM,pH,SU,Double,www.monitoringresources.org/Document/Method/Details/6673,NA
 401,term,525,SpecificConductance,Numeric,AIM,SpecificConductance,microSiemens per centimeter,Double,www.monitoringresources.org/Document/Method/Details/6673,NA
 401,term,525,SpecificConductance,Numeric,NRSA,COND,microSiemens per centimeter,Double,www.monitoringresources.org/Document/Method/Details/7016,www.monitoringresources.org/Document/Method/Details/7048

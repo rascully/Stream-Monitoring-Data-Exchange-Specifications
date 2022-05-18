@@ -19,8 +19,6 @@ file_path <- str_remove(getwd(), "/Tables For Manuscripts")
 mapping <- read.csv(paste0(file_path, "/DataMapping.csv")) 
 cv <- read.csv(paste0(file_path, "/metricControlledVocabulary.csv"))
 
-#mapping <- read.csv(paste0(getwd(), "/DataMapping.csv")) 
-#cv <- read.csv(paste0(getwd(), "/metricControlledVocabulary.csv"))
 
 dataTables <- function(ID) {
 

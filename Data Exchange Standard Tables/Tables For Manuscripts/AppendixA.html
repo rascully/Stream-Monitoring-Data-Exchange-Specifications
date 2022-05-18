@@ -212,7 +212,7 @@ Average bankfull width across transects for the reach (unit: meters).
 meters
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
 NA
@@ -360,7 +360,7 @@ maximumPossibleValue
 Grad
 </td>
 <td style="text-align:left;">
-Slope of water surface from the bottom of the reach to the top of the reach (expressed as percent, unit: none).
+Mean slope of water surface from the bottom of the reach to the top of the reach (expressed as percent, unit: none, min: 0, max: 100).
 </td>
 <td style="text-align:left;">
 percent
@@ -514,16 +514,16 @@ maximumPossibleValue
 ReachLen
 </td>
 <td style="text-align:left;">
-Length of sampling reach measured along the thalweg (unit: meters).
+Length of the sampling reach measured along the thalweg (unit: meters).
 </td>
 <td style="text-align:left;">
 meters
 </td>
 <td style="text-align:right;">
-NA
+150
 </td>
 <td style="text-align:right;">
-NA
+4000
 </td>
 </tr>
 </tbody>
@@ -568,26 +568,6 @@ Double
 </td>
 <td style="text-align:left;">
 www.monitoringresources.org/Document/Method/Details/3807
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-AIM
-</td>
-<td style="text-align:left;">
-ProtocolReachLength
-</td>
-<td style="text-align:left;">
-meters
-</td>
-<td style="text-align:left;">
-Double
-</td>
-<td style="text-align:left;">
-www.monitoringresources.org/Document/Method/Details/7017
 </td>
 <td style="text-align:left;">
 NA
@@ -674,7 +654,7 @@ Average bankfull width depth ratio for the reach (unit: meters).
 meters
 </td>
 <td style="text-align:right;">
-0
+NA
 </td>
 <td style="text-align:right;">
 NA
@@ -808,7 +788,7 @@ Average bankfull height measured from water surface across transects (unit: mete
 meters
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
 NA
@@ -942,7 +922,7 @@ Average wetted width across transects (unit: meters).
 meters
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
 NA
@@ -1070,13 +1050,13 @@ maximumPossibleValue
 RPD
 </td>
 <td style="text-align:left;">
-Average of the residual pool depth values for all pools in a reach. Residual pool depth the difference of the pool tail depth from the max depth (unit: meters).
+Average of the residual pool depth values. Residual pool depth is the difference between the pool tail depth and the max depth (unit: meters).
 </td>
 <td style="text-align:left;">
 meters
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
 NA
@@ -1338,7 +1318,7 @@ maximumPossibleValue
 D16
 </td>
 <td style="text-align:left;">
-Bed surface particle size corresponding to the 16th percentile of measured particles (unit: millimeters).
+Bed surface particle size corresponding to the 16th percentile of measured particles (unit: millimeters, min: 0, max: 4098).
 </td>
 <td style="text-align:left;">
 millimeters
@@ -1452,7 +1432,7 @@ maximumPossibleValue
 D50
 </td>
 <td style="text-align:left;">
-Bed surface particle size corresponding to the 50th percentile of measured particles (unit: millimeters).
+Bed surface particle size corresponding to the 50th percentile of measured particles (unit: millimeters, min: 0, max: 4098).
 </td>
 <td style="text-align:left;">
 millimeters
@@ -1606,7 +1586,7 @@ maximumPossibleValue
 D84
 </td>
 <td style="text-align:left;">
-Bed surface particle size corresponding to the 84th percentile of measured particles (unit: millimeters).
+Bed surface particle size corresponding to the 84th percentile of measured particles (unit: millimeters, min: 0, max: 4098).
 </td>
 <td style="text-align:left;">
 millimeters
@@ -1968,7 +1948,7 @@ maximumPossibleValue
 PctFines6
 </td>
 <td style="text-align:left;">
-Average percent fine sediment (less than 6 millimeters) on the pool tail (expressed as a percent, unit: none, min: 0, max: 100).
+Percent of the stream bed area that is composed of particles with a b-axis less than 6 millimeters (expressed as percent, units: none, min: 0, max: 100).
 </td>
 <td style="text-align:left;">
 percent
@@ -2082,7 +2062,7 @@ maximumPossibleValue
 PoolTailFines2
 </td>
 <td style="text-align:left;">
-Average percent fine sediment (less than 2 millimeters) on the pool tail (expressed as percent, unit: none).
+Average percent fine sediment (less than 2 millimeters) on the pool tail (expressed as percent, unit: none, min: 0, max: 100).
 </td>
 <td style="text-align:left;">
 percent
@@ -2216,7 +2196,7 @@ maximumPossibleValue
 PoolTailFines6
 </td>
 <td style="text-align:left;">
-Average percent fine sediment (less than 6 millimeters) on the pool tail (expressed as a percent, unit: none).
+Average percent fine sediment (less than 6 millimeters) on the pool tail (expressed as a percent, unit: none, min: 0, max: 100).
 </td>
 <td style="text-align:left;">
 percent
@@ -2336,7 +2316,7 @@ Measure of the concentration of ionized materials in water, or the ability of wa
 parts per million
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
 NA
@@ -2485,6 +2465,26 @@ methodAnalysis
 <tbody>
 <tr>
 <td style="text-align:left;">
+NRSA
+</td>
+<td style="text-align:left;">
+PH_Results
+</td>
+<td style="text-align:left;">
+SU
+</td>
+<td style="text-align:left;">
+Double
+</td>
+<td style="text-align:left;">
+www.monitoringresources.org/Document/Method/Details/7023
+</td>
+<td style="text-align:left;">
+www.monitoringresources.org/Document/Method/Details/7024
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
 AIM
 </td>
 <td style="text-align:left;">
@@ -2544,10 +2544,10 @@ Measured specific conductance value. The specific conductance is conductivity st
 uS/cm
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
-NA
+65500
 </td>
 </tr>
 </tbody>
@@ -2658,7 +2658,7 @@ Measured total nitrogen value (unit: ug/L or micrograms per liter).
 ug/L
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
 NA
@@ -2772,7 +2772,7 @@ Measured total phosphorous value (unit: ug/L or micrograms per liter).
 ug/L
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
 NA
@@ -2886,7 +2886,7 @@ Average water clarity as measured by the suspended solids in the water column (u
 NTU
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
 NA
@@ -2957,6 +2957,270 @@ www.monitoringresources.org/Document/Method/Details/7016
 </td>
 <td style="text-align:left;">
 www.monitoringresources.org/Document/Method/Details/7048
+</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>dataTables(512)</code></pre>
+<table class="table" style="font-size: 9px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+measurementTypeID
+</th>
+<th style="text-align:left;">
+measurementType
+</th>
+<th style="text-align:left;">
+description
+</th>
+<th style="text-align:left;">
+units
+</th>
+<th style="text-align:right;">
+minimumPossibleValue
+</th>
+<th style="text-align:right;">
+maximumPossibleValue
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+512
+</td>
+<td style="text-align:left;">
+BankAngle
+</td>
+<td style="text-align:left;">
+Measured angle of the stream bank (unit: degrees, min: 0, max: 180).
+</td>
+<td style="text-align:left;">
+degrees
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+180
+</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>dataTablesMapping(512)</code></pre>
+<table class="table" style="font-size: 9px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+projectCode
+</th>
+<th style="text-align:left;">
+originalField
+</th>
+<th style="text-align:left;">
+originalUnit
+</th>
+<th style="text-align:left;">
+originalDataType
+</th>
+<th style="text-align:left;">
+methodCollection
+</th>
+<th style="text-align:left;">
+methodAnalysis
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+AIM
+</td>
+<td style="text-align:left;">
+BankAngleAvg
+</td>
+<td style="text-align:left;">
+degrees
+</td>
+<td style="text-align:left;">
+Double
+</td>
+<td style="text-align:left;">
+www.monitoringresources.org/Document/Method/Details/68
+</td>
+<td style="text-align:left;">
+www.monitoringresources.org/Document/Method/Details/7034
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NRSA
+</td>
+<td style="text-align:left;">
+XBKA
+</td>
+<td style="text-align:left;">
+degrees
+</td>
+<td style="text-align:left;">
+Double
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PIBO
+</td>
+<td style="text-align:left;">
+BankAngle
+</td>
+<td style="text-align:left;">
+degrees
+</td>
+<td style="text-align:left;">
+Double
+</td>
+<td style="text-align:left;">
+www.monitoringresources.org/Document/Method/Details/68
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>dataTables(513)</code></pre>
+<table class="table" style="font-size: 9px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+measurementTypeID
+</th>
+<th style="text-align:left;">
+measurementType
+</th>
+<th style="text-align:left;">
+description
+</th>
+<th style="text-align:left;">
+units
+</th>
+<th style="text-align:right;">
+minimumPossibleValue
+</th>
+<th style="text-align:right;">
+maximumPossibleValue
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+513
+</td>
+<td style="text-align:left;">
+PctStab
+</td>
+<td style="text-align:left;">
+Percent of banks lacking visible signs of active erosion (e.g., slump, slough, fracture) (unit: none, min: 0, max: 100).
+</td>
+<td style="text-align:left;">
+percent
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>dataTablesMapping(512)</code></pre>
+<table class="table" style="font-size: 9px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+projectCode
+</th>
+<th style="text-align:left;">
+originalField
+</th>
+<th style="text-align:left;">
+originalUnit
+</th>
+<th style="text-align:left;">
+originalDataType
+</th>
+<th style="text-align:left;">
+methodCollection
+</th>
+<th style="text-align:left;">
+methodAnalysis
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+AIM
+</td>
+<td style="text-align:left;">
+BankAngleAvg
+</td>
+<td style="text-align:left;">
+degrees
+</td>
+<td style="text-align:left;">
+Double
+</td>
+<td style="text-align:left;">
+www.monitoringresources.org/Document/Method/Details/68
+</td>
+<td style="text-align:left;">
+www.monitoringresources.org/Document/Method/Details/7034
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NRSA
+</td>
+<td style="text-align:left;">
+XBKA
+</td>
+<td style="text-align:left;">
+degrees
+</td>
+<td style="text-align:left;">
+Double
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PIBO
+</td>
+<td style="text-align:left;">
+BankAngle
+</td>
+<td style="text-align:left;">
+degrees
+</td>
+<td style="text-align:left;">
+Double
+</td>
+<td style="text-align:left;">
+www.monitoringresources.org/Document/Method/Details/68
+</td>
+<td style="text-align:left;">
+NA
 </td>
 </tr>
 </tbody>

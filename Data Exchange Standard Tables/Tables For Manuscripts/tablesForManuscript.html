@@ -175,13 +175,13 @@ pre code {
 
 <p>Be sure to run code to double check that the DES tables are updated to the MetadataDict.csv (wrote code here to run this fucntion )</p>
 <pre class="r"><code>tablesDES &lt;- c(&quot;RecordLevel&quot;, &quot;Location&quot;, &quot;Event&quot;, &quot;MeasurementOrFact&quot;)
+file_path &lt;- str_remove(getwd(), &quot;/Tables For Manuscripts&quot;) 
 
 
-rawTable &lt;- read.csv(paste0(getwd(), &quot;/&quot;, tablesDES[1], &quot;DES.csv&quot;)) 
+rawTable &lt;- read.csv(paste0(file_path, &quot;/&quot;, tablesDES[1], &quot;DES.csv&quot;)) 
 DESTable &lt;- rawTable %&gt;% 
                     select(c(term,termID, definition, dataType, examples, noteAndConventions))
-
- kable(DESTable, row.names=FALSE, aline = c)  %&gt;% 
+kable(DESTable, row.names=FALSE, aline = c)  %&gt;% 
    kable_styling(latex_options = &quot;striped&quot;, font_size = 9) </code></pre>
 <table class="table" style="font-size: 9px; margin-left: auto; margin-right: auto;">
 <thead>
@@ -381,7 +381,7 @@ USFS PacFish/InFish Biological Opinion Monitoring Program
 </tr>
 </tbody>
 </table>
-<pre class="r"><code>rawTable &lt;- read.csv(paste0(getwd(), &quot;/&quot;, tablesDES[2], &quot;DES.csv&quot;)) 
+<pre class="r"><code>rawTable &lt;- read.csv(paste0(file_path, &quot;/&quot;, tablesDES[2], &quot;DES.csv&quot;)) 
 DESTable &lt;- rawTable %&gt;% 
                     select(c(term,termID, definition, dataType, examples, noteAndConventions))
 
@@ -467,7 +467,6 @@ String
 88693; WtR563
 </td>
 <td style="text-align:left;">
-from source datasets converted to string. Reference to source datasets unique identifier for location data.  
 </td>
 </tr>
 <tr>
@@ -569,7 +568,7 @@ Rock Creek; SALT CREEK
 </tr>
 </tbody>
 </table>
-<pre class="r"><code>rawTable &lt;- read.csv(paste0(getwd(), &quot;/&quot;, tablesDES[3], &quot;DES.csv&quot;)) 
+<pre class="r"><code>rawTable &lt;- read.csv(paste0(file_path, &quot;/&quot;, tablesDES[3], &quot;DES.csv&quot;)) 
 DESTable &lt;- rawTable %&gt;% 
                     select(c(term,termID, definition, dataType, examples, noteAndConventions))
 
@@ -732,8 +731,7 @@ String
 Flow (Whole Reach)
 </td>
 <td style="text-align:left;">
-fieldNotes is a field with data type string for this implementation of the data exchange standard fieldNotes is filled in with the streamflow at the time of the sampling event. Some datasets share flow as percent dry an integer, while others share streamflow as a string. For the integrated dataset, transform all stream flows string categorized as “No Flow (Dry)”, “Flow (Whole Reach)”, “Other”. For programs reporting streamflow as percent dry, we transformed the data such that: • 0 = Flow (Whole Reach)<br />
-• 100 = No Flow (Dry) • Other = All other values We transformed the data in inverse for programs that report the percent of the reach with the flow.
+Assigned Categories: Flow (Whole Reach), No Flow Dry, Other
 </td>
 </tr>
 <tr>
@@ -753,12 +751,12 @@ String
 Yes; No
 </td>
 <td style="text-align:left;">
-NA = Beaver impacts were not reported in the source data, Yes = Beaver have changed the flow in the reach, No = Beaver have not changed the flow of the reach
+Assigned categories: Yes = Beaver have changed flow of reach, No = Beaver have not changed flow of reach, NA = Beaver impacts not reported
 </td>
 </tr>
 </tbody>
 </table>
-<pre class="r"><code>rawTable &lt;- read.csv(paste0(getwd(), &quot;/&quot;, tablesDES[4], &quot;DES.csv&quot;)) 
+<pre class="r"><code>rawTable &lt;- read.csv(paste0(file_path, &quot;/&quot;, tablesDES[4], &quot;DES.csv&quot;)) 
 DESTable &lt;- rawTable %&gt;% 
                     select(c(term,termID, definition, dataType, examples, noteAndConventions))
 
@@ -888,7 +886,8 @@ Float
 </tr>
 </tbody>
 </table>
-<pre class="r"><code>cv &lt;- read.csv(paste0(getwd(), &quot;/metricControlledVocabulary.csv&quot;))
+<pre class="r"><code>file_path &lt;- str_remove(getwd(), &quot;/Tables For Manuscripts&quot;) 
+cv &lt;- read.csv(paste0(file_path, &quot;/metricControlledVocabulary.csv&quot;))
 
 cv&lt;- cv %&gt;% 
       select(c(measurementTypeID, measurementType, description, units, dataType, minimumPossibleValue, maximumPossibleValue))
@@ -1568,7 +1567,6 @@ NA
 </tr>
 </tbody>
 </table>
-<pre class="r"><code>mapping &lt;- read.csv(paste0(getwd(), &quot;/DataMapping.csv&quot;)) </code></pre>
 
 
 

@@ -19,30 +19,30 @@ Be sure to run code to double check that the DES tables are updated to the Metad
 
 ```{r}
 tablesDES <- c("RecordLevel", "Location", "Event", "MeasurementOrFact")
+file_path <- str_remove(getwd(), "/Tables For Manuscripts") 
 
 
-rawTable <- read.csv(paste0(getwd(), "/", tablesDES[1], "DES.csv")) 
+rawTable <- read.csv(paste0(file_path, "/", tablesDES[1], "DES.csv")) 
+DESTable <- rawTable %>% 
+                    select(c(term,termID, definition, dataType, examples, noteAndConventions))
+kable(DESTable, row.names=FALSE, aline = c)  %>% 
+   kable_styling(latex_options = "striped", font_size = 9) 
+ 
+rawTable <- read.csv(paste0(file_path, "/", tablesDES[2], "DES.csv")) 
 DESTable <- rawTable %>% 
                     select(c(term,termID, definition, dataType, examples, noteAndConventions))
 
  kable(DESTable, row.names=FALSE, aline = c)  %>% 
    kable_styling(latex_options = "striped", font_size = 9) 
  
-rawTable <- read.csv(paste0(getwd(), "/", tablesDES[2], "DES.csv")) 
+rawTable <- read.csv(paste0(file_path, "/", tablesDES[3], "DES.csv")) 
 DESTable <- rawTable %>% 
                     select(c(term,termID, definition, dataType, examples, noteAndConventions))
 
  kable(DESTable, row.names=FALSE, aline = c)  %>% 
    kable_styling(latex_options = "striped", font_size = 9) 
  
-rawTable <- read.csv(paste0(getwd(), "/", tablesDES[3], "DES.csv")) 
-DESTable <- rawTable %>% 
-                    select(c(term,termID, definition, dataType, examples, noteAndConventions))
-
- kable(DESTable, row.names=FALSE, aline = c)  %>% 
-   kable_styling(latex_options = "striped", font_size = 9) 
- 
-rawTable <- read.csv(paste0(getwd(), "/", tablesDES[4], "DES.csv")) 
+rawTable <- read.csv(paste0(file_path, "/", tablesDES[4], "DES.csv")) 
 DESTable <- rawTable %>% 
                     select(c(term,termID, definition, dataType, examples, noteAndConventions))
 
@@ -53,8 +53,8 @@ DESTable <- rawTable %>%
 ```
 ```{r}
 
-
-cv <- read.csv(paste0(getwd(), "/metricControlledVocabulary.csv"))
+file_path <- str_remove(getwd(), "/Tables For Manuscripts") 
+cv <- read.csv(paste0(file_path, "/metricControlledVocabulary.csv"))
 
 cv<- cv %>% 
       select(c(measurementTypeID, measurementType, description, units, dataType, minimumPossibleValue, maximumPossibleValue))
@@ -65,8 +65,6 @@ cv<- cv %>%
 ```
 
 ```{r}
-
-mapping <- read.csv(paste0(getwd(), "/DataMapping.csv")) 
 
 
 ```

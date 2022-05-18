@@ -15,14 +15,18 @@ library(tidyverse)
 
 library(pander)
 
-mapping <- read.csv(paste0(getwd(), "/DataMapping.csv")) 
-cv <- read.csv(paste0(getwd(), "/metricControlledVocabulary.csv"))
+file_path <- str_remove(getwd(), "/Tables For Manuscripts") 
+mapping <- read.csv(paste0(file_path, "/DataMapping.csv")) 
+cv <- read.csv(paste0(file_path, "/metricControlledVocabulary.csv"))
+
+#mapping <- read.csv(paste0(getwd(), "/DataMapping.csv")) 
+#cv <- read.csv(paste0(getwd(), "/metricControlledVocabulary.csv"))
 
 dataTables <- function(ID) {
 
   metricCV <- cv %>% 
           filter(measurementTypeID ==  ID ) %>% 
-          select(-c(entity,dataType, sourcedefinition, attribute, title))
+          select(-c(termID, term, entity,dataType, sourcedefinition, attribute, title))
 
 kbl(metricCV, row.names=FALSE) %>% 
    kable_styling(latex_options = "striped", font_size = 9) 

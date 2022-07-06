@@ -79,7 +79,7 @@ download_EPA_NRSA <- function() {
   data_2004 <- dataset_table %>% 
         dplyr::filter(str_detect(Survey,"2004")) 
   
-  #Separate out the two habitat datasets labeled 2004 because processing requires a steps to combined the two 2004 datasets 
+#Separate out the two habitat datasets labeled 2004 because processing requires a steps to combined the two 2004 datasets 
   phys_hab2004 <- data_2004 %>% 
     filter(str_detect(Indicator, "Physical Habitat")) 
   
@@ -120,7 +120,6 @@ data_phys_hab2004 <- data_phys_hab
 rm(data_phys_hab)
   
 # 2004 Location Data download and reformat variables to match data types of other datasets 
-
 
 link = dataset_table %>% 
       dplyr::filter(Survey == "Streams 2004") %>% 
@@ -177,9 +176,14 @@ water_chem_2004$DATE_COL <- as.Date(water_chem_2004$DATE_COL, format="%m/%d/%Y")
 
 all_data_2004 <- left_join(all_data_2004, water_chem_2004, by= c("SITE_ID", "YEAR", "VISIT_NO", "DATE_COL"))
 
+####Add the dataset names 
+
+all_data_2004$datasetName <- paste(data_2004$Data, collapse=",")
+all_data_2004$UID <- paste0(all_data_2004$SITE_ID,"-", all_data_2004$VISIT_NO, "-", all_data_2004$DATE_COL) 
+
 #### build all the datasets not from 2004)####
 
-##### Build dataset without the 2004 data #####
+##### List of dataset excluding the 2004 data #####
 dataset_table <- dataset_table %>% 
   filter(!str_detect(Survey, "2004"))
 
@@ -191,10 +195,11 @@ location_data <- dataset_table %>%
   for(i in 1:length(location_data$web1)) { 
     
       print(location_data$Survey[i])
-      url_link <- paste0("https://www.epa.gov", location_data$web1[i])
-      temp_file <- tempfile(fileext = ".csv")
+      url_link              <- paste0("https://www.epa.gov", location_data$web1[i])
+      temp_file             <- tempfile(fileext = ".csv")
       download.file(url_link, temp_file)
-      data2     <- read.csv(temp_file)
+      data2                 <- read.csv(temp_file)
+      data2$datasetNameLocation     <- location_data$Data[i]
       
       #Convert the data from a string to a date 
       if (any(names(data2)=="DATE_COL")) { 
@@ -226,7 +231,7 @@ location_data <- dataset_table %>%
         data2$EPA_REG <- as.character(data2$EPA_REG)
       } 
       
-    # Bind years of location togeater into one dataset 
+    # Bind years of location together into one dataset 
     if(i == 1){
         all_locations <- data2
       } else {
@@ -241,13 +246,14 @@ location_data <- dataset_table %>%
   water_chem <-dataset_table %>% 
     filter(str_detect(Indicator, "Water Chemistry")) 
   
-  #Build a table of all water chemistry data 
+#Build a table of all water chemistry data 
   for(wc in 1:length(water_chem$web1)){ 
-    link = water_chem$web1[wc]
-    url_link <- paste0("https://www.epa.gov", link)
-    temp_file <- tempfile(fileext = ".csv")
+    link                              <-  water_chem$web1[wc]
+    url_link                          <- paste0("https://www.epa.gov", link)
+    temp_file                         <- tempfile(fileext = ".csv")
     download.file(url_link, temp_file)
-    data_set<- read.csv(temp_file)
+    data_set                          <- read.csv(temp_file)
+    data_set$datasetNameWaterChem     <- water_chem$Data[wc]
     
     data_set[str_detect(names(data_set), "VISIT_NO")] <- data_set %>% 
       dplyr::select(contains("VISIT_NO")) %>% 
@@ -289,11 +295,12 @@ location_data <- dataset_table %>%
   
   for(ph in 1:length(phys_hab$web1)){ 
     
-    link = phys_hab$web1[ph]
-    url_link <- paste0("https://www.epa.gov", link)
-    temp_file <- tempfile(fileext = ".csv")
+    link                            <- phys_hab$web1[ph]
+    url_link                        <- paste0("https://www.epa.gov", link)
+    temp_file                       <- tempfile(fileext = ".csv")
     download.file(url_link, temp_file)
-    data_set<- read.csv(temp_file)
+    data_set                        <- read.csv(temp_file)
+    data_set$datasetNamePhysHab     <- phys_hab$Data[ph]
     
     ##Convert variablestypes to match data types across all datasets ####
     
@@ -335,7 +342,7 @@ location_data <- dataset_table %>%
   
 data_locations2008 <- merge(all_locations, data_water_chem, by ="UID", all = TRUE)
 
-#####fill blanks and delete duplicate in matching columens 
+#####fill blanks and delete duplicate in matching columns 
 dup_col <- data_locations2008 %>%
     dplyr::select(contains(c(".x", ".y")))
   
@@ -369,7 +376,17 @@ data_locations2008 <- data_locations2008 %>%
 names(data_locations2008) <- str_remove(names(data_locations2008), ".x")
 ##### merge location/water chem with physical habitat data 
   data_locations2008 <- merge(data_locations2008, data_phys_hab, by = "UID", all= TRUE)
+  
+#### concatenation the dataset names 
+#datasetNamesCol<- data_locations2008 %>%  
+#                  dplyr::select(contains("datasetName")) 
 
+#data_locations2008$datasetName <- unite(datasetNamesCol, datasetName, sep=",")
+
+#data_locations2008 <- data_locations2008 %>%  
+ #   dplyr::select(-contains("datasetName."))
+
+  ## test 
  t <- (data_locations2008 <- data_locations2008 %>%  
     relocate(contains(c("SITE_ID","UID", "PROTOCOL",  "LAT", "LON", "VISIT_NO", "DATE_COL")))) 
   
@@ -410,10 +427,24 @@ names(data_locations2008) <- str_remove(names(data_locations2008), ".x")
   
     
 #####Join the >2008 datasets will the 2004 dataset  
-data_locations <- bind_rows(data_locations2008, all_data_2004)
+  all_data_2004$UID <- as.character(all_data_2004$UID)
+  data_locations2008$UID <- as.character(data_locations2008$UID)
+  
+  ##### Stoped here data_locations2008$dtadatasetName is a 
+  data_locations <- bind_rows(data_locations2008, all_data_2004)
 
 data_locations <- data_locations %>%  
   relocate(contains(c("SITE_ID","UID", "LAT", "LON", "VISIT_NO", "DATE_COL")))
+
+#### Join the datasetsNames into one column 
+
+subSetDatasetNames <- data_locations %>%  
+                        dplyr::select(contains("dataset"))
+
+conDatasetNames <- unite(subSetDatasetNames, datasetName, sep=",", na.rm = TRUE)
+
+data_locations$datasetName <- conDatasetNames[['datasetName']]
+
 
 #print(data_locations %>% 
 #        filter(UID == test_ID) %>% 

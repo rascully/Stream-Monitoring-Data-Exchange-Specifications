@@ -51,7 +51,7 @@ metricControlledVocabularyToSave <- read.csv("Data Exchange Standard Tables/metr
 metricControlledVocabulary <- metricControlledVocabularyToSave %>% 
                               dplyr::select("measurementType") %>% 
                               unlist(use.names=F) %>%  
-                             unique()
+                              unique()
 
 #create a dataframe 
 flat_data_names     <- c(des_names, metricControlledVocabulary) %>%  trimws()
@@ -60,6 +60,9 @@ colnames(flat_data)  <- flat_data_names
 
 # Read the the data mapping 
 DataMapping <- read.csv("Data Exchange Standard Tables/DataMapping.csv")
+DataMapping <- DataMapping %>% 
+  mutate(across(where(is.character), str_trim))
+
 
 # Loop to download, and pull information from the original datasets into one file. Add record level information. 
 for(p in program) {
@@ -175,6 +178,8 @@ for(p in program) {
   
  # build a vector of the field names from the crosswalk. Metric index equals the fields that are part of the metric controlled vocabularly, while the inverse are the fields in the DES. 
   metric_index <- term$term == "term"
+  
+  
   new_names <- character(length(metric_index))
   new_names[metric_index] <- term$measurementType[metric_index]
   new_names[!metric_index] <- term$term[!metric_index]
@@ -206,10 +211,10 @@ for(p in program) {
                 }
       }
   
-##### Add fields to the SubSetData that define the specific dataset being combind. Most of those fields are part of the Record table from the data exchange standard    
+##### Add fields to the SubSetData that define the specific dataset being combined. Most of those fields are part of the Record table from the data exchange standard    
 if (p=="NRSA"){
 
-     SubSetData$datasetID               <- 1  
+     SubSetData$datasetID               <- ''  
      SubSetData$bibilographicCitation   <- paste("U.S. Environmental Protection Agency. 2016, 2020. National Aquatic Resource Surveys. National Rivers and Streams Assessment 2008-2009, 2013-2014. Available from U.S. EPA web page: https://www.epa.gov/national-aquatic-resource-surveys/SubSetData-national-aquatic-resource-surveys.Date accessed:", Sys.Date())
      SubSetData$datasetOrginization     <- "Environmental Protection Agancy"
      SubSetData$institutionCode         <- "EPA"
@@ -222,8 +227,8 @@ if (p=="NRSA"){
      
     } else if (p=="AIM") { 
      
-     # SubSetData$datasetName
-      SubSetData$datasetID               <- 2
+     SubSetData$datasetName           <- "I_Indicators"
+     SubSetData$datasetID               <- ""
      SubSetData$bibilographicCitation   <- paste("Bureau of Land Management AIM Aquatic Data (AquADat) Map Server, https://landscape.blm.gov/geoportal/rest/document?id=%7B44F011CC-6E1F-4FDA-AFDF-B29BF1732ACF%7D, accessed", Sys.Date()) 
      SubSetData$datasetOrginization     <- "Bureau of Land Management"
      SubSetData$institutionCode         <- "BLM"
@@ -235,7 +240,7 @@ if (p=="NRSA"){
      SubSetData$locationRemarks         <- "Middle of Reach"
      
    } else if (p=="PIBO"){ 
-     SubSetData$datasetID               <- 3
+     SubSetData$datasetID               <- ""
      SubSetData$datasetName             <- "2020_Seasonal_Sum_PIBO"
      SubSetData$bibilographicCitation   <- ''
      SubSetData$datasetOrginization     <- "United States Forest Service"
@@ -250,9 +255,8 @@ if (p=="NRSA"){
      
    } else if (p== "AREMP") {
    
-     SubSetData$datasetID               <- 4
-     SubSetData$datasetName             <- "Northwest Forest Plan-the first 
-                                              20 years (1994 to 2008): watershed condition status and trend" 
+     SubSetData$datasetID               <- ""
+     SubSetData$datasetName             <- "Northwest Forest Plan-the first 20 years (1994 to 2008): watershed condition status and trend" 
      
      SubSetData$bibilographicCitation   <- paste('Miller, Stephanie A.; Gordon, Sean N.; Eldred, Peter; 
                                             Beloin, Ronald M.; Wilcox, Steve; Raggon, Mark;Andersen, 
@@ -290,8 +294,17 @@ blank_year                  <- is.na(all_data2$year)
 all_data2$year[blank_year]  <- substr(all_data2$eventDate[blank_year],1, 4) 
 all_data2$year              <- as.integer(all_data2$year)
 
+# Replace N/A and blanks from dataset with the no value 
+
+#all_data2[all_data2 == "N/A"] <- NA
+all_data2[all_data2 == ''] <- NA 
+
 
 ##### Generate UIDs for the integrated dataset 
+#create a datasetID  
+all_data2 <- all_data2 %>% 
+  transform(datasetID=as.numeric((factor(datasetName)))) 
+  
 
 #Enter an eventID for the integrated dataset, based on the structure of this dataset we know that each row is a different data collection event, so therefore we generate a UID in the eventID
 all_data2 <- all_data2 %>% 
@@ -311,6 +324,7 @@ all_data2 <- all_data2 %>%
 #Remove rows that are exact duplicate from the combind dataset
 all_data2 <-  all_data2 %>% 
               distinct()
+
 #Remove starting and trailing white space in strings 
 all_data2 <- all_data2 %>%
   mutate_if(is.character, str_trim)

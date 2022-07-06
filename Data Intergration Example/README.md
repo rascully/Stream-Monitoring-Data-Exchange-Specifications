@@ -12,7 +12,7 @@ We wrote R code to integrate source data based on the Stream Monitoring Data exc
 Download the repository and run: 
 
 ```
-    source(paste0(getwd(), "/R/Combine Data.R")) 
+    source(paste0(getwd(), "/Data Intergration Example/R/Combine Data.R")) 
     data <- integrate_data() 
 ```
 

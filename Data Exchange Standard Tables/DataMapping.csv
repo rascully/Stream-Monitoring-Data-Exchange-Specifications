@@ -92,6 +92,7 @@ termID,term,measurementTypeID,measurementType,dataType,projectCode,originalField
 203,longitude,NA,,Numeric,PIBO,Long,decimal degrees,Double,NA,NA
 205,siteSelectionType,NA,,String,AIM,PointSelectionType,NA,String,NA,NA
 205,siteSelectionType,NA,,String,PIBO,Project,NA,String,NA,NA
+205,siteSelectionType,NA,,String,NRSA,SITETYPE,NA,String,NA,NA
 206,waterBody,NA,,String,AIM,StreamName,NA,String,NA,NA
 206,waterBody,NA,,String,PIBO,Stream,NA,String,NA,NA
 301,verbatimEventID,NA,,String,AREMP,site_survey_id,NA,String,NA,NA

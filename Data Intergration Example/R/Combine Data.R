@@ -44,6 +44,9 @@ des_names <-MetadataDict %>%
         dplyr::select(attribute)%>% 
         unlist(use.names = F) %>% 
         unique()
+       
+#remove any blanks 
+des_names <- des_names[des_names!= '']
 
 
 metricControlledVocabularyToSave <- read.csv("Data Exchange Standard Tables/metricControlledVocabulary.csv")
@@ -77,7 +80,7 @@ for(p in program) {
     data <- data %>% 
       filter(!!as.name(field) == "WADEABLE")
     
-  # from the datamapping find the field name that contains the percent dry for AIM
+# from the datamapping find the field name that contains the percent dry program
   field <- dataMapVariable("fieldNotes", p)
 
   #Change variable percent dry percent dry to a category
@@ -88,6 +91,15 @@ for(p in program) {
     dry[!str_detect(dry, "Flow") & !is.na(dry)] <- "Other"
     data[[field]] <- dry
     
+    #Update SiteSelectionType to Random or Targeted 
+    # from the datamapping find the field name that contains the siteSelectionType for AIM 
+    field <- dataMapVariable("siteSelectionType", p)
+    siteSelectionType <- data[[field]]
+    siteSelectionType <- str_replace_all(siteSelectionType, c("EASTPROB"= "Random", "WESTPROB"= "Random", "PROB" = "Random"))
+    siteSelectionType <- str_replace_all(siteSelectionType, c("EASTHAND"= "Targeted", "WESTHAND"= "Targeted", 
+                                                                  "HAND" = "Targeted"))
+    data[[field]]     <- siteSelectionType
+
     
   } else if (p=="AIM") { 
     
@@ -98,10 +110,11 @@ for(p in program) {
     ##### Format data to Data Exchange Standard ####
     #Filter out the PRTCOl = BOATABLE, we agree to only share wadable data 
     field <- dataMapVariable("samplingProtocol", p)
+    
     data <- data %>% 
       filter(!!as.name(field) == "Wadeable")
     
-  # from the datamapping find the field name that contains the percent dry for AIM
+  # from the datamapping find the field name that contains the percent dry 
     field <- dataMapVariable("fieldNotes", p)
     
   #Change variable percent dry percent dry to a category
@@ -123,8 +136,19 @@ for(p in program) {
     beaverImpactFlow  <- str_replace(beaverImpactFlow, c("MAJOR"),"YES")
     beaverImpactFlow  <- str_replace(beaverImpactFlow, c("MINOR"),"YES")
     data[[field]]     <- beaverImpactFlow
+    
+    
+    #Update SiteSelectionType to Random or Targeted 
+    # from the datamapping find the field name that contains the siteSelectionType for AIM 
+    field               <- dataMapVariable("siteSelectionType", p)
+    siteSelectionType   <- data[[field]]
+    siteSelectionType   <- str_replace_all(siteSelectionType, c("RandomGRTS"= "Random", 
+                                                                "RandomSystematic"= "Random", 
+                                                                "SystematicRandom"= "Random"))
+    data[[field]]       <- siteSelectionType
   
   } else if (p=="PIBO"){ 
+    
     print("Processing USFS PIBO data")  
     data <- as_tibble(read_xlsx("Data Intergration Example/Data/DataSources/2020_Seasonal_Sum_PIBO.xlsx", 2))
     
@@ -138,6 +162,9 @@ for(p in program) {
       #Write code to reproject if needed 
     }
     
+    # Remove PIBO type Praire sites, based on PIBO feedback 
+   data<-  data %>% 
+      filter(Type !="P")
     
  #from the datamapping find the field name that contains the percent dry for AIM
     field <- dataMapVariable("fieldNotes", p)
@@ -149,13 +176,34 @@ for(p in program) {
     dry[!str_detect(dry, "Other") & !is.na(dry)& !str_detect(dry, "No Flow")] <- "Flow (Whole Reach)"
     data[[field]] <- dry
     
-  # Create a field Protocol field with WADEABLE based on project feedback that all data is collected in wadeable stream 
-    data$Type ="WADEABLE"
-   
-  #Talk to projects about adding this field. Update the Type to the standard Targeted or Random -> need to confirm with Carl 
-  # data$Project <- str_replace(data$Project,c("CRB|MRB"),"Random")
-  # data$Project <- str_replace(data$Project, c("PILOT|CNTRCT|SPCL|OTHER|FWNF"),"Targeted")
 
+  # PIBO to classify Random and targeted we need to use 2 fields 
+   siteSelectionType <- data %>% 
+                      dplyr::select(c("Project", "Type")) %>% 
+                      unite('ProjectType', Project:Type, remove=TRUE)
+
+   # This must be done in this order 
+   # All Project SPCK, OTHER, CNTRCT are Targeted
+   siteSelectionType$ProjectType[str_detect(siteSelectionType$ProjectType, "SPCL") ] <- "Targeted"
+   unique(siteSelectionType)
+   siteSelectionType$ProjectType[str_detect(siteSelectionType$ProjectType, "OTHER") ] <- "Targeted"
+   unique(siteSelectionType)
+   siteSelectionType$ProjectType[str_detect(siteSelectionType$ProjectType, "CNTRCT") ] <- "Targeted"
+   unique(siteSelectionType)
+   #I don't know about PILOT, FWNF? 
+   siteSelectionType$ProjectType[str_detect(siteSelectionType$ProjectType, "PILOT") ] <- "DO not know"
+   unique(siteSelectionType)
+   siteSelectionType$ProjectType[str_detect(siteSelectionType$ProjectType, "FWNF") ] <- "DO not know"
+   unique(siteSelectionType)
+   
+   #Project types CRB & MRB have both Random and Targeted sites, for siteSelectionType use the PIBO Type  
+   siteSelectionType$ProjectType[str_detect(siteSelectionType$ProjectType, "I") ] <- "Random"
+   unique(siteSelectionType)
+   siteSelectionType$ProjectType[str_detect(siteSelectionType$ProjectType, "S") ] <- "Random"
+   unique(siteSelectionType)
+   siteSelectionType$ProjectType[str_detect(siteSelectionType$ProjectType, "K") ] <- "Targeted"
+   data$Project <- siteSelectionType$ProjectType
+  
 
   } else if (p== "AREMP") {
     print("Processing USFS AREMP data")
@@ -211,7 +259,8 @@ for(p in program) {
                 }
       }
   
-##### Add fields to the SubSetData that define the specific dataset being combined. Most of those fields are part of the Record table from the data exchange standard    
+##### Add fields to the SubSetData that define the specific dataset being combined. 
+    
 if (p=="NRSA"){
 
      SubSetData$datasetID               <- ''  
@@ -224,6 +273,7 @@ if (p=="NRSA"){
      SubSetData$metadataID              <- "https://www.epa.gov/national-aquatic-resource-surveys/data-national-aquatic-resource-surveys"
      SubSetData$preProcessingCode       <- "https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/tree/master/Data%20Intergration%20Example"
      SubSetData$locationRemarks         <- "Bottom of Reach"
+     
      
     } else if (p=="AIM") { 
      
@@ -251,6 +301,7 @@ if (p=="NRSA"){
      SubSetData$metadataID              <- "Available by data request "
      SubSetData$preProcessingCode       <- ""
      SubSetData$locationRemarks         <- "Bottom of Reach"
+     SubSetData$Type                    <- "WADEABLE"
      
      
    } else if (p== "AREMP") {
@@ -272,14 +323,20 @@ if (p=="NRSA"){
      SubSetData$metadataID              <- "https://www.fs.fed.us/r6/reo/monitoring/downloads/watershed/NwfpWatershedCondition20yrReport.gdb.htm"
      SubSetData$preProcessingCode       <- "https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/tree/master/Data%20Intergration%20Example"  
      SubSetData$locationRemarks         <- "Bottom of Reach"
+     
+     #AREMP all data collection locations are Random 
+     SubSetData$siteSelectionType     <- "Random"
   
    }
    
    
   #####Add the SupSetData representing the specific program data into the flat_data, combinding information from the sources #####
   flat_data <- bind_rows(flat_data, SubSetData)
-
-   rm(SubSetData)
+  
+   print(names(flat_data)) 
+   print(names(SubSetData)) 
+   
+  rm(SubSetData)
 
 }
 

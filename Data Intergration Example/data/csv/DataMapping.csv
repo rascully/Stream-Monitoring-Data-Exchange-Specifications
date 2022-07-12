@@ -73,6 +73,10 @@
 401,"term",528,"Turbidity","Numeric","NRSA","TURB","NTU","Double","www.monitoringresources.org/Document/Method/Details/7016","www.monitoringresources.org/Document/Method/Details/7048"
 401,"term",530,"PoolFreq","Numeric","PIBO","PoolFrq","# pools/km","Double ","",""
 401,"term ",530,"PoolFreq","Numeric","AIM","PoolFreq","# pools/km","Double","",""
+401,"term ",531,"LWDFreq","Numeric","AIM ","LWD_Freq","# pieces/100 m","Double ","",""
+401,"term",531,"LWDFreq","Numeric","NRSA","C1WM100","#/100m","Double ","",""
+401,"term ",532,"LWDVol ","Numeric","AIM ","LWD_Vol","m^3/100 m","Double","",""
+401,"term",532,"LWDVol ","Numeric","NRSA","V1WM100","m3/100m","Double ","",""
 103,"datasetName",NA,"","String","NRSA","datasetName",NA,"String","NA ","NA "
 201,"verbatimLocationID",NA,"","String","AREMP","SITE_ID",NA,"String",NA,NA
 201,"verbatimLocationID",NA,"","String","AIM","PointID",NA,"String",NA,NA
@@ -88,6 +92,7 @@
 203,"longitude",NA,"","Numeric","PIBO","Long","decimal degrees","Double",NA,NA
 205,"siteSelectionType",NA,"","String","AIM","PointSelectionType",NA,"String",NA,NA
 205,"siteSelectionType",NA,"","String","PIBO","Project",NA,"String",NA,NA
+205,"siteSelectionType",NA,"","String","NRSA","SITETYPE",NA,"String",NA,NA
 206,"waterBody",NA,"","String","AIM","StreamName",NA,"String",NA,NA
 206,"waterBody",NA,"","String","PIBO","Stream",NA,"String",NA,NA
 301,"verbatimEventID",NA,"","String","AREMP","site_survey_id",NA,"String",NA,NA

@@ -27,7 +27,7 @@ Event,eventDate,NA,"Source data from AREMP do not contain month or day, so no th
 Event,fieldNotes,NA,Description of the flow was not included or reported in the source dataset.,Producer defined,NA,,
 Event,fieldNotes,Flow (Whole Reach),Flow for the full reach,Producer defined,NA,,
 Event,fieldNotes,No Flow (Dry),"Reach is completely dry, no flow",Producer defined,NA,,
-Event,fieldNotes,Other,Flow for part or subset of the reach,Producer defined,NA,,
+Event,fieldNotes,Partial Flow/Stagnant Pools,Flow for part or subset of the reach,Producer defined,NA,,
 Event,samplingProtocol,NA,Sampling Protocol was not included or reported in the source dataset.,Producer defined,NA,,
 Event,samplingProtocol,WADEABLE,Source programs conducted surveys in wadeable streams following wadeable protocols.,Producer defined,NA,,
 Event,beaverImpactFlow,NA,Beaver impacts were not reported in the source data.,Producer defined,NA,,
@@ -35,10 +35,9 @@ Event,beaverImpactFlow,Major,tbd need def,Producer defined,NA,,
 Event,beaverImpactFlow,Minor,tbd need def,Producer defined,NA,,
 Event,beaverImpactFlow,None,tbd need def,Producer defined,NA,,
 MeasurementOrFact,measurementType,Sin,"Reach sinuosity (reach length along the thalweg divided by straight line distance between the bottom of the reach and the top of the reach, expressed as a ratio, unit: none)",Producer defined,ratio,1,None
-MeasurementOrFact,measurementType,StreamOrder,Strahler stream order of the site from the provider dataset (unit: none).,Producer defined,None,1,12
-MeasurementOrFact,measurementType,AvgBFWDRatio,Average bankfull width depth ratio for the reach (unit: meters).,Producer defined,meters,0,None
+MeasurementOrFact,measurementType,AvgBFWDRatio,Average bankfull width depth ratio for the reach (depth measured from the water surface) (unit: meters).,Producer defined,meters,0,None
 MeasurementOrFact,measurementType,BFHeight,Average bankfull height measured from water surface across transects (unit: meters).,Producer defined,meters,0,None
-MeasurementOrFact,measurementType,BFWidth,Average bankfull width across transects for the reach (unit: meters).,Producer defined,meters,0,None
+MeasurementOrFact,measurementType,BFWidth,Average bankfull width across transects for the reach measured from the water surface (unit: meters).,Producer defined,meters,0,None
 MeasurementOrFact,measurementType,Grad,"Mean slope of water surface from the bottom of the reach to the top of the reach (expressed as percent, unit: none, min: 0, max: 100).",Producer defined,percent,0,100
 MeasurementOrFact,measurementType,MeanThalwegDepth,Mean thalweg depth. Metric of how deep the water was at the site (unit: meters).,Producer defined,meters,0,None
 MeasurementOrFact,measurementType,ReachLen,Length of the sampling reach measured along the thalweg (unit: meters).,Producer defined,meters,150,4000
@@ -65,8 +64,8 @@ MeasurementOrFact,measurementType,ProtocolReachLen,Total reach length intended t
 MeasurementOrFact,measurementType,PoolFreq,Number of pools within the sampled reach standardized to pools per kilometer (unit: pools per kilometer).,Producer defined,# / km,0,None
 MeasurementOrFact,measurementType,LWDFreq,Frequency of large woody debris within the bankfull channel of the reach.,Producer defined,number of pieces per 100 meters,0,None
 MeasurementOrFact,measurementType,LWDVol,Volume of large wood debris within the bankfull channel of the reach.,Producer defined,meters cubed per 100 meters,0,None
+MeasurementOrFact,measurementType,AvgBFWDRatioStreambed,Average bankfull width depth ratio for the reach (depth measured from the water surface) (unit: meters).,Producer defined,meters,0,None 
 MeasurementOrFact,measurementTypeID,500,A unique numeric identifier assigned to the measurementType Sin.,Producer defined,NA,,
-MeasurementOrFact,measurementTypeID,501,A unique numeric identifier assigned to the measurementType StreamOrder.,Producer defined,NA,,
 MeasurementOrFact,measurementTypeID,502,A unique numeric identifier assigned to the measurementType AvgBFWDRatio.,Producer defined,NA,,
 MeasurementOrFact,measurementTypeID,503,A unique numeric identifier assigned to the measurementType BFHeight.,Producer defined,NA,,
 MeasurementOrFact,measurementTypeID,504,A unique numeric identifier assigned to the measurementType BFWidth.,Producer defined,NA,,
@@ -96,6 +95,7 @@ MeasurementOrFact,measurementTypeID,529,A unique numeric identifier assigned to 
 MeasurementOrFact,measurementTypeID,530,A unique numeric identifier assigned to the measurementType PoolFreq. ,Producer defined,NA,,
 MeasurementOrFact,measurementTypeID,531,A unique numeric identifier assigned to the measurementType LWDFreq. ,Producer defined,NA,,
 MeasurementOrFact,measurementTypeID,532,A unique numeric identifier assigned to the measurementType LWDVol. ,Producer defined,NA,,
+MeasurementOrFact,measurementTypeID,533,A unique numeric identifier assigned to the measurementType AvgBFWDRatioStreambed. ,Producer defined,NA,,
 DataMapping,termID,401,The termID assigned to column header term,Producer defined,NA,,
 DataMapping,termID,201,The termID assigned to column header verbatimLocationID,Producer defined,NA,,
 DataMapping,termID,202,The termID assigned to column header latitude,Producer defined,NA,,
@@ -110,7 +110,6 @@ DataMapping,termID,305,The termID assigned to column header fieldNotes,Producer 
 DataMapping,termID,306,The termID assigned to column header beaverImpactFlow,Producer defined,NA,,
 DataMapping,measurementTypeID,NA,There is no measurementType associated with this term so there is no measurementTypeID.,Producer defined,NA,,
 DataMapping,measurementTypeID,500,A unique numeric identifier assigned to the measurementType Sin.,Producer defined,NA,,
-DataMapping,measurementTypeID,501,A unique numeric identifier assigned to the measurementType StreamOrder.,Producer defined,NA,,
 DataMapping,measurementTypeID,502,A unique numeric identifier assigned to the measurementType AvgBFWDRatio.,Producer defined,NA,,
 DataMapping,measurementTypeID,503,A unique numeric identifier assigned to the measurementType BFHeight.,Producer defined,NA,,
 DataMapping,measurementTypeID,504,A unique numeric identifier assigned to the measurementType BFWidth.,Producer defined,NA,,
@@ -140,6 +139,7 @@ DataMapping,measurementTypeID,529,A unique numeric identifier assigned to the me
 DataMapping,measurementTypeID,530,A unique numeric identifier assigned to the measurementType PoolFreq. ,Producer defined,,,
 DataMapping,measurementTypeID,531,A unique numeric identifier assigned to the measurementType LWDFreq. ,Producer defined,,,
 DataMapping,measurementTypeID,532,A unique numeric identifier assigned to the measurementType LWDVol. ,Producer defined,,,
+DataMapping,measurementTypeID,533,A unique numeric identifier assigned to the measurementType AvgBFWDRatioStreambed. ,Producer defined,NA,,
 DataMapping,measurementType,blank cell,There is no measurementType associated with this term.,Producer defined,NA,,
 DataMapping,dataType,Date,The data type values are calendar dates (yyyy-mm-dd).,Producer defined,NA,,
 DataMapping,dataType,Integer,The data type values are whole number integers.,Producer defined,NA,,
@@ -158,11 +158,9 @@ DataMapping,methodCollection,NA,The term is not present in the Source Data and/o
 DataMapping,methodAnalysis,NA,The term is not present in the Source Data and/or the term was not included in the Integrated Dataset due to a lack of compatibility across programs so the AnalysisMethod is not included here. Refer to Completeness in the metadata record for additional information on what Source Data were and were not included in the integrated dataset.,Producer defined,NA,,
 MetricControlledVocabulary,termID,401,Unique identifier assigned to the column header term in the dataset.,Producer defined,NA,,
 MetricControlledVocabulary,measurementTypeID,500,A unique numeric identifier assigned to the measurementType Sin.,Producer defined,NA,,
-MetricControlledVocabulary,measurementTypeID,501,A unique numeric identifier assigned to the measurementType StreamOrder.,Producer defined,NA,,
 MetricControlledVocabulary,measurementTypeID,502,A unique numeric identifier assigned to the measurementType AvgBFWDRatio.,Producer defined,NA,,
 MetricControlledVocabulary,measurementTypeID,503,A unique numeric identifier assigned to the measurementType BFHeight.,Producer defined,NA,,
 MetricControlledVocabulary,measurementTypeID,504,A unique numeric identifier assigned to the measurementType BFWidth.,Producer defined,NA,,
-MetricControlledVocabulary,measurementTypeID,505,A unique numeric identifier assigned to the measurementType countTransectsBFWidth.,Producer defined,NA,,
 MetricControlledVocabulary,measurementTypeID,506,A unique numeric identifier assigned to the measurementType Grad.,Producer defined,NA,,
 MetricControlledVocabulary,measurementTypeID,507,A unique numeric identifier assigned to the measurementType MeanThalwegDepth.,Producer defined,NA,,
 MetricControlledVocabulary,measurementTypeID,508,A unique numeric identifier assigned to the measurementType ReachLen.,Producer defined,NA,,
@@ -189,12 +187,11 @@ MetricControlledVocabulary,measurementTypeID,529,A unique numeric identifier ass
 MetricControlledVocabulary,measurementTypeID,530,A unique numeric identifier assigned to the measurementType PoolFreq. ,Producer defined,NA,,
 MetricControlledVocabulary,measurementTypeID,531,A unique numeric identifier assigned to the measurementType LWDFreq. ,Producer defined,NA,,
 MetricControlledVocabulary,measurementTypeID,532,A unique numeric identifier assigned to the measurementType LWDVol. ,Producer defined,NA,,
+MetricControlledVocabulary,measurementTypeID,533,A unique numeric identifier assigned to the measurementType AvgBFWDRatioStreambed. ,Producer defined,NA,,
 MetricControlledVocabulary,measurementType,Sin,"Reach sinuosity (reach length along the thalweg divided by straight line distance between the bottom of the reach and the top of the reach, expressed as a ratio, unit: none)",Producer defined,ratio,1,None
-MetricControlledVocabulary,measurementType,StreamOrder,Strahler stream order of the site from the provider dataset (unit: none).,Producer defined,None,1,12
 MetricControlledVocabulary,measurementType,AvgBFWDRatio,Average bankfull width depth ratio for the reach (unit: meters).,Producer defined,meters,0,None
 MetricControlledVocabulary,measurementType,BFHeight,Average bankfull height measured from water surface across transects (unit: meters).,Producer defined,meters,0,None
 MetricControlledVocabulary,measurementType,BFWidth,Average bankfull width across transects for the reach (unit: meters).,Producer defined,meters,0,None
-MetricControlledVocabulary,measurementType,countTransectsBFWidth,Number of cross sections included in the average bankfull width calculation (units: count of measurements),Producer defined,count of measurements,0,None
 MetricControlledVocabulary,measurementType,Grad,"Mean slope of water surface from the bottom of the reach to the top of the reach (expressed as percent, unit: none, min: 0, max: 100).",Producer defined,percent,0,100
 MetricControlledVocabulary,measurementType,MeanThalwegDepth,Mean thalweg depth. Metric of how deep the water was at the site (unit: meters).,Producer defined,meters,0,None
 MetricControlledVocabulary,measurementType,ReachLen,Length of the sampling reach measured along the thalweg (unit: meters).,Producer defined,meters,150,4000
@@ -221,6 +218,7 @@ MetricControlledVocabulary,measurementType,ProtocolReachLen,Total reach length i
 MetricControlledVocabulary,measurementType,PoolFreq,Number of pools within the sampled reach standardized to pools per kilometer (unit: pools per kilometer).,Producer defined,count per kilometer,0,None
 MetricControlledVocabulary,measurementType,LWDFreq,Frequency of large woody debris within the bankfull channel of the reach.,Producer defined,number of pieces per 100 meters,0,None
 MetricControlledVocabulary,measurementType,LWDVol,Volume of large wood debris within the bankfull channel of the reach.,Producer defined,meters cubed per 100 meters,0,None
+MetricControlledVocabulary,measurementType,AvgBFWDRatioStreambed,Average bankfull width depth ratio for the reach (depth measured from the water surface) (unit: meters).,Producer defined,meters,0,None 
 MetricControlledVocabulary,dataType,Numeric,"The value is numeric in nature, including negative and positive values, integers and doubles. (ed note: this def may change in  future if integers/doubles are split. Not totally sure on definition.)",Producer defined,NA,,
 MetricControlledVocabulary,unit,NA,Measurement units are not applicable to this measurementType.,Producer defined,NA,,
 MetricControlledVocabulary,unit,ratio,ratio,Producer defined,NA,,

@@ -62,7 +62,7 @@ flat_data           <- data.frame(matrix(ncol=length(flat_data_names), nrow=1))
 colnames(flat_data)  <- flat_data_names
 
 # Read the the data mapping 
-DataMapping <- read.csv("Data Exchange Standard Tables/DataMapping.csv")
+DataMapping <- read.csv("Data Exchange Standard Tables/DataMappingDES.csv")
 DataMapping <- DataMapping %>% 
   mutate(across(where(is.character), str_trim))
 
@@ -75,7 +75,7 @@ for(p in program) {
   source(paste0(getwd(), "/Data Intergration Example/R/Download and clean EPA NRSA.R"))
   data <- download_EPA_NRSA()
   
-  # we filter for only the wadeable streams
+  # Filter for only the wadeable streams
     field <- dataMapVariable("samplingProtocol", p)
     data <- data %>% 
       filter(!!as.name(field) == "WADEABLE")
@@ -88,7 +88,7 @@ for(p in program) {
     dry <- as.character(dry) 
     dry[(dry == 0) & !is.na(dry)] <- "Flow (Whole Reach)"
     dry[(dry == 100)& !is.na(dry)] <- "No Flow (Dry)"
-    dry[!str_detect(dry, "Flow") & !is.na(dry)] <- "Other"
+    dry[!str_detect(dry, "Flow") & !is.na(dry)] <- "Partial Flow/Stagnant Pools"
     data[[field]] <- dry
     
     #Update SiteSelectionType to Random or Targeted 
@@ -104,8 +104,9 @@ for(p in program) {
   } else if (p=="AIM") { 
     
     print("Processing BLM AIM data")
-    source(paste0(getwd(), "/Data Intergration Example/R/Download and clean BLM AIM Data.R"))
-    data <- download_AIM()
+   source(paste0(getwd(), "/Data Intergration Example/R/Download and clean BLM AIM Data.R"))
+   data <- download_AIM()
+
     
     ##### Format data to Data Exchange Standard ####
     #Filter out the PRTCOl = BOATABLE, we agree to only share wadable data 
@@ -122,7 +123,7 @@ for(p in program) {
     dry <- as.character(dry) 
     dry[(dry == 0) & !is.na(dry)] <- "Flow (Whole Reach)"
     dry[(dry == 100)& !is.na(dry)] <- "No Flow (Dry)"
-    dry[!str_detect(dry, "Flow") & !is.na(dry)] <- "Other"
+    dry[!str_detect(dry, "Flow") & !is.na(dry)] <- "Partial Flow/Stagnant Pools"
     data[[field]] <- dry
     
     
@@ -162,16 +163,17 @@ for(p in program) {
       #Write code to reproject if needed 
     }
     
-    # Remove PIBO type Praire sites, based on PIBO feedback 
+    # Remove PIBO type Prairie sites and project type Pilot, based on PIBO feedback 
    data<-  data %>% 
-      filter(Type !="P")
+      filter(Type !="P") %>% 
+      filter(Project != "PILOT")
     
  #from the datamapping find the field name that contains the percent dry for AIM
     field <- dataMapVariable("fieldNotes", p)
       
   #Update Stream Flow values to the data exchange standard 
     dry <- data[[field]]
-    dry[str_detect(dry, "Other") & !is.na(dry)] <- "Other"
+    dry[str_detect(dry, "Other") & !is.na(dry)] <- "Partial Flow/Stagnant Pools"
     dry[str_detect(dry, "No")& !is.na(dry)] <- "No Flow (Dry)"
     dry[!str_detect(dry, "Other") & !is.na(dry)& !str_detect(dry, "No Flow")] <- "Flow (Whole Reach)"
     data[[field]] <- dry
@@ -191,9 +193,7 @@ for(p in program) {
    siteSelectionType$ProjectType[str_detect(siteSelectionType$ProjectType, "CNTRCT") ] <- "Targeted"
    unique(siteSelectionType)
    #I don't know about PILOT, FWNF? 
-   siteSelectionType$ProjectType[str_detect(siteSelectionType$ProjectType, "PILOT") ] <- "DO not know"
-   unique(siteSelectionType)
-   siteSelectionType$ProjectType[str_detect(siteSelectionType$ProjectType, "FWNF") ] <- "DO not know"
+   siteSelectionType$ProjectType[str_detect(siteSelectionType$ProjectType, "FWNF") ] <- "Random"
    unique(siteSelectionType)
    
    #Project types CRB & MRB have both Random and Targeted sites, for siteSelectionType use the PIBO Type  
@@ -210,7 +210,7 @@ for(p in program) {
     source(paste0(getwd(), "/Data Intergration Example/R/Download and clean AREMP Data.R"))
     data <- download_AREMP()
     
-    # Create a field Protocol field with WADEABLE based on project feedback that all data is collected in wadeable streamk 
+    # Create a field Protocol field with WADEABLE based on project feedback that all data is collected in wadeable stream 
     data$survey_type ="WADEABLE"
 
   }
@@ -224,13 +224,11 @@ for(p in program) {
   SubSetData <- data %>% 
     dplyr::select(all_of(term$originalField)) 
   
- # build a vector of the field names from the crosswalk. Metric index equals the fields that are part of the metric controlled vocabularly, while the inverse are the fields in the DES. 
-  metric_index <- term$term == "term"
-  
-  
-  new_names <- character(length(metric_index))
-  new_names[metric_index] <- term$measurementType[metric_index]
-  new_names[!metric_index] <- term$term[!metric_index]
+ # build a vector of the field names from the crosswalk. Metric index equals the fields that are part of the metric controlled vocabulary, while the inverse are the fields in the DES. 
+   metric_index <- term$term == "term"
+   new_names <- character(length(metric_index))
+   new_names[metric_index] <- term$measurementType[metric_index]
+   new_names[!metric_index] <- term$term[!metric_index]
  
    names(SubSetData) = new_names
    rm(new_names)
@@ -267,7 +265,7 @@ if (p=="NRSA"){
      SubSetData$bibilographicCitation   <- paste("U.S. Environmental Protection Agency. 2016, 2020. National Aquatic Resource Surveys. National Rivers and Streams Assessment 2008-2009, 2013-2014. Available from U.S. EPA web page: https://www.epa.gov/national-aquatic-resource-surveys/SubSetData-national-aquatic-resource-surveys.Date accessed:", Sys.Date())
      SubSetData$datasetOrginization     <- "Environmental Protection Agancy"
      SubSetData$institutionCode         <- "EPA"
-     SubSetData$projectName             <- "National Rivers and Streams Assessmet"
+     SubSetData$projectName             <- "National Aquatic Resource Surveys(NARS): National Rivers and Streams Assessmet(NRSA)"
      SubSetData$projectCode             <- "NRSA"
      SubSetData$datasetLink             <- "https://www.epa.gov/national-aquatic-resource-surveys/data-national-aquatic-resource-surveys"
      SubSetData$metadataID              <- "https://www.epa.gov/national-aquatic-resource-surveys/data-national-aquatic-resource-surveys"
@@ -285,9 +283,12 @@ if (p=="NRSA"){
      SubSetData$projectName             <- "Asssessment, Inventory, and Monitoring"
      SubSetData$projectCode             <- "AIM"
      SubSetData$datasetLink             <- "https://gis.blm.gov/arcgis/rest/services/hydrography/BLM_Natl_AIM_AquADat/MapServer"
-     SubSetData$metadataID              <- "https://landscape.blm.gov/geoportal/rest/document?id=%7B44F011CC-6E1F-4FDA-AFDF-B29BF1732ACF%7D"
+     SubSetData$metadataID              <- "https://www.arcgis.com/sharing/rest/content/items/97e9d82469194fab88e4193ba591fb72/info/metadata/metadata.xml?format=default&output=html"
      SubSetData$preProcessingCode       <- "https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/tree/master/Data%20Intergration%20Example"
      SubSetData$locationRemarks         <- "Middle of Reach"
+     #Calculate BF width to depth ratio based on 
+     SubSetData$AvgBFWDRatio            <- SubSetData$BFWidth / SubSetData$BFHeight
+     
      
    } else if (p=="PIBO"){ 
      SubSetData$datasetID               <- ""
@@ -333,9 +334,7 @@ if (p=="NRSA"){
   #####Add the SupSetData representing the specific program data into the flat_data, combinding information from the sources #####
   flat_data <- bind_rows(flat_data, SubSetData)
   
-   print(names(flat_data)) 
-   print(names(SubSetData)) 
-   
+ 
   rm(SubSetData)
 
 }
@@ -353,9 +352,19 @@ all_data2$year              <- as.integer(all_data2$year)
 
 # Replace N/A and blanks from dataset with the no value 
 
-#all_data2[all_data2 == "N/A"] <- NA
+all_data2$waterBody <- all_data2$waterBody[all_data2$waterBody == "N/A"] <- NA
 all_data2[all_data2 == ''] <- NA 
 
+
+# Remove any locations that have no metric data in the integrated dataset 
+measurement_names <- metricControlledVocabulary
+
+only_metrics <- all_data2 %>% 
+  dplyr::select(measurement_names)
+
+ind <- rowSums(is.na(only_metrics)) != (ncol(only_metrics)) 
+
+all_data2 <-all_data2[ind,]
 
 ##### Generate UIDs for the integrated dataset 
 #create a datasetID  
@@ -368,6 +377,15 @@ all_data2 <- all_data2 %>%
   mutate(temp_eventID = paste0(verbatimEventID,projectCode)) %>% 
   transform(eventID=as.numeric((factor(temp_eventID)))) %>% 
   dplyr::select(-temp_eventID)
+
+# Remove verbatimEventID generated for the EPA dataset in the data creation process, there is no UID for the 2004 EPA datasets 
+
+ind_UID <-all_data2$datasetName == ("WSA PHab Metrics (Part 1) - Data (CSV) (csv),WSA PHab Metrics (Part 2) - Data (CSV) (csv),WSA PHab Metrics (Part 1) - Data (CSV) (csv),WSA PHab Metrics (Part 2) - Data (CSV) (csv),WSA Water Chemistry - Data (CSV) (csv),WSA Site Information (CSV) (csv)")
+
+all_data2[ind_UID,"verbatimEventID"] = NA
+     
+  
+
 
 #test2 <- all_data2[duplicated(all_data2$eventID),]
 
@@ -395,6 +413,8 @@ unique_locations <- distinct(u_locations)
 unique_path <- paste0(getwd(), "/Data Intergration Example/data/Unique Locations for Stream Habitat Metric.csv")
 #file.remove(unique_path)
 write.csv(unique_locations, file=unique_path, row.names=FALSE)
+
+
 
 
 ####Subset the data set to match the data exchange specifications documented on https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications#####
@@ -436,12 +456,14 @@ event<- MetadataDict %>%
 event_table <- all_data2 %>% 
   dplyr::select(one_of(c("locationID",  event)))
 
+
+
 #Create the measurement or fact table 
 
-measurement_names <- metricControlledVocabulary
+#measurement_names <- metricControlledVocabulary
 
-measurement <- all_data2 %>% 
-  dplyr::select(eventID) 
+#measurement <- all_data2 %>% 
+ # dplyr::select(eventID) 
 
 measurement <- all_data2 %>% 
             dplyr::select(measurement_names, eventID)

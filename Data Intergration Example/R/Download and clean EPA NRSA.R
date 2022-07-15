@@ -77,7 +77,8 @@ download_EPA_NRSA <- function() {
 
 ######Join all the 2004 datsets #####
   data_2004 <- dataset_table %>% 
-        dplyr::filter(str_detect(Survey,"2004")) 
+        dplyr::filter(str_detect(Survey,"2004")) %>% 
+        unique()
   
 #Separate out the two habitat datasets labeled 2004 because processing requires a steps to combined the two 2004 datasets 
   phys_hab2004 <- data_2004 %>% 
@@ -201,6 +202,19 @@ location_data <- dataset_table %>%
       data2                 <- read.csv(temp_file)
       data2$datasetNameLocation     <- location_data$Data[i]
       
+      #convert the name SITE_CLASS to SITETYPE 
+     if(any(names(data2) =="SITE_CLASS")) { 
+        data2 <- data2 %>% dplyr::rename(SITETYPE = SITE_CLASS)
+        print(names(data2))
+     } 
+    
+      #convert the name GNIS_NAME to LOC_NAME 
+      if(any(names(data2) =="LOC_NAME")) { 
+        data2 <- data2 %>% dplyr::rename(GNIS_NAME=LOC_NAME)
+        print(names(data2))
+      }   
+      
+      
       #Convert the data from a string to a date 
       if (any(names(data2)=="DATE_COL")) { 
         if (grepl("-", data2$DATE_COL[1],  fixed=TRUE)) { 
@@ -232,11 +246,12 @@ location_data <- dataset_table %>%
       } 
       
     # Bind years of location together into one dataset 
+  
     if(i == 1){
         all_locations <- data2
       } else {
         all_locations     <- bind_rows(list(all_locations, data2))
-        } 
+       } 
       
       unlink(temp_file)
   } 

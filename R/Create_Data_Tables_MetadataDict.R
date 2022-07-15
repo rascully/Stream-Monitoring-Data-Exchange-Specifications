@@ -72,7 +72,7 @@ write.csv(metricControlledVocabulary, paste0(getwd(),"/Data Exchange Standard Ta
 
 #####Build mapping table for the lessons learned paper and project review 
 
-dataMapping <- read.csv("Data Exchange Standard Tables/DataMapping.csv")
+dataMapping <- read.csv("Data Exchange Standard Tables/DataMappingDES.csv")
 
 wideDataMapping <- dataMapping %>% 
   pivot_wider(names_from = projectCode, values_from = c(originalField,originalUnit, originalDataType, methodCollection, methodAnalysis))

@@ -17,7 +17,7 @@ library(tidyverse)
   
   #Crosswalk_tall <- read.csv(temp_file)
   #rm(temp_file)
-  Crosswalk_tall <-  read.csv("Data Exchange Standard Tables/DataMapping.csv")
+  Crosswalk_tall <-  read.csv("Data Exchange Standard Tables/DataMappingDES.csv")
 
   variable <- Crosswalk_tall %>% 
     filter(term == DES_field & projectCode == Program) %>%  

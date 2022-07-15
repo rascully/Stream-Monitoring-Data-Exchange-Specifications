@@ -1,0 +1,71 @@
+                                                                       13:38 Monday, March 2, 2009  38
+
+The CONTENTS Procedure
+
+Data Set Name        NWSA.VERIFICATION                        Observations          1392
+Member Type          DATA                                     Variables             42  
+Engine               V9                                       Indexes               0   
+Created              Monday, February 23, 2009 11:02:46 AM    Observation Length    784 
+Last Modified        Monday, March 02, 2009 11:32:57 AM       Deleted Observations  0   
+Protection                                                    Compressed            NO  
+Data Set Type                                                 Sorted                NO  
+Label                Site Verification                                                  
+Data Representation  WINDOWS_32                                                         
+Encoding             wlatin1  Western (Windows)                                         
+
+
+
+                              Alphabetic List of Variables and Attributes
+ 
+ #    Variable    Type    Len    Format         Informat       Label
+
+39    COM_IM      Char    300                                  IM Personnel Comment                   
+ 5    DATE_COL    Num       8    MMDDYY10.                     Date of Site Visit                     
+29    GPS_VER     Char      1                                  Site Verified by GPS (Y/N)             
+ 4    LOC_NAME    Char     80                                  Site Name from Verification Form       
+30    LOC_VER     Char      1                                  Site Verified by Local Contact (Y/N)   
+10    MLAT_DD     Num       8    12.6           12.6           X-site Map Latitude - Decimal Degrees  
+14    MLAT_DEG    Num       8                                  X-site Map Latitude - Degrees          
+15    MLAT_MIN    Num       8                                  X-site Map Latitude - Minutes          
+16    MLAT_SEC    Num       8                                  X-site Map Latitude - Seconds          
+11    MLON_DD     Num       8    12.6           12.6           X-site Map Longitude - Decimal Degrees 
+17    MLON_DEG    Num       8                                  X-site Map Longitude - Degrees         
+18    MLON_MIN    Num       8                                  X-site Map Longitude - Minutes         
+19    MLON_SEC    Num       8                                  X-site Map Longitude - Seconds         
+34    OTH_VER     Char     50                                  Site Verified by Other Means - Comment 
+37    RCHDOWN     Num       8                                  Extent of Reach Downstream from X (m)  
+38    RCHLEN      Num       8                                  Total Length of Reach (m)              
+36    RCHUP       Num       8                                  Extent of Reach Upstream from X (m)    
+35    RCHWIDTH    Num       8                                  Channel Width Used to Define Reach (m) 
+32    RDS_VER     Char      1                                  Site Verified by Roads (Y/N)           
+31    SIG_VER     Char      1                                  Site Verified by Signs (Y/N)           
+ 9    SITESAMP    Char      1                                  Was Site Sampled: Y/N                  
+ 1    SITE_ID     Char     25    $VARYING25.    $VARYING25.    Site Identification Code               
+                                                                       13:38 Monday, March 2, 2009  39
+
+The CONTENTS Procedure
+
+                              Alphabetic List of Variables and Attributes
+ 
+ #    Variable    Type    Len    Format         Informat       Label
+
+40    STATE       Char      2    $2.            $2.            State where Site is Located            
+ 6    TEAM_ID     Char     80                                  Number Identifying Field Personnel     
+33    TOP_VER     Char      1                                  Site Verified by Topographic Map (Y/N) 
+41    TRCHLEN     Num       8                                  Total Length of Reach (m)              
+ 8    VALXSTAT    Char     12                                  X-site Sampling Status Sub-Category    
+28    VER_STAT    Char     12                                  Site Verification Status               
+ 3    VISIT_NO    Num       8    BEST8.         BEST8.         Within Year Site Visit Number          
+26    XDIMEN      Char      2                                  Type of GPS Dimension Fix (2D/3D)      
+27    XGPSCOOR    Char      1                                  GPS Coords w/in 10 Seconds of Map (Y/N)
+12    XLAT_DD     Num       8    12.6           12.6           X-site GPS Latitiude - Decimal Degrees 
+20    XLAT_DEG    Num       8                                  X-site GPS Latitude - Degrees          
+21    XLAT_MIN    Num       8                                  X-site GPS Latitude - Minutes          
+22    XLAT_SEC    Num       8                                  X-site GPS Latitude - Seconds          
+42    XLONDD      Num       8                                                                         
+13    XLON_DD     Num       8    12.6           12.6           X-site GPS Longitude - Decimal Degrees 
+23    XLON_DEG    Num       8                                  X-site GPS Longitude - Degrees         
+24    XLON_MIN    Num       8                                  X-site GPS Longitude - Minutes         
+25    XLON_SEC    Num       8                                  X-site GPS Longitude - Seconds         
+ 7    XSTATUS     Char     12    $11.           $11.           X-site Sampling Status Category        
+ 2    YEAR        Num       8    BEST12.        F12.           Year of Site Visit                     

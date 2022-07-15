@@ -1,0 +1,41 @@
+                                                                       13:38 Monday, March 2, 2009  12
+
+The CONTENTS Procedure
+
+Data Set Name        NWSA.LEGACYTREEMET                    Observations          1384
+Member Type          DATA                                  Variables             19  
+Engine               V9                                    Indexes               0   
+Created              Wed, Feb 18, 2009 05:00:02 PM         Observation Length    432 
+Last Modified        Monday, March 02, 2009 11:32:56 AM    Deleted Observations  0   
+Protection                                                 Compressed            NO  
+Data Set Type                                              Sorted                NO  
+Label                Legacy Tree Metrics                                             
+Data Representation  WINDOWS_32                                                      
+Encoding             wlatin1  Western (Windows)                                      
+
+                                  
+
+
+                           Alphabetic List of Variables and Attributes
+ 
+ #   Variable   Type   Len   Format        Informat      Label
+
+18   LTFRACL    Num      8                               Legacy fraction of reach trees >= large 
+17   LTFRACM    Num      8                               Legacy fraction of reach trees >= medium
+16   LTFRACS    Num      8                               Legacy fraction of reach trees >= small 
+19   LTFRACX    Num      8                               Legacy fraction of reach trees >= Xlarge
+10   LTMDDIST   Num      8                               Legacy mean dist of trees >= median size
+11   LTMDDOM    Char    30                               Legacy dominant sp. >= median size      
+13   LTMDDOMN   Num      8                               Legacy dominant sp. count               
+12   LTMDSUB    Char    30                               Legacy subdominant sp. >= median size   
+14   LTMDSUBN   Num      8                               Legacy subdominant sp. count            
+ 9   LTMXCNT    Num      8                               Legacy number of largest trees          
+ 6   LTMXDBH    Char     8                               Legacy largest tree dbh                 
+ 5   LTMXDIST   Num      8                               Legacy largest tree distance            
+ 8   LTMXHT     Char     8                               Legacy largest tree height              
+ 7   LTMXSIZE   Char     1                               Legacy largest tree size class (SMLX)   
+ 4   LTMXSPP    Char    40                               Legacy largest tree species             
+15   LTSPLIST   Char   200                               Legacy tree species list, comma delim.  
+ 1   SITE_ID    Char    25   $VARYING25.   $VARYING25.   Site Identification Code                
+ 3   VISIT_NO   Num      8   BEST8.        BEST8.        Within Year Site Visit Number           
+ 2   YEAR       Num      8   BEST12.       F12.          Year of Site Visit                      

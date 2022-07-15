@@ -1,0 +1,30 @@
+                                                                       13:38 Monday, March 2, 2009   3
+
+The CONTENTS Procedure
+
+Data Set Name        NWSA.CANOPYCOVER                           Observations          91974
+Member Type          DATA                                       Variables             9    
+Engine               V9                                         Indexes               0    
+Created              Wed, Feb 18, 2009 04:59:57 PM              Observation Length    144  
+Last Modified        Monday, March 02, 2009 11:32:56 AM         Deleted Observations  0    
+Protection                                                      Compressed            NO   
+Data Set Type                                                   Sorted                NO   
+Label                Canopy Cover as Measured by Densiometer                               
+Data Representation  WINDOWS_32                                                            
+Encoding             wlatin1  Western (Windows)                                            
+
+
+
+                              Alphabetic List of Variables and Attributes
+ 
+#    Variable    Type    Len    Format         Informat       Label
+
+9    COM_FLDF    Char      2                                  Flag                                    
+6    DATE_COL    Num       8    MMDDYY10.                     Date of data collection in field        
+8    DENSIOM     Num       8                                  Count using spherical densiometer = 0-17
+1    SITE_ID     Char     25    $VARYING25.    $VARYING25.    Site Identification Code                
+7    TEAM_ID     Char     80                                  Team identifier                         
+5    TRANSDIR    Char      2                                  location along transect = RT,RC,CT,LC,LF
+4    TRANSECT    Char      2                                  Transect label A-K (sidechannels XA-XK) 
+3    VISIT_NO    Num       8    BEST8.         BEST8.         Within Year Site Visit Number           
+2    YEAR        Num       8    BEST12.        F12.           Year of Site Visit                      

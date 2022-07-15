@@ -1,0 +1,37 @@
+                                                                       13:38 Monday, March 2, 2009  42
+
+The CONTENTS Procedure
+
+Data Set Name        NWSA.WATERSHEDSTRESSOR                Observations          1342
+Member Type          DATA                                  Variables             12  
+Engine               V9                                    Indexes               0   
+Created              Wed, Feb 18, 2009 04:57:05 PM         Observation Length    120 
+Last Modified        Monday, March 02, 2009 11:32:57 AM    Deleted Observations  0   
+Protection                                                 Compressed            NO  
+Data Set Type                                              Sorted                NO  
+Label                Watershed Metrics                                               
+Data Representation  WINDOWS_32                                                      
+Encoding             wlatin1  Western (Windows)                                      
+
+
+ 
+
+                              Alphabetic List of Variables and Attributes
+ 
+ # Variable Type Len Format      Informat    Label
+
+11 ELEV     Num    8                         Sample site elevation obtained from National Elevation   
+                                             Dataset or elevation at the X-site (m)                   
+ 4 LANDAREA Num    8                         Watershed Area (sq km)                                   
+ 8 PAGT     Num    8                         % Watershed Ag (NLCD-81,82,83,84,61)                     
+ 5 PFOR     Num    8                         % Watershed Forest (NLCD-41,42,43)                       
+10 POPDENS  Num    8                         1990 population density reported as population           
+                                             count/area of watershed in km2                           
+12 PRECIP_M Num    8                         Annual Precipitation (m)                                 
+ 7 PURB     Num    8                         % Watershed Urban (NLCD-21,22,23,85)                     
+ 6 PWETL    Num    8                         % Watershed Wetlands (NLCD-91,92)                        
+ 9 RDDENS   Num    8                         Road density reported as km of                           
+                                             roads/area of watershed in km2                           
+ 1 SITE_ID  Char  25 $VARYING25. $VARYING25. Site Identification Code                                 
+ 3 VISIT_NO Num    8 BEST8.      BEST8.      Within Year Site Visit Number                            
+ 2 YEAR     Num    8 BEST12.     F12.        Year of Site Visit                                       

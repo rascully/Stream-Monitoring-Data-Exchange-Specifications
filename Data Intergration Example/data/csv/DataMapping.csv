@@ -87,7 +87,7 @@
 205,"siteSelectionType",NA,"","String","PIBO","Project",NA,"String",NA,NA
 205,"siteSelectionType",NA,"","String","NRSA","SITETYPE",NA,"String",NA,NA
 206,"waterBody",NA,"","String","AIM","StreamName",NA,"String",NA,NA
-206,"waterBody",NA,"","String","NARS ","GNIS_NAME",NA,"String",NA,"NA "
+206,"waterBody",NA,"","String","NRSA","GNIS_NAME",NA,"String",NA,"NA "
 206,"waterBody",NA,"","String","PIBO","Stream",NA,"String",NA,NA
 301,"verbatimEventID",NA,"","String","AREMP","site_survey_id",NA,"String",NA,NA
 301,"verbatimEventID",NA,"","String","AIM","EvaluationID",NA,"String",NA,NA
@@ -101,7 +101,7 @@
 303,"year",NA,"","Numeric","NRSA","YEAR","year","Integer",NA,NA
 303,"year",NA,"","Numeric","PIBO","Yr","year","Integer",NA,NA
 304,"samplingProtocol",NA,"","Integer","AREMP","survey_type",NA,"String",NA,NA
-304,"samplingProtocol",NA,"","Integer","AIM","ProtocolType",NA,"String",NA,NA
+304,"samplingProtocol",NA,"","Integer","AIM","ProtocolVersion",NA,"String",NA,NA
 304,"samplingProtocol",NA,"","Integer","NRSA","PROTOCOL",NA,"String",NA,NA
 304,"samplingProtocol",NA,"","Integer","PIBO","Type","Categorical: I, IS, IK, IKS, K, P, R","String",NA,NA
 305,"fieldNotes",NA,"","String","AIM","PctDry","percent","Double","https://www.monitoringresources.org/Document/Method/Details/7008","https://www.monitoringresources.org/Document/Method/Details/7004"

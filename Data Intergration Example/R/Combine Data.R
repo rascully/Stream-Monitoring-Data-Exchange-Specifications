@@ -30,8 +30,6 @@ EmunDict    <- read.csv("Data/EmunDictionary.csv")
 #List of programs to integrated data from.
 program <- c("NRSA","AIM", 'PIBO', "AREMP")
 
-#Name of the exchange tables 
-exchange_tables <- c("RecrordLevel", "Location", "Event", "MeasurementOrFact")
 
 #Projection for the combined dataset 
 CRS<-  "+proj=longlat +datum=WGS84 +no_defs"
@@ -110,10 +108,13 @@ for(p in program) {
     
     ##### Format data to Data Exchange Standard ####
     #Filter out the PRTCOl = BOATABLE, we agree to only share wadable data 
-    field <- dataMapVariable("samplingProtocol", p)
+    #field <- dataMapVariable("samplingProtocol", p)
     
-    data <- data %>% 
-      filter(!!as.name(field) == "Wadeable")
+    #data <- data %>% 
+    #  filter(!!as.name(field) == "Wadeable")
+    
+   data <- data %>% 
+      filter(ProtocolType == "Wadeable")
     
   # from the datamapping find the field name that contains the percent dry 
     field <- dataMapVariable("fieldNotes", p)
@@ -203,6 +204,22 @@ for(p in program) {
    unique(siteSelectionType)
    siteSelectionType$ProjectType[str_detect(siteSelectionType$ProjectType, "K") ] <- "Targeted"
    data$Project <- siteSelectionType$ProjectType
+   
+   #Update protocol to a description, would be better to update to a link at to a PDF or MR.org document 
+   data$Type[data$Type== "I" ] <- "Inegrator site. Stream habitat, stream temperature, aquatic macroinvertebrate, and riparian vegetation are collected"
+   data$Type[data$Type== "K" ] <- " Designated livestock grazing monitoirng area. Riparian vegetation data and a subset of in-stream habitat data are collected. 
+                                    Sampling locations are identified by local field unit personnel as locations utilized for livestock grazing implementation monitoring"
+   data$Type[data$Type== "IS" ] <- "Sentinels, Inegrator sites. Inegrator site. Stream habitat, stream temperature, aquatic macroinvertebrate, and riparian vegetation are collected. 
+                                    Sites that were sampled annually until 2012. "
+   data$Type[data$Type== "R" ] <- "Inegrator site. Stream habitat, stream temperature, aquatic macroinvertebrate, and riparian vegetation are collected"
+   data$Type[data$Type== "IKS" ] <- "Sentinels, Inegrator and designated monitoring areas. Till 
+                                    Inegrator site. Stream habitat, stream temperature, aquatic macroinvertebrate, and riparian vegetation are collected. 
+                                    Sites that were sampled annually until 2012. "
+   data$Type[data$Type== "IK" ] <- "Inegrator site and desiginated livestock grazing monitoirng area (DMA). Stream habitat, stream temperature, aquatic macroinvertebrate, and riparian vegetation are collected"
+   
+   
+   
+   
   
 
   } else if (p== "AREMP") {
@@ -217,6 +234,7 @@ for(p in program) {
   
 
 ##### Rename the SubSetData from the original fields to the terms (field names) from the data exchange standard #####
+  
   term <- DataMapping %>% 
     filter(projectCode == p) %>% 
     filter(originalField %in% names(data)) 
@@ -302,7 +320,7 @@ if (p=="NRSA"){
      SubSetData$metadataID              <- "Available by data request "
      SubSetData$preProcessingCode       <- ""
      SubSetData$locationRemarks         <- "Bottom of Reach"
-     SubSetData$Type                    <- "WADEABLE"
+
      
      
    } else if (p== "AREMP") {
@@ -351,8 +369,7 @@ all_data2$year[blank_year]  <- substr(all_data2$eventDate[blank_year],1, 4)
 all_data2$year              <- as.integer(all_data2$year)
 
 # Replace N/A and blanks from dataset with the no value 
-
-all_data2$waterBody <- all_data2$waterBody[all_data2$waterBody == "N/A"] <- NA
+#all_data2[all_data2$waterBody == "N/A"] <- NA
 all_data2[all_data2 == ''] <- NA 
 
 
@@ -385,7 +402,6 @@ ind_UID <-all_data2$datasetName == ("WSA PHab Metrics (Part 1) - Data (CSV) (csv
 all_data2[ind_UID,"verbatimEventID"] = NA
      
   
-
 
 #test2 <- all_data2[duplicated(all_data2$eventID),]
 
@@ -427,10 +443,13 @@ RecordLevel<- MetadataDict %>%
   unlist(use.names = F) %>% 
   unique() %>% trimws()
 
+RecordLevel <- RecordLevel[RecordLevel!= ""]
+
 RecordLevel_table <- all_data2 %>% 
   dplyr::select(one_of(c("datasetID",RecordLevel))) %>% 
   distinct()
 
+#location table 
 
 location <- MetadataDict %>%  
     filter(str_detect(entity, "Location"))%>% 
@@ -438,6 +457,8 @@ location <- MetadataDict %>%
     dplyr::select(attribute)%>% 
     unlist(use.names = F) %>% 
     unique() %>% trimws()
+
+location <- location[location!= ""]
 
 #Subset the sampling features/locations 
 location_table <- all_data2 %>% 

@@ -14,6 +14,7 @@ download_AREMP<- function(){
    library(sjmisc)
    library(raster)
    library(utils)
+   library(readxl)
 
 CRS_DES <-  "+proj=longlat +datum=WGS84 +no_defs"
 
@@ -51,31 +52,50 @@ names(data)[names(data) == "site_id"] <- "SITE_ID"
 #Join the location information and the metric data 
 AREMP <- right_join(locations, data, by="SITE_ID")
 
+##### Testing adding AREMP data 
+
+   
+#locations   <- read_excel(paste0(getwd(),"/DataIntegrationExample/data/DataSources/AREMPqryLocationTable_forPNAMP.xlsx"))
+#events      <- read_excel(paste0(getwd(),"/DataIntegrationExample/data/DataSources/AREMPqryEventTable_forPNAMP.xlsx"))
+#updatedData <-  left_join(locations, events)
+#write.csv(updatedData, paste0(getwd(),"/DataIntegrationExample/data/DataSources/AREMPTest.csv"))
+
+
+#updatedData <- updatedData %>% dplyr::rename(SITE_ID = verbatimLocationID, 
+#                                  site_survey_id = verbatimEventID, 
+#                                  lattitude = La)
+#write.csv(updatedData, paste0(getwd(),"/DataIntegrationExample/data/DataSources/AREMPTest.csv"))
+
+#AREMP_all <- full_join(updatedData, AREMP)
+
+#write.csv(AREMP_all, paste0(getwd(),"/DataIntegrationExample/data/DataSources/AREMPTest.csv"), row.names = FALSE)
+
+
+#### 
 
 if(compareCRS(CRS_DES, st_crs(locations))==TRUE){
-      print("AREMP coordinate reference system matches the coordinate system of the data exchange standards for the intergrated dataset.")
+   print("AREMP coordinate reference system matches the coordinate system of the data exchange standards for the intergrated dataset.")
    
-   } else {
-      print("AREMP coordinate reference system does not match the coordinate system of the data exchange standards for the intergrated dataset.")
-      #Transform to a standard system 
-      a_WGS84 <- st_transform(AREMP, crs="+proj=longlat +datum=WGS84 +no_defs")
-     
-      #pull coordinates out of shapefile 
-      lat_long <- do.call(rbind, st_geometry(a_WGS84))%>% 
-            as_tibble(.name_repair = "unique")%>% 
-            setNames(c("longitude","lattitude", "Z", "Z2"))
-      
-      # create a table of the AREMP data with lat and long 
-      table       <- (st_geometry(AREMP)<- NULL)
-      AREMP_csv   <- bind_cols(AREMP, lat_long)
-      print("Transformed to WGS84 based on the data exchange standard")
-   }
+} else {
+   print("AREMP coordinate reference system does not match the coordinate system of the data exchange standards for the intergrated dataset.")
+   #Transform to a standard system 
+   a_WGS84 <- st_transform(AREMP, crs="+proj=longlat +datum=WGS84 +no_defs")
    
+   #pull coordinates out of shapefile 
+   lat_long <- do.call(rbind, st_geometry(a_WGS84))%>% 
+      as_tibble(.name_repair = "unique")%>% 
+      setNames(c("longitude","lattitude", "Z", "Z2"))
+   
+   # create a table of the AREMP data with lat and long 
+   table       <- (st_geometry(AREMP)<- NULL)
+   AREMP_csv   <- bind_cols(AREMP, lat_long)
+   print("Transformed to WGS84 based on the data exchange standard")
+}
 
 #Delete the old AREMP data file 
 files <- list.files(paste0(getwd(), "/DataIntegrationExample/data/DataSources"))
-files_remove <- paste0(getwd(), "/DataIntegrationExample/data/DataSources/", files[str_detect(files, "AREMP")])
-file.remove(files_remove)
+#files_remove <- paste0(getwd(), "/DataIntegrationExample/data/DataSources/", files[str_detect(files, "AREMP")])
+#file.remove(files_remove)
 
 file_name <- paste0(getwd(), "/DataIntegrationExample/data/DataSources/AREMPProcessedDataset.csv")
 write.csv(AREMP_csv, file=file_name, row.names=FALSE)

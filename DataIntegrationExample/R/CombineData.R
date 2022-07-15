@@ -516,7 +516,7 @@ Results<- Results %>%
   relocate(c("eventID","measurementID", "measurementType", "measurementTypeID","measurementValue")) 
 
 #Write the analysis ready stream monitoring dataset data to a .csv
-file_path <- paste0(getwd(), "/DataIntegrationExample/data/Analysis Stream Habitat Monitoring Metric Dataset.csv")
+file_path <- paste0(getwd(), "/DataIntegrationExample/data/AnalysisStreamHabitatMonitoringMetricDataset.csv")
 #file.remove(file_path)
 write.csv(all_data2, file=file_path, row.names=FALSE)
 

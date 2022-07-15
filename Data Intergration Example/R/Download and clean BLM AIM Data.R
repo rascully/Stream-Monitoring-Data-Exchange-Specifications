@@ -29,10 +29,10 @@ download_AIM<- function(){
   #request <- build_url(url)
   #BLM <- st_read(request, stringsAsFactors = TRUE) #Load the file from the Data file
   
-BLM <- geojson_sf("https://services1.arcgis.com/KbxwQRRfWyEYLgp4/arcgis/rest/services/BLM_Natl_AIM_Lotic_Indicators_Hub/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson")
+#BLM <- geojson_sf("https://services1.arcgis.com/KbxwQRRfWyEYLgp4/arcgis/rest/services/BLM_Natl_AIM_Lotic_Indicators_Hub/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson")
 BLM <- geojson_sf('https://services1.arcgis.com/KbxwQRRfWyEYLgp4/arcgis/rest/services/BLM_Natl_AIM_Lotic_Indicators_Hub/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json')
-  
-  data <- as_tibble(BLM)
+
+   data <- as_tibble(BLM)
   
   #Check the projection 
   st_crs(BLM)
@@ -50,7 +50,6 @@ BLM <- geojson_sf('https://services1.arcgis.com/KbxwQRRfWyEYLgp4/arcgis/rest/ser
   data$FieldEvalDate <- as.POSIXct(data$FieldEvalDate/1000, origin="1970-01-01")
   data$FieldEvalDate <- str_remove(data$FieldEvalDate, " 17:00:00 PDT")
   data$FieldEvalDate <- as.Date.character(str_remove(data$FieldEvalDate, "17:00:00"))
-  
   
   
   file_name <- paste0(getwd(), "/Data Intergration Example/data/DataSources/AIM_Processed_Dataset.csv")

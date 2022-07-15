@@ -1,0 +1,98 @@
+                                                                       13:38 Monday, March 2, 2009  40
+
+The CONTENTS Procedure
+
+Data Set Name        NWSA.WATERCHEMISTRY                      Observations          1392
+Member Type          DATA                                     Variables             68  
+Engine               V9                                       Indexes               0   
+Created              Monday, February 23, 2009 11:01:55 AM    Observation Length    1328
+Last Modified        Monday, March 02, 2009 11:32:57 AM       Deleted Observations  0   
+Protection                                                    Compressed            NO  
+Data Set Type                                                 Sorted                NO  
+Label                Water Chemistry                                                    
+Data Representation  WINDOWS_32                                                         
+Encoding             wlatin1  Western (Windows)                                         
+
+                           
+
+
+                           Alphabetic List of Variables and Attributes
+ 
+ #   Variable   Type   Len   Format        Informat      Label
+
+55   ALKCALC    Num      8                               Calculated Alkalinity (ueq/L)           
+13   ANC        Num      8   F8.1                        Gran ANC (ueq/L)                        
+14   ANCF       Char    10                               Flag for ANC                            
+58   ANDEF      Num      8                               Anion Deficit [C-A] (ueq/L)             
+57   ANSUM      Num      8                               Sum of Anions (ueq/L)                   
+61   BALANCE    Num      8                               Ion Balance [C-A]/[C+A/2] (%)           
+29   CA         Num      8   F8.1                        Calcium (ueq/L)                         
+30   CAF        Char    10                               Flag for CA                             
+56   CATSUM     Num      8                               Sum of Cations (ueq/L)                  
+43   CL         Num      8   F8.1                        Chloride (ueq/L)                        
+44   CLF        Char    10                               Flag for CL                             
+54   CO3        Num      8                               Calculated Carbonate (ueq/L)            
+19   COLOR      Num      8                               Color (PCU)                             
+20   COLORF     Char    10                               Flag for COLOR                          
+67   COM_FLD    Char   200                               Field Sampling Comments                 
+68   COM_IM     Char   300                               IM Data Validation Comments             
+66   COM_LAB    Char   150                               Laboratory Analysis Comments            
+63   CONCAL     Num      8                               Calculated Conductivity (uS/cm)         
+11   COND       Num      8   F8.                         Conductivity (uS/cm @ 25 C)             
+12   CONDF      Char    10                               Flag for COND                           
+64   CONDHO     Num      8                               Debye-Huckel-Onsager Calc. Cond. (uS/cm)
+ 6   DATECHEM   Num      8   MMDDYY10.                   Date Chemistry Sample was Collected     
+                                                                       13:38 Monday, March 2, 2009  41
+
+The CONTENTS Procedure
+
+                           Alphabetic List of Variables and Attributes
+ 
+ #   Variable   Type   Len   Format        Informat      Label
+
+ 5   DATE_COL   Num      8   MMDDYY10.                   Date of Site Visit                      
+65   DAY_SHIP   Num      8                               Days from Sampling to Lab Receipt       
+23   DIC        Num      8   F8.2                        Dissolved Inorganic Carbon (mg/L)       
+24   DICF       Char    10                               Flag for DIC                            
+21   DOC        Num      8   F8.2                        Dissolved Organic Carbon (mg/L)         
+22   DOCF       Char    10                               Flag for DOC                            
+51   H          Num      8                               H+ from PHSTVL (ueq/L)                  
+53   HCO3       Num      8                               Calculated Bicarbonate (ueq/L)          
+60   IONSTR     Num      8                               Ionic Strength (M)                      
+35   K          Num      8   F8.1                        Potassium (ueq/L)                       
+36   KF         Char    10                               Flag for K                              
+31   MG         Num      8   F8.1                        Magnesium (ueq/L)                       
+32   MGF        Char    10                               Flag for MG                             
+33   NA         Num      8   F8.1                        Sodium (ueq/L)                          
+34   NAF        Char    10                               Flag for NA                             
+37   NH4        Num      8   F8.1                        Ammonium (ueq/L)                        
+38   NH4F       Char    10                               Flag for NH4                            
+41   NO3        Num      8   F8.1                        Nitrate (ueq/L)                         
+42   NO3F       Char    10                               Flag for NO3                            
+45   NTL        Num      8   F8.                         Total Nitrogen (ug/L)                   
+46   NTLF       Char    10                               Flag for NTL                            
+52   OH         Num      8                               Hydroxide from PHSTVL (ueq/L)           
+62   ORGION     Num      8                               Est. Organic Anion (ueq/L)              
+ 9   PHSTVL     Num      8   F8.2                        Closed Headspace pH                     
+10   PHSTVLF    Char    10                               Flag for PHSTVL                         
+25   PTL        Num      8   F8.                         Total Phosphorus (ug/L)                 
+26   PTLF       Char    10                               Flag for PTL                            
+ 4   SAMPLED    Char    30                               Site Sampled Code                       
+ 8   SAMP_LOC   Char    10                               Sample Location (X or nearest transect) 
+27   SE         Num      8   F8.1                        Dissolved Selenium (ug/L)               
+28   SEF        Char    10                               Flag for SE                             
+49   SIO2       Num      8   F8.2                        Silica (mg/L SiO2)                      
+50   SIO2F      Char    10                               Flag for SIO2                           
+ 1   SITE_ID    Char    25   $VARYING25.   $VARYING25.   Site Identification Code                
+39   SO4        Num      8   F8.1                        Sulfate (ueq/L)                         
+40   SO4F       Char    10                               Flag for SO4                            
+59   SOBC       Num      8                               Sum of Base Cations (ueq/L)             
+ 7   TEAM_ID    Char    80                               Number Identifying Field Personnel      
+17   TSS        Num      8                               Total Suspended Solids (mg/L)           
+18   TSSF       Char    10                               Flag for TSS                            
+15   TURB       Num      8                               Turbidity (NTU)                         
+16   TURBF      Char    10                               Flag for TURB                           
+ 3   VISIT_NO   Num      8   BEST8.        BEST8.        Within Year Site Visit Number           
+ 2   YEAR       Num      8   BEST12.       F12.          Year of Site Visit                      
+47   ZN         Num      8   F8.1                        Dissolved Zinc (ug/L)                   
+48   ZNF        Char    10                               Flag for ZN                             

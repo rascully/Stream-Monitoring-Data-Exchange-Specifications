@@ -1,0 +1,56 @@
+                                                                       13:38 Monday, March 2, 2009  31
+
+The CONTENTS Procedure
+
+Data Set Name        NWSA.RAPIDHABMETRICS                    Observations          1118
+Member Type          DATA                                    Variables             27  
+Engine               V9                                      Indexes               0   
+Created              Monday, January 26, 2009 04:57:48 PM    Observation Length    272 
+Last Modified        Monday, March 02, 2009 11:32:57 AM      Deleted Observations  0   
+Protection                                                   Compressed            NO  
+Data Set Type                                                Sorted                NO  
+Label                Rapid Habitat Assessment Metrics                                  
+Data Representation  WINDOWS_32                                                        
+Encoding             wlatin1  Western (Windows)                                        
+
+
+
+                           Alphabetic List of Variables and Attributes
+ 
+ #    Variable    Type    Len    Format       Informat    Label
+
+14    BANK_STL    Num       8                             Bank stability - left bank             
+15    BANK_STR    Num       8                             Bank stability - right bank            
+12    CHAN_ALT    Num       8                             Direct human  channel alteration       
+11    CHAN_FLS    Num       8                             Channel flow status                    
+13    CHAN_SIN    Num       8                             Channel sinuosity                      
+ 5    DATE_COL    Num       8    MMDDYY10.                Date of data collection in field       
+20    EMBEDDED    Num       8                             Embeddedness                           
+ 7    EPIF_SUB    Num       8                             Epifaunal substrate (riffle length)    
+ 4    FLOWTYPE    Char      4                             RBP type: riffle/run or glide/pool     
+23    FORMTYPE    Char      1                                                                    
+22    FRQ_RIFF    Num       8                             Frequency of riffles                   
+ 8    POOL_SUB    Num       8                             Pool substrate characterization (size) 
+ 9    POOL_VAR    Num       8                             Pool variability (range of sizes)      
+26    RH_SUM      Num       8                             RBP score sum                          
+27    RH_XHAB     Num       8                             RBP score mean                         
+18    RIPA_VL     Num       8                             Riparian Veg Zone Width - left bank    
+19    RIPA_VR     Num       8                             Riparian Veg Zone Width - right bank   
+24    SAMPTYPE    Char      1                                                                    
+10    SEDI_DEP    Num       8                             Sediment deposition (bar size increase)
+ 1    SITE_ID     Char     16    $14.         14.         Site Identification Code               
+ 6    TEAM_ID     Char     80                             Team identifier                        
+25    TRANSECT    Char      1                                                                    
+                                                                       13:38 Monday, March 2, 2009  32
+
+The CONTENTS Procedure
+
+                           Alphabetic List of Variables and Attributes
+ 
+ #    Variable    Type    Len    Format       Informat    Label
+
+16    VEG_PROL    Num       8                             Vegetative Protection - left bank      
+17    VEG_PROR    Num       8                             Vegetative Protection - right bank     
+21    VELOCITY    Num       8                             Variation in velocity/depth regimes    
+ 3    VISIT_NO    Num       8    BEST8.       BEST8.      Within Year Site Visit Number          
+ 2    YEAR        Num       8    BEST12.      F12.        Year of Site Visit                     

@@ -1,0 +1,116 @@
+                                                                       13:38 Monday, March 2, 2009  14
+
+The CONTENTS Procedure
+
+Data Set Name        NWSA.PHABBEST                         Observations          1389
+Member Type          DATA                                  Variables             79  
+Engine               V9                                    Indexes               0   
+Created              Wed, Feb 18, 2009 05:00:06 PM         Observation Length    672 
+Last Modified        Monday, March 02, 2009 11:32:56 AM    Deleted Observations  0   
+Protection                                                 Compressed            NO  
+Data Set Type                                              Sorted                NO  
+Label                Physical Habitat Best Metrics                                   
+Data Representation  WINDOWS_32                                                      
+Encoding             wlatin1  Western (Windows)                                      
+
+
+
+                            Alphabetic List of Variables and Attributes
+ 
+ #   Variable   Type   Len   Format        Informat      Label
+
+43   LDMB_BW5   Num      8                               Log10[Erodible Substr Dia.(mm)]-Est. 2   
+44   LRBS_BW5   Num      8                               Log10[Relative Bed Stability] - Est. 2   
+42   LRBS_TST   Num      8                               Log10[Relative Bed Stability] - Fast est 
+62   LSUBD_SD   Num      8                               Substrate-StDev LOG10(Diam Class mm)     
+40   LSUB_DMM   Num      8                               Substrate-Mean Log10(Diam Class mm)      
+41   LTEST      Num      8                               Log10[Erodible Substr Dia.(mm)]-Fast est 
+20   PCAN_C     Num      8                               Riparian Canopy Coniferous (Fract reach) 
+60   PCT_BDRK   Num      8                               Substrate Bedrock (%)                    
+59   PCT_BIGR   Num      8                               Substrate >= Coarse Gravel (>16 mm) (%)  
+77   PCT_DRS    Num      8                               Dry Channel or Subsurf Flow (%)          
+73   PCT_FA     Num      8                               Falls (% of reach)                       
+74   PCT_FAST   Num      8                               Fast Wtr Hab (% riffle & faster)         
+53   PCT_FN     Num      8                               Substrate Fines -- Silt/Clay/Muck (%)    
+55   PCT_HP     Num      8                               Substrate Hardpan -- (%)                 
+61   PCT_ORG    Num      8                               Substrate Wood or Detritus -- (%)        
+76   PCT_POOL   Num      8                               Pools -- All Types (% of reach)          
+56   PCT_RC     Num      8                               Substrate Concrete (%)                   
+54   PCT_SA     Num      8                               Substrate Sand -- .06-2 mm (%)           
+57   PCT_SAFN   Num      8                               Substrate Sand & Fines -- <2 mm (%)      
+58   PCT_SFGF   Num      8                               Substrate <= Fine Gravel (<=16 mm) (%)   
+78   PCT_SIDE   Num      8                               Side channel presence (% of reach)       
+75   PCT_SLOW   Num      8                               Slow Wtr Hab (% Glide & Pool)            
+                                                                       13:38 Monday, March 2, 2009  15
+
+The CONTENTS Procedure
+
+                            Alphabetic List of Variables and Attributes
+ 
+ #   Variable   Type   Len   Format        Informat      Label
+
+45   REACHLEN   Num      8                               Length of sample reach (m)               
+52   RP100      Num      8                               Mean Residual Depth (m2/100m)            
+48   RPGT75     Num      8                               Resid Pools >75cm deep (number/reach)    
+49   RPGT100    Num      8                               Resid Pools >100cm deep (number/reach)   
+50   RPMXDEP    Num      8                               Maximum residual depth in reach (cm)     
+51   RPXAREA    Num      8                               Mean vert. profile area of RPs (m2/pool) 
+79   SAMPLED    Char    30                               Sample status (PHab)                     
+68   SDDEPTH    Num      8                               Std Dev of Thalweg Depth (cm)            
+72   SDWXD      Num      8                               Std Dev of Width*Depth Product (m2)      
+67   SINU       Num      8                               Channel Sinuosity (m/m)                  
+ 1   SITE_ID    Char    25   $VARYING25.   $VARYING25.   Site Identification Code                 
+65   V1TM100    Num      8                               LWD Vol in/abv Bf chan(#/100m-all sizes) 
+63   V1W_MSQ    Num      8                               LWD Vol in Bkf chnl (m3/m2-all sizes)    
+66   V4TM100    Num      8                               LWD Vol in/abv Bf chan (#/100m-L,X)      
+64   V4W_MSQ    Num      8                               LWD Vol in Bkf chnl (m3/m2-L,X)          
+ 3   VISIT_NO   Num      8   BEST8.        BEST8.        Within Year Site Visit Number            
+39   W1H_PIPE   Num      8                               Rip Dist--Pipes infl/effl (ProxWt Pres)  
+38   W1H_WALL   Num      8                               Rip Dist--Wall/Bank Revet. (ProxWt Pres) 
+37   W1_HAG     Num      8                               Rip Dist--Sum Agric Types (ProxWt Pres)  
+35   W1_HALL    Num      8                               Rip Dist--Sum All Types (ProxWt Pres)    
+36   W1_HNOAG   Num      8                               Rip Dist--Sum NonAg Types (ProxWt Pres)  
+ 4   XBKA       Num      8                               Bank Angle--mean (degrees)               
+ 7   XBKF_H     Num      8                               Bankfull Height-Mean (m)                 
+ 6   XBKF_W     Num      8                               Bankfull Width--Mean (m)                 
+16   XC         Num      8                               Riparian Veg Canopy Cover                
+21   XCDENBK    Num      8                               Mean Bank Canopy Density (%)             
+22   XCDENMID   Num      8                               Mean Mid-channel Canopy Density (%)      
+14   XCL        Num      8                               Riparian Canopy > 0.3m DBH (Cover)       
+19   XCMGW      Num      8                               Rip Veg Canopy+Mid+Ground Woody Cover    
+18   XCMW       Num      8                               Rip Veg Canopy+Mid Layer Woody Cover     
+47   XDEPTH     Num      8                               Thalweg Mean Depth (cm)                  
+23   XEMBED     Num      8                               Mean Embeddedness--Channel+Margin (%)    
+24   XFC_ALG    Num      8                               Fish Cvr-Filamentous Algae (Areal Prop)  
+32   XFC_ALL    Num      8                               Fish Cvr-All Types (Sum Areal Prop)      
+25   XFC_AQM    Num      8                               Fish Cvr-Aq. Macrophytes (Areal Prop)    
+34   XFC_BIG    Num      8                               Fish Cvr-LWD,RCK,UCBorHUM(Sum Area Prop) 
+27   XFC_BRS    Num      8                               Fish Cvr-Brush&Small Debris (Areal Prop) 
+31   XFC_HUM    Num      8                               Fish Cvr-Artif. Structs. (Areal Prop)    
+26   XFC_LWD    Num      8                               Fish Cvr-Large Woody Debris (Areal Prop) 
+33   XFC_NAT    Num      8                               Fish Cvr-Natural Types (Sum Areal Prop)  
+28   XFC_OHV    Num      8                               Fish Cvr-Overhang Veg (Areal Prop)       
+30   XFC_RCK    Num      8                               Fish Cvr-Boulders (Areal Prop)           
+29   XFC_UCB    Num      8                               Fish Cvr-Undercut Banks (Areal Prop)     
+17   XG         Num      8                               Riparian Veg Ground Layer Cover          
+15   XGB        Num      8                               Rip Ground Layer Barren (Cover)          
+ 8   XINC_H     Num      8                               Channel Incision Ht.-Mean (m)            
+ 9   XPCM       Num      8                               Rip Can & MidLayer Present (Frac. reach) 
+                                                                       13:38 Monday, March 2, 2009  16
+
+The CONTENTS Procedure
+
+                            Alphabetic List of Variables and Attributes
+ 
+ #   Variable   Type   Len   Format        Informat      Label
+
+10   XPCMG      Num      8                               Riparian 3-Layers Present (Fract. reach) 
+11   XPMG       Num      8                               Riparian mid & gnd Present (Frac. reach) 
+12   XPMGH      Num      8                               Rip. mid & gnd herb Present (Frac. reach)
+13   XPMGW      Num      8                               Rip. mid & gnd wood Present (Frac. reach)
+46   XSLOPE     Num      8                               Channel Slope -- reach mean (%)          
+ 5   XUN        Num      8                               Undercut Distance--Mean (m)              
+71   XWD_RAT    Num      8                               Mean Width/Depth Ratio (m/m)             
+69   XWIDTH     Num      8                               Wetted Width -- Mean (m)                 
+70   XWXD       Num      8                               Mean Width*Depth Product (m2)            
+ 2   YEAR       Num      8   BEST12.       F12.          Year of Site Visit                       

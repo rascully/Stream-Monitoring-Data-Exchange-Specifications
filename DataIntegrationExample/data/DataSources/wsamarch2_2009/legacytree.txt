@@ -1,0 +1,34 @@
+                                                                       13:38 Monday, March 2, 2009  11
+
+The CONTENTS Procedure
+
+Data Set Name        NWSA.LEGACYTREE                       Observations          15191
+Member Type          DATA                                  Variables             12   
+Engine               V9                                    Indexes               0    
+Created              Wed, Feb 18, 2009 05:00:02 PM         Observation Length    224  
+Last Modified        Monday, March 02, 2009 11:32:56 AM    Deleted Observations  0    
+Protection                                                 Compressed            NO   
+Data Set Type                                              Sorted                NO   
+Label                Legacy Tree                                                      
+Data Representation  WINDOWS_32                                                       
+Encoding             wlatin1  Western (Windows)                                       
+
+                     
+
+
+                              Alphabetic List of Variables and Attributes
+ 
+ #    Variable    Type    Len    Format         Informat       Label
+
+ 5    DATE_COL    Num       8    MMDDYY10.                     Date of data collection in field       
+ 7    DBH         Char      8                                  Diameter breast height (m)             
+ 9    DISTANCE    Num       8                                  Dist from river/stream wetted margin(m)
+ 8    HEIGHT      Char      8                                  Estimated height(m)                    
+11    NOTREES     Char      2                                  No trees in range or sight             
+ 1    SITE_ID     Char     25    $VARYING25.    $VARYING25.    Site Identification Code               
+12    SPECIES     Char     40                                  Species present in Riparian Zone       
+ 6    TEAM_ID     Char     80                                  Team identifier                        
+ 4    TRANSECT    Char      2                                  Transect label A-K (sidechannels XA-XK)
+10    TREE        Char     20                                  Tree type                              
+ 3    VISIT_NO    Num       8    BEST8.         BEST8.         Within Year Site Visit Number          
+ 2    YEAR        Num       8    BEST12.        F12.           Year of Site Visit                     

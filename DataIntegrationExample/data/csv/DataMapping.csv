@@ -1,0 +1,113 @@
+"termID","term","measurementTypeID","measurementType","dataType","projectCode","originalField","originalUnit","originalDataType","methodCollection","methodAnalysis"
+401,"term",500,"Sin","Numeric","AIM","Sinuosity","ratio","Double","https://www.monitoringresources.org/Document/Method/Details/7017","https://www.monitoringresources.org/Document/Method/Details/7007"
+401,"term",500,"Sin","Numeric","NRSA","SINU","ratio","Double","https://www.monitoringresources.org/Document/Method/Details/7080","https://www.monitoringresources.org/Document/Method/Details/7081"
+401,"term",500,"Sin","Numeric","PIBO","Sin","ratio","Double","https://www.monitoringresources.org/Document/Method/Details/6868","https://www.monitoringresources.org/Document/Method/Details/7007"
+401,"term",533,"AvgBFWDRatioStreambed","Numeric","AREMP","ave_widthDepth_ratio","ratio","Double","https://www.monitoringresources.org/Document/CustomizedMethod/Details/31107","https://www.monitoringresources.org/Document/Method/Details/4245"
+401,"term",502,"AvgBFWDRatio","Numeric","NRSA","BFWD_RAT","ratio","Double","https://www.monitoringresources.org/Document/Method/Details/7080","https://www.monitoringresources.org/Document/Method/Details/7081"
+401,"term",533,"AvgBFWDRatioStreambed","Numeric","PIBO","WDTrans","ratio","Double","https://www.monitoringresources.org/Document/Method/Details/65 | https://www.monitoringresources.org/Document/Method/Details/6871","https://www.monitoringresources.org/Document/Method/Details/7047"
+401,"term",503,"BFHeight","Numeric","AIM","BankfullHeightAvg","meters","Double","https://www.monitoringresources.org/Document/Method/Details/7013","https://www.monitoringresources.org/Document/Method/Details/4245"
+401,"term",503,"BFHeight","Numeric","NRSA","XBKF_H","meters","Double","https://www.monitoringresources.org/Document/Method/Details/7080","https://www.monitoringresources.org/Document/Method/Details/7081"
+401,"term",504,"BFWidth","Numeric","AREMP","average_bfwidth","meters","Double","https://www.monitoringresources.org/Document/Method/Details/6849","https://www.monitoringresources.org/Document/Method/Details/4245"
+401,"term",504,"BFWidth","Numeric","AIM","BankfullWidthAvg","meters","Double","https://www.monitoringresources.org/Document/Method/Details/7030","https://www.monitoringresources.org/Document/CustomizedMethod/Details/32166"
+401,"term",504,"BFWidth","Numeric","NRSA","XBKF_W","meters","Double","https://www.monitoringresources.org/Document/Method/Details/7080","https://www.monitoringresources.org/Document/Method/Details/7081"
+401,"term",504,"BFWidth","Numeric","PIBO","Bf","meters","Double","https://www.monitoringresources.org/Document/Method/Details/6871","https://www.monitoringresources.org/Document/CustomizedMethod/Details/32197"
+401,"term",506,"Grad","Numeric","AREMP","gradient","percent expressed as a decimal","Double","https://www.monitoringresources.org/Document/Method/Details/6852",NA
+401,"term",506,"Grad","Numeric","AIM","PctSlope","percent","Double","https://www.monitoringresources.org/Document/CustomizedMethod/Details/31139","https://www.monitoringresources.org/Document/Method/Details/7033"
+401,"term",506,"Grad","Numeric","NRSA","XSLOPE","percent","Double","https://www.monitoringresources.org/Document/Method/Details/7080","https://www.monitoringresources.org/Document/Method/Details/7081"
+401,"term",506,"Grad","Numeric","PIBO","Grad","percent","Double","https://www.monitoringresources.org/Document/Method/Details/6868",NA
+401,"term",507,"MeanThalwegDepth","Numeric","AIM","ThalwegDepthAvg","meters","Double","https://www.monitoringresources.org/Document/Method/Details/7008","https://www.monitoringresources.org/Document/Method/Details/4245"
+401,"term",507,"MeanThalwegDepth","Numeric","NRSA","XDEPTH_CM","centimeters","Double","https://www.monitoringresources.org/Document/Method/Details/7080","https://www.monitoringresources.org/Document/Method/Details/7081"
+401,"term",508,"ReachLen","Numeric","AREMP","REACH_LENGTH","meters","Double","https://www.monitoringresources.org/Document/Method/Details/3807",NA
+401,"term",529,"ProtocolReachLen","Numeric","AIM","ProtocolReachLength","meters","Double","https://www.monitoringresources.org/Document/Method/Details/7017",NA
+401,"term",508,"ReachLen","Numeric","NRSA","REACHLEN","meters","Double","https://www.monitoringresources.org/Document/Method/Details/7080","https://www.monitoringresources.org/Document/Method/Details/7081"
+401,"term",508,"ReachLen","Numeric","PIBO","RchLen","meters","Double","https://www.monitoringresources.org/Document/Method/Details/58",NA
+401,"term",509,"WetWidth","Numeric","AREMP","wettedWidth_ave","meters","Double","https://www.monitoringresources.org/Document/CustomizedMethod/Details/31107","https://www.monitoringresources.org/Document/CustomizedMethod/Details/32163"
+401,"term",509,"WetWidth","Numeric","AIM","WettedWidthAvg","meters","Double","https://www.monitoringresources.org/Document/Method/Details/7031","https://www.monitoringresources.org/Document/Method/Details/4245"
+401,"term",509,"WetWidth","Numeric","NRSA","XWIDTH","meters","Double","https://www.monitoringresources.org/Document/Method/Details/7080","https://www.monitoringresources.org/Document/Method/Details/7081"
+401,"term",510,"PctPool","Numeric","AREMP","PctReachInPools","percent","Double","https://www.monitoringresources.org/Document/Method/Details/6844","https://www.monitoringresources.org/Document/Method/Details/4115"
+401,"term",510,"PctPool","Numeric","AIM","PctPools","percent","Double","https://www.monitoringresources.org/Document/Method/Details/6859","https://www.monitoringresources.org/Document/Method/Details/7084"
+401,"term",510,"PctPool","Numeric","PIBO","PoolPct","percent","Double","https://www.monitoringresources.org/Document/Method/Details/6872","https://www.monitoringresources.org/Document/Method/Details/7064"
+401,"term",511,"RPD","Numeric","AREMP","ave_residual_depth","meters","Double","https://www.monitoringresources.org/Document/Method/Details/6844","https://www.monitoringresources.org/Document/Method/Details/6976"
+401,"term",511,"RPD","Numeric","AIM","ResPoolDepthAvg","meters","Double","https://www.monitoringresources.org/Document/Method/Details/6859","https://www.monitoringresources.org/Document/Method/Details/6976"
+401,"term",511,"RPD","Numeric","PIBO","PoolDp","meters","Double","https://www.monitoringresources.org/Document/Method/Details/6872","https://www.monitoringresources.org/Document/Method/Details/6976"
+401,"term",512,"BankAngle","Numeric","AIM","BankAngleAvg","degrees","Double","https://www.monitoringresources.org/Document/Method/Details/68","https://www.monitoringresources.org/Document/Method/Details/7034"
+401,"term",512,"BankAngle","Numeric","NRSA","BK_ANGLE","degrees","Double","https://www.monitoringresources.org/Document/Method/Details/7080","https://www.monitoringresources.org/Document/Method/Details/7081"
+401,"term",512,"BankAngle","Numeric","PIBO","BankAngle","degrees","Double","https://www.monitoringresources.org/Document/Method/Details/68",NA
+401,"term",513,"PctStab","Numeric","AIM","PctBankStable","percent","Double","https://www.monitoringresources.org/Document/Method/Details/7026","https://www.monitoringresources.org/Document/Method/Details/7010"
+401,"term",513,"PctStab","Numeric","PIBO","Stab","percent","Double","https://www.monitoringresources.org/Document/Method/Details/69","https://www.monitoringresources.org/Document/Method/Details/7057"
+401,"term",514,"D16","Numeric","AIM","D16","millimeters","Double","https://www.monitoringresources.org/Document/Method/Details/6801","https://www.monitoringresources.org/Document/Method/Details/7025"
+401,"term",514,"D16","Numeric","PIBO","D16","meters","Double","https://www.monitoringresources.org/Document/Method/Details/6797","https://www.monitoringresources.org/Document/Method/Details/1730"
+401,"term",515,"D50","Numeric","AIM","D50","millimeters","Double","https://www.monitoringresources.org/Document/Method/Details/6801","https://www.monitoringresources.org/Document/Method/Details/7055 "
+401,"term",515,"D50","Numeric","PIBO","D50","meters","Double","https://www.monitoringresources.org/Document/Method/Details/6797","https://www.monitoringresources.org/Document/Method/Details/1730"
+401,"term",516,"D84","Numeric","AIM","D84","millimeters","Double","https://www.monitoringresources.org/Document/Method/Details/6801","https://www.monitoringresources.org/Document/Method/Details/7025"
+401,"term",517,"PctBdrk","Numeric","AREMP","bedrock_pcnt","percent","Double","https://www.monitoringresources.org/Document/Method/Details/6797","https://www.monitoringresources.org/Document/Method/Details/7025"
+401,"term",517,"PctBdrk","Numeric","NRSA","PCT_BDRK","Log 10 millimeters","Double","https://www.monitoringresources.org/Document/Method/Details/7080","https://www.monitoringresources.org/Document/Method/Details/7081"
+401,"term",518,"PctFines2","Numeric","NRSA","PCT_SAFN","percent","Double","https://www.monitoringresources.org/Document/Method/Details/7080","https://www.monitoringresources.org/Document/Method/Details/7081"
+401,"term",518,"PctFines2","Numeric","AIM","PctFinesLessThan2mm","percent","Double","https://www.monitoringresources.org/Document/Method/Details/6801","https://www.monitoringresources.org/Document/Method/Details/7025"
+401,"term",519,"PctFines6","Numeric","NRSA","PCT_FN","percent","Double","https://www.monitoringresources.org/Document/Method/Details/7080","https://www.monitoringresources.org/Document/Method/Details/7081"
+401,"term",519,"PctFines6","Numeric","AIM","PctFinesLessThan6mm","percent","Double","https://www.monitoringresources.org/Document/Method/Details/6801","https://www.monitoringresources.org/Document/Method/Details/7025"
+401,"term",516,"D84","Numeric","PIBO","D84","meters","Double","https://www.monitoringresources.org/Document/Method/Details/6797","https://www.monitoringresources.org/Document/Method/Details/1730"
+401,"term",520,"PoolTailFines2","Numeric","AREMP","pool_fines","percent","Double","https://www.monitoringresources.org/Document/Method/Details/6798","https://www.monitoringresources.org/Document/CustomizedMethod/Details/32165"
+401,"term",520,"PoolTailFines2","Numeric","AIM","PctPoolTailFinesLessThan2mm","percent","Double","https://www.monitoringresources.org/Document/Method/Details/6862","https://www.monitoringresources.org/Document/CustomizedMethod/Details/32164"
+401,"term",520,"PoolTailFines2","Numeric","PIBO","PTFines2","percent","Double","https://www.monitoringresources.org/Document/Method/Details/6862","https://www.monitoringresources.org/Document/Method/Details/868"
+401,"term",522,"PoolTailFines6","Numeric","AIM","PctPoolTailFinesLessThan6mm","percent","Double","https://www.monitoringresources.org/Document/Method/Details/6862","https://www.monitoringresources.org/Document/CustomizedMethod/Details/32164"
+401,"term",522,"PoolTailFines6","Numeric","PIBO","PTFines6","percent","Double","https://www.monitoringresources.org/Document/Method/Details/6862","https://www.monitoringresources.org/Document/Method/Details/868"
+401,"term",523,"Conductivity","Numeric","NRSA","TSS","milligrams per liter","Double","https://www.monitoringresources.org/Document/Method/Details/7016","https://www.monitoringresources.org/Document/Method/Details/7048"
+401,"term",523,"Conductivity","Numeric","PIBO","Cond","Parts per million","Double","https://www.monitoringresources.org/Document/Method/Details/61",NA
+401,"term",524,"pH","Numeric","NRSA","PH_Results","SU","Double","https://www.monitoringresources.org/Document/Method/Details/7080","https://www.monitoringresources.org/Document/Method/Details/7081"
+401,"term",524,"pH","Numeric","AIM","pH","SU","Double","https://www.monitoringresources.org/Document/Method/Details/6673",NA
+401,"term",525,"SpecificConductance","Numeric","AIM","SpecificConductance","microSiemens per centimeter","Double","https://www.monitoringresources.org/Document/Method/Details/6673",NA
+401,"term",525,"SpecificConductance","Numeric","NRSA","COND","microSiemens per centimeter","Double","https://www.monitoringresources.org/Document/Method/Details/7016","https://www.monitoringresources.org/Document/Method/Details/7048"
+401,"term",526,"TotalNitrogen","Numeric","AIM","TotalNitrogen","micrograms per liter","Double","https://www.monitoringresources.org/Document/Method/Details/7023","https://www.monitoringresources.org/Document/Method/Details/7024"
+401,"term",526,"TotalNitrogen","Numeric","NRSA","NTL","micrograms per liter","Double","https://www.monitoringresources.org/Document/Method/Details/7016","https://www.monitoringresources.org/Document/Method/Details/7048"
+401,"term",527,"TotalPhosphorous","Numeric","AIM","TotalPhosphorous","micrograms per liter","Double","https://www.monitoringresources.org/Document/Method/Details/7023","https://www.monitoringresources.org/Document/Method/Details/7024"
+401,"term",527,"TotalPhosphorous","Numeric","NRSA","PTL","micrograms per liter","Double","https://www.monitoringresources.org/Document/Method/Details/7016","https://www.monitoringresources.org/Document/Method/Details/7048"
+401,"term",528,"Turbidity","Numeric","AIM","TurbidityAvg","NTU","Double","https://www.monitoringresources.org/Document/Method/Details/7012","https://www.monitoringresources.org/Document/Method/Details/4245"
+401,"term",528,"Turbidity","Numeric","NRSA","TURB","NTU","Double","https://www.monitoringresources.org/Document/Method/Details/7016","https://www.monitoringresources.org/Document/Method/Details/7048"
+401,"term",530,"PoolFreq","Numeric","PIBO","PoolFrq","number of pools per km","Double ","https://www.monitoringresources.org/Document/Method/Details/6872","https://www.monitoringresources.org/Document/CustomizedMethod/Details/32417"
+401,"term",530,"PoolFreq","Numeric","AIM","PoolFreq","number of pools per km","Double","https://www.monitoringresources.org/Document/Method/Details/6859","https://www.monitoringresources.org/Document/Method/Details/7084"
+401,"term",531,"LWDFreq","Numeric","AIM","LgWoodInChanFreq","number of pieces per 100 m","Double ","https://www.monitoringresources.org/Document/Method/Details/6864","https://www.monitoringresources.org/Document/Method/Details/7085"
+401,"term",531,"LWDFreq","Numeric","NRSA","C1WM100","number of pieces per 100 m","Double ","https://www.monitoringresources.org/Document/Method/Details/7080","https://www.monitoringresources.org/Document/Method/Details/7081"
+401,"term",532,"LWDVol ","Numeric","AIM","LgWoodInChanVol","meters cubed per 100 m","Double","https://www.monitoringresources.org/Document/Method/Details/6864","https://www.monitoringresources.org/Document/Method/Details/7085"
+401,"term",532,"LWDVol ","Numeric","NRSA","V1WM100","meters cubed per 100 m","Double ","https://www.monitoringresources.org/Document/Method/Details/7080","https://www.monitoringresources.org/Document/Method/Details/7081"
+103,"datasetName",NA,"","String","NRSA","datasetName",NA,"String","NA ","NA "
+201,"verbatimLocationID",NA,"","String","AREMP","SITE_ID",NA,"String",NA,NA
+201,"verbatimLocationID",NA,"","String","AIM","PointID",NA,"String",NA,NA
+201,"verbatimLocationID",NA,"","String","NRSA","SITE_ID",NA,"String",NA,NA
+201,"verbatimLocationID",NA,"","String","PIBO","SiteID",NA,"Integer",NA,NA
+202,"latitude",NA,"","Numeric","AREMP","lattitude","decimal degrees","Double",NA,NA
+202,"latitude",NA,"","Numeric","AIM","SampledMidLatitude","decimal degrees","Double",NA,NA
+202,"latitude",NA,"","Numeric","NRSA","LAT_DD83","decimal degrees","Double",NA,NA
+202,"latitude",NA,"","Numeric","PIBO","Lat","decimal degrees","Double",NA,NA
+203,"longitude",NA,"","Numeric","AREMP","longitude","decimal degrees","Double",NA,NA
+203,"longitude",NA,"","Numeric","AIM","SampledMidLongitude","decimal degrees","Double",NA,NA
+203,"longitude",NA,"","Numeric","NRSA","LON_DD83","decimal degrees","Double",NA,NA
+203,"longitude",NA,"","Numeric","PIBO","Long","decimal degrees","Double",NA,NA
+205,"siteSelectionType",NA,"","String","AIM","PointSelectionType",NA,"String",NA,NA
+205,"siteSelectionType",NA,"","String","PIBO","Project",NA,"String",NA,NA
+205,"siteSelectionType",NA,"","String","NRSA","SITETYPE",NA,"String",NA,NA
+206,"waterBody",NA,"","String","AIM","StreamName",NA,"String",NA,NA
+206,"waterBody",NA,"","String","NRSA","GNIS_NAME",NA,"String",NA,"NA "
+206,"waterBody",NA,"","String","PIBO","Stream",NA,"String",NA,NA
+301,"verbatimEventID",NA,"","String","AREMP","site_survey_id",NA,"String",NA,NA
+301,"verbatimEventID",NA,"","String","AIM","EvaluationID",NA,"String",NA,NA
+301,"verbatimEventID",NA,"","String","NRSA","UID",NA,"String",NA,NA
+301,"verbatimEventID",NA,"","String","PIBO","RchID",NA,"Integer",NA,NA
+302,"eventDate",NA,"","Date","AREMP","survey_date",NA,"Date",NA,NA
+302,"eventDate",NA,"","Date","AIM","FieldEvalDate","m/d/yyyy","Date",NA,NA
+302,"eventDate",NA,"","Date","NRSA","DATE_COL",NA,"Date",NA,NA
+302,"eventDate",NA,"","Date","PIBO","SampDate",NA,"Date",NA,NA
+303,"year",NA,"","Numeric","AREMP","survey_year","year","Integer",NA,NA
+303,"year",NA,"","Numeric","NRSA","YEAR","year","Integer",NA,NA
+303,"year",NA,"","Numeric","PIBO","Yr","year","Integer",NA,NA
+304,"samplingProtocol",NA,"","Integer","AREMP","survey_type",NA,"String",NA,NA
+304,"samplingProtocol",NA,"","Integer","AIM","ProtocolVersion",NA,"String",NA,NA
+304,"samplingProtocol",NA,"","Integer","NRSA","PROTOCOL",NA,"String",NA,NA
+304,"samplingProtocol",NA,"","Integer","PIBO","Type","Categorical: I, IS, IK, IKS, K, P, R","String",NA,NA
+305,"fieldNotes",NA,"","String","AIM","PctDry","percent","Double","https://www.monitoringresources.org/Document/Method/Details/7008","https://www.monitoringresources.org/Document/Method/Details/7004"
+305,"fieldNotes",NA,"","String","NRSA","PCT_DRS","percent","Double","https://www.monitoringresources.org/Document/Method/Details/7080","https://www.monitoringresources.org/Document/Method/Details/7081"
+305,"fieldNotes",NA,"","String","PIBO","StrmFlow","Categorical: Flow, No Flow, Other","String","https://www.monitoringresources.org/Document/Method/Details/924",NA
+306,"beaverImpactFlow",NA,"","Numeric","AREMP","beaver_impacted",NA,"String","https://www.monitoringresources.org/Document/Method/Details/7003",NA
+306,"beaverImpactFlow",NA,"","Numeric","AIM","BeaverFlowMod",NA,"String","https://www.monitoringresources.org/Document/Method/Details/7002",NA
+306,"beaverImpactFlow",NA,"","Numeric","PIBO","","","String","https://www.monitoringresources.org/Document/Method/Details/7077",NA
+305,"fieldNotes",NA,"",NA,"AREMP",NA,NA,NA,"https://www.monitoringresources.org/Document/Method/Details/6844","https://www.monitoringresources.org/Document/Method/Details/4115"

@@ -1,0 +1,37 @@
+                                                                       13:38 Monday, March 2, 2009  43
+
+The CONTENTS Procedure
+
+Data Set Name        NWSA.WSA_BENCNT_GENUS_TS_FINAL            Observations          80066
+Member Type          DATA                                      Variables             15   
+Engine               V9                                        Indexes               0    
+Created              Tuesday, February 17, 2009 08:36:37 AM    Observation Length    184  
+Last Modified        Monday, March 02, 2009 11:32:57 AM        Deleted Observations  0    
+Protection                                                     Compressed            NO   
+Data Set Type                                                  Sorted                NO   
+Label                Benthic Macroinvertebrate 300 Counts                                 
+Data Representation  WINDOWS_32                                                           
+Encoding             wlatin1  Western (Windows)                                           
+
+
+    
+
+                            Alphabetic List of Variables and Attributes
+ 
+ #  Variable        Type  Len  Format   Informat  Label
+
+10  ABUND           Num     8                     Number of Individuals in Taxa                   
+ 6  CLASS           Char   15  $15.     $15.      Consistent Class Name                           
+11  DISTINCT        Char    1                     Distinct Taxa for Richness tally in Sample (Y/N)
+ 8  FAMILY          Char   19  $19.     $19.      Consistent Family Name                          
+15  FFG             Char    8  $8.      $8.       Functional Feeding Group                        
+14  FLAG_PTV        Char    1  $1.      $1.       Flag for PTV (B=secondary source)               
+ 9  GENUS           Char   21  $21.     $21.      Consistent Genus Name                           
+12  HABIT           Char   10  $10.     $10.      Habit Class                                     
+ 4  INDEX_SAMPTYPE  Char   20  $16.     $CHAR20.  Sample Type (field protocol)                    
+ 7  ORDER           Char   17  $17.     $17.      Consistent Order Name                           
+ 5  PHYLUM          Char   15  $15.     $15.      Consistent Phylum Name                          
+13  PTV             Num     8                     Pollutant Tolerance Value (Yuan)                
+ 1  SITE_ID         Char   25  $25.     $13.      Site Identification Code                        
+ 3  VISIT_NO        Num     8  BEST15.  15.       Within Year Site Visit Number                   
+ 2  YEAR            Num     8  BEST8.   BEST8.    Year of Site Visit                              

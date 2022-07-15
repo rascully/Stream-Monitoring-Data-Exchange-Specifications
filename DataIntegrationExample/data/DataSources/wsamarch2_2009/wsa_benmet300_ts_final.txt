@@ -1,0 +1,195 @@
+                                                                       13:38 Monday, March 2, 2009  44
+
+The CONTENTS Procedure
+
+Data Set Name        NWSA.WSA_BENMET300_TS_FINAL                     Observations          1793
+Member Type          DATA                                            Variables             142 
+Engine               V9                                              Indexes               0   
+Created              Tuesday, February 17, 2009 08:36:27 AM          Observation Length    1216
+Last Modified        Monday, March 02, 2009 11:32:57 AM              Deleted Observations  0   
+Protection                                                           Compressed            NO  
+Data Set Type                                                        Sorted                NO  
+Label                Benthic Macroinvertebrate 300 Counts Metrics                              
+Data Representation  WINDOWS_32                                                                
+Encoding             wlatin1  Western (Windows)                                                
+
+                                  
+
+
+                             Alphabetic List of Variables and Attributes
+ 
+  # Variable     Type Len Format   Informat Label
+
+ 17 ABUNDTOT     Num    8                   Total Macroinvert Abundance in Sample                    
+ 16 ABUNDTOT_OTU Num    8                   Total Macroinvert Abundance with OTU                     
+ 59 AMPHPIND     Num    8                   Amphipod % Individuals                                   
+ 58 AMPHPTAX     Num    8                   Amphipod % Distinct Taxa                                 
+ 57 AMPHRICH     Num    8                   Amphipod Distinct Taxa Richness                          
+107 BURRPIND     Num    8                   Burrower % Individuals                                   
+106 BURRPTAX     Num    8                   Burrower % Distinct Taxa                                 
+105 BURRRICH     Num    8                   Burrower Distinct Taxa Richness                          
+131 BURR_PT      Num    8                   Habit Metric Score for Nationwide                        
+                                            MMI (based on % Burrower taxa                            
+ 29 CHIRPIND     Num    8                   Chironomid % Individuals                                 
+ 28 CHIRPTAX     Num    8                   Chironomid % Distinct Taxa                               
+ 27 CHIRRICH     Num    8                   Chironomid Distinct Taxa Richness                        
+110 CLMBPIND     Num    8                   Climber % Individuals                                    
+109 CLMBPTAX     Num    8                   Climber % Distinct Taxa                                  
+108 CLMBRICH     Num    8                   Climber Distinct Taxa Richness                           
+104 CLNGPIND     Num    8                   Clinger % Individuals                                    
+103 CLNGPTAX     Num    8                   Clinger % Distinct Taxa                                  
+102 CLNGRICH     Num    8                   Clinger Distinct Taxa Richness                           
+ 65 COFIPIND     Num    8                   Collector-Filterer % Individuals                         
+ 64 COFIPTAX     Num    8                   Collector-Filterer % Distinct Taxa                       
+ 63 COFIRICH     Num    8                   Collector-Filterer Distinct Taxa Richness                
+                                                                       13:38 Monday, March 2, 2009  45
+
+The CONTENTS Procedure
+
+                             Alphabetic List of Variables and Attributes
+ 
+  # Variable     Type Len Format   Informat Label
+
+ 68 COGAPIND     Num    8                   Collector-Gatherer % Individuals                         
+ 67 COGAPTAX     Num    8                   Collector-Gatherer % Distinct Taxa                       
+ 66 COGARICH     Num    8                   Collector-Gatherer Distinct Taxa Richness                
+ 56 COLPPIND     Num    8                   Coleoptera % Individuals                                 
+ 55 COLPPTAX     Num    8                   Coleoptera % Distinct Taxa                               
+ 54 COLPRICH     Num    8                   Coleoptera Distinct Taxa Richness                        
+135 COMP_PT      Num    8                   Composition Best 6 MMI Scoring                           
+  7 DATE_COL     Num    8 MMDDYY8. DATE9.   Date of Site Visit                                       
+136 DIVS_PT      Num    8                   Diversity Best 6 MMI Scoring                             
+ 21 DOM1PIND     Num    8                   Percent of Individuals in Dominant Taxa                  
+ 20 DOM1TAXA     Char  50                   Dominant Taxa                                            
+ 22 DOM3PIND     Num    8                   Percent of Individuals in Top 3 Taxa                     
+ 23 DOM5PIND     Num    8                   Percent of Individuals in Top 5 Taxa                     
+ 12 ECOREGL3     Char  12 $3.      $3.      Level 3 Ecoregion at the X-site                          
+ 13 ECOWSA9      Char   3 $3.      $3.      WSA 9 Class Ecoarea                                      
+ 32 EPHEPIND     Num    8                   Ephemeroptera % Individuals                              
+ 31 EPHEPTAX     Num    8                   Ephemeroptera % Distinct Taxa                            
+ 30 EPHERICH     Num    8                   Ephemeroptera Distinct Taxa Richness                     
+128 EPHE_PT      Num    8                   Richness Metric Score for Nationwide                     
+                                            MMI (based on Ephemeroptera richness)                    
+ 41 EPT_PIND     Num    8                   EPT % Individuals                                        
+130 EPT_PT       Num    8                   Composition Metric Score for Nationwide                  
+                                            MMI (based on %EPT taxa)                                 
+ 40 EPT_PTAX     Num    8                   EPT % Distinct Taxa                                      
+ 39 EPT_RICH     Num    8                   EPT Distinct Taxa Richness                               
+127 EXOTPIND     Num    8                   EXOTIC % INDIVIDUALS                                     
+126 EXOTRICH     Num    8                   EXOTIC TAXA RICHNESS                                     
+ 83 FACLPIND     Num    8                   Facultative % Individuals                                
+ 82 FACLPTAX     Num    8                   Facultative % Distinct Taxa                              
+ 81 FACLRICH     Num    8                   Facultative Distinct Taxa Richness                       
+137 FEED_PT      Num    8                   FFG Best 6 MMI Scoring                                   
+138 HABT_PT      Num    8                   Habit Best 6 MMI Scoring                                 
+ 26 HBI          Num    8                   Hilsenhoff Biotic Index                                  
+ 24 HPRIME       Num    8                   Shannon Diversity                                        
+133 HPRI_PT      Num    8                   Diversity Metric Score for Nationwide MMI                
+                                            (based on Shannon-Weiner Diversity)                      
+ 14 HUC          Char   8 $8.      $8.      8-digit HUC Catalog Unit Number                          
+  9 INDEX_       Char  15 $15.     $15.     Bug Sampling Type                                        
+    SAMPTYPE                                                                                         
+ 10 INDXVIS_BENT Char   1 $1.      $1.      Bug Sample Index Visit (Y/N)                             
+ 80 INTLPIND     Num    8                   Intolerant % Individuals                                 
+ 79 INTLPTAX     Num    8                   Intolerant % Distinct Taxa                               
+ 78 INTLRICH     Num    8                   Intolerant Distinct Taxa Richness                        
+129 INTL_PT      Num    8                   Pollution Tolerance Metric Score for Nationwide          
+                                            MMI (based on Itolerant Richness)                        
+ 53 MITEPIND     Num    8                   Trombidiforme % Individuals                              
+ 52 MITEPTAX     Num    8                   Trombidiforme % Distinct Taxa                            
+                                                                       13:38 Monday, March 2, 2009  46
+
+The CONTENTS Procedure
+
+                             Alphabetic List of Variables and Attributes
+ 
+  # Variable     Type Len Format   Informat Label
+
+ 51 MITERICH     Num    8                   Trombidiforme Distinct Taxa Richness                     
+134 MMI_WSA      Num    8                   CONSISTENT 6 METRIC NATIONWIDE IBI                       
+141 MMI_WSABEST  Num    8                   Best 6 WSA MMI                                           
+ 47 MOLLPIND     Num    8                   Mollusc % Individuals                                    
+ 46 MOLLPTAX     Num    8                   Mollusc % Distinct Taxa                                  
+ 45 MOLLRICH     Num    8                   Mollusc Distinct Taxa Richness                           
+ 44 NOINPIND     Num    8                   Non-Insect % Individuals                                 
+ 43 NOINPTAX     Num    8                   Non-Insect % Distinct Taxa                               
+ 42 NOINRICH     Num    8                   Non-Insect Distinct Taxa Richness                        
+ 50 ODONPIND     Num    8                   Odonata % Individuals                                    
+ 49 ODONPTAX     Num    8                   Odonata % Distinct Taxa                                  
+ 48 ODONRICH     Num    8                   Odonata Distinct Taxa Richness                           
+142 OE_5_3REG    Num    8                   O/E, 3-region model, Pc>=0.5                             
+ 62 OLLEPIND     Num    8                   Oligochaete/Leech % Individuals                          
+ 61 OLLEPTAX     Num    8                   Oligochaete/Leech % Distinct Taxa                        
+ 60 OLLERICH     Num    8                   Oligochaete/Leech Distinct Taxa Richness                 
+ 35 PLECPIND     Num    8                   Plecoptera % Individuals                                 
+ 34 PLECPTAX     Num    8                   Plecoptera % Distinct Taxa                               
+ 33 PLECRICH     Num    8                   Plecoptera Distinct Taxa Richness                        
+ 71 PREDPIND     Num    8                   Predator % Individuals                                   
+ 70 PREDPTAX     Num    8                   Predator % Distinct Taxa                                 
+ 69 PREDRICH     Num    8                   Predator Distinct Taxa Richness                          
+  8 PROB_SITE    Char   1                   WSA OR WEMAP PROBABILITY SITE (Y/N)                      
+139 RICH_PT      Num    8                   Richness Best 6 MMI Scoring                              
+ 11 RT_WSA       Char   1                   Condition Class (ATH Screen)                             
+ 74 SCRPPIND     Num    8                   Scraper % Individuals                                    
+ 73 SCRPPTAX     Num    8                   Scraper % Distinct Taxa                                  
+ 72 SCRPRICH     Num    8                   Scraper Distinct Taxa Richness                           
+132 SCRP_PT      Num    8                   Feeding Group Metric Score for Nationwide                
+                                            MMI (based on Scraper richness)                          
+ 77 SHRDPIND     Num    8                   Shredder % Individuals                                   
+ 76 SHRDPTAX     Num    8                   Shredder % Distinct Taxa                                 
+ 75 SHRDRICH     Num    8                   Shredder Distinct Taxa Richness                          
+ 25 SIMPSON      Num    8                   Simpson Index                                            
+  4 SITENAME     Char  47 $47.     $47.     Stream Name                                              
+  1 SITE_ID      Char  25 $25.     $25.     Site Identification Code                                 
+  6 SOURCE       Char   9 $9.      $9.      Data Source                                              
+116 SPRLPIND     Num    8                   Sprawler % Individuals                                   
+115 SPRLPTAX     Num    8                   Sprawler % Distinct Taxa                                 
+114 SPRLRICH     Num    8                   Sprawler Distinct Taxa Richness                          
+  5 STATE        Char   2 $2.      $2.      STATE                                                    
+113 SWIMPIND     Num    8                   Swimmer % Individuals                                    
+112 SWIMPTAX     Num    8                   Swimmer % Distinct Taxa                                  
+111 SWIMRICH     Num    8                   Swimmer Distinct Taxa Richness                           
+ 89 TL01PIND     Num    8                   PTV 0-1.9 % Individuals                                  
+ 88 TL01PTAX     Num    8                   PTV 0-1.9 % Distinct Taxa                                
+ 87 TL01RICH     Num    8                   PTV 0-1.9 Distinct Taxa Richness                         
+                                                                       13:38 Monday, March 2, 2009  47
+
+The CONTENTS Procedure
+
+                             Alphabetic List of Variables and Attributes
+ 
+  # Variable     Type Len Format   Informat Label
+
+117 TL03PIND     Num    8                   PTV 0-3.9 % Individuals                                  
+118 TL03PTAX     Num    8                   PTV 0-3.9 % Distinct Taxa                                
+119 TL03RICH     Num    8                   PTV 0-3.9 Distinct Taxa Richness                         
+120 TL05PIND     Num    8                   PTV 0-5.9 % Individuals                                  
+121 TL05PTAX     Num    8                   PTV 0-5.9 % Distinct Taxa                                
+122 TL05RICH     Num    8                   PTV 0-5.9 Distinct Taxa Richness                         
+123 TL07PIND     Num    8                   PTV 0-7.9 % Individuals                                  
+124 TL07PTAX     Num    8                   PTV 0-7.9 % Distinct Taxa                                
+125 TL07RICH     Num    8                   PTV 0-7.9 Distinct Taxa Richness                         
+ 92 TL23PIND     Num    8                   PTV 2-3.9 % Individuals                                  
+ 91 TL23PTAX     Num    8                   PTV 2-3.9 % Distinct Taxa                                
+ 90 TL23RICH     Num    8                   PTV 2-3.9 Distinct Taxa Richness                         
+ 95 TL45PIND     Num    8                   PTV 4-5.9 % Individuals                                  
+ 94 TL45PTAX     Num    8                   PTV 4-5.9 % Distinct Taxa                                
+ 93 TL45RICH     Num    8                   PTV 4-5.9 Distinct Taxa Richness                         
+ 98 TL67PIND     Num    8                   PTV 6-7.9 % Individuals                                  
+ 97 TL67PTAX     Num    8                   PTV 6-7.9 % Distinct Taxa                                
+ 96 TL67RICH     Num    8                   PTV 6-7.9 Distinct Taxa Richness                         
+101 TL89PIND     Num    8                   PTV 8-10 % Individuals                                   
+100 TL89PTAX     Num    8                   PTV 8-10 % Distinct Taxa                                 
+ 99 TL89RICH     Num    8                   PTV 8-10 Distinct Taxa Richness                          
+ 86 TOLRPIND     Num    8                   Tolerant % Individuals                                   
+ 85 TOLRPTAX     Num    8                   Tolerant % Distinct Taxa                                 
+ 84 TOLRRICH     Num    8                   Tolerant Distinct Taxa Richness                          
+140 TOLR_PT      Num    8                   Tolerance Best 6 MMI Scoring                             
+ 18 TOTLNIND     Num    8                   Total Number of Individuals                              
+ 19 TOTLRICH     Num    8                   Total Distinct Taxa Richness                             
+ 38 TRICPIND     Num    8                   Trichoptera % Individuals                                
+ 37 TRICPTAX     Num    8                   Trichoptera % Distinct Taxa                              
+ 36 TRICRICH     Num    8                   Trichoptera Distinct Taxa Richness                       
+  3 VISIT_NO     Num    8 BEST8.   BEST8.   Within Year Site Visit Number                            
+ 15 XWIDTH       Num    8 BEST8.   BEST8.   Wetted Width -- Mean (m)                                 
+  2 YEAR         Num    8 BEST12.  F12.     Year of Site Visit                                       

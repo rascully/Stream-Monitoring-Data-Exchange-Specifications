@@ -1,4 +1,4 @@
-#Download the AREMP data from the Geodatabase, create a tidy data file and upload the file to ScienceBase. 
+#Download the AREMP data from the Geodatabase, create a tidy data file and upload the file to ScienceBase. # ed: are you still uploading to ScienceBase?
 
 
 
@@ -16,7 +16,7 @@ download_AREMP<- function(){
    library(utils)
    library(readxl)
 
-CRS_DES <-  "+proj=longlat +datum=WGS84 +no_defs"
+CRS_DES <-  "+proj=longlat +datum=WGS84 +no_defs" # ed: maybe add a comment above this?
 
 fileURL <- "https://www.fs.fed.us/r6/reo/monitoring/downloads/watershed/NwfpWatershedCondition20yrReport.gdb.zip"
 
@@ -28,7 +28,7 @@ download(fileURL, destfile=df)
 #Unzip the file into the Data file in the local repository
 unzip(paste0(getwd(),"/DataIntegrationExample/data/DataSources/NwfpWatershedCondition20yrReport.gdb.zip") , exdir= paste0(getwd(), "/DataIntegrationExample/Data/DataSources")) 
 
-#Define the file path to the geodata base, if the ARAMP changes their file structure this will need to be updated 
+#Define the file path to the geodata base, if AREMP changes their file structure this will need to be updated # ed: spelling
 path <- '/DataIntegrationExample/Data/NwfpWatershedCondition20yrReport.gdb'
 fgdb <- paste0(getwd(), path)
 
@@ -36,7 +36,7 @@ fgdb <- paste0(getwd(), path)
 subset(ogrDrivers(), grepl("GDB", name))
 fc_list <- ogrListLayers(fgdb)
 
-#load the locations, stream and habitat data from the ARAMP geodatabase file 
+#load the locations, stream and habitat data from the AREMP geodatabase file # ed: spelling
 locations   <- st_read(dsn=fgdb, layer = fc_list[10])
 
 #st_crs(locations)
@@ -52,7 +52,7 @@ names(data)[names(data) == "site_id"] <- "SITE_ID"
 #Join the location information and the metric data 
 AREMP <- right_join(locations, data, by="SITE_ID")
 
-##### Testing adding AREMP data 
+##### Testing adding AREMP data # ed: why is all of this commented out?
 
    
 #locations   <- read_excel(paste0(getwd(),"/DataIntegrationExample/data/DataSources/AREMPqryLocationTable_forPNAMP.xlsx"))

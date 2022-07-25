@@ -1,4 +1,4 @@
-#Script to create tables for the the data exchange standards # ed changed specifications to standards, removed publications
+# Script to create tables for the the data exchange standards # ed changed specifications to standards, removed publications
 
 build_vocab_tables <-function() {
 library(tidyverse)
@@ -11,7 +11,7 @@ metadataDict <- metadataDict %>%
                dplyr::rename(term = attribute) %>% 
                 filter(!is.na(term))
 
-#Create the Data Exchange Standard Tables 
+#### Create the Data Exchange Standard Tables ####
 tables_des <- c("RecordLevel", "Location", "Event", "MeasurementOrFact")
 
 DES <-metadataDict %>% 
@@ -21,6 +21,7 @@ DES <-metadataDict %>%
 for (i in 1:length(tables_des)){ 
   filename = paste0(getwd(),"/DataExchangeStandardTables/",  tables_des[i], "DES.csv")
   write.csv( assign(tables_des[i], metadataDict %>% 
+                    dplyr:: select(c('sourcedefinition', 'unboundeddefinition', 'enumerateddomain', 'NAorBlankcell', 'NAdefinition'))  %>% 
                      relocate('entity', 'termID', 'term', 'definition', 'dataType') %>% 
                      filter(str_detect(entity, tables_des[i])) %>% 
                      arrange(termID)), filename, row.names = FALSE)
@@ -29,10 +30,10 @@ for (i in 1:length(tables_des)){
 }
 
 
-#####Create a controlled vocabulary table from the EmunDict # ed: update EmunDict if changing filename
-EmunDict <- read.csv("Data/EmunDictionary.csv") # ed: update EmunDictionary file name if changing
+#### Create a controlled vocabulary table from the CategoryDict ####
+CategoryDict <- read.csv("Data/CategoryDictionary.csv") 
 
-cv <- EmunDict %>% 
+cv <- CategoryDict %>% 
   filter(entity == "MetricControlledVocabulary")
 
 measurementType <- cv %>% 
@@ -67,11 +68,11 @@ metricControlledVocabulary$term <- "term"
 metricControlledVocabulary$termID    <-  401
 metricControlledVocabulary <- relocate(metricControlledVocabulary,"termID","term", "measurementTypeID", "measurementType","description", "units", "dataType")
 
-#Save the metricControlledVocabulary 
+#### Save the metricControlledVocabulary ####
 write.csv(metricControlledVocabulary, paste0(getwd(),"/DataExchangeStandardTables/metricControlledVocabulary.csv"), row.names= FALSE)
 
 
-#####Build mapping table for the lessons learned paper and project review 
+#### Build mapping table for the lessons learned paper and project review ####
 
 dataMapping <- read.csv("DataExchangeStandardTables/DataMappingDES.csv")
 

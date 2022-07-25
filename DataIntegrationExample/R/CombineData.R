@@ -22,20 +22,23 @@ library(sjmisc)
   
 # Load functions 
   source(paste0(getwd(), "/DataIntegrationExample/R/dataMappedField.R")) 
-  # ed: maybe add a comment here about the files below and their purpose/function?
+
+# Read the Metadata dictionary to define field headers for the combined dataset
 MetadataDict <- read.csv("Data/MetadataDictionary.csv")
-EmunDict    <- read.csv("Data/EmunDictionary.csv") # ed: update this if changing filename
+
+# I think I can delete this rerun and check code
+#EmunDict    <- read.csv("Data/CategoryDictionary.csv") # ed: update this if changing filename
 
 
-#List of programs to integrate data from # ed: changed integrated to integrate
-program <- c("NRSA","AIM", 'PIBO', "AREMP") # ed: why is PIBO in '' and the others are in ""?
+# List of programs to integrate data from # ed: changed integrated to integrate
+program <- c("NRSA","AIM", "PIBO", "AREMP") 
 
 
-#Projection for the combined dataset 
+# Projection for the combined dataset 
 CRS<-  "+proj=longlat +datum=WGS84 +no_defs"
 
 
-# create a list of fields from the data exchange standards # ed: changed specifications to standards 
+# Create a list of fields from the data exchange standards # ed: changed specifications to standards 
 des_names <-MetadataDict %>% 
         filter(str_detect(entity, c("Record|Location|Event")))%>% 
         drop_na(attribute)%>%  
@@ -43,7 +46,7 @@ des_names <-MetadataDict %>%
         unlist(use.names = F) %>% 
         unique()
        
-#remove any blanks 
+# Remove any blanks in character
 des_names <- des_names[des_names!= '']
 
 
@@ -54,7 +57,7 @@ metricControlledVocabulary <- metricControlledVocabularyToSave %>%
                               unlist(use.names=F) %>%  
                               unique()
 
-#create a dataframe 
+#create an empty dataframe 
 flat_data_names     <- c(des_names, metricControlledVocabulary) %>%  trimws()
 flat_data           <- data.frame(matrix(ncol=length(flat_data_names), nrow=1))
 colnames(flat_data)  <- flat_data_names
@@ -78,10 +81,10 @@ for(p in program) {
     data <- data %>% 
       filter(!!as.name(field) == "WADEABLE")
     
-# from the datamapping find the field name that contains the percent dry program # ed: not sure I understand what "percent dry program" means.
+# From the datamapping find the field name that contains the percent dry program # ed: not sure I understand what "percent dry program" means.
   field <- dataMapVariable("fieldNotes", p)
 
-  #Change variable percent dry to a category # ed: deleted repetition of "percent dry"
+  # Change variable percent dry to a category # ed: deleted repetition of "percent dry"
     dry <- data[[field]]
     dry <- as.character(dry) 
     dry[(dry == 0) & !is.na(dry)] <- "Flow (Whole Reach)"
@@ -89,8 +92,8 @@ for(p in program) {
     dry[!str_detect(dry, "Flow") & !is.na(dry)] <- "Partial Flow/Stagnant Pools"
     data[[field]] <- dry
     
-    #Update SiteSelectionType to Random or Targeted 
-    # from the datamapping find the field name that contains the siteSelectionType for AIM # ed: why  does this say AIM when above it looks like this is for NRSA?
+    # Update SiteSelectionType to Random or Targeted 
+    # from the datamapping find the field name that contains the siteSelectionType for NRSA  
     field <- dataMapVariable("siteSelectionType", p)
     siteSelectionType <- data[[field]]
     siteSelectionType <- str_replace_all(siteSelectionType, c("EASTPROB"= "Random", "WESTPROB"= "Random", "PROB" = "Random"))
@@ -106,9 +109,10 @@ for(p in program) {
    data <- download_AIM()
 
     
-    ##### Format data to Data Exchange Standard ####
-    #Filter out the PRTCOl = BOATABLE so only wadeable data is included # ed: edited language here slightly
-    #field <- dataMapVariable("samplingProtocol", p)
+#### Format data to Data Exchange Standard ####
+    #Remove data for ProtocolType = BOATABLE, so only wadeable data is included
+    
+   #field <- dataMapVariable("samplingProtocol", p)
     
     #data <- data %>% 
     #  filter(!!as.name(field) == "Wadeable")
@@ -119,7 +123,7 @@ for(p in program) {
   # from the datamapping find the field name that contains the percent dry 
     field <- dataMapVariable("fieldNotes", p)
     
-  #Change variable percent dry to a category # ed: removed repeated percent dry
+  #Change variable percent dry to a category 
     dry <- data[[field]]
     dry <- as.character(dry) 
     dry[(dry == 0) & !is.na(dry)] <- "Flow (Whole Reach)"
@@ -128,7 +132,7 @@ for(p in program) {
     data[[field]] <- dry
     
     
-  #from the datamapping find the field name that contains the percent dry for AIM # ed: you said percent dry, but this code below looks like beaver impacts to me?
+  #from the datamapping find the field name that contains the percent dry for AIM 
     field <- dataMapVariable("beaverImpactFlow", p)
   
    #change BVR_FLW_MD to YES, NO
@@ -140,7 +144,7 @@ for(p in program) {
     data[[field]]     <- beaverImpactFlow
     
     
-    #Update SiteSelectionType to Random or Targeted 
+    # Update SiteSelectionType to Random or Targeted 
     # from the datamapping find the field name that contains the siteSelectionType for AIM 
     field               <- dataMapVariable("siteSelectionType", p)
     siteSelectionType   <- data[[field]]
@@ -154,7 +158,7 @@ for(p in program) {
     print("Processing USFS PIBO data")  
     data <- as_tibble(read_xlsx("DataIntegrationExample/Data/DataSources/2020_Seasonal_Sum_PIBO.xlsx", 2))
     
-    #based on Project feedback when data was requested the coordinates system is WGS 84
+  # based on Project feedback when data was requested the coordinates system is WGS 84
     PIBO_coordinate <-  "+proj=longlat +datum=WGS84 +no_defs" 
     
     if(compareCRS(CRS, PIBO_coordinate)==TRUE){
@@ -164,12 +168,12 @@ for(p in program) {
       #Write code to reproject if needed 
     }
     
-    # Remove PIBO type Prairie sites and project type Pilot, based on PIBO feedback 
+ # Remove PIBO type Prairie sites and project type Pilot, based on PIBO feedback 
    data<-  data %>% 
       filter(Type !="P") %>% 
       filter(Project != "PILOT")
     
- #from the datamapping find the field name that contains the percent dry for AIM # ed: you said for AIM here but I think this is for PIBO?
+ # From the datamapping find the field name that contains the percent dry for PIBO 
     field <- dataMapVariable("fieldNotes", p)
       
   #Update Stream Flow values to the data exchange standard 
@@ -180,7 +184,7 @@ for(p in program) {
     data[[field]] <- dry
     
 
-  # PIBO to classify Random and targeted we need to use 2 fields 
+  # Classify siteSelectionType for PIBO to Random and Rargeted. To do this we need to use two fields from PIBO dataset Project and Type. 
    siteSelectionType <- data %>% 
                       dplyr::select(c("Project", "Type")) %>% 
                       unite('ProjectType', Project:Type, remove=TRUE)
@@ -207,7 +211,7 @@ for(p in program) {
    
    #Update protocol to a description, would be better to update to a link at to a PDF or MR.org document 
    data$Type[data$Type== "I" ] <- "Inegrator site. Stream habitat, stream temperature, aquatic macroinvertebrate, and riparian vegetation are collected"
-   data$Type[data$Type== "K" ] <- " Designated livestock grazing monitoirng area. Riparian vegetation data and a subset of in-stream habitat data are collected. 
+   data$Type[data$Type== "K" ] <- "Designated livestock grazing monitoirng area. Riparian vegetation data and a subset of in-stream habitat data are collected. 
                                     Sampling locations are identified by local field unit personnel as locations utilized for livestock grazing implementation monitoring"
    data$Type[data$Type== "IS" ] <- "Sentinels, Inegrator sites. Inegrator site. Stream habitat, stream temperature, aquatic macroinvertebrate, and riparian vegetation are collected. 
                                     Sites that were sampled annually until 2012. "
@@ -218,9 +222,6 @@ for(p in program) {
    data$Type[data$Type== "IK" ] <- "Inegrator site and desiginated livestock grazing monitoirng area (DMA). Stream habitat, stream temperature, aquatic macroinvertebrate, and riparian vegetation are collected"
    
    
-   
-   
-  
 
   } else if (p== "AREMP") {
     print("Processing USFS AREMP data")
@@ -233,7 +234,7 @@ for(p in program) {
   }
   
 
-##### Rename the SubSetData from the original fields to the terms (field names) from the data exchange standard #####
+#### Rename the SubSetData from the original fields to the terms (field names) from the data exchange standard ####
   
   term <- DataMapping %>% 
     filter(projectCode == p) %>% 
@@ -255,7 +256,7 @@ for(p in program) {
    SubSetData$projectCode   <- p
   
   
-  ###### Convert date to datatype date ##### # ed: you have convert date to datatype date which applies to the first and third lines below. so maybe add something else that says convert the other data types below to whatever?
+  #### Convert date to datatype date #### # ed: you have convert date to datatype date which applies to the first and third lines below. so maybe add something else that says convert the other data types below to whatever?
   if(any(names(SubSetData) =="eventDate")) {SubSetData$eventDate <- as.Date(SubSetData$eventDate, tryFormats = c("%m/%d/%Y", "%Y-%m-%d")) } 
   if(any(names(SubSetData) =="verbatimLocationID")) {SubSetData$verbatimLocationID <- as.character(SubSetData$verbatimLocationID)} 
   if(any(names(SubSetData) =="verbatimEventID")) {SubSetData$verbatimEventID <- as.character(SubSetData$verbatimEventID)} 
@@ -275,7 +276,7 @@ for(p in program) {
                 }
       }
   
-##### Add fields to the SubSetData that define the specific dataset being combined. 
+#### Add fields to the SubSetData that define the specific dataset being combined. ####
     
 if (p=="NRSA"){
 
@@ -344,7 +345,7 @@ if (p=="NRSA"){
    }
    
    
-  #####Add the SubSetData representing the specific program data into the flat_data, combining information from the sources ##### # ed: fixed spellings
+#### Add the SubSetData representing the specific program data into the flat_data, combining information from the sources ####
   flat_data <- bind_rows(flat_data, SubSetData)
   
  
@@ -352,7 +353,7 @@ if (p=="NRSA"){
 
 }
 
-#####Clean up the data #####
+#### Clean up the data ####
 
 # Remove any locations with blank latitude and longitude 
 all_data2 = flat_data %>%
@@ -378,13 +379,13 @@ ind <- rowSums(is.na(only_metrics)) != (ncol(only_metrics))
 
 all_data2 <-all_data2[ind,]
 
-##### Generate UIDs for the integrated dataset 
-#create a datasetID  
+#### Generate UIDs for the integrated dataset ####
+# create a datasetID  
 all_data2 <- all_data2 %>% 
   transform(datasetID=as.numeric((factor(datasetName)))) 
   
 
-#Enter an eventID for the integrated dataset, based on the structure of this dataset we know that each row is a different data collection event, so therefore we generate a UID in the eventID
+# Enter an eventID for the integrated dataset, based on the structure of this dataset we know that each row is a different data collection event, so therefore we generate a UID in the eventID
 all_data2 <- all_data2 %>% 
   mutate(temp_eventID = paste0(verbatimEventID,projectCode)) %>% 
   transform(eventID=as.numeric((factor(temp_eventID)))) %>% 
@@ -397,17 +398,17 @@ ind_UID <-all_data2$datasetName == ("WSA PHab Metrics (Part 1) - Data (CSV) (csv
 all_data2[ind_UID,"verbatimEventID"] = NA
      
   
-
 #test2 <- all_data2[duplicated(all_data2$eventID),]
 
-#UID location integrated dataset, need to create a temp locationID concatenating program and LocationID in case across programs location ID is repeated # ed: this is a little confusing, can you rephrase slightly?
+#UID location integrated dataset, need to create a temp locationID concatenating program and LocationID in case across programs location ID is repeated
+# ed: this is a little confusing, can you rephrase slightly?
 all_data2 <- all_data2 %>% 
             mutate(temp_locaitonID = paste0(verbatimLocationID,projectCode)) %>% 
             transform(locationID=as.numeric((factor(temp_locaitonID)))) %>% 
             dplyr::select(-temp_locaitonID)
 
 
-#Remove rows that are exact duplicate from the combined dataset # ed: fixed spelling
+#Remove rows that are exact duplicate from the combined dataset 
 all_data2 <-  all_data2 %>% 
               distinct()
 
@@ -415,7 +416,7 @@ all_data2 <-  all_data2 %>%
 all_data2 <- all_data2 %>%
   mutate_if(is.character, str_trim)
 
-# Create a list of unique locations for the combined dataset # ed: fixed spelling
+# Create a list of unique locations for the combined dataset 
 u_locations <- dplyr::select(all_data2, (c("locationID", "latitude", "longitude",
                                            "waterBody", "projectCode")))
 unique_locations <- distinct(u_locations)
@@ -426,9 +427,7 @@ unique_path <- paste0(getwd(), "/DataIntegrationExample/data/UniqueLocationsforS
 write.csv(unique_locations, file=unique_path, row.names=FALSE)
 
 
-
-
-####Subset the data set to match the data exchange standards documented on https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications##### # updated specifications to standards. update URL later if this changes.
+#### Subset the data set to match the data exchange standards documented on https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications ##### # update URL later if this changes.
 #Record level table 
 #Subset the sampling features/locations 
 RecordLevel<- MetadataDict %>% 
@@ -474,7 +473,7 @@ event_table <- all_data2 %>%
 
 
 
-#Create the measurement or fact table 
+# Create the measurement or fact table 
 
 #measurement_names <- metricControlledVocabulary
 
@@ -492,11 +491,11 @@ Results <- measurement %>%
   rowid_to_column("measurementID")  
 
 
-#Add the measurementID to the measurement or fact table # ed: spellings
+#Add the measurementID to the measurement or fact table
 cv_index <- metricControlledVocabularyToSave %>% 
   dplyr::select(contains("measurementType")) 
 
-# add the MeasurementTypeID to the MeasurementOrFact table # ed: spelling
+# add the MeasurementTypeID to the MeasurementOrFact table 
 for(t in unique(Results$measurementType)){ 
     m_index                          <-  Results$measurementType==t
     Results$measurementTypeID[m_index]          <-  as.numeric(cv_index %>% 
@@ -510,17 +509,16 @@ Results<- Results %>%
   filter(measurementValue != Inf) %>% 
   relocate(c("eventID","measurementID", "measurementType", "measurementTypeID","measurementValue")) 
 
+#### Save file ####
 #Write the analysis ready stream monitoring dataset data to a .csv
 file_path <- paste0(getwd(), "/DataIntegrationExample/data/AnalysisStreamHabitatMonitoringMetricDataset.csv")
 #file.remove(file_path)
 write.csv(all_data2, file=file_path, row.names=FALSE)
 
 
-#Save the relational database files and metadata # ed: removed repeated relation
+#Save the relational database files and metadata
 list_of_datasets <- list("RecordLevel" = RecordLevel_table, "Location"= location_table, "Event"= event_table,
-                         "MeasurementOrFact"= Results, # ed: updated Measurement spelling
-                         "MetricControlledVocabulary" = metricControlledVocabularyToSave
-                         ,"DataMapping"= DataMapping)
+                         "MeasurementOrFact"= Results)
 
 file_name = paste0(getwd(), "/DataIntegrationExample/data/RelationalDataTablesStreamHabitatMetrics.xlsx") 
 #file.remove(file_name)

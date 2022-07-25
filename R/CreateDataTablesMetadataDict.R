@@ -1,4 +1,4 @@
-#Script to create tables for the the data exchange specifications and the publications
+#Script to create tables for the the data exchange standards # ed changed specifications to standards, removed publications
 
 build_vocab_tables <-function() {
 library(tidyverse)
@@ -29,8 +29,8 @@ for (i in 1:length(tables_des)){
 }
 
 
-#####Create a controlled vocabulary table from the EmunDict 
-EmunDict <- read.csv("Data/EmunDictionary.csv")
+#####Create a controlled vocabulary table from the EmunDict # ed: update EmunDict if changing filename
+EmunDict <- read.csv("Data/EmunDictionary.csv") # ed: update EmunDictionary file name if changing
 
 cv <- EmunDict %>% 
   filter(entity == "MetricControlledVocabulary")
@@ -80,9 +80,9 @@ wideDataMapping <- dataMapping %>%
 
 metricControlledVocabulary$measurementTypeID <- as.numeric(metricControlledVocabulary$measurementTypeID)
 
-controlledVocbularyDataMapping <- right_join(wideDataMapping, metricControlledVocabulary)
+controlledVocbularyDataMapping <- right_join(wideDataMapping, metricControlledVocabulary) # ed: in the variable name, change Vocbulary to Vocabulary
 
-write.csv(controlledVocbularyDataMapping, paste0(getwd(),"/DataExchangeStandardTables/TablesForManuscripts/controlledVocabularyDataMappingTableForManuscript.csv")) 
+write.csv(controlledVocbularyDataMapping, paste0(getwd(),"/DataExchangeStandardTables/TablesForManuscripts/controlledVocabularyDataMappingTableForManuscript.csv")) # ed: followup from above, in the write.csv(filename, change the filename Vocbulary to Vocabulary
 
 desDataMapping <- right_join(wideDataMapping, DES)
 write.csv(desDataMapping, paste0(getwd(),"/DataExchangeStandardTables/TablesForManuscripts/desDataMappingTableForManuscript.csv"))

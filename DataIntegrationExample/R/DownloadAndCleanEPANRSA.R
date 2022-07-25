@@ -1,8 +1,8 @@
 #####Scraping EPA National Aquatic Resources data 
 
 #This script is to pull data from the EPA data web page. Then we create a tidy data set from the 2004, 2008/09, 
-#2013/14 NRSA stream data sets with the Macrioneverterbreate, physical habitat and water chemistry metric and 
-#indicator data. The data set is then save to the GitHub page and the ScienceBase Item. 
+#2013/14 NRSA stream data sets with the Macrioneverterbreate, physical habitat and water chemistry metric and  # ed: did you also add the 2018/19 data? I thought so but not sure I see it here.
+#indicator data. The data set is then saved to the GitHub page and the ScienceBase Item.  # ed: are you still uploading to ScienceBase or no?
 
 download_EPA_NRSA <- function() {
   library(tidyverse)
@@ -52,7 +52,7 @@ download_EPA_NRSA <- function() {
     filter(str_detect(Survey, "Streams"))
   
 
-##### Build a data fame of the data sets used to build the data set ####
+##### Build a data frame of the data sets used to build the data set #### # ed: spelling
   location_data <- NARS %>% 
     filter(str_detect(Indicator, "Site Information"))%>% 
     filter(!str_detect(web1,"ext")) %>% 
@@ -80,11 +80,11 @@ download_EPA_NRSA <- function() {
         dplyr::filter(str_detect(Survey,"2004")) %>% 
         unique()
   
-#Separate out the two habitat datasets labeled 2004 because processing requires a steps to combined the two 2004 datasets 
+#Separate out the two habitat datasets labeled 2004 because processing requires extra steps to combine the two 2004 datasets  # ed: modified language slightly
   phys_hab2004 <- data_2004 %>% 
     filter(str_detect(Indicator, "Physical Habitat")) 
   
-  # Combing the 2004 physical habitat datasets into on dataset, convert data types
+  # Combining the 2004 physical habitat datasets into one dataset, convert data types # ed: spelling
   for(ph2004 in 1:length(phys_hab2004$web1)) {
     link = phys_hab2004$web1[ph2004]
     url_link <- paste0("https://www.epa.gov", link)
@@ -135,17 +135,17 @@ rm(temp_file)
 
 locations_2004$DATE_COL <- as.Date(locations_2004$DATE_COL, format="%m/%d/%Y")
 
-# 2004 data location column header don't match the other two data sets, need to check with the EPA to see if this data is comparable 
+# 2004 data location column header don't match the other two data sets, need to check with the EPA to see if this data is comparable # ed: is this resolved? update comment if so?
 locations_2004 <- locations_2004 %>% dplyr::rename(LON_DD83 = LON_DD, 
                                                  LAT_DD83= LAT_DD) 
 
 # Stream 2004 Site Information Data does not contain the field PROTOCOL, based on metadata and information from the programs 
 # the field TNT = Site is a target stream (perennial wadeable) or a non-target site. The rows filled in with TRUE are 
-# WADABLE streams. We create a new field in the 2004 Location data and update all TNT = TRUE , PROTOCOL = WADABLE 
+# WADEABLE streams. We create a new field in the 2004 Location data and update all TNT = TRUE , PROTOCOL = WADABLE # ed: spelling
 TNT_TRUE <- locations_2004$TNT == "TRUE"
 locations_2004$PROTOCOL[TNT_TRUE] <- "WADEABLE"
 
-#Convert HUC  data to characters not integers 
+#Convert HUC data to characters not integers # ed: removed extra space
 locations_2004[str_detect(names(locations_2004), "HUC")] <- locations_2004 %>% 
   dplyr::select(contains("HUC")) %>% 
   mutate_all(as.character) 
@@ -161,7 +161,7 @@ chem_URL <- data_2004 %>%
                 filter(str_detect(Indicator, "Chemistry")) %>% 
                 dplyr::select(contains("web1"))
 
-# Download the water chem data, update the 
+# Download the water chem data, update the # ed: update the what? the date? this comment isn't quite complete.
 url_link <- paste0("https://www.epa.gov", chem_URL[1])
 temp_file <- tempfile(fileext = ".csv")
 download.file(url_link, temp_file)
@@ -182,13 +182,13 @@ all_data_2004 <- left_join(all_data_2004, water_chem_2004, by= c("SITE_ID", "YEA
 all_data_2004$datasetName <- paste(data_2004$Data, collapse=",")
 all_data_2004$UID <- paste0(all_data_2004$SITE_ID,"-", all_data_2004$VISIT_NO, "-", all_data_2004$DATE_COL) 
 
-#### build all the datasets not from 2004)####
+#### build all the datasets not from 2004#### # ed: removed )
 
 ##### List of dataset excluding the 2004 data #####
 dataset_table <- dataset_table %>% 
   filter(!str_detect(Survey, "2004"))
 
-##### Location data (not including the 2004 data) ####
+##### Location data (excluding the 2004 data) #### # ed: modified language slightly
 location_data <- dataset_table %>% 
     filter(str_detect(Indicator, "Site Information"))
 
@@ -332,7 +332,7 @@ location_data <- dataset_table %>%
       mutate_all(as.character)
 
 
-#   Convert the date from a string to a date data type based
+#   Convert the date from a string to a date data type # ed: removed "based" from end
     if (any(names(data_set)=="DATE_COL")) { 
      if (grepl("-", data_set$DATE_COL[1],  fixed=TRUE)) { 
         data_set$DATE_COL <- as.Date(data_set$DATE_COL, format= "%d-%B-%y")
@@ -392,7 +392,7 @@ names(data_locations2008) <- str_remove(names(data_locations2008), ".x")
 ##### merge location/water chem with physical habitat data 
   data_locations2008 <- merge(data_locations2008, data_phys_hab, by = "UID", all= TRUE)
   
-#### concatenation the dataset names 
+#### concatenate the dataset names # ed: modified language slightly
 #datasetNamesCol<- data_locations2008 %>%  
 #                  dplyr::select(contains("datasetName")) 
 
@@ -445,7 +445,7 @@ names(data_locations2008) <- str_remove(names(data_locations2008), ".x")
   all_data_2004$UID <- as.character(all_data_2004$UID)
   data_locations2008$UID <- as.character(data_locations2008$UID)
   
-  ##### Stoped here data_locations2008$dtadatasetName is a 
+  ##### Stoped here data_locations2008$dtadatasetName is a # ed: huh?
   data_locations <- bind_rows(data_locations2008, all_data_2004)
 
 data_locations <- data_locations %>%  
@@ -465,7 +465,7 @@ data_locations$datasetName <- conDatasetNames[['datasetName']]
 #        filter(UID == test_ID) %>% 
 #        select(c("SITE_ID",  "YEAR",  "VISIT_NO", "UID")))
 
-#####Fill in blank years & update the positive longitudes to postie based on the assumption all sampling is collected west of the prime meridian ####
+#####Fill in blank years & update the positive longitudes to negative based on the assumption all sampling is collected west of the prime meridian #### # ed: changed positie to negative
  blank_year             <- is.na(data_locations$YEAR)
   data_locations$YEAR[blank_year] <- format(data_locations$DATE_COL[blank_year],format="%Y")
   data_locations$YEAR<- as.integer(data_locations$YEAR)
@@ -476,7 +476,7 @@ data_locations$datasetName <- conDatasetNames[['datasetName']]
    data_locations$XLON_DD[postive_index] <- data_locations$XLON_DD[postive_index]*(-1)
  }
   
-#####Reproject the data based on the standard. NARS data is published in Albers#####
+#####Reproject the data based on the standard. NARS data is published in Albers##### # ed: unclear why the reprojection is all commented out?
 
 #if(compareCRS(CRS, st_crs(locations))==TRUE){
    # print("AREMP coordinate reference system matches the coordinate system of the data exchange standards for the intergrated dataset.")

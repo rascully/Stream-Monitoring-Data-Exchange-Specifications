@@ -22,20 +22,20 @@ library(sjmisc)
   
 # Load functions 
   source(paste0(getwd(), "/DataIntegrationExample/R/dataMappedField.R")) 
-  
+  # ed: maybe add a comment here about the files below and their purpose/function?
 MetadataDict <- read.csv("Data/MetadataDictionary.csv")
-EmunDict    <- read.csv("Data/EmunDictionary.csv")
+EmunDict    <- read.csv("Data/EmunDictionary.csv") # ed: update this if changing filename
 
 
-#List of programs to integrated data from.
-program <- c("NRSA","AIM", 'PIBO', "AREMP")
+#List of programs to integrate data from # ed: changed integrated to integrate
+program <- c("NRSA","AIM", 'PIBO', "AREMP") # ed: why is PIBO in '' and the others are in ""?
 
 
 #Projection for the combined dataset 
 CRS<-  "+proj=longlat +datum=WGS84 +no_defs"
 
 
-# create a list of fields from the data exchange specifications 
+# create a list of fields from the data exchange standards # ed: changed specifications to standards 
 des_names <-MetadataDict %>% 
         filter(str_detect(entity, c("Record|Location|Event")))%>% 
         drop_na(attribute)%>%  
@@ -78,10 +78,10 @@ for(p in program) {
     data <- data %>% 
       filter(!!as.name(field) == "WADEABLE")
     
-# from the datamapping find the field name that contains the percent dry program
+# from the datamapping find the field name that contains the percent dry program # ed: not sure I understand what "percent dry program" means.
   field <- dataMapVariable("fieldNotes", p)
 
-  #Change variable percent dry percent dry to a category
+  #Change variable percent dry to a category # ed: deleted repetition of "percent dry"
     dry <- data[[field]]
     dry <- as.character(dry) 
     dry[(dry == 0) & !is.na(dry)] <- "Flow (Whole Reach)"
@@ -90,7 +90,7 @@ for(p in program) {
     data[[field]] <- dry
     
     #Update SiteSelectionType to Random or Targeted 
-    # from the datamapping find the field name that contains the siteSelectionType for AIM 
+    # from the datamapping find the field name that contains the siteSelectionType for AIM # ed: why  does this say AIM when above it looks like this is for NRSA?
     field <- dataMapVariable("siteSelectionType", p)
     siteSelectionType <- data[[field]]
     siteSelectionType <- str_replace_all(siteSelectionType, c("EASTPROB"= "Random", "WESTPROB"= "Random", "PROB" = "Random"))
@@ -107,7 +107,7 @@ for(p in program) {
 
     
     ##### Format data to Data Exchange Standard ####
-    #Filter out the PRTCOl = BOATABLE, we agree to only share wadable data 
+    #Filter out the PRTCOl = BOATABLE so only wadeable data is included # ed: edited language here slightly
     #field <- dataMapVariable("samplingProtocol", p)
     
     #data <- data %>% 
@@ -119,7 +119,7 @@ for(p in program) {
   # from the datamapping find the field name that contains the percent dry 
     field <- dataMapVariable("fieldNotes", p)
     
-  #Change variable percent dry percent dry to a category
+  #Change variable percent dry to a category # ed: removed repeated percent dry
     dry <- data[[field]]
     dry <- as.character(dry) 
     dry[(dry == 0) & !is.na(dry)] <- "Flow (Whole Reach)"
@@ -128,7 +128,7 @@ for(p in program) {
     data[[field]] <- dry
     
     
-  #from the datamapping find the field name that contains the percent dry for AIM
+  #from the datamapping find the field name that contains the percent dry for AIM # ed: you said percent dry, but this code below looks like beaver impacts to me?
     field <- dataMapVariable("beaverImpactFlow", p)
   
    #change BVR_FLW_MD to YES, NO
@@ -169,7 +169,7 @@ for(p in program) {
       filter(Type !="P") %>% 
       filter(Project != "PILOT")
     
- #from the datamapping find the field name that contains the percent dry for AIM
+ #from the datamapping find the field name that contains the percent dry for AIM # ed: you said for AIM here but I think this is for PIBO?
     field <- dataMapVariable("fieldNotes", p)
       
   #Update Stream Flow values to the data exchange standard 
@@ -193,7 +193,7 @@ for(p in program) {
    unique(siteSelectionType)
    siteSelectionType$ProjectType[str_detect(siteSelectionType$ProjectType, "CNTRCT") ] <- "Targeted"
    unique(siteSelectionType)
-   #I don't know about PILOT, FWNF? 
+   #I don't know about PILOT, FWNF? # ed: is this still up-to-date or did we resolve this and assign FWNF to Random? update the comment if so.
    siteSelectionType$ProjectType[str_detect(siteSelectionType$ProjectType, "FWNF") ] <- "Random"
    unique(siteSelectionType)
    
@@ -255,7 +255,7 @@ for(p in program) {
    SubSetData$projectCode   <- p
   
   
-  ###### Convert date to datatype date #####
+  ###### Convert date to datatype date ##### # ed: you have convert date to datatype date which applies to the first and third lines below. so maybe add something else that says convert the other data types below to whatever?
   if(any(names(SubSetData) =="eventDate")) {SubSetData$eventDate <- as.Date(SubSetData$eventDate, tryFormats = c("%m/%d/%Y", "%Y-%m-%d")) } 
   if(any(names(SubSetData) =="verbatimLocationID")) {SubSetData$verbatimLocationID <- as.character(SubSetData$verbatimLocationID)} 
   if(any(names(SubSetData) =="verbatimEventID")) {SubSetData$verbatimEventID <- as.character(SubSetData$verbatimEventID)} 
@@ -280,14 +280,14 @@ for(p in program) {
 if (p=="NRSA"){
 
      SubSetData$datasetID               <- ''  
-     SubSetData$bibilographicCitation   <- paste("U.S. Environmental Protection Agency. 2016, 2020. National Aquatic Resource Surveys. National Rivers and Streams Assessment 2008-2009, 2013-2014. Available from U.S. EPA web page: https://www.epa.gov/national-aquatic-resource-surveys/SubSetData-national-aquatic-resource-surveys.Date accessed:", Sys.Date())
-     SubSetData$datasetOrginization     <- "Environmental Protection Agancy"
+     SubSetData$bibilographicCitation   <- paste("U.S. Environmental Protection Agency. 2021. National Aquatic Resource Surveys. Streams 2004 and National Rivers and Streams Assessment 2008-2009, 2013-2014, 2018-2019. From https://www.epa.gov/national-aquatic-resource-surveys/SubSetData-national-aquatic-resource-surveys. Date accessed:", Sys.Date()) # ed: modified slightly
+     SubSetData$datasetOrganization     <- "Environmental Protection Agancy" # ed: updated spelling of datasetOrginization to datasetOrganization
      SubSetData$institutionCode         <- "EPA"
      SubSetData$projectName             <- "National Aquatic Resource Surveys(NARS): National Rivers and Streams Assessmet(NRSA)"
      SubSetData$projectCode             <- "NRSA"
      SubSetData$datasetLink             <- "https://www.epa.gov/national-aquatic-resource-surveys/data-national-aquatic-resource-surveys"
      SubSetData$metadataID              <- "https://www.epa.gov/national-aquatic-resource-surveys/data-national-aquatic-resource-surveys"
-     SubSetData$preProcessingCode       <- "https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/tree/master/Data%20Intergration%20Example"
+     SubSetData$preProcessingCode       <- "https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/tree/master/Data%20Intergration%20Example" # ed: update link from Specifications to Standards if this changes
      SubSetData$locationRemarks         <- "Bottom of Reach"
      
      
@@ -295,14 +295,14 @@ if (p=="NRSA"){
      
      SubSetData$datasetName           <- "I_Indicators"
      SubSetData$datasetID               <- ""
-     SubSetData$bibilographicCitation   <- paste("Bureau of Land Management AIM Aquatic Data (AquADat) Map Server, https://landscape.blm.gov/geoportal/rest/document?id=%7B44F011CC-6E1F-4FDA-AFDF-B29BF1732ACF%7D, accessed", Sys.Date()) 
-     SubSetData$datasetOrginization     <- "Bureau of Land Management"
+     SubSetData$bibilographicCitation   <- paste("Bureau of Land Management AIM Natl Lotic Indicators ArcGIS Hub, https://gbp-blm-egis.hub.arcgis.com/datasets/BLM-EGIS::blm-natl-aim-lotic-indicators-hub/about, accessed", Sys.Date()) # ed: updated citation
+     SubSetData$datasetOrganization     <- "Bureau of Land Management" # ed: updated spelling of datasetOrginization to datasetOrganization
      SubSetData$institutionCode         <- "BLM"
      SubSetData$projectName             <- "Asssessment, Inventory, and Monitoring"
      SubSetData$projectCode             <- "AIM"
-     SubSetData$datasetLink             <- "https://gis.blm.gov/arcgis/rest/services/hydrography/BLM_Natl_AIM_AquADat/MapServer"
-     SubSetData$metadataID              <- "https://www.arcgis.com/sharing/rest/content/items/97e9d82469194fab88e4193ba591fb72/info/metadata/metadata.xml?format=default&output=html"
-     SubSetData$preProcessingCode       <- "https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/tree/master/Data%20Intergration%20Example"
+     SubSetData$datasetLink             <- "https://services1.arcgis.com/KbxwQRRfWyEYLgp4/arcgis/rest/services/BLM_Natl_AIM_Lotic_Indicators_Hub/FeatureServer/0/query?outFields=*&where=1%3D1" # ed: updated link
+     SubSetData$metadataID              <- "https://www.arcgis.com/sharing/rest/content/items/97e9d82469194fab88e4193ba591fb72/info/metadata/metadata.xml?format=default&output=html" # ed: updated link
+     SubSetData$preProcessingCode       <- "https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/tree/master/Data%20Intergration%20Example" # ed: update link from specifications to Standards if changing name
      SubSetData$locationRemarks         <- "Middle of Reach"
      #Calculate BF width to depth ratio based on 
      SubSetData$AvgBFWDRatio            <- SubSetData$BFWidth / SubSetData$BFHeight
@@ -311,13 +311,13 @@ if (p=="NRSA"){
    } else if (p=="PIBO"){ 
      SubSetData$datasetID               <- ""
      SubSetData$datasetName             <- "2020_Seasonal_Sum_PIBO"
-     SubSetData$bibilographicCitation   <- ''
-     SubSetData$datasetOrginization     <- "United States Forest Service"
+     SubSetData$bibilographicCitation   <- "Data accessed via data request to PIBO staff" # ed: updated to put something here
+     SubSetData$datasetOrganization     <- "United States Forest Service" # ed: updated spelling of datasetOrginization to datasetOrganization
      SubSetData$institutionCode         <- "USFS"
      SubSetData$projectName             <- "PacFish/InFish Biological Opinion Monitoring Program"
      SubSetData$projectCode             <- "PIBO"
      SubSetData$datasetLink             <- "https://www.fs.usda.gov/detail/r4/landmanagement/resourcemanagement/?cid=stelprd3845865"
-     SubSetData$metadataID              <- "Available by data request "
+     SubSetData$metadataID              <- "Available by data request" # ed: removed extra space at end of string
      SubSetData$preProcessingCode       <- ""
      SubSetData$locationRemarks         <- "Bottom of Reach"
 
@@ -328,19 +328,14 @@ if (p=="NRSA"){
      SubSetData$datasetID               <- ""
      SubSetData$datasetName             <- "Northwest Forest Plan-the first 20 years (1994 to 2008): watershed condition status and trend" 
      
-     SubSetData$bibilographicCitation   <- paste('Miller, Stephanie A.; Gordon, Sean N.; Eldred, Peter; 
-                                            Beloin, Ronald M.; Wilcox, Steve; Raggon, Mark;Andersen, 
-                                            Heidi; Muldoon, Ariel. 2017. Northwest Forest Plan the first 
-                                            20 years (1994 to 2013): watershed condition status and trends. Gen. Tech. Rep. PNW GTR 932.
-                                            Portland, OR: U.S. Department of Agriculture, Forest Service, Pacific Northwest Research Station. 74 p., accessed', Sys.Date()) 
- 
-     SubSetData$datasetOrginization     <- "United States Forest Service"
+     SubSetData$bibilographicCitation   <- paste('Miller, Stephanie A.; Gordon, Sean N.; Eldred, Peter; Beloin, Ronald M.; Wilcox, Steve; Raggon, Mark;Andersen, Heidi; Muldoon, Ariel. 2017. Northwest Forest Plan the first  20 years (1994 to 2013): watershed condition status and trends. Gen. Tech. Rep. PNW GTR 932. Portland, OR: U.S. Department of Agriculture, Forest Service, Pacific Northwest Research Station. 74 p., accessed', Sys.Date()) # ed: deleted extra lines to make one gigantic long line that will work better in Excel 
+     SubSetData$datasetOrganization     <- "United States Forest Service" # ed: updated spelling of datasetOrginization to datasetOrganization
      SubSetData$institutionCode         <- "USFS"
      SubSetData$projectName             <- "Aquatic and Riparian Effectiveness Monitoring Plan"
      SubSetData$projectCode             <- "AREMP"
      SubSetData$datasetLink             <- "https://www.fs.fed.us/r6/reo/monitoring/downloads/watershed/NwfpWatershedCondition20yrReport.gdb.zip"
      SubSetData$metadataID              <- "https://www.fs.fed.us/r6/reo/monitoring/downloads/watershed/NwfpWatershedCondition20yrReport.gdb.htm"
-     SubSetData$preProcessingCode       <- "https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/tree/master/Data%20Intergration%20Example"  
+     SubSetData$preProcessingCode       <- "https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/tree/master/Data%20Intergration%20Example"  #  ed: update link from specifications to Standards if changing
      SubSetData$locationRemarks         <- "Bottom of Reach"
      
      #AREMP all data collection locations are Random 
@@ -349,7 +344,7 @@ if (p=="NRSA"){
    }
    
    
-  #####Add the SupSetData representing the specific program data into the flat_data, combinding information from the sources #####
+  #####Add the SubSetData representing the specific program data into the flat_data, combining information from the sources ##### # ed: fixed spellings
   flat_data <- bind_rows(flat_data, SubSetData)
   
  
@@ -405,14 +400,14 @@ all_data2[ind_UID,"verbatimEventID"] = NA
 
 #test2 <- all_data2[duplicated(all_data2$eventID),]
 
-#UID location integrated dataset, need to create a temp locationID concatenating program and LocationID in case across programs location ID is repeated 
+#UID location integrated dataset, need to create a temp locationID concatenating program and LocationID in case across programs location ID is repeated # ed: this is a little confusing, can you rephrase slightly?
 all_data2 <- all_data2 %>% 
             mutate(temp_locaitonID = paste0(verbatimLocationID,projectCode)) %>% 
             transform(locationID=as.numeric((factor(temp_locaitonID)))) %>% 
             dplyr::select(-temp_locaitonID)
 
 
-#Remove rows that are exact duplicate from the combind dataset
+#Remove rows that are exact duplicate from the combined dataset # ed: fixed spelling
 all_data2 <-  all_data2 %>% 
               distinct()
 
@@ -420,7 +415,7 @@ all_data2 <-  all_data2 %>%
 all_data2 <- all_data2 %>%
   mutate_if(is.character, str_trim)
 
-# Create a list of unique locations for the combind dataset 
+# Create a list of unique locations for the combined dataset # ed: fixed spelling
 u_locations <- dplyr::select(all_data2, (c("locationID", "latitude", "longitude",
                                            "waterBody", "projectCode")))
 unique_locations <- distinct(u_locations)
@@ -433,7 +428,7 @@ write.csv(unique_locations, file=unique_path, row.names=FALSE)
 
 
 
-####Subset the data set to match the data exchange specifications documented on https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications#####
+####Subset the data set to match the data exchange standards documented on https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications##### # updated specifications to standards. update URL later if this changes.
 #Record level table 
 #Subset the sampling features/locations 
 RecordLevel<- MetadataDict %>% 
@@ -466,7 +461,7 @@ location_table <- all_data2 %>%
   distinct() %>% 
   relocate(c("datasetID","locationID", "verbatimLocationID","latitude", "longitude"))  
 
-#Build the event table/action table 
+#Build the event table/action table # ed: not sure what an action table is?
 event<- MetadataDict %>% 
   filter(str_detect(entity, "Event")) %>% 
   drop_na(attribute)%>%  
@@ -497,11 +492,11 @@ Results <- measurement %>%
   rowid_to_column("measurementID")  
 
 
-#Add the measurmentID to the measurement or fact table 
+#Add the measurementID to the measurement or fact table # ed: spellings
 cv_index <- metricControlledVocabularyToSave %>% 
   dplyr::select(contains("measurementType")) 
 
-# add the MeasurmentTypeID to the MeasurementOrFact table
+# add the MeasurementTypeID to the MeasurementOrFact table # ed: spelling
 for(t in unique(Results$measurementType)){ 
     m_index                          <-  Results$measurementType==t
     Results$measurementTypeID[m_index]          <-  as.numeric(cv_index %>% 
@@ -521,9 +516,9 @@ file_path <- paste0(getwd(), "/DataIntegrationExample/data/AnalysisStreamHabitat
 write.csv(all_data2, file=file_path, row.names=FALSE)
 
 
-#Save the relational relation database files and metadata 
+#Save the relational database files and metadata # ed: removed repeated relation
 list_of_datasets <- list("RecordLevel" = RecordLevel_table, "Location"= location_table, "Event"= event_table,
-                         "MeasurmentOrFact"= Results, 
+                         "MeasurementOrFact"= Results, # ed: updated Measurement spelling
                          "MetricControlledVocabulary" = metricControlledVocabularyToSave
                          ,"DataMapping"= DataMapping)
 

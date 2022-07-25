@@ -6,7 +6,7 @@
 │   │   ├── Metadata Archive.xlsx
 │   │   └── Metadata.xlsx
 │   │
-│   ├── EmunDictionary.csv
+│   ├── CategoryDictionary.csv
 │   └── MetadataDictionary.csv
 │
 ├── DataExchangeStandardTables\

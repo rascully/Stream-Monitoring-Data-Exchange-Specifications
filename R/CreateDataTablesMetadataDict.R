@@ -21,9 +21,10 @@ DES <-metadataDict %>%
 for (i in 1:length(tables_des)){ 
   filename = paste0(getwd(),"/DataExchangeStandardTables/",  tables_des[i], "DES.csv")
   write.csv( assign(tables_des[i], metadataDict %>% 
-                    dplyr:: select(c('sourcedefinition', 'unboundeddefinition', 'enumerateddomain', 'NAorBlankcell', 'NAdefinition'))  %>% 
+                    dplyr:: select(-c ('sourcedefinition', 'unboundeddefinition', 'enumerateddomain', 'NAorBlankcell', 'NAdefinition'))  %>% 
                      relocate('entity', 'termID', 'term', 'definition', 'dataType') %>% 
                      filter(str_detect(entity, tables_des[i])) %>% 
+                     filter(termID != "NA")  %>% 
                      arrange(termID)), filename, row.names = FALSE)
 
 

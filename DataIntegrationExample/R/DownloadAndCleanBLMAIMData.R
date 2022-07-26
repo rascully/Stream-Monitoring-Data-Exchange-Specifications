@@ -10,34 +10,16 @@ download_AIM<- function(){
   library(httr)
   library(geojsonio)
   
-  
-  #create a URL to access the BLM Data
-  
-  # https://services1.arcgis.com/KbxwQRRfWyEYLgp4/arcgis/rest/services/BLM_Natl_AIM_Lotic_Indicators_Hub/FeatureServer/0/query?outFields=*&where=1%3D1
-  
-  
-  #url <- list(hostname = "services1.arcgis.com/KbxwQRRfWyEYLgp4/arcgis/rest/services",
-  #            scheme = "https",
-  #            path = "BLM_Natl_AIM_Lotic_Indicators_Hub/FeatureServer/0/query",
-  #            query = list(
-  #              where = "1=1",
-  #              outFields = "*",
-  #              returnGeometry = "true",
-  #              f = "geojson")) %>% 
-  #  setattr("class", "url")
-  
-  #request <- build_url(url)
-  #BLM <- st_read(request, stringsAsFactors = TRUE) #Load the file from the Data file
-  
-#BLM <- geojson_sf("https://services1.arcgis.com/KbxwQRRfWyEYLgp4/arcgis/rest/services/BLM_Natl_AIM_Lotic_Indicators_Hub/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson")
+
 BLM <- geojson_sf('https://services1.arcgis.com/KbxwQRRfWyEYLgp4/arcgis/rest/services/BLM_Natl_AIM_Lotic_Indicators_Hub/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json')
 
    data <- as_tibble(BLM)
   
   #Check the projection 
   st_crs(BLM)
+  CRS_DES <-  "+proj=longlat +datum=WGS84 +no_defs" 
   
-  if(compareCRS(CRS, BLM)==TRUE){
+  if(compareCRS(CRS_DES, BLM)==TRUE){
     print("AIM coordinate reference system matches the coordinate system of the data exchange standards for the integrated dataset.")
   } else{ 
     print("AIM coordinate reference system does not match the coordinate system of the data exchange standards for the integrated dataset.")

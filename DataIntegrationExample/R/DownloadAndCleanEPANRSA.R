@@ -13,13 +13,15 @@ download_EPA_NRSA <- function() {
   library(plyr)
   library(hutils)
   library(dplyr)
+  library(sp)
+  library(raster)
   
   test_ID = "10001"
   
   #Projection for the combined dataset 
   CRS<-  "+proj=longlat +datum=WGS84 +no_defs"
   
-  ######Download all the data links from the EPA web site#####
+  #### Download all the data links from the EPA web site #####
   content <- read_html("https://www.epa.gov/national-aquatic-resource-surveys/data-national-aquatic-resource-surveys")
   
   tables <- content %>% 
@@ -36,7 +38,7 @@ download_EPA_NRSA <- function() {
   
   EPA_table$web1 <- web  ## add files column
   
-  ## metadata links accordingly
+  # metadata links accordingly
   web2 <- content %>%
     html_nodes("table tr") %>%
     html_nodes(xpath="//td[4]") %>%  ## xpath
@@ -47,12 +49,12 @@ download_EPA_NRSA <- function() {
   EPA_table[EPA_table$Metadata %in% "", "Metadata"] <- NA
   EPA_table[!is.na(EPA_table$Metadata), "web2"] <- web2
   
-#####Sort out the NARS data from the full list of data sets on the EPA website#####
+#### Sort out the NARS data from the full list of data sets on the EPA website #####
   NARS <- EPA_table %>% 
     filter(str_detect(Survey, "Streams"))
   
 
-##### Build a data frame of the data sets used to build the data set #### # ed: spelling
+#### Build a data frame of the data sets used to build the data set ####
   location_data <- NARS %>% 
     filter(str_detect(Indicator, "Site Information"))%>% 
     filter(!str_detect(web1,"ext")) %>% 
@@ -75,16 +77,16 @@ download_EPA_NRSA <- function() {
     bind_rows(location_data) 
   
 
-######Join all the 2004 datsets #####
+#### Join all the 2004 datsets ####
   data_2004 <- dataset_table %>% 
         dplyr::filter(str_detect(Survey,"2004")) %>% 
         unique()
   
-#Separate out the two habitat datasets labeled 2004 because processing requires extra steps to combine the two 2004 datasets  # ed: modified language slightly
+#Separate out the two habitat datasets labeled 2004 because processing requires extra steps to combine the two 2004 datasets  
   phys_hab2004 <- data_2004 %>% 
     filter(str_detect(Indicator, "Physical Habitat")) 
   
-  # Combining the 2004 physical habitat datasets into one dataset, convert data types # ed: spelling
+  # Combining the 2004 physical habitat datasets into one dataset, convert data types
   for(ph2004 in 1:length(phys_hab2004$web1)) {
     link = phys_hab2004$web1[ph2004]
     url_link <- paste0("https://www.epa.gov", link)
@@ -141,11 +143,11 @@ locations_2004 <- locations_2004 %>% dplyr::rename(LON_DD83 = LON_DD,
 
 # Stream 2004 Site Information Data does not contain the field PROTOCOL, based on metadata and information from the programs 
 # the field TNT = Site is a target stream (perennial wadeable) or a non-target site. The rows filled in with TRUE are 
-# WADEABLE streams. We create a new field in the 2004 Location data and update all TNT = TRUE , PROTOCOL = WADABLE # ed: spelling
+# WADEABLE streams. We create a new field in the 2004 Location data and update all TNT = TRUE , PROTOCOL = WADABLE 
 TNT_TRUE <- locations_2004$TNT == "TRUE"
 locations_2004$PROTOCOL[TNT_TRUE] <- "WADEABLE"
 
-#Convert HUC data to characters not integers # ed: removed extra space
+#Convert HUC data to characters not integers 
 locations_2004[str_detect(names(locations_2004), "HUC")] <- locations_2004 %>% 
   dplyr::select(contains("HUC")) %>% 
   mutate_all(as.character) 
@@ -156,12 +158,12 @@ locations_2004[str_detect(names(locations_2004), "VISIT_NO")] <- locations_2004 
 
 all_data_2004 <- left_join(locations_2004, data_phys_hab2004)
 
-#2004 Waterchem Data 
+# 2004 Waterchem Data 
 chem_URL <- data_2004 %>% 
                 filter(str_detect(Indicator, "Chemistry")) %>% 
                 dplyr::select(contains("web1"))
 
-# Download the water chem data, update the # ed: update the what? the date? this comment isn't quite complete.
+# Download the water chem data
 url_link <- paste0("https://www.epa.gov", chem_URL[1])
 temp_file <- tempfile(fileext = ".csv")
 download.file(url_link, temp_file)
@@ -177,18 +179,18 @@ water_chem_2004$DATE_COL <- as.Date(water_chem_2004$DATE_COL, format="%m/%d/%Y")
 
 all_data_2004 <- left_join(all_data_2004, water_chem_2004, by= c("SITE_ID", "YEAR", "VISIT_NO", "DATE_COL"))
 
-####Add the dataset names 
+#### Add the dataset names 2004 data ####
 
 all_data_2004$datasetName <- paste(data_2004$Data, collapse=",")
 all_data_2004$UID <- paste0(all_data_2004$SITE_ID,"-", all_data_2004$VISIT_NO, "-", all_data_2004$DATE_COL) 
 
-#### build all the datasets not from 2004#### # ed: removed )
+#### Build a dataset of non 2004 data ####
 
-##### List of dataset excluding the 2004 data #####
+# List of dataset excluding the 2004 data 
 dataset_table <- dataset_table %>% 
   filter(!str_detect(Survey, "2004"))
 
-##### Location data (excluding the 2004 data) #### # ed: modified language slightly
+#### Location data (excluding the 2004 data) #### 
 location_data <- dataset_table %>% 
     filter(str_detect(Indicator, "Site Information"))
 
@@ -257,7 +259,7 @@ location_data <- dataset_table %>%
   } 
   
 
-#####Build a water_chem dataset (not the 2004 data) ####
+#### Build a water_chem dataset (not the 2004 data) ####
   water_chem <-dataset_table %>% 
     filter(str_detect(Indicator, "Water Chemistry")) 
   
@@ -304,7 +306,7 @@ location_data <- dataset_table %>%
     #      dplyr::select(c("SITE_ID",  "YEAR",  "VISIT_NO", "UID"))) 
   
   
-#####Build a physical habitat dataset (not the 2004 data) #####
+#### Build a physical habitat dataset (not the 2004 data) ####
   phys_hab <-dataset_table %>% 
     filter(str_detect(Indicator, "Physical Habitat")) 
   
@@ -332,7 +334,7 @@ location_data <- dataset_table %>%
       mutate_all(as.character)
 
 
-#   Convert the date from a string to a date data type # ed: removed "based" from end
+#Convert the date from a string to a date data type # ed: removed "based" from end
     if (any(names(data_set)=="DATE_COL")) { 
      if (grepl("-", data_set$DATE_COL[1],  fixed=TRUE)) { 
         data_set$DATE_COL <- as.Date(data_set$DATE_COL, format= "%d-%B-%y")
@@ -350,14 +352,14 @@ location_data <- dataset_table %>%
   }
   
 
-##### Join the locations, water chem and physical habitat data (not 2004)  #####
+#### Join the locations, water chem and physical habitat data (not 2004)  #####
   dim(all_locations)
   dim(data_water_chem)
   dim(data_phys_hab)
   
 data_locations2008 <- merge(all_locations, data_water_chem, by ="UID", all = TRUE)
 
-#####fill blanks and delete duplicate in matching columns 
+# Fill blanks and delete duplicate in matching columns 
 dup_col <- data_locations2008 %>%
     dplyr::select(contains(c(".x", ".y")))
   
@@ -389,7 +391,7 @@ data_locations2008 <- data_locations2008 %>%
  dplyr::select(-contains(".y"))
 
 names(data_locations2008) <- str_remove(names(data_locations2008), ".x")
-##### merge location/water chem with physical habitat data 
+# merge location/water chem with physical habitat data 
   data_locations2008 <- merge(data_locations2008, data_phys_hab, by = "UID", all= TRUE)
   
 #### concatenate the dataset names # ed: modified language slightly
@@ -405,7 +407,7 @@ names(data_locations2008) <- str_remove(names(data_locations2008), ".x")
  t <- (data_locations2008 <- data_locations2008 %>%  
     relocate(contains(c("SITE_ID","UID", "PROTOCOL",  "LAT", "LON", "VISIT_NO", "DATE_COL")))) 
   
-#####Duplicate fields across the datasets
+#### Remove duplicate fields (columens) across the datasets ####
   dup_col <- data_locations2008 %>%
     dplyr::select(contains(c(".x", ".y")))
   names <- unique(gsub(".x|.y", "", names(dup_col)))
@@ -441,17 +443,15 @@ names(data_locations2008) <- str_remove(names(data_locations2008), ".x")
   #       relocate(contains(c("SITE_ID","UID", "PROTOCOL",  "LAT", "LON", "VISIT_NO", "DATE_COL")))) 
   
     
-#####Join the >2008 datasets will the 2004 dataset  
+#### Join the >2008 datasets will the 2004 dataset  ####
   all_data_2004$UID <- as.character(all_data_2004$UID)
   data_locations2008$UID <- as.character(data_locations2008$UID)
-  
-  ##### Stoped here data_locations2008$dtadatasetName is a # ed: huh?
-  data_locations <- bind_rows(data_locations2008, all_data_2004)
+ data_locations <- bind_rows(data_locations2008, all_data_2004)
 
 data_locations <- data_locations %>%  
   relocate(contains(c("SITE_ID","UID", "LAT", "LON", "VISIT_NO", "DATE_COL")))
 
-#### Join the datasetsNames into one column 
+#### Join the datasetsNames into one column ####
 
 subSetDatasetNames <- data_locations %>%  
                         dplyr::select(contains("dataset"))
@@ -465,7 +465,7 @@ data_locations$datasetName <- conDatasetNames[['datasetName']]
 #        filter(UID == test_ID) %>% 
 #        select(c("SITE_ID",  "YEAR",  "VISIT_NO", "UID")))
 
-#####Fill in blank years & update the positive longitudes to negative based on the assumption all sampling is collected west of the prime meridian #### # ed: changed positie to negative
+#### Fill in blank years & update the positive longitudes to negative based on the assumption all sampling is collected west of the prime meridian #### 
  blank_year             <- is.na(data_locations$YEAR)
   data_locations$YEAR[blank_year] <- format(data_locations$DATE_COL[blank_year],format="%Y")
   data_locations$YEAR<- as.integer(data_locations$YEAR)
@@ -476,27 +476,32 @@ data_locations$datasetName <- conDatasetNames[['datasetName']]
    data_locations$XLON_DD[postive_index] <- data_locations$XLON_DD[postive_index]*(-1)
  }
   
-#####Reproject the data based on the standard. NARS data is published in Albers##### # ed: unclear why the reprojection is all commented out?
+  
+# Remove any rows with NA in latitude or longitude   
+  data_locations <- data_locations[!is.na(data_locations$LAT_DD83),]  
+  
+  
+#### Reproject the data based on the standard. NARS data is published in NAD83 #### 
+  
+# projection described by the DES for stream habit data 
+  CRS_DES <-  "+proj=longlat +datum=WGS84 +no_defs" 
+  
+  CRS_NARS <- "towgs84=0,0,0"
 
-#if(compareCRS(CRS, st_crs(locations))==TRUE){
-   # print("AREMP coordinate reference system matches the coordinate system of the data exchange standards for the intergrated dataset.")
-#  }else {
- #   print("AREMP coordinate reference system does not match the coordinate system of the data exchange standards for the intergrated dataset.")
+if(compareCRS(CRS_DES, CRS_NARS)==TRUE){
+  print("EPA NARS coordinate reference system matches the coordinate system of the data exchange standards for the intergrated dataset.")
+  }else {
+  print("EPA NARS coordinate reference system does not match the coordinate system of the data exchange standards for the intergrated dataset.")
     #Transform to a standard system 
-#    a_WGS84 <- st_transform(AREMP, crs="+proj=longlat +datum=WGS84 +no_defs")
-      #pull coordinates out of shapefile 
- #   lat_long <- do.call(rbind, st_geometry(a_WGS84)) %>% 
-  #    as_tibble(.name_repair = "unique") %>% setNames(c("longitude","lattitude", "c3", "c4"))
-    
-    # create a table of the AREMP data with lat, and long 
-   # table       <- (st_geometry(AREMP)<- NULL)
-  #  AREMP_csv   <- bind_cols(AREMP, lat_long)
-   # print("Transformed to WGS 84 based on the data standard")
-  #}
+    coordinates(data_locations) <- ~ LON_DD83 + LAT_DD83
+    proj4string(data_locations) <- sp::CRS('+proj=longlat +datum=NAD83 +no_defs')
+    loc_WGS84 <- spTransform(data_locations, "+proj=longlat +datum=WGS84 +no_defs")
+    data_locations <- as.data.frame(loc_WGS84)
+    print("Transformed to WGS 84 based on the data standard")
+  }
   
   
-#####Delete the old EPA data file & save the new file ####
-
+#### Delete the old EPA data file & save the new file ####
 
   files <- list.files(paste0(getwd(), "/DataIntegrationExample/data/DataSources"))
   files_remove <- paste0(getwd(), "/DataIntegrationExample/data/DataSources/", files[str_detect(files, "NRSA")])

@@ -16,7 +16,8 @@ download_AREMP<- function(){
    library(utils)
    library(readxl)
 
-CRS_DES <-  "+proj=longlat +datum=WGS84 +no_defs" # ed: maybe add a comment above this?
+# projection described by the DES for stream habit data 
+CRS_DES <-  "+proj=longlat +datum=WGS84 +no_defs" 
 
 fileURL <- "https://www.fs.fed.us/r6/reo/monitoring/downloads/watershed/NwfpWatershedCondition20yrReport.gdb.zip"
 

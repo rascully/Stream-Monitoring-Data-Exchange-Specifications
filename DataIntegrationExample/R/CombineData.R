@@ -16,18 +16,15 @@ library(sbtools)
 library(rgdal)
 library(sjmisc)
 
-# Run function to build DES and controlled vocabulary tables from MetadataDict to make sure everything is up to date 
+# Run function to build DES tables and controlled vocabulary tables from MetadataDict to make sure everything is up to date 
   source(paste0(getwd(), "/R/CreateDataTablesMetadataDict.R"))
   build_vocab_tables()
   
-# Load functions 
+# Load function to search data mapping 
   source(paste0(getwd(), "/DataIntegrationExample/R/dataMappedField.R")) 
 
 # Read the Metadata dictionary to define field headers for the combined dataset
 MetadataDict <- read.csv("Data/MetadataDictionary.csv")
-
-# I think I can delete this rerun and check code
-#EmunDict    <- read.csv("Data/CategoryDictionary.csv") # ed: update this if changing filename
 
 
 # List of programs to integrate data from # ed: changed integrated to integrate
@@ -68,7 +65,7 @@ DataMapping <- DataMapping %>%
   mutate(across(where(is.character), str_trim))
 
 
-# Loop to download, and pull information from the original datasets into one file. Add record level information. 
+#### Loop to download, and pull information from the original datasets into one file. Add record level information. ####
 for(p in program) {
  
   if (p=="NRSA"){
@@ -397,8 +394,6 @@ ind_UID <-all_data2$datasetName == ("WSA PHab Metrics (Part 1) - Data (CSV) (csv
 
 all_data2[ind_UID,"verbatimEventID"] = NA
      
-  
-#test2 <- all_data2[duplicated(all_data2$eventID),]
 
 #UID location integrated dataset, need to create a temp locationID concatenating program and LocationID in case across programs location ID is repeated
 # ed: this is a little confusing, can you rephrase slightly?
@@ -427,7 +422,7 @@ unique_path <- paste0(getwd(), "/DataIntegrationExample/data/UniqueLocationsforS
 write.csv(unique_locations, file=unique_path, row.names=FALSE)
 
 
-#### Subset the data set to match the data exchange standards documented on https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications ##### # update URL later if this changes.
+#### Subset the data set to match the data exchange standards documented on https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications ##### # update URL later if this changes. ####
 #Record level table 
 #Subset the sampling features/locations 
 RecordLevel<- MetadataDict %>% 
@@ -467,6 +462,8 @@ event<- MetadataDict %>%
   dplyr::select(attribute)%>% 
   unlist(use.names = F) %>% 
   unique() %>% trimws()
+
+event <- event[event != ""]
 
 event_table <- all_data2 %>% 
   dplyr::select(one_of(c("locationID",  event)))
@@ -509,7 +506,7 @@ Results<- Results %>%
   filter(measurementValue != Inf) %>% 
   relocate(c("eventID","measurementID", "measurementType", "measurementTypeID","measurementValue")) 
 
-#### Save file ####
+#### Save files ####
 #Write the analysis ready stream monitoring dataset data to a .csv
 file_path <- paste0(getwd(), "/DataIntegrationExample/data/AnalysisStreamHabitatMonitoringMetricDataset.csv")
 #file.remove(file_path)
@@ -525,12 +522,13 @@ file_name = paste0(getwd(), "/DataIntegrationExample/data/RelationalDataTablesSt
 openxlsx::write.xlsx(list_of_datasets, file = file_name) 
 
 # Save .csv files for each of the tables in the relational database 
+# Something in this code is change verbatim field name 
 for(i in 1:length(names(list_of_datasets))){ 
   filename = paste0(getwd(),"/DataIntegrationExample/Data/csv/", names(list_of_datasets[i]), ".csv")
   table_name <- names(list_of_datasets[i])
   table <- data.frame(list_of_datasets[i])
   names(table) <- gsub(paste0(table_name,"."), "", names(table))
-  write.csv(table, filename, row.names= FALSE)
+  write.csv(table, filename, row.names= FALSE, quote = FALSE)
 } 
 
 

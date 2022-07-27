@@ -19,7 +19,13 @@ download_AREMP<- function(){
 # projection described by the DES for stream habit data 
 CRS_DES <-  "+proj=longlat +datum=WGS84 +no_defs" 
 
-fileURL <- "https://www.fs.fed.us/r6/reo/monitoring/downloads/watershed/NwfpWatershedCondition20yrReport.gdb.zip"
+
+# AREMP data page link: https://www.fs.usda.gov/r6/reo/monitoring/watersheds.php
+
+# Old link fileURL <- "https://www.fs.fed.us/r6/reo/monitoring/downloads/watershed/NwfpWatershedCondition20yrReport.gdb.zip"
+fileURL <- 'https://www.fs.usda.gov/r6/reo/monitoring/downloads/watershed/NwfpWatershedCondition20yrReport.gdb.zip'
+
+
 
 #Download the file to the Data file in the local repository 
 df <- paste0(getwd(),"/DataIntegrationExample/data/DataSources/NwfpWatershedCondition20yrReport.gdb.zip")  

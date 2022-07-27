@@ -207,16 +207,12 @@ for(p in program) {
    data$Project <- siteSelectionType$ProjectType
    
    #Update protocol to a description, would be better to update to a link at to a PDF or MR.org document 
-   data$Type[data$Type== "I" ] <- "Inegrator site. Stream habitat, stream temperature, aquatic macroinvertebrate, and riparian vegetation are collected"
-   data$Type[data$Type== "K" ] <- "Designated livestock grazing monitoirng area. Riparian vegetation data and a subset of in-stream habitat data are collected. 
-                                    Sampling locations are identified by local field unit personnel as locations utilized for livestock grazing implementation monitoring"
-   data$Type[data$Type== "IS" ] <- "Sentinels, Inegrator sites. Inegrator site. Stream habitat, stream temperature, aquatic macroinvertebrate, and riparian vegetation are collected. 
-                                    Sites that were sampled annually until 2012. "
-   data$Type[data$Type== "R" ] <- "Inegrator site. Stream habitat, stream temperature, aquatic macroinvertebrate, and riparian vegetation are collected"
-   data$Type[data$Type== "IKS" ] <- "Sentinels, Inegrator and designated monitoring areas. Till 
-                                    Inegrator site. Stream habitat, stream temperature, aquatic macroinvertebrate, and riparian vegetation are collected. 
-                                    Sites that were sampled annually until 2012. "
-   data$Type[data$Type== "IK" ] <- "Inegrator site and desiginated livestock grazing monitoirng area (DMA). Stream habitat, stream temperature, aquatic macroinvertebrate, and riparian vegetation are collected"
+   data$Type[data$Type== "I" ] <- "PIBO Inegrator Protocol."
+   data$Type[data$Type== "K" ] <- "PIBO Designated livestock grazing monitoirng area protocol(DMA)." 
+   data$Type[data$Type== "IS" ] <- "PIBO Sentinel and Inegrator Protocol."
+   data$Type[data$Type== "R" ] <- "PIBO Inegrator Protocol."
+   data$Type[data$Type== "IKS" ] <- "PIBO Sentinels Protocol. "
+   data$Type[data$Type== "IK" ] <- "PIBO Inegrator site and desiginated livestock grazing monitoirng area (DMA) protocol."
    
    
 
@@ -227,6 +223,8 @@ for(p in program) {
     
     # Create a field Protocol field with WADEABLE based on project feedback that all data is collected in wadeable stream 
     data$survey_type ="WADEABLE"
+    # Calculate the AREMP bankful width to depth ratio 
+    data$ave_widthDepth_ratio    <- data$average_bfwidth / data$average_bfdepth
 
   }
   
@@ -335,6 +333,8 @@ if (p=="NRSA"){
      SubSetData$metadataID              <- "https://www.fs.fed.us/r6/reo/monitoring/downloads/watershed/NwfpWatershedCondition20yrReport.gdb.htm"
      SubSetData$preProcessingCode       <- "https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/tree/master/Data%20Intergration%20Example"  #  ed: update link from specifications to Standards if changing
      SubSetData$locationRemarks         <- "Bottom of Reach"
+    
+   
      
      #AREMP all data collection locations are Random 
      SubSetData$siteSelectionType     <- "Random"
@@ -377,6 +377,16 @@ ind <- rowSums(is.na(only_metrics)) != (ncol(only_metrics))
 all_data2 <-all_data2[ind,]
 
 #### Generate UIDs for the integrated dataset ####
+
+
+# TO DO 
+# As this is working now each time the code is run new dataset, location and event IDs are generated. 
+# To facilitate the use of the dataset by end users and allow for the updating of the dataset we need to 
+# figure out a way to run the code and keep the dataset, location and event ID consistent across time, this will allow 
+# outside users generate covariates and other data and use the IDs to link to the intergrated dataset. 
+
+
+
 # create a datasetID  
 all_data2 <- all_data2 %>% 
   transform(datasetID=as.numeric((factor(datasetName)))) 

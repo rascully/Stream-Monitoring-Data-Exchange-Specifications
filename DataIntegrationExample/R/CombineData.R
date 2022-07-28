@@ -46,24 +46,22 @@ des_names <-MetadataDict %>%
 # Remove any blanks in character
 des_names <- des_names[des_names!= '']
 
+# A vector of metrics names to include in the dataset 
+metricControlledVocabulary <- read.csv("DataExchangeStandardTables/metricControlledVocabulary.csv")%>% 
+                          dplyr::select("measurementType") %>% 
+                          unlist(use.names=F) %>%  
+                          unique()
 
-metricControlledVocabularyToSave <- read.csv("DataExchangeStandardTables/metricControlledVocabulary.csv")
 
-metricControlledVocabulary <- metricControlledVocabularyToSave %>% 
-                              dplyr::select("measurementType") %>% 
-                              unlist(use.names=F) %>%  
-                              unique()
 
-#create an empty dataframe 
+#create an empty dataframe in flat file format to build the analysis ready dataset 
 flat_data_names     <- c(des_names, metricControlledVocabulary) %>%  trimws()
 flat_data           <- data.frame(matrix(ncol=length(flat_data_names), nrow=1))
 colnames(flat_data)  <- flat_data_names
 
-# Read the the data mapping 
-DataMapping <- read.csv("DataExchangeStandardTables/DataMappingDES.csv")
-DataMapping <- DataMapping %>% 
-  mutate(across(where(is.character), str_trim))
-
+# Read the the data mapping and trim out the white space in the strings
+DataMapping <- read.csv("DataExchangeStandardTables/DataMappingDES.csv") %>% 
+                    mutate(across(where(is.character), str_trim))
 
 #### Loop to download, and pull information from the original datasets into one file. Add record level information. ####
 for(p in program) {
@@ -107,20 +105,14 @@ for(p in program) {
 
     
 #### Format data to Data Exchange Standard ####
-    #Remove data for ProtocolType = BOATABLE, so only wadeable data is included
-    
-   #field <- dataMapVariable("samplingProtocol", p)
-    
-    #data <- data %>% 
-    #  filter(!!as.name(field) == "Wadeable")
-    
-   data <- data %>% 
+    # Remove data for ProtocolType = BOATABLE, so only wadeable data is included
+    data <- data %>% 
       filter(ProtocolType == "Wadeable")
     
   # from the datamapping find the field name that contains the percent dry 
     field <- dataMapVariable("fieldNotes", p)
     
-  #Change variable percent dry to a category 
+  # Change variable percent dry to a category 
     dry <- data[[field]]
     dry <- as.character(dry) 
     dry[(dry == 0) & !is.na(dry)] <- "Flow (Whole Reach)"
@@ -245,6 +237,7 @@ for(p in program) {
    new_names[!metric_index] <- term$term[!metric_index]
  
    names(SubSetData) = new_names
+   print(new_names)
    rm(new_names)
    
    #Add a column a program with the metadata 
@@ -365,8 +358,7 @@ all_data2$year              <- as.integer(all_data2$year)
 #all_data2[all_data2$waterBody == "N/A"] <- NA
 all_data2[all_data2 == ''] <- NA 
 
-
-# Remove any locations that have no metric data in the integrated dataset 
+# Remove any rows (events) that have no metric data in the integrated dataset 
 measurement_names <- metricControlledVocabulary
 
 only_metrics <- all_data2 %>% 
@@ -499,7 +491,8 @@ Results <- measurement %>%
 
 
 #Add the measurementID to the measurement or fact table
-cv_index <- metricControlledVocabularyToSave %>% 
+metricControlledVocabularyTable <- read.csv("DataExchangeStandardTables/metricControlledVocabulary.csv")
+cv_index <- metricControlledVocabularyTable %>% 
   dplyr::select(contains("measurementType")) 
 
 # add the MeasurementTypeID to the MeasurementOrFact table 

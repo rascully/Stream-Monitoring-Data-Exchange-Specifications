@@ -7,7 +7,6 @@ termID,term,measurementTypeID,measurementType,dataType,projectCode,originalField
 401,term,533,AvgBFWDRatioStreambed,Numeric,PIBO,WDTrans,ratio,Double,https://www.monitoringresources.org/Document/Method/Details/65 | https://www.monitoringresources.org/Document/Method/Details/6871,https://www.monitoringresources.org/Document/Method/Details/7047
 401,term,503,BFHeight,Numeric,AIM,BankfullHeightAvg,meters,Double,https://www.monitoringresources.org/Document/Method/Details/7013,https://www.monitoringresources.org/Document/Method/Details/4245
 401,term,503,BFHeight,Numeric,NRSA,XBKF_H,meters,Double,https://www.monitoringresources.org/Document/Method/Details/7080,https://www.monitoringresources.org/Document/Method/Details/7081
-,,,,,,,,,,
 401,term,504,BFWidth,Numeric,AREMP,average_bfwidth,meters,Double,https://www.monitoringresources.org/Document/Method/Details/6849,https://www.monitoringresources.org/Document/Method/Details/4245
 401,term,504,BFWidth,Numeric,AIM,BankfullWidthAvg,meters,Double,https://www.monitoringresources.org/Document/Method/Details/7030,https://www.monitoringresources.org/Document/CustomizedMethod/Details/32166
 401,term,504,BFWidth,Numeric,NRSA,XBKF_W,meters,Double,https://www.monitoringresources.org/Document/Method/Details/7080,https://www.monitoringresources.org/Document/Method/Details/7081
@@ -69,8 +68,8 @@ termID,term,measurementTypeID,measurementType,dataType,projectCode,originalField
 401,term,530,PoolFreq,Numeric,AIM,PoolFreq,number of pools per km,Double,https://www.monitoringresources.org/Document/Method/Details/6859,https://www.monitoringresources.org/Document/Method/Details/7084
 401,term,531,LWDFreq,Numeric,AIM,LgWoodInChanFreq,number of pieces per 100 m,Double ,https://www.monitoringresources.org/Document/Method/Details/6864,https://www.monitoringresources.org/Document/Method/Details/7085
 401,term,531,LWDFreq,Numeric,NRSA,C1WM100,number of pieces per 100 m,Double ,https://www.monitoringresources.org/Document/Method/Details/7080,https://www.monitoringresources.org/Document/Method/Details/7081
-401,term,532,LWDVol ,Numeric,AIM,LgWoodInChanVol,meters cubed per 100 m,Double,https://www.monitoringresources.org/Document/Method/Details/6864,https://www.monitoringresources.org/Document/Method/Details/7085
-401,term,532,LWDVol ,Numeric,NRSA,V1WM100,meters cubed per 100 m,Double ,https://www.monitoringresources.org/Document/Method/Details/7080,https://www.monitoringresources.org/Document/Method/Details/7081
+401,term,532,LWDVol,Numeric,AIM,LgWoodInChanVol,meters cubed per 100 m,Double,https://www.monitoringresources.org/Document/Method/Details/6864,https://www.monitoringresources.org/Document/Method/Details/7085
+401,term,532,LWDVol,Numeric,NRSA,V1WM100,meters cubed per 100 m,Double ,https://www.monitoringresources.org/Document/Method/Details/7080,https://www.monitoringresources.org/Document/Method/Details/7081
 103,datasetName,NA,,String,NRSA,datasetName,NA,String,NA ,NA 
 201,verbatimLocationID,NA,,String,AREMP,SITE_ID,NA,String,NA,NA
 201,verbatimLocationID,NA,,String,AIM,PointID,NA,String,NA,NA

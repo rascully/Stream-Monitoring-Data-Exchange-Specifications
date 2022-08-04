@@ -1,4 +1,4 @@
-# Script to create tables for the the data exchange standards # ed changed specifications to standards, removed publications
+# Script to create tables for the the data exchange standards
 
 build_vocab_tables <-function() {
 library(tidyverse)
@@ -82,9 +82,9 @@ wideDataMapping <- dataMapping %>%
 
 metricControlledVocabulary$measurementTypeID <- as.numeric(metricControlledVocabulary$measurementTypeID)
 
-controlledVocbularyDataMapping <- right_join(wideDataMapping, metricControlledVocabulary) # ed: in the variable name, change Vocbulary to Vocabulary
+controlledVocabularyDataMapping <- right_join(wideDataMapping, metricControlledVocabulary)
 
-write.csv(controlledVocbularyDataMapping, paste0(getwd(),"/DataExchangeStandardTables/TablesForManuscripts/controlledVocabularyDataMappingTableForManuscript.csv")) # ed: followup from above, in the write.csv(filename, change the filename Vocbulary to Vocabulary
+write.csv(controlledVocabularyDataMapping, paste0(getwd(),"/DataExchangeStandardTables/TablesForManuscripts/controlledVocabularyDataMappingTableForManuscript.csv"))
 
 desDataMapping <- right_join(wideDataMapping, DES)
 write.csv(desDataMapping, paste0(getwd(),"/DataExchangeStandardTables/TablesForManuscripts/desDataMappingTableForManuscript.csv"))

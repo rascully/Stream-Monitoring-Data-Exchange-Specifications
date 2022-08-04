@@ -1,4 +1,4 @@
-#Download the AREMP data from the Geodatabase, create a tidy data file and upload the file to ScienceBase. # ed: are you still uploading to ScienceBase?
+#Download the AREMP data from the Geodatabase, create a tidy data file and save the file to GitHub.
 
 
 
@@ -35,7 +35,7 @@ download(fileURL, destfile=df)
 #Unzip the file into the Data file in the local repository
 unzip(paste0(getwd(),"/DataIntegrationExample/data/DataSources/NwfpWatershedCondition20yrReport.gdb.zip") , exdir= paste0(getwd(), "/DataIntegrationExample/Data/DataSources")) 
 
-#Define the file path to the geodata base, if AREMP changes their file structure this will need to be updated # ed: spelling
+#Define the file path to the geodata base, if AREMP changes their file structure this will need to be updated
 path <- '/DataIntegrationExample/Data/NwfpWatershedCondition20yrReport.gdb'
 fgdb <- paste0(getwd(), path)
 
@@ -43,7 +43,7 @@ fgdb <- paste0(getwd(), path)
 subset(ogrDrivers(), grepl("GDB", name))
 fc_list <- ogrListLayers(fgdb)
 
-#load the locations, stream and habitat data from the AREMP geodatabase file # ed: spelling
+#load the locations, stream and habitat data from the AREMP geodatabase file
 locations   <- st_read(dsn=fgdb, layer = fc_list[10])
 
 #st_crs(locations)

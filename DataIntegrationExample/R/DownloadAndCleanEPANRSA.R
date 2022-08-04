@@ -1,8 +1,8 @@
 #####Scraping EPA National Aquatic Resources data 
 
 #This script is to pull data from the EPA data web page. Then we create a tidy data set from the 2004, 2008/09, 
-#2013/14 NRSA stream data sets with the Macrioneverterbreate, physical habitat and water chemistry metric and  # ed: did you also add the 2018/19 data? I thought so but not sure I see it here.
-#indicator data. The data set is then saved to the GitHub page and the ScienceBase Item.  # ed: are you still uploading to ScienceBase or no?
+#2013/14, 2018/19 NRSA stream data sets with the Macrioneverterbreate, physical habitat and water chemistry metric and 
+#indicator data and save it to GitHub.
 
 download_EPA_NRSA <- function() {
   library(tidyverse)
@@ -334,7 +334,7 @@ location_data <- dataset_table %>%
       mutate_all(as.character)
 
 
-#Convert the date from a string to a date data type # ed: removed "based" from end
+#Convert the date from a string to a date data type
     if (any(names(data_set)=="DATE_COL")) { 
      if (grepl("-", data_set$DATE_COL[1],  fixed=TRUE)) { 
         data_set$DATE_COL <- as.Date(data_set$DATE_COL, format= "%d-%B-%y")
@@ -394,7 +394,7 @@ names(data_locations2008) <- str_remove(names(data_locations2008), ".x")
 # merge location/water chem with physical habitat data 
   data_locations2008 <- merge(data_locations2008, data_phys_hab, by = "UID", all= TRUE)
   
-#### concatenate the dataset names # ed: modified language slightly
+#### concatenate the dataset names
 #datasetNamesCol<- data_locations2008 %>%  
 #                  dplyr::select(contains("datasetName")) 
 

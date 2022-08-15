@@ -1,24 +1,10 @@
 # About
 <pre>
 ├── Data\
-│   │
-│   ├── Archive\
-│   │   ├── Metadata Archive.xlsx
-│   │   └── Metadata.xlsx
-│   │
 │   ├── CategoryDictionary.csv
 │   └── MetadataDictionary.csv
-│
+|
 ├── DataExchangeStandardTables\
-│   │
-│   ├── TablesForManuscripts\
-│   │   ├── AppendixA.Rmd
-│   │   ├── AppendixA.html
-│   │   ├── controlledVocabularyDataMappingTableForManuscript.csv
-│   │   ├── desDataMappingTableForManuscript.csv
-│   │   ├── tablesForManuscript.Rmd
-│   │   └── tablesForManuscript.html
-│   │
 │   ├── DataMappingDES.csv
 │   ├── EventDES.csv
 │   ├── LocationDES.csv
@@ -31,21 +17,6 @@
 │   ├── R\
 │   │   │
 │   │   ├── Test Code\
-│   │   │   ├── BarPlotExampleOR.png
-│   │   │   ├── BoxPlotExampleOregonPctFines.png
-│   │   │   ├── BoxPlotOregonPctFines6 Fire Catagory.png
-│   │   │   ├── GISExamples.R
-│   │   │   ├── OregonProjectMap.png
-│   │   │   ├── Orginize EPA Metadata.R
-│   │   │   ├── QA QC Integrated Data Set.R
-│   │   │   ├── QA QC Locations.R
-│   │   │   ├── QA QC Metric Count.R
-│   │   │   ├── R Notebook for Intergrating Stream Monitoring Data.Rmd
-│   │   │   ├── Rplot.png
-│   │   │   ├── WildlandBoxPlotExample.png
-│   │   │   ├── metric_documentation.R
-│   │   │   └── test.csv
-│   │   │
 │   │   ├── CombineData.R
 │   │   ├── DownloadAndCleanBLMAIMData.R
 │   │   ├── DownloadAndCleanEPANRSA.R
@@ -72,18 +43,11 @@
 │   │   │   ├── NwfpWatershedCondition20yrReport.gdb.zip
 │   │   │   └── ~$2020_Seasonal_Sum_PIBO.xlsx
 │   │   │
-│   │   ├── GIS\
-│   │   │   └── PNAMP_Water_Monitoring_Stations_2022_GIS_Variables.csv
-│   │   │
-│   │   ├── NwfpWatershedCondition20yrReport.gdb\
-│   │   │
 │   │   ├── csv\
-│   │   │   ├── DataMapping.csv
 │   │   │   ├── Event.csv
 │   │   │   ├── GISVariables.csv
 │   │   │   ├── Location.csv
 │   │   │   ├── MeasurmentOrFact.csv
-│   │   │   ├── MetricControlledVocabulary.csv
 │   │   │   └── RecordLevel.csv
 │   │   │
 │   │   ├── AnalysisStreamHabitatMonitoringMetricDataset.csv
@@ -92,28 +56,14 @@
 │   │   └── UniqueLocationsforStreamHabitatMetric.csv
 │   │
 │   └── README.md
-│
-├── Figures\
-│   ├── Database Schema.pdf
-│   ├── General workflow.png
-│   ├── HabiatDataSharingSchema.png
-│   ├── StructureOfDarwinCoreForHabitatMetrics.png
-│   └── WorkFlow.png
-│
 ├── R\
 │   │
 │   ├── Archive EPA Metadata\
-│   │   ├── Orginize EPA Metadata.R
-│   │   ├── Pull EPA Metadata.Rmd
-│   │   └── Scrape EPA metadata.R
 │   │
 │   └── CreateDataTablesMetadataDict.R
-│
-├── .gitignore
-├── README.md
-├── Stream-Monitoring-Data-Exchange-Specifications.Rproj
-└── word-styles-reference-01.docx
 </pre>
+Repository file directory created using RP Tree in Python (https://github.com/realpython/rptree)
+
 # Disclaimer
 This software is preliminary or provisional and is subject to revision. It is being provided to meet the need for timely best science. The software has not received final approval by the U.S. Geological Survey (USGS). No warranty, expressed or implied, is made by the USGS or the U.S. Government as to the functionality of the software and related material nor shall the fact of release constitute any such warranty. The software is provided on the condition that neither the USGS nor the U.S. Government shall be held liable for any damages resulting from the authorized or unauthorized use of the software.
 

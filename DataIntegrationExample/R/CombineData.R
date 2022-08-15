@@ -27,7 +27,7 @@ library(sjmisc)
 MetadataDict <- read.csv("Data/MetadataDictionary.csv")
 
 
-# List of programs to integrate data from # ed: changed integrated to integrate
+# List of programs to integrate data from
 program <- c("NRSA","AIM", "PIBO", "AREMP") 
 
 
@@ -35,7 +35,7 @@ program <- c("NRSA","AIM", "PIBO", "AREMP")
 CRS<-  "+proj=longlat +datum=WGS84 +no_defs"
 
 
-# Create a list of fields from the data exchange standards # ed: changed specifications to standards 
+# Create a list of fields from the data exchange standards
 des_names <-MetadataDict %>% 
         filter(str_detect(entity, c("Record|Location|Event")))%>% 
         drop_na(attribute)%>%  
@@ -79,7 +79,7 @@ for(p in program) {
 # From the datamapping find the field name that contains the percent dry program # ed: not sure I understand what "percent dry program" means.
   field <- dataMapVariable("fieldNotes", p)
 
-  # Change variable percent dry to a category # ed: deleted repetition of "percent dry"
+  # Change variable percent dry to a category
     dry <- data[[field]]
     dry <- as.character(dry) 
     dry[(dry == 0) & !is.na(dry)] <- "Flow (Whole Reach)"
@@ -244,7 +244,8 @@ for(p in program) {
    SubSetData$projectCode   <- p
   
   
-  #### Convert date to datatype date #### # ed: you have convert date to datatype date which applies to the first and third lines below. so maybe add something else that says convert the other data types below to whatever?
+  #### Convert date to datatype date #### 
+  # ed: in the line above you have convert date to datatype date which applies to the first and third lines below. so maybe add something else that says convert the other data types below to whatever?
   if(any(names(SubSetData) =="eventDate")) {SubSetData$eventDate <- as.Date(SubSetData$eventDate, tryFormats = c("%m/%d/%Y", "%Y-%m-%d")) } 
   if(any(names(SubSetData) =="verbatimLocationID")) {SubSetData$verbatimLocationID <- as.character(SubSetData$verbatimLocationID)} 
   if(any(names(SubSetData) =="verbatimEventID")) {SubSetData$verbatimEventID <- as.character(SubSetData$verbatimEventID)} 
@@ -268,30 +269,29 @@ for(p in program) {
     
 if (p=="NRSA"){
 
-     SubSetData$datasetID               <- ''  
-     SubSetData$bibilographicCitation   <- paste("U.S. Environmental Protection Agency. 2021. National Aquatic Resource Surveys. Streams 2004 and National Rivers and Streams Assessment 2008-2009, 2013-2014, 2018-2019. From https://www.epa.gov/national-aquatic-resource-surveys/SubSetData-national-aquatic-resource-surveys. Date accessed:", Sys.Date()) # ed: modified slightly
-     SubSetData$datasetOrganization     <- "Environmental Protection Agancy" # ed: updated spelling of datasetOrginization to datasetOrganization
-     SubSetData$institutionCode         <- "EPA"
-     SubSetData$projectName             <- "National Aquatic Resource Surveys(NARS): National Rivers and Streams Assessmet(NRSA)"
+     SubSetData$datasetID               <- ''
      SubSetData$projectCode             <- "NRSA"
+     SubSetData$institutionCode         <- "EPA"
+     SubSetData$datasetName             <- "" # ed: not sure where the datasetNames for NRSA are coming from as there are more than one... ?
+     SubSetData$projectName             <- "National Aquatic Resource Surveys; National Rivers and Streams Assessmet"
      SubSetData$datasetLink             <- "https://www.epa.gov/national-aquatic-resource-surveys/data-national-aquatic-resource-surveys"
+     SubSetData$bibilographicCitation   <- paste("U.S. Environmental Protection Agency; 2016; National Aquatic Resource Surveys; National Rivers and Streams Assessment 2008 to 2009 data and metadata files Date accessed:", Sys.Date()) # ed: also confused where this comes from b/c it should change depending on the subset data...
      SubSetData$metadataID              <- "https://www.epa.gov/national-aquatic-resource-surveys/data-national-aquatic-resource-surveys"
-     SubSetData$preProcessingCode       <- "https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/tree/master/Data%20Intergration%20Example" # ed: update link from Specifications to Standards if this changes
+     SubSetData$preProcessingCode       <- "https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/DataIntegrationExample/R/DownloadAndCleanUSFSAREMPData.R" # ed: update link from Specifications to Standards if this changes in future
      SubSetData$locationRemarks         <- "Bottom of Reach"
      
      
     } else if (p=="AIM") { 
-     
-     SubSetData$datasetName           <- "I_Indicators"
+    
      SubSetData$datasetID               <- ""
-     SubSetData$bibilographicCitation   <- paste("Bureau of Land Management AIM Natl Lotic Indicators ArcGIS Hub, https://gbp-blm-egis.hub.arcgis.com/datasets/BLM-EGIS::blm-natl-aim-lotic-indicators-hub/about, accessed", Sys.Date()) # ed: updated citation
-     SubSetData$datasetOrganization     <- "Bureau of Land Management" # ed: updated spelling of datasetOrginization to datasetOrganization
-     SubSetData$institutionCode         <- "BLM"
-     SubSetData$projectName             <- "Asssessment, Inventory, and Monitoring"
      SubSetData$projectCode             <- "AIM"
-     SubSetData$datasetLink             <- "https://services1.arcgis.com/KbxwQRRfWyEYLgp4/arcgis/rest/services/BLM_Natl_AIM_Lotic_Indicators_Hub/FeatureServer/0/query?outFields=*&where=1%3D1" # ed: updated link
-     SubSetData$metadataID              <- "https://www.arcgis.com/sharing/rest/content/items/97e9d82469194fab88e4193ba591fb72/info/metadata/metadata.xml?format=default&output=html" # ed: updated link
-     SubSetData$preProcessingCode       <- "https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/tree/master/Data%20Intergration%20Example" # ed: update link from specifications to Standards if changing name
+     SubSetData$institutionCode         <- "BLM"
+     SubSetData$datasetName             <- "I_Indicators"
+     SubSetData$projectName             <- "Asssessment Inventory and Monitoring"
+     SubSetData$datasetLink             <- "https://gbp-blm-egis.hub.arcgis.com/datasets/BLM-EGIS::blm-natl-aim-lotic-indicators-hub/about"
+     SubSetData$bibilographicCitation   <- paste("Bureau of Land Management; 2021; I_Indicators vector digital data; BLM National AIM Lotic Indicators ArcGIS Hub; accessed", Sys.Date())
+     SubSetData$metadataID              <- "https://www.arcgis.com/sharing/rest/content/items/97e9d82469194fab88e4193ba591fb72/info/metadata/metadata.xml?format=default&output=html"
+     SubSetData$preProcessingCode       <- "https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/DataIntegrationExample/R/DownloadAndCleanBLMAIMData.R" # ed: update link from specifications to Standards if changing name in future
      SubSetData$locationRemarks         <- "Middle of Reach"
      #Calculate BF width to depth ratio based on 
      SubSetData$AvgBFWDRatio            <- SubSetData$BFWidth / SubSetData$BFHeight
@@ -299,32 +299,29 @@ if (p=="NRSA"){
      
    } else if (p=="PIBO"){ 
      SubSetData$datasetID               <- ""
-     SubSetData$datasetName             <- "2020_Seasonal_Sum_PIBO"
-     SubSetData$bibilographicCitation   <- "Data accessed via data request to PIBO staff" # ed: updated to put something here
-     SubSetData$datasetOrganization     <- "United States Forest Service" # ed: updated spelling of datasetOrginization to datasetOrganization
-     SubSetData$institutionCode         <- "USFS"
-     SubSetData$projectName             <- "PacFish/InFish Biological Opinion Monitoring Program"
      SubSetData$projectCode             <- "PIBO"
+     SubSetData$institutionCode         <- "USFS"
+     SubSetData$datasetName             <- "2020_Seasonal_Sum_PIBO"
+     SubSetData$projectName             <- "PacFishInFish Biological Opinion Monitoring Program"
      SubSetData$datasetLink             <- "https://www.fs.usda.gov/detail/r4/landmanagement/resourcemanagement/?cid=stelprd3845865"
-     SubSetData$metadataID              <- "Available by data request" # ed: removed extra space at end of string
+     SubSetData$bibilographicCitation   <- "U.S. Forest Service PacFishInFish Biological Monitoring Program; 2021; Habitat data and Metadata_Hab Microsoft Excel spreadsheet data request"
+     SubSetData$metadataID              <- "Available by data request"
      SubSetData$preProcessingCode       <- ""
      SubSetData$locationRemarks         <- "Bottom of Reach"
 
      
-     
    } else if (p== "AREMP") {
    
      SubSetData$datasetID               <- ""
-     SubSetData$datasetName             <- "Northwest Forest Plan-the first 20 years (1994 to 2008): watershed condition status and trend" 
-     
-     SubSetData$bibilographicCitation   <- paste('Miller, Stephanie A.; Gordon, Sean N.; Eldred, Peter; Beloin, Ronald M.; Wilcox, Steve; Raggon, Mark;Andersen, Heidi; Muldoon, Ariel. 2017. Northwest Forest Plan the first  20 years (1994 to 2013): watershed condition status and trends. Gen. Tech. Rep. PNW GTR 932. Portland, OR: U.S. Department of Agriculture, Forest Service, Pacific Northwest Research Station. 74 p., accessed', Sys.Date()) # ed: deleted extra lines to make one gigantic long line that will work better in Excel 
-     SubSetData$datasetOrganization     <- "United States Forest Service" # ed: updated spelling of datasetOrginization to datasetOrganization
-     SubSetData$institutionCode         <- "USFS"
-     SubSetData$projectName             <- "Aquatic and Riparian Effectiveness Monitoring Plan"
      SubSetData$projectCode             <- "AREMP"
+     SubSetData$institutionCode         <- "USFS"
+     SubSetData$datasetName             <- "NwfpWatershedConditions20yrReport" 
+     SubSetData$projectName             <- "Aquatic and Riparian Effectiveness Monitoring Plan"
      SubSetData$datasetLink             <- "https://www.fs.fed.us/r6/reo/monitoring/downloads/watershed/NwfpWatershedCondition20yrReport.gdb.zip"
+     SubSetData$bibilographicCitation   <- paste("Northwest Forest Plan the First 20 Years 1994–2013 Watershed Condition Status and Trend; 2015; ArcGIS geodatabase
+ accessed", Sys.Date())
      SubSetData$metadataID              <- "https://www.fs.fed.us/r6/reo/monitoring/downloads/watershed/NwfpWatershedCondition20yrReport.gdb.htm"
-     SubSetData$preProcessingCode       <- "https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/tree/master/Data%20Intergration%20Example"  #  ed: update link from specifications to Standards if changing
+     SubSetData$preProcessingCode       <- "https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/DataIntegrationExample/R/DownloadAndCleanUSFSAREMPData.R"  #  ed: update link from specifications to Standards if changing
      SubSetData$locationRemarks         <- "Bottom of Reach"
     
    
@@ -355,6 +352,9 @@ all_data2$year[blank_year]  <- substr(all_data2$eventDate[blank_year],1, 4)
 all_data2$year              <- as.integer(all_data2$year)
 
 # Replace N/A and blanks from dataset with the no value 
+  # ed: here I think it is important to differentiate between String data blanks being converted to NA
+  # and numeric data being converted to a numeric NA value (e.g., -9999 or another outrageous value) to maintain data types within a column 
+  # AND IF we use a numeric NA value, then we need to be sure the code does not remove it later (there is a line below removing all -99.9999 values)
 #all_data2[all_data2$waterBody == "N/A"] <- NA
 all_data2[all_data2 == ''] <- NA 
 
@@ -375,7 +375,7 @@ all_data2 <-all_data2[ind,]
 # As this is working now each time the code is run new dataset, location and event IDs are generated. 
 # To facilitate the use of the dataset by end users and allow for the updating of the dataset we need to 
 # figure out a way to run the code and keep the dataset, location and event ID consistent across time, this will allow 
-# outside users generate covariates and other data and use the IDs to link to the intergrated dataset. 
+# outside users generate covariates and other data and use the IDs to link to the integrated dataset. 
 
 
 
@@ -398,7 +398,7 @@ all_data2[ind_UID,"verbatimEventID"] = NA
      
 
 #UID location integrated dataset, need to create a temp locationID concatenating program and LocationID in case across programs location ID is repeated
-# ed: this is a little confusing, can you rephrase slightly?
+# ed: this is a little confusing, can you rephrase this comment slightly?
 all_data2 <- all_data2 %>% 
             mutate(temp_locaitonID = paste0(verbatimLocationID,projectCode)) %>% 
             transform(locationID=as.numeric((factor(temp_locaitonID)))) %>% 
@@ -424,7 +424,7 @@ unique_path <- paste0(getwd(), "/DataIntegrationExample/data/UniqueLocationsforS
 write.csv(unique_locations, file=unique_path, row.names=FALSE)
 
 
-#### Subset the data set to match the data exchange standards documented on https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications ##### # update URL later if this changes. ####
+#### Subset the data set to match the data exchange standards documented on https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications ##### # ed: update URL later if this changes. ####
 #Record level table 
 #Subset the sampling features/locations 
 RecordLevel<- MetadataDict %>% 
@@ -457,7 +457,7 @@ location_table <- all_data2 %>%
   distinct() %>% 
   relocate(c("datasetID","locationID", "verbatimLocationID","latitude", "longitude"))  
 
-#Build the event table/action table # ed: not sure what an action table is?
+#Build the event table
 event<- MetadataDict %>% 
   filter(str_detect(entity, "Event")) %>% 
   drop_na(attribute)%>%  
@@ -525,7 +525,7 @@ file_name = paste0(getwd(), "/DataIntegrationExample/data/RelationalDataTablesSt
 openxlsx::write.xlsx(list_of_datasets, file = file_name) 
 
 # Save .csv files for each of the tables in the relational database 
-# Something in this code is change verbatim field name 
+# Something in this code is change verbatim field name # ed: the verbatimD instead of verbatimEventID being output?
 for(i in 1:length(names(list_of_datasets))){ 
   filename = paste0(getwd(),"/DataIntegrationExample/Data/csv/", names(list_of_datasets[i]), ".csv")
   table_name <- names(list_of_datasets[i])

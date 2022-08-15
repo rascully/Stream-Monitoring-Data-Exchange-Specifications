@@ -1,50 +1,58 @@
 entity,attribute,enumerateddomain,enumerateddefinition,sourcedefinition,units,minimumPossibleValue,maximumPossibleValue
-Record,datasetID,1,The dataset ID assigned to NRSA-sourced data.,Producer defined,NA,,
-Record,datasetID,2,The dataset ID assigned to AIM-sourced data.,Producer defined,NA,,
-Record,datasetID,3,The dataset ID assigned to PIBO-sourced data.,Producer defined,NA,,
-Record,datasetID,4,The dataset ID assigned to AREMP-sourced data.,Producer defined,NA,,
-Record,bibliographicCitation,blank cell,There is no formal citation for this dataset.,Producer defined,NA,,
+Record,datasetID,1,The dataset ID assigned to PIBO source data.,Producer defined,NA,,
+Record,datasetID,2,The dataset ID assigned to AIM source data.,Producer defined,NA,,
+Record,datasetID,3,The dataset ID assigned to AREMP source data.,Producer defined,NA,,
+Record,datasetID,4,The dataset ID assigned to NRSA 2008 to 2009 source data.,Producer defined,NA,,
+Record,datasetID,5,The dataset ID assigned to NRSA 2013 to 2014 source data.,Producer defined,NA,,
+Record,datasetID,6,The dataset ID assigned to NRSA 2018 to 2019 source data.,Producer defined,NA,,
+Record,datasetID,7,The dataset ID assigned to NRSA 2018 to 2019 source data.,Producer defined,NA,,
+Record,datasetID,8,The dataset ID assigned to NRSA Streams 2004 source data.,Producer defined,NA,,
 Record,institutionCode,BLM,Bureau of Land Management,Producer defined,NA,,
 Record,institutionCode,EPA,Environment Protection Agency,Producer defined,NA,,
 Record,institutionCode,USFS,United States Forest Service,Producer defined,NA,,
-Record,preProcessingCode,blank cell,Pre-processing code was not used for this dataset.,Producer defined,NA,,
+Record,preProcessingCode,NA,Pre-processing code was not used for this dataset.,Producer defined,NA,,
 Record,projectCode,AIM,Assessment Inventory and Monitoring,Producer defined,NA,,
 Record,projectCode,AREMP,Aquatic and Riparian Effectiveness Monitoring Plan,Producer defined,NA,,
 Record,projectCode,NRSA,National Rivers and Streams Assessment,Producer defined,NA,,
-Record,projectCode,PIBO,PacFish/InFish Biological Opinion Monitoring Program,Producer defined,NA,,
-Location,datasetID,1,The dataset ID assigned to NRSA-sourced data.,Producer defined,NA,,
-Location,datasetID,2,The dataset ID assigned to AIM-sourced data.,Producer defined,NA,,
-Location,datasetID,3,The dataset ID assigned to PIBO-sourced data.,Producer defined,NA,,
-Location,datasetID,4,The dataset ID assigned to AREMP-sourced data.,Producer defined,NA,,
+Record,projectCode,PIBO,PacFishInFish Biological Opinion Monitoring Program,Producer defined,NA,,
+Location,datasetID,1,The dataset ID assigned to PIBO source data.,Producer defined,NA,,
+Location,datasetID,2,The dataset ID assigned to AIM source data.,Producer defined,NA,,
+Location,datasetID,3,The dataset ID assigned to AREMP source data.,Producer defined,NA,,
+Location,datasetID,4,The dataset ID assigned to NRSA 2008 to 2009 source data.,Producer defined,NA,,
+Location,datasetID,5,The dataset ID assigned to NRSA 2013 to 2014 source data.,Producer defined,NA,,
+Location,datasetID,6,The dataset ID assigned to NRSA 2018 to 2019 source data.,Producer defined,NA,,
+Location,datasetID,7,The dataset ID assigned to NRSA 2018 to 2019 source data.,Producer defined,NA,,
+Location,datasetID,8,The dataset ID assigned to NRSA Streams 2004 source data.,Producer defined,NA,,
 Location,locationRemarks,Bottom of Reach,Geographic coordinates were obtained at the bottom of the reach.,Producer defined,NA,,
 Location,locationRemarks,Middle of Reach,Geographic coordinates were obtained at the middle of the reach.,Producer defined,NA,,
 Location,siteSelectionType,Random,Sample location was selected as part of a the program's probabilistic random design.,Producer defined,NA,,
-Location,siteSelectionType,SystematicRandom,Sample location was selected as a systematic random design.,Producer defined,NA,,
 Location,siteSelectionType,Targeted,"Sample location was selected as a targed site to address a specific management concern or question, not part of the random design.",Producer defined,NA,,
 Location,siteSelectionType,NA,Site selection not known or reported by the program.,Producer defined,NA,,
 Location,waterBody,NA,Water body name not reported in the original dataset.,Producer defined,NA,,
 Event,eventDate,NA,"Source data from AREMP do not contain month or day, so no there is no eventDate for those entries.",Producer defined,NA,,
 Event,fieldNotes,NA,Description of the flow was not included or reported in the source dataset.,Producer defined,NA,,
-Event,fieldNotes,Flow (Whole Reach),Flow for the full reach,Producer defined,NA,,
-Event,fieldNotes,No Flow (Dry),"Reach is completely dry, no flow",Producer defined,NA,,
-Event,fieldNotes,Partial Flow/Stagnant Pools,Flow for part or subset of the reach,Producer defined,NA,,
+Event,fieldNotes,Flow Whole Reach,Flow for the full reach.,Producer defined,NA,,
+Event,fieldNotes,No Flow Dry,"Reach is completely dry, no flow",Producer defined,NA,,
+Event,fieldNotes,Partial Flow or Stagnant Pools,Flow for part or subset of the reach,Producer defined,NA,,
 Event,samplingProtocol,NA,Sampling Protocol was not included or reported in the source dataset.,Producer defined,NA,,
 Event,samplingProtocol,WADEABLE,Source programs conducted surveys in wadeable streams following wadeable protocols.,Producer defined,NA,,
+Event,samplingProtocol,placeholder1,tbd pending fix to samplingProtocol data,Producer defined,NA,,
+Event,samplingProtocol,placeholder2,tbd pending fix to samplingProtocol data,Producer defined,NA,,
 Event,beaverImpactFlow,NA,Beaver impacts were not reported in the source data.,Producer defined,NA,,
 Event,beaverImpactFlow,Major,tbd need def,Producer defined,NA,,
 Event,beaverImpactFlow,Minor,tbd need def,Producer defined,NA,,
 Event,beaverImpactFlow,None,tbd need def,Producer defined,NA,,
-MeasurementOrFact,measurementType,Sin,"Reach sinuosity (reach length along the thalweg divided by straight line distance between the bottom of the reach and the top of the reach, expressed as a ratio, unit: none)",Producer defined,ratio,1,None
-MeasurementOrFact,measurementType,AvgBFWDRatio,Average bankfull width depth ratio for the reach (depth measured from the water surface) (unit: meters).,Producer defined,meters,0,None
+MeasurementOrFact,measurementType,Sin,"Reach sinuosity (reach length along the thalweg divided by straight line distance between the bottom of the reach and the top of the reach, expressed as a ratio)",Producer defined,none,1,None
+MeasurementOrFact,measurementType,AvgBFWDRatio,Average bankfull width depth ratio for the reach where depth measured from the water surface (expressed as a ratio).,Producer defined,none,0,None
 MeasurementOrFact,measurementType,BFHeight,Average bankfull height measured from water surface across transects (unit: meters).,Producer defined,meters,0,None
 MeasurementOrFact,measurementType,BFWidth,Average bankfull width across transects for the reach measured from the water surface (unit: meters).,Producer defined,meters,0,None
 MeasurementOrFact,measurementType,Grad,"Mean slope of water surface from the bottom of the reach to the top of the reach (expressed as percent, unit: none, min: 0, max: 100).",Producer defined,percent,0,100
-MeasurementOrFact,measurementType,MeanThalwegDepth,Mean thalweg depth. Metric of how deep the water was at the site (unit: meters).,Producer defined,meters,0,None
+MeasurementOrFact,measurementType,MeanThalwegDepth,Mean deepest location in the reach (unit: meters).,Producer defined,meters,0,None
 MeasurementOrFact,measurementType,ReachLen,Length of the sampling reach measured along the thalweg (unit: meters).,Producer defined,meters,150,4000
-MeasurementOrFact,measurementType,WetWidth,Average wetted width across transects (unit: meters).,Producer defined,meters,0,None
+MeasurementOrFact,measurementType,WetWidth,Average wetted width across 11 to 21 transects (unit: meters).,Producer defined,meters,0,None
 MeasurementOrFact,measurementType,PctPool,"Percent of the sample reach (linear extent) classified as pool habitat (expressed as a percent, unit: none, min: 0, max: 100).",Producer defined,percent,0,100
 MeasurementOrFact,measurementType,RPD,Average of the residual pool depth values. Residual pool depth is the difference between the pool tail depth and the max depth (unit: meters).,Producer defined,meters,0,None
-MeasurementOrFact,measurementType,BankAngle,"Measured angle of the stream bank (unit: degrees, min: 0, max: 180).",Producer defined,degrees,0,180
+MeasurementOrFact,measurementType,BankAngle,"Average angle of the stream bank within the reach measured where bed-meets-bank (unit: degrees, min: 0, max: 180).",Producer defined,degrees,0,180
 MeasurementOrFact,measurementType,PctStab,"Percent of banks lacking visible signs of active erosion (e.g., slump, slough, fracture) (unit: none, min: 0, max: 100).",Producer defined,percent,0,100
 MeasurementOrFact,measurementType,D16,"Bed surface particle size corresponding to the 16th percentile of measured particles (unit: millimeters, min: 0, max: 4098).",Producer defined,millimeters,0,4098
 MeasurementOrFact,measurementType,D50,"Bed surface particle size corresponding to the 50th percentile of measured particles (unit: millimeters, min: 0, max: 4098).",Producer defined,millimeters,0,4098
@@ -54,16 +62,13 @@ MeasurementOrFact,measurementType,PctFines2,"Percent of the stream bed area that
 MeasurementOrFact,measurementType,PctFines6,"Percent of the stream bed area that is composed of particles with a b-axis less than 6 millimeters (expressed as percent, units: none, min: 0, max: 100).",Producer defined,percent,0,100
 MeasurementOrFact,measurementType,PoolTailFines2,"Average percent fine sediment (less than 2 millimeters) on the pool tail (expressed as percent, unit: none, min: 0, max: 100).",Producer defined,percent,0,100
 MeasurementOrFact,measurementType,PoolTailFines6,"Average percent fine sediment (less than 6 millimeters) on the pool tail (expressed as a percent, unit: none, min: 0, max: 100).",Producer defined,percent,0,100
-MeasurementOrFact,measurementType,Conductivity,"Measure of the concentration of ionized materials in water, or the ability of water to conduct electrical current. Used as a measure of mineral / ionic concentration (unit: ppm or parts per million).",Producer defined,parts per million,0,None
 MeasurementOrFact,measurementType,pH,"Measured pH value (unit: none, min: 0, max: 14).",Producer defined,None,0,14
 MeasurementOrFact,measurementType,SpecificConductance,Measured specific conductance value. The specific conductance is conductivity standardized to 25 degrees C (unit: uS/cm or microSiemens per centimeter).,Producer defined,uS/cm,0,65500
 MeasurementOrFact,measurementType,TotalNitrogen,Measured total nitrogen value (unit: ug/L or micrograms per liter).,Producer defined,ug/L,0,None
 MeasurementOrFact,measurementType,TotalPhosphorous,Measured total phosphorous value (unit: ug/L or micrograms per liter).,Producer defined,ug/L,0,None
 MeasurementOrFact,measurementType,Turbidity,Average water clarity as measured by the suspended solids in the water column (unit: NTU or Nephelometric Turbidity unit),Producer defined,NTU,0,None
 MeasurementOrFact,measurementType,ProtocolReachLen,Total reach length intended to be sampled. Calculated from average widths using the protocol rules (unit: meter).,Producer defined,NTU,0,None
-MeasurementOrFact,measurementType,PoolFreq,Number of pools within the sampled reach standardized to pools per kilometer (unit: pools per kilometer).,Producer defined,# / km,0,None
-MeasurementOrFact,measurementType,LWDFreq,Frequency of large woody debris within the bankfull channel of the reach.,Producer defined,number of pieces per 100 meters,0,None
-MeasurementOrFact,measurementType,LWDVol,Volume of large wood debris within the bankfull channel of the reach.,Producer defined,meters cubed per 100 meters,0,None
+MeasurementOrFact,measurementType,PoolFreq,Number of pools within the sampled reach standardized to pools per kilometer (unit: pools per kilometer).,Producer defined,# per km,0,None
 MeasurementOrFact,measurementType,AvgBFWDRatioStreambed,Average bankfull width depth ratio for the reach (depth measured from the water surface) (unit: meters).,Producer defined,meters,0,None 
 MeasurementOrFact,measurementTypeID,500,A unique numeric identifier assigned to the measurementType Sin.,Producer defined,NA,,
 MeasurementOrFact,measurementTypeID,502,A unique numeric identifier assigned to the measurementType AvgBFWDRatio.,Producer defined,NA,,
@@ -85,7 +90,6 @@ MeasurementOrFact,measurementTypeID,518,A unique numeric identifier assigned to 
 MeasurementOrFact,measurementTypeID,519,A unique numeric identifier assigned to the measurementType PctFines6.,Producer defined,NA,,
 MeasurementOrFact,measurementTypeID,520,A unique numeric identifier assigned to the measurementType PoolTailFines2.,Producer defined,NA,,
 MeasurementOrFact,measurementTypeID,522,A unique numeric identifier assigned to the measurementType PoolTailFines6.,Producer defined,NA,,
-MeasurementOrFact,measurementTypeID,523,A unique numeric identifier assigned to the measurementType Conductivity.,Producer defined,NA,,
 MeasurementOrFact,measurementTypeID,524,A unique numeric identifier assigned to the measurementType pH.,Producer defined,NA,,
 MeasurementOrFact,measurementTypeID,525,A unique numeric identifier assigned to the measurementType SpecificConductance.,Producer defined,NA,,
 MeasurementOrFact,measurementTypeID,526,A unique numeric identifier assigned to the measurementType TotalNitrogen.,Producer defined,NA,,
@@ -93,8 +97,6 @@ MeasurementOrFact,measurementTypeID,527,A unique numeric identifier assigned to 
 MeasurementOrFact,measurementTypeID,528,A unique numeric identifier assigned to the measurementType Turbidity.,Producer defined,NA,,
 MeasurementOrFact,measurementTypeID,529,A unique numeric identifier assigned to the measurementType ProtocolReachLen.,Producer defined,NA,,
 MeasurementOrFact,measurementTypeID,530,A unique numeric identifier assigned to the measurementType PoolFreq. ,Producer defined,NA,,
-MeasurementOrFact,measurementTypeID,531,A unique numeric identifier assigned to the measurementType LWDFreq. ,Producer defined,NA,,
-MeasurementOrFact,measurementTypeID,532,A unique numeric identifier assigned to the measurementType LWDVol. ,Producer defined,NA,,
 MeasurementOrFact,measurementTypeID,533,A unique numeric identifier assigned to the measurementType AvgBFWDRatioStreambed. ,Producer defined,NA,,
 DataMapping,termID,401,The termID assigned to column header term,Producer defined,NA,,
 DataMapping,termID,201,The termID assigned to column header verbatimLocationID,Producer defined,NA,,
@@ -129,16 +131,13 @@ DataMapping,measurementTypeID,518,A unique numeric identifier assigned to the me
 DataMapping,measurementTypeID,519,A unique numeric identifier assigned to the measurementType PctFines6.,Producer defined,NA,,
 DataMapping,measurementTypeID,520,A unique numeric identifier assigned to the measurementType PoolTailFines2.,Producer defined,NA,,
 DataMapping,measurementTypeID,522,A unique numeric identifier assigned to the measurementType PoolTailFines6.,Producer defined,NA,,
-DataMapping,measurementTypeID,523,A unique numeric identifier assigned to the measurementType Conductivity.,Producer defined,NA,,
 DataMapping,measurementTypeID,524,A unique numeric identifier assigned to the measurementType pH.,Producer defined,NA,,
 DataMapping,measurementTypeID,525,A unique numeric identifier assigned to the measurementType SpecificConductance.,Producer defined,NA,,
 DataMapping,measurementTypeID,526,A unique numeric identifier assigned to the measurementType TotalNitrogen.,Producer defined,NA,,
 DataMapping,measurementTypeID,527,A unique numeric identifier assigned to the measurementType TotalPhosphorous.,Producer defined,NA,,
 DataMapping,measurementTypeID,528,A unique numeric identifier assigned to the measurementType Turbidity.,Producer defined,NA,,
 DataMapping,measurementTypeID,529,A unique numeric identifier assigned to the measurementType ProtocolReachLen.,Producer defined,NA,,
-DataMapping,measurementTypeID,530,A unique numeric identifier assigned to the measurementType PoolFreq. ,Producer defined,,,
-DataMapping,measurementTypeID,531,A unique numeric identifier assigned to the measurementType LWDFreq. ,Producer defined,,,
-DataMapping,measurementTypeID,532,A unique numeric identifier assigned to the measurementType LWDVol. ,Producer defined,,,
+DataMapping,measurementTypeID,530,A unique numeric identifier assigned to the measurementType PoolFreq. ,Producer defined,NA,,
 DataMapping,measurementTypeID,533,A unique numeric identifier assigned to the measurementType AvgBFWDRatioStreambed. ,Producer defined,NA,,
 DataMapping,measurementType,blank cell,There is no measurementType associated with this term.,Producer defined,NA,,
 DataMapping,dataType,Date,The data type values are calendar dates (yyyy-mm-dd).,Producer defined,NA,,
@@ -148,7 +147,7 @@ DataMapping,dataType,String,The data type values are unbounded text or alphanume
 DataMapping,projectCode,AIM,Assessment Inventory and Monitoring.,Producer defined,NA,,
 DataMapping,projectCode,AREMP,Aquatic and Riparian Effectiveness Monitoring Plan,Producer defined,NA,,
 DataMapping,projectCode,NRSA,National Rivers and Streams Assessment,Producer defined,NA,,
-DataMapping,projectCode,PIBO,PacFish/InFish Biological Opinion Monitoring Program,Producer defined,NA,,
+DataMapping,projectCode,PIBO,PacFishInFish Biological Opinion Monitoring Program,Producer defined,NA,,
 DataMapping,orginalUnit,NA,Units are not associated with this originalField or the originalField was NA so there are no relevant units.,Producer defined,NA,,
 DataMapping,originalDataType,Date,The date format used by the source program. Formats vary by source dataset.,Producer defined,NA,,
 DataMapping,originalDataType,double,The data types are numeric and may include decimals (double-precision floating points).,Producer defined,NA,,
@@ -177,7 +176,6 @@ MetricControlledVocabulary,measurementTypeID,518,A unique numeric identifier ass
 MetricControlledVocabulary,measurementTypeID,519,A unique numeric identifier assigned to the measurementType PctFines6.,Producer defined,NA,,
 MetricControlledVocabulary,measurementTypeID,520,A unique numeric identifier assigned to the measurementType PoolTailFines2.,Producer defined,NA,,
 MetricControlledVocabulary,measurementTypeID,522,A unique numeric identifier assigned to the measurementType PoolTailFines6.,Producer defined,NA,,
-MetricControlledVocabulary,measurementTypeID,523,A unique numeric identifier assigned to the measurementType Conductivity.,Producer defined,NA,,
 MetricControlledVocabulary,measurementTypeID,524,A unique numeric identifier assigned to the measurementType pH.,Producer defined,NA,,
 MetricControlledVocabulary,measurementTypeID,525,A unique numeric identifier assigned to the measurementType SpecificConductance.,Producer defined,NA,,
 MetricControlledVocabulary,measurementTypeID,526,A unique numeric identifier assigned to the measurementType TotalNitrogen.,Producer defined,NA,,
@@ -185,20 +183,18 @@ MetricControlledVocabulary,measurementTypeID,527,A unique numeric identifier ass
 MetricControlledVocabulary,measurementTypeID,528,A unique numeric identifier assigned to the measurementType Turbidity.,Producer defined,NA,,
 MetricControlledVocabulary,measurementTypeID,529,A unique numeric identifier assigned to the measurementType ProtocolReachLen.,Producer defined,NA,,
 MetricControlledVocabulary,measurementTypeID,530,A unique numeric identifier assigned to the measurementType PoolFreq. ,Producer defined,NA,,
-MetricControlledVocabulary,measurementTypeID,531,A unique numeric identifier assigned to the measurementType LWDFreq. ,Producer defined,NA,,
-MetricControlledVocabulary,measurementTypeID,532,A unique numeric identifier assigned to the measurementType LWDVol. ,Producer defined,NA,,
 MetricControlledVocabulary,measurementTypeID,533,A unique numeric identifier assigned to the measurementType AvgBFWDRatioStreambed. ,Producer defined,NA,,
-MetricControlledVocabulary,measurementType,Sin,"Reach sinuosity (reach length along the thalweg divided by straight line distance between the bottom of the reach and the top of the reach, expressed as a ratio, unit: none)",Producer defined,ratio,1,None
-MetricControlledVocabulary,measurementType,AvgBFWDRatio,Average bankfull width depth ratio for the reach (unit: meters).,Producer defined,meters,0,None
+MetricControlledVocabulary,measurementType,Sin,"Reach sinuosity (reach length along the thalweg divided by straight line distance between the bottom of the reach and the top of the reach, expressed as a ratio)",Producer defined,none,1,None
+MetricControlledVocabulary,measurementType,AvgBFWDRatio,Average bankfull width depth ratio for the reach where depth measured from the water surface (expressed as a ratio).,Producer defined,none,0,None
 MetricControlledVocabulary,measurementType,BFHeight,Average bankfull height measured from water surface across transects (unit: meters).,Producer defined,meters,0,None
 MetricControlledVocabulary,measurementType,BFWidth,Average bankfull width across transects for the reach (unit: meters).,Producer defined,meters,0,None
 MetricControlledVocabulary,measurementType,Grad,"Mean slope of water surface from the bottom of the reach to the top of the reach (expressed as percent, unit: none, min: 0, max: 100).",Producer defined,percent,0,100
-MetricControlledVocabulary,measurementType,MeanThalwegDepth,Mean thalweg depth. Metric of how deep the water was at the site (unit: meters).,Producer defined,meters,0,None
+MetricControlledVocabulary,measurementType,MeanThalwegDepth,Mean deepest location in the reach (unit: meters).,Producer defined,meters,0,None
 MetricControlledVocabulary,measurementType,ReachLen,Length of the sampling reach measured along the thalweg (unit: meters).,Producer defined,meters,150,4000
-MetricControlledVocabulary,measurementType,WetWidth,Average wetted width across transects (unit: meters).,Producer defined,meters,0,None
+MetricControlledVocabulary,measurementType,WetWidth,Average wetted width across 11 to 21 transects (unit: meters).,Producer defined,meters,0,None
 MetricControlledVocabulary,measurementType,PctPool,"Percent of the sample reach (linear extent) classified as pool habitat (expressed as a percent, unit: none, min: 0, max: 100).",Producer defined,percent,0,100
 MetricControlledVocabulary,measurementType,RPD,Average of the residual pool depth values. Residual pool depth is the difference between the pool tail depth and the max depth (unit: meters).,Producer defined,meters,0,None
-MetricControlledVocabulary,measurementType,BankAngle,"Measured angle of the stream bank (unit: degrees, min: 0, max: 180).",Producer defined,degrees,0,180
+MetricControlledVocabulary,measurementType,BankAngle,"Average angle of the stream bank within the reach measured where bed-meets-bank (unit: degrees, min: 0, max: 180).",Producer defined,degrees,0,180
 MetricControlledVocabulary,measurementType,PctStab,"Percent of banks lacking visible signs of active erosion (e.g., slump, slough, fracture)  (unit: none, min: 0, max: 100).",Producer defined,percent,0,100
 MetricControlledVocabulary,measurementType,D16,"Bed surface particle size corresponding to the 16th percentile of measured particles (unit: millimeters, min: 0, max: 4098).",Producer defined,millimeters,0,4098
 MetricControlledVocabulary,measurementType,D50,"Bed surface particle size corresponding to the 50th percentile of measured particles (unit: millimeters, min: 0, max: 4098).",Producer defined,millimeters,0,4098
@@ -208,7 +204,6 @@ MetricControlledVocabulary,measurementType,PctFines2,"Percent of the stream bed 
 MetricControlledVocabulary,measurementType,PctFines6,"Percent of the stream bed area that is composed of particles with a b-axis less than 6 millimeters (expressed as percent, units: none, min: 0, max: 100).",Producer defined,percent,0,100
 MetricControlledVocabulary,measurementType,PoolTailFines2,"Average percent fine sediment (less than 2 millimeters) on the pool tail (expressed as percent, unit: none, min: 0, max: 100).",Producer defined,percent,0,100
 MetricControlledVocabulary,measurementType,PoolTailFines6,"Average percent fine sediment (less than 6 millimeters) on the pool tail (expressed as a percent, unit: none, min: 0, max: 100).",Producer defined,percent,0,100
-MetricControlledVocabulary,measurementType,Conductivity,"Measure of the concentration of ionized materials in water, or the ability of water to conduct electrical current. Used as a measure of mineral / ionic concentration (unit: ppm or parts per million).",Producer defined,parts per million,0,None
 MetricControlledVocabulary,measurementType,pH,"Measured pH value (unit: none, min: 0, max:14).",Producer defined,None,0,14
 MetricControlledVocabulary,measurementType,SpecificConductance,Measured specific conductance value. The specific conductance is conductivity standardized to 25 degrees C (unit: uS/cm or microSiemens per centimeter).,Producer defined,uS/cm,0,65500
 MetricControlledVocabulary,measurementType,TotalNitrogen,Measured total nitrogen value (unit: ug/L or micrograms per liter).,Producer defined,ug/L,0,None
@@ -216,8 +211,6 @@ MetricControlledVocabulary,measurementType,TotalPhosphorous,Measured total phosp
 MetricControlledVocabulary,measurementType,Turbidity,Average water clarity as measured by the suspended solids in the water column (unit: NTU or Nephelometric Turbidity unit),Producer defined,NTU,0,None
 MetricControlledVocabulary,measurementType,ProtocolReachLen,Total reach length intended to be sampled. Calculated from average widths using the protocol rules (unit: meter).,Producer defined,metrics ,0,None
 MetricControlledVocabulary,measurementType,PoolFreq,Number of pools within the sampled reach standardized to pools per kilometer (unit: pools per kilometer).,Producer defined,count per kilometer,0,None
-MetricControlledVocabulary,measurementType,LWDFreq,Frequency of large woody debris within the bankfull channel of the reach.,Producer defined,number of pieces per 100 meters,0,None
-MetricControlledVocabulary,measurementType,LWDVol,Volume of large wood debris within the bankfull channel of the reach.,Producer defined,meters cubed per 100 meters,0,None
 MetricControlledVocabulary,measurementType,AvgBFWDRatioStreambed,Average bankfull width depth ratio for the reach (depth measured from the water surface) (unit: meters).,Producer defined,meters,0,None 
 MetricControlledVocabulary,dataType,Numeric,"The value is numeric in nature, including negative and positive values, integers and doubles. (ed note: this def may change in  future if integers/doubles are split. Not totally sure on definition.)",Producer defined,NA,,
 MetricControlledVocabulary,unit,NA,Measurement units are not applicable to this measurementType.,Producer defined,NA,,
@@ -232,7 +225,4 @@ MetricControlledVocabulary,unit,uS/cm,microSiemens per centimeter,Producer defin
 MetricControlledVocabulary,unit,ug/L,micrograms per liter,Producer defined,NA,,
 MetricControlledVocabulary,unit,NTU,Nephelometric Turbidity unit,Producer defined,NA,,
 MetricControlledVocabulary,unit,count per kilometer,count of a reach aspect per kilometer of the reach,Producer defined,NA,,
-MetricControlledVocabulary,unit,number of pieces per 100 meters,number of pieces per 100 meters,Producer defined,NA,,
-MetricControlledVocabulary,unit,meters cubed per 100 meters,meters cubed per 100 meters,Producer defined,NA,,
 MetricControlledVocabulary,maximumPossibleValue,NA,Maximum values are not applicable to this measurementType.,Producer defined,NA,,
-MetricControlledVocabulary,title,blank cell,Title not filled.,Producer defined,NA,,

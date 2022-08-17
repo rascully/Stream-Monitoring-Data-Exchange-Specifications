@@ -70,7 +70,10 @@ This software is preliminary or provisional and is subject to revision. It is be
 Although these data have been processed successfully on a computer system at the U.S. Geological Survey (USGS), no warranty expressed or implied is made regarding the display or utility of the data for other purposes, nor on all computer systems, nor shall the act of distribution constitute any such warranty. The USGS or the U.S. Government shall not be held liable for improper or incorrect use of the data described and/or contained herein.
 
 # Getting Started
-<i>pending</i>
+To run the integration code, download or clone the repository, install the necessary R packages and run the following: 
+
+`source(paste0(getwd(), "/Data Integration Example/R/Combine Data.R"))`  
+`data <- integrate_data()`
 
 # How to Contribute
 <i>pending</i>

@@ -53,7 +53,6 @@ MeasurementOrFact,measurementType,WetWidth,Average wetted width across 11 to 21 
 MeasurementOrFact,measurementType,PctPool,"Percent of the sample reach (linear extent) classified as pool habitat (expressed as a percent, unit: none, min: 0, max: 100).",Producer defined,percent,0,100
 MeasurementOrFact,measurementType,RPD,Average of the residual pool depth values. Residual pool depth is the difference between the pool tail depth and the max depth (unit: meters).,Producer defined,meters,0,None
 MeasurementOrFact,measurementType,BankAngle,"Average angle of the stream bank within the reach measured where bed-meets-bank (unit: degrees, min: 0, max: 180).",Producer defined,degrees,0,180
-MeasurementOrFact,measurementType,PctStab,"Percent of banks lacking visible signs of active erosion (e.g., slump, slough, fracture) (unit: none, min: 0, max: 100).",Producer defined,percent,0,100
 MeasurementOrFact,measurementType,D16,"Bed surface particle size corresponding to the 16th percentile of measured particles (unit: millimeters, min: 0, max: 4098).",Producer defined,millimeters,0,4098
 MeasurementOrFact,measurementType,D50,"Bed surface particle size corresponding to the 50th percentile of measured particles (unit: millimeters, min: 0, max: 4098).",Producer defined,millimeters,0,4098
 MeasurementOrFact,measurementType,D84,"Bed surface particle size corresponding to the 84th percentile of measured particles (unit: millimeters, min: 0, max: 4098).",Producer defined,millimeters,0,4098
@@ -69,7 +68,6 @@ MeasurementOrFact,measurementType,TotalPhosphorous,Measured total phosphorous va
 MeasurementOrFact,measurementType,Turbidity,Average water clarity as measured by the suspended solids in the water column (unit: NTU or Nephelometric Turbidity unit),Producer defined,NTU,0,None
 MeasurementOrFact,measurementType,ProtocolReachLen,Total reach length intended to be sampled. Calculated from average widths using the protocol rules (unit: meter).,Producer defined,NTU,0,None
 MeasurementOrFact,measurementType,PoolFreq,Number of pools within the sampled reach standardized to pools per kilometer (unit: pools per kilometer).,Producer defined,# per km,0,None
-MeasurementOrFact,measurementType,AvgBFWDRatioStreambed,Average bankfull width depth ratio for the reach (depth measured from the water surface) (unit: meters).,Producer defined,meters,0,None 
 MeasurementOrFact,measurementTypeID,500,A unique numeric identifier assigned to the measurementType Sin.,Producer defined,NA,,
 MeasurementOrFact,measurementTypeID,502,A unique numeric identifier assigned to the measurementType AvgBFWDRatio.,Producer defined,NA,,
 MeasurementOrFact,measurementTypeID,503,A unique numeric identifier assigned to the measurementType BFHeight.,Producer defined,NA,,
@@ -81,7 +79,6 @@ MeasurementOrFact,measurementTypeID,509,A unique numeric identifier assigned to 
 MeasurementOrFact,measurementTypeID,510,A unique numeric identifier assigned to the measurementType PctPool.,Producer defined,NA,,
 MeasurementOrFact,measurementTypeID,511,A unique numeric identifier assigned to the measurementType RPD.,Producer defined,NA,,
 MeasurementOrFact,measurementTypeID,512,A unique numeric identifier assigned to the measurementType BankAngle.,Producer defined,NA,,
-MeasurementOrFact,measurementTypeID,513,A unique numeric identifier assigned to the measurementType PctStab.,Producer defined,NA,,
 MeasurementOrFact,measurementTypeID,514,A unique numeric identifier assigned to the measurementType D16.,Producer defined,NA,,
 MeasurementOrFact,measurementTypeID,515,A unique numeric identifier assigned to the measurementType D50.,Producer defined,NA,,
 MeasurementOrFact,measurementTypeID,516,A unique numeric identifier assigned to the measurementType D84.,Producer defined,NA,,
@@ -97,7 +94,6 @@ MeasurementOrFact,measurementTypeID,527,A unique numeric identifier assigned to 
 MeasurementOrFact,measurementTypeID,528,A unique numeric identifier assigned to the measurementType Turbidity.,Producer defined,NA,,
 MeasurementOrFact,measurementTypeID,529,A unique numeric identifier assigned to the measurementType ProtocolReachLen.,Producer defined,NA,,
 MeasurementOrFact,measurementTypeID,530,A unique numeric identifier assigned to the measurementType PoolFreq. ,Producer defined,NA,,
-MeasurementOrFact,measurementTypeID,533,A unique numeric identifier assigned to the measurementType AvgBFWDRatioStreambed. ,Producer defined,NA,,
 DataMapping,termID,401,The termID assigned to column header term,Producer defined,NA,,
 DataMapping,termID,201,The termID assigned to column header verbatimLocationID,Producer defined,NA,,
 DataMapping,termID,202,The termID assigned to column header latitude,Producer defined,NA,,
@@ -122,7 +118,6 @@ DataMapping,measurementTypeID,509,A unique numeric identifier assigned to the me
 DataMapping,measurementTypeID,510,A unique numeric identifier assigned to the measurementType PctPool.,Producer defined,NA,,
 DataMapping,measurementTypeID,511,A unique numeric identifier assigned to the measurementType RPD.,Producer defined,NA,,
 DataMapping,measurementTypeID,512,A unique numeric identifier assigned to the measurementType BankAngle.,Producer defined,NA,,
-DataMapping,measurementTypeID,513,A unique numeric identifier assigned to the measurementType PctStab.,Producer defined,NA,,
 DataMapping,measurementTypeID,514,A unique numeric identifier assigned to the measurementType D16.,Producer defined,NA,,
 DataMapping,measurementTypeID,515,A unique numeric identifier assigned to the measurementType D50.,Producer defined,NA,,
 DataMapping,measurementTypeID,516,A unique numeric identifier assigned to the measurementType D84.,Producer defined,NA,,
@@ -138,7 +133,6 @@ DataMapping,measurementTypeID,527,A unique numeric identifier assigned to the me
 DataMapping,measurementTypeID,528,A unique numeric identifier assigned to the measurementType Turbidity.,Producer defined,NA,,
 DataMapping,measurementTypeID,529,A unique numeric identifier assigned to the measurementType ProtocolReachLen.,Producer defined,NA,,
 DataMapping,measurementTypeID,530,A unique numeric identifier assigned to the measurementType PoolFreq. ,Producer defined,NA,,
-DataMapping,measurementTypeID,533,A unique numeric identifier assigned to the measurementType AvgBFWDRatioStreambed. ,Producer defined,NA,,
 DataMapping,measurementType,blank cell,There is no measurementType associated with this term.,Producer defined,NA,,
 DataMapping,dataType,Date,The data type values are calendar dates (yyyy-mm-dd).,Producer defined,NA,,
 DataMapping,dataType,Integer,The data type values are whole number integers.,Producer defined,NA,,
@@ -167,7 +161,6 @@ MetricControlledVocabulary,measurementTypeID,509,A unique numeric identifier ass
 MetricControlledVocabulary,measurementTypeID,510,A unique numeric identifier assigned to the measurementType PctPool.,Producer defined,NA,,
 MetricControlledVocabulary,measurementTypeID,511,A unique numeric identifier assigned to the measurementType RPD.,Producer defined,NA,,
 MetricControlledVocabulary,measurementTypeID,512,A unique numeric identifier assigned to the measurementType BankAngle.,Producer defined,NA,,
-MetricControlledVocabulary,measurementTypeID,513,A unique numeric identifier assigned to the measurementType PctStab.,Producer defined,NA,,
 MetricControlledVocabulary,measurementTypeID,514,A unique numeric identifier assigned to the measurementType D16.,Producer defined,NA,,
 MetricControlledVocabulary,measurementTypeID,515,A unique numeric identifier assigned to the measurementType D50.,Producer defined,NA,,
 MetricControlledVocabulary,measurementTypeID,516,A unique numeric identifier assigned to the measurementType D84.,Producer defined,NA,,
@@ -183,7 +176,6 @@ MetricControlledVocabulary,measurementTypeID,527,A unique numeric identifier ass
 MetricControlledVocabulary,measurementTypeID,528,A unique numeric identifier assigned to the measurementType Turbidity.,Producer defined,NA,,
 MetricControlledVocabulary,measurementTypeID,529,A unique numeric identifier assigned to the measurementType ProtocolReachLen.,Producer defined,NA,,
 MetricControlledVocabulary,measurementTypeID,530,A unique numeric identifier assigned to the measurementType PoolFreq. ,Producer defined,NA,,
-MetricControlledVocabulary,measurementTypeID,533,A unique numeric identifier assigned to the measurementType AvgBFWDRatioStreambed. ,Producer defined,NA,,
 MetricControlledVocabulary,measurementType,Sin,"Reach sinuosity (reach length along the thalweg divided by straight line distance between the bottom of the reach and the top of the reach, expressed as a ratio)",Producer defined,none,1,None
 MetricControlledVocabulary,measurementType,AvgBFWDRatio,Average bankfull width depth ratio for the reach where depth measured from the water surface (expressed as a ratio).,Producer defined,none,0,None
 MetricControlledVocabulary,measurementType,BFHeight,Average bankfull height measured from water surface across transects (unit: meters).,Producer defined,meters,0,None
@@ -195,7 +187,6 @@ MetricControlledVocabulary,measurementType,WetWidth,Average wetted width across 
 MetricControlledVocabulary,measurementType,PctPool,"Percent of the sample reach (linear extent) classified as pool habitat (expressed as a percent, unit: none, min: 0, max: 100).",Producer defined,percent,0,100
 MetricControlledVocabulary,measurementType,RPD,Average of the residual pool depth values. Residual pool depth is the difference between the pool tail depth and the max depth (unit: meters).,Producer defined,meters,0,None
 MetricControlledVocabulary,measurementType,BankAngle,"Average angle of the stream bank within the reach measured where bed-meets-bank (unit: degrees, min: 0, max: 180).",Producer defined,degrees,0,180
-MetricControlledVocabulary,measurementType,PctStab,"Percent of banks lacking visible signs of active erosion (e.g., slump, slough, fracture)  (unit: none, min: 0, max: 100).",Producer defined,percent,0,100
 MetricControlledVocabulary,measurementType,D16,"Bed surface particle size corresponding to the 16th percentile of measured particles (unit: millimeters, min: 0, max: 4098).",Producer defined,millimeters,0,4098
 MetricControlledVocabulary,measurementType,D50,"Bed surface particle size corresponding to the 50th percentile of measured particles (unit: millimeters, min: 0, max: 4098).",Producer defined,millimeters,0,4098
 MetricControlledVocabulary,measurementType,D84,"Bed surface particle size corresponding to the 84th percentile of measured particles (unit: millimeters, min: 0, max: 4098).",Producer defined,millimeters,0,4098
@@ -211,7 +202,6 @@ MetricControlledVocabulary,measurementType,TotalPhosphorous,Measured total phosp
 MetricControlledVocabulary,measurementType,Turbidity,Average water clarity as measured by the suspended solids in the water column (unit: NTU or Nephelometric Turbidity unit),Producer defined,NTU,0,None
 MetricControlledVocabulary,measurementType,ProtocolReachLen,Total reach length intended to be sampled. Calculated from average widths using the protocol rules (unit: meter).,Producer defined,metrics ,0,None
 MetricControlledVocabulary,measurementType,PoolFreq,Number of pools within the sampled reach standardized to pools per kilometer (unit: pools per kilometer).,Producer defined,count per kilometer,0,None
-MetricControlledVocabulary,measurementType,AvgBFWDRatioStreambed,Average bankfull width depth ratio for the reach (depth measured from the water surface) (unit: meters).,Producer defined,meters,0,None 
 MetricControlledVocabulary,dataType,Numeric,"The value is numeric in nature, including negative and positive values, integers and doubles. (ed note: this def may change in  future if integers/doubles are split. Not totally sure on definition.)",Producer defined,NA,,
 MetricControlledVocabulary,unit,NA,Measurement units are not applicable to this measurementType.,Producer defined,NA,,
 MetricControlledVocabulary,unit,ratio,ratio,Producer defined,NA,,

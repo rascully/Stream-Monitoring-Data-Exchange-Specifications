@@ -293,8 +293,6 @@ if (p=="NRSA"){
      SubSetData$metadataID              <- "https://www.arcgis.com/sharing/rest/content/items/97e9d82469194fab88e4193ba591fb72/info/metadata/metadata.xml?format=default&output=html"
      SubSetData$preProcessingCode       <- "https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/DataIntegrationExample/R/DownloadAndCleanBLMAIMData.R" # ed: update link from specifications to Standards if changing name in future
      SubSetData$locationRemarks         <- "Middle of Reach"
-     #Calculate BF width to depth ratio based on 
-     SubSetData$AvgBFWDRatio            <- SubSetData$BFWidth / SubSetData$BFHeight
      
      
    } else if (p=="PIBO"){ 

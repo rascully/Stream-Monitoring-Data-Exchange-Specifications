@@ -1,11 +1,10 @@
 termID,term,measurementTypeID,measurementType,dataType,projectCode,originalField,originalUnit,originalDataType,methodCollection,methodAnalysis
 401,term,502,AvgBFWDRatio,Numeric,NRSA,BFWD_RAT,ratio,Double,https://www.monitoringresources.org/Document/Method/Details/7080,https://www.monitoringresources.org/Document/Method/Details/7081
-401,term,533,AvgBFWDRatioStreambed,Numeric,AREMP,ave_widthDepth_ratio,ratio,Double,https://www.monitoringresources.org/Document/CustomizedMethod/Details/31107,https://www.monitoringresources.org/Document/Method/Details/4245
-401,term,533,AvgBFWDRatioStreambed,Numeric,PIBO,WDTrans,ratio,Double,https://www.monitoringresources.org/Document/Method/Details/65 | https://www.monitoringresources.org/Document/Method/Details/6871,https://www.monitoringresources.org/Document/Method/Details/7047
+401,term,502,AvgBFWDRatio,Numeric,AREMP,ave_widthDepth_ratio,ratio,Double,https://www.monitoringresources.org/Document/CustomizedMethod/Details/31107,https://www.monitoringresources.org/Document/Method/Details/4245
+401,term,502,AvgBFWDRatio,Numeric,PIBO,WDTrans,ratio,Double,https://www.monitoringresources.org/Document/Method/Details/65 | https://www.monitoringresources.org/Document/Method/Details/6871,https://www.monitoringresources.org/Document/Method/Details/7047
 401,term,512,BankAngle,Numeric,AIM,BankAngleAvg,degrees,Double,https://www.monitoringresources.org/Document/Method/Details/68,https://www.monitoringresources.org/Document/Method/Details/7034
 401,term,512,BankAngle,Numeric,PIBO,BankAngle,degrees,Double,https://www.monitoringresources.org/Document/Method/Details/68,NA
-401,term,503,BFHeight,Numeric,AIM,BankfullHeightAvg,meters,Double,https://www.monitoringresources.org/Document/Method/Details/7013,https://www.monitoringresources.org/Document/Method/Details/4245
-401,term,503,BFHeight,Numeric,NRSA,XBKF_H,meters,Double,https://www.monitoringresources.org/Document/Method/Details/7080,https://www.monitoringresources.org/Document/Method/Details/7081
+401,term,503,BFHeight,Numeric,AREMP,average_bfdepth,meters,double,https://www.monitoringresources.org/Document/Method/Details/7028,https://www.monitoringresources.org/Document/CustomizedMethod/Details/32163
 401,term,504,BFWidth,Numeric,AREMP,average_bfwidth,meters,Double,https://www.monitoringresources.org/Document/Method/Details/6849,https://www.monitoringresources.org/Document/Method/Details/4245
 401,term,504,BFWidth,Numeric,AIM,BankfullWidthAvg,meters,Double,https://www.monitoringresources.org/Document/Method/Details/7030,https://www.monitoringresources.org/Document/CustomizedMethod/Details/32166
 401,term,504,BFWidth,Numeric,NRSA,XBKF_W,meters,Double,https://www.monitoringresources.org/Document/Method/Details/7080,https://www.monitoringresources.org/Document/Method/Details/7081
@@ -30,7 +29,6 @@ termID,term,measurementTypeID,measurementType,dataType,projectCode,originalField
 401,term,510,PctPool,Numeric,AREMP,PctReachInPools,percent,Double,https://www.monitoringresources.org/Document/Method/Details/6844,https://www.monitoringresources.org/Document/Method/Details/4115
 401,term,510,PctPool,Numeric,AIM,PctPools,percent,Double,https://www.monitoringresources.org/Document/Method/Details/6859,https://www.monitoringresources.org/Document/Method/Details/7084
 401,term,510,PctPool,Numeric,PIBO,PoolPct,percent,Double,https://www.monitoringresources.org/Document/Method/Details/6872,https://www.monitoringresources.org/Document/Method/Details/7064
-401,term,513,PctStab,Numeric,AIM,PctBankStable,percent,Double,https://www.monitoringresources.org/Document/Method/Details/7026,https://www.monitoringresources.org/Document/Method/Details/7010
 401,term,524,pH,Numeric,NRSA,PH_Results,SU,Double,https://www.monitoringresources.org/Document/Method/Details/7080,https://www.monitoringresources.org/Document/Method/Details/7081
 401,term,524,pH,Numeric,AIM,pH,SU,Double,https://www.monitoringresources.org/Document/Method/Details/6673,NA
 401,term,530,PoolFreq,Numeric,PIBO,PoolFrq,number of pools per km,Double ,https://www.monitoringresources.org/Document/Method/Details/6872,https://www.monitoringresources.org/Document/CustomizedMethod/Details/32417
@@ -100,4 +98,3 @@ termID,term,measurementTypeID,measurementType,dataType,projectCode,originalField
 305,fieldNotes,NA,,String,PIBO,StrmFlow,"Categorical: Flow, No Flow, Other",String,https://www.monitoringresources.org/Document/Method/Details/924,NA
 306,beaverImpactFlow,NA,,Numeric,AREMP,beaver_impacted,NA,String,https://www.monitoringresources.org/Document/Method/Details/7003,NA
 306,beaverImpactFlow,NA,,Numeric,AIM,BeaverFlowMod,NA,String,https://www.monitoringresources.org/Document/Method/Details/7002,NA
-305,fieldNotes,NA,,NA,AREMP,NA,NA,NA,https://www.monitoringresources.org/Document/Method/Details/6844,https://www.monitoringresources.org/Document/Method/Details/4115

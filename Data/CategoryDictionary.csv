@@ -43,8 +43,8 @@ Event,beaverImpactFlow,Major,tbd need def,Producer defined,NA,,
 Event,beaverImpactFlow,Minor,tbd need def,Producer defined,NA,,
 Event,beaverImpactFlow,None,tbd need def,Producer defined,NA,,
 MeasurementOrFact,measurementType,Sin,"Reach sinuosity (reach length along the thalweg divided by straight line distance between the bottom of the reach and the top of the reach, expressed as a ratio)",Producer defined,none,1,None
-MeasurementOrFact,measurementType,AvgBFWDRatio,Average bankfull width depth ratio for the reach where depth measured from the water surface (expressed as a ratio).,Producer defined,none,0,None
-MeasurementOrFact,measurementType,BFHeight,Average bankfull height measured from water surface across transects (unit: meters).,Producer defined,meters,0,None
+MeasurementOrFact,measurementType,AvgBFWDRatio,Average bankfull width depth ratio for the reach where depth measured from the streambed (expressed as a ratio).,Producer defined,none,0,None
+MeasurementOrFact,measurementType,BFHeight,Average bankfull height measured from streambed transects (unit: meters).,Producer defined,meters,0,None
 MeasurementOrFact,measurementType,BFWidth,Average bankfull width across transects for the reach measured from the water surface (unit: meters).,Producer defined,meters,0,None
 MeasurementOrFact,measurementType,Grad,"Mean slope of water surface from the bottom of the reach to the top of the reach (expressed as percent, unit: none, min: 0, max: 100).",Producer defined,percent,0,100
 MeasurementOrFact,measurementType,MeanThalwegDepth,Mean deepest location in the reach (unit: meters).,Producer defined,meters,0,None
@@ -178,7 +178,7 @@ MetricControlledVocabulary,measurementTypeID,529,A unique numeric identifier ass
 MetricControlledVocabulary,measurementTypeID,530,A unique numeric identifier assigned to the measurementType PoolFreq. ,Producer defined,NA,,
 MetricControlledVocabulary,measurementType,Sin,"Reach sinuosity (reach length along the thalweg divided by straight line distance between the bottom of the reach and the top of the reach, expressed as a ratio)",Producer defined,none,1,None
 MetricControlledVocabulary,measurementType,AvgBFWDRatio,Average bankfull width depth ratio for the reach where depth measured from the water surface (expressed as a ratio).,Producer defined,none,0,None
-MetricControlledVocabulary,measurementType,BFHeight,Average bankfull height measured from water surface across transects (unit: meters).,Producer defined,meters,0,None
+MetricControlledVocabulary,measurementType,BFHeight,Average bankfull height measured from the streambed across transects (unit: meters).,Producer defined,meters,0,None
 MetricControlledVocabulary,measurementType,BFWidth,Average bankfull width across transects for the reach (unit: meters).,Producer defined,meters,0,None
 MetricControlledVocabulary,measurementType,Grad,"Mean slope of water surface from the bottom of the reach to the top of the reach (expressed as percent, unit: none, min: 0, max: 100).",Producer defined,percent,0,100
 MetricControlledVocabulary,measurementType,MeanThalwegDepth,Mean deepest location in the reach (unit: meters).,Producer defined,meters,0,None

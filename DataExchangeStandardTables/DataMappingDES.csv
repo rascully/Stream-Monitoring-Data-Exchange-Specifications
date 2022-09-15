@@ -5,6 +5,7 @@ termID,term,measurementTypeID,measurementType,dataType,projectCode,originalField
 401,term,512,BankAngle,Numeric,AIM,BankAngleAvg,degrees,Double,https://www.monitoringresources.org/Document/Method/Details/68,https://www.monitoringresources.org/Document/Method/Details/7034
 401,term,512,BankAngle,Numeric,PIBO,BankAngle,degrees,Double,https://www.monitoringresources.org/Document/Method/Details/68,NA
 401,term,503,BFHeight,Numeric,AREMP,average_bfdepth,meters,double,https://www.monitoringresources.org/Document/Method/Details/7028,https://www.monitoringresources.org/Document/CustomizedMethod/Details/32163
+401,term,503,BFHeight,Numeric,PIBO,tbd,tbd,tbd,https://www.monitoringresources.org/Document/Method/Details/56,https://www.monitoringresources.org/Document/CustomizedMethod/Details/32197
 401,term,504,BFWidth,Numeric,AREMP,average_bfwidth,meters,Double,https://www.monitoringresources.org/Document/Method/Details/6849,https://www.monitoringresources.org/Document/Method/Details/4245
 401,term,504,BFWidth,Numeric,AIM,BankfullWidthAvg,meters,Double,https://www.monitoringresources.org/Document/Method/Details/7030,https://www.monitoringresources.org/Document/CustomizedMethod/Details/32166
 401,term,504,BFWidth,Numeric,NRSA,XBKF_W,meters,Double,https://www.monitoringresources.org/Document/Method/Details/7080,https://www.monitoringresources.org/Document/Method/Details/7081
@@ -15,7 +16,7 @@ termID,term,measurementTypeID,measurementType,dataType,projectCode,originalField
 401,term,515,D50,Numeric,PIBO,D50,meters,Double,https://www.monitoringresources.org/Document/Method/Details/6797,https://www.monitoringresources.org/Document/Method/Details/1730
 401,term,516,D84,Numeric,AIM,D84,millimeters,Double,https://www.monitoringresources.org/Document/Method/Details/6801,https://www.monitoringresources.org/Document/Method/Details/7025
 401,term,516,D84,Numeric,PIBO,D84,meters,Double,https://www.monitoringresources.org/Document/Method/Details/6797,https://www.monitoringresources.org/Document/Method/Details/1730
-401,term,506,Grad,Numeric,AREMP,gradient,percent expressed as a decimal,Double,https://www.monitoringresources.org/Document/Method/Details/6852,NA
+401,term,506,Grad,Numeric,AREMP,gradient,percent,Double,https://www.monitoringresources.org/Document/Method/Details/6852,NA
 401,term,506,Grad,Numeric,AIM,PctSlope,percent,Double,https://www.monitoringresources.org/Document/CustomizedMethod/Details/31139,https://www.monitoringresources.org/Document/Method/Details/7033
 401,term,506,Grad,Numeric,NRSA,XSLOPE,percent,Double,https://www.monitoringresources.org/Document/Method/Details/7080,https://www.monitoringresources.org/Document/Method/Details/7081
 401,term,506,Grad,Numeric,PIBO,Grad,percent,Double,https://www.monitoringresources.org/Document/Method/Details/6868,NA
@@ -29,6 +30,7 @@ termID,term,measurementTypeID,measurementType,dataType,projectCode,originalField
 401,term,510,PctPool,Numeric,AREMP,PctReachInPools,percent,Double,https://www.monitoringresources.org/Document/Method/Details/6844,https://www.monitoringresources.org/Document/Method/Details/4115
 401,term,510,PctPool,Numeric,AIM,PctPools,percent,Double,https://www.monitoringresources.org/Document/Method/Details/6859,https://www.monitoringresources.org/Document/Method/Details/7084
 401,term,510,PctPool,Numeric,PIBO,PoolPct,percent,Double,https://www.monitoringresources.org/Document/Method/Details/6872,https://www.monitoringresources.org/Document/Method/Details/7064
+401,term,521,pH,Numeric,AREMP,pH,SU,Double,https://www.monitoringresources.org/Document/Method/Details/6673,NA
 401,term,524,pH,Numeric,NRSA,PH_Results,SU,Double,https://www.monitoringresources.org/Document/Method/Details/7080,https://www.monitoringresources.org/Document/Method/Details/7081
 401,term,524,pH,Numeric,AIM,pH,SU,Double,https://www.monitoringresources.org/Document/Method/Details/6673,NA
 401,term,530,PoolFreq,Numeric,PIBO,PoolFrq,number of pools per km,Double ,https://www.monitoringresources.org/Document/Method/Details/6872,https://www.monitoringresources.org/Document/CustomizedMethod/Details/32417
@@ -48,10 +50,13 @@ termID,term,measurementTypeID,measurementType,dataType,projectCode,originalField
 401,term,500,Sin,Numeric,AIM,Sinuosity,ratio,Double,https://www.monitoringresources.org/Document/Method/Details/7017,https://www.monitoringresources.org/Document/Method/Details/7007
 401,term,500,Sin,Numeric,NRSA,SINU,ratio,Double,https://www.monitoringresources.org/Document/Method/Details/7080,https://www.monitoringresources.org/Document/Method/Details/7081
 401,term,500,Sin,Numeric,PIBO,Sin,ratio,Double,https://www.monitoringresources.org/Document/Method/Details/6868,https://www.monitoringresources.org/Document/Method/Details/7007
+401,term,525,SpecificConductance,Numeric,AREMP,Specific_conductance,micrograms per liter,Double,https://www.monitoringresources.org/Document/Method/Details/7023,NA
 401,term,525,SpecificConductance,Numeric,AIM,SpecificConductance,microSiemens per centimeter,Double,https://www.monitoringresources.org/Document/Method/Details/6673,NA
 401,term,525,SpecificConductance,Numeric,NRSA,COND,microSiemens per centimeter,Double,https://www.monitoringresources.org/Document/Method/Details/7016,https://www.monitoringresources.org/Document/Method/Details/7048
+401,term,526,TotalNitrogen,Numeric,AREMP,NTL,micrograms per liter,Double,https://www.monitoringresources.org/Document/Method/Details/7023,https://www.monitoringresources.org/Document/Method/Details/7024
 401,term,526,TotalNitrogen,Numeric,AIM,TotalNitrogen,micrograms per liter,Double,https://www.monitoringresources.org/Document/Method/Details/7023,https://www.monitoringresources.org/Document/Method/Details/7024
 401,term,526,TotalNitrogen,Numeric,NRSA,NTL,micrograms per liter,Double,https://www.monitoringresources.org/Document/Method/Details/7016,https://www.monitoringresources.org/Document/Method/Details/7048
+401,term,527,TotalPhosphorous,Numeric,AREMP,PTL,micrograms per liter,Double,https://www.monitoringresources.org/Document/Method/Details/7023,https://www.monitoringresources.org/Document/Method/Details/7024
 401,term,527,TotalPhosphorous,Numeric,AIM,TotalPhosphorous,micrograms per liter,Double,https://www.monitoringresources.org/Document/Method/Details/7023,https://www.monitoringresources.org/Document/Method/Details/7024
 401,term,527,TotalPhosphorous,Numeric,NRSA,PTL,micrograms per liter,Double,https://www.monitoringresources.org/Document/Method/Details/7016,https://www.monitoringresources.org/Document/Method/Details/7048
 401,term,528,Turbidity,Numeric,AIM,TurbidityAvg,NTU,Double,https://www.monitoringresources.org/Document/Method/Details/7012,https://www.monitoringresources.org/Document/Method/Details/4245

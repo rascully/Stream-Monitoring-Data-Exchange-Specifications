@@ -1,11 +1,9 @@
 termID,term,measurementTypeID,measurementType,dataType,projectCode,originalField,originalUnit,originalDataType,methodCollection,methodAnalysis
-401,term,502,AvgBFWDRatio,Numeric,NRSA,BFWD_RAT,ratio,Double,https://www.monitoringresources.org/Document/Method/Details/7080,https://www.monitoringresources.org/Document/Method/Details/7081
 401,term,502,AvgBFWDRatio,Numeric,AREMP,ave_widthDepth_ratio,ratio,Double,https://www.monitoringresources.org/Document/CustomizedMethod/Details/31107,https://www.monitoringresources.org/Document/Method/Details/4245
 401,term,502,AvgBFWDRatio,Numeric,PIBO,WDTrans,ratio,Double,https://www.monitoringresources.org/Document/Method/Details/65 | https://www.monitoringresources.org/Document/Method/Details/6871,https://www.monitoringresources.org/Document/Method/Details/7047
 401,term,512,BankAngle,Numeric,AIM,BankAngleAvg,degrees,Double,https://www.monitoringresources.org/Document/Method/Details/68,https://www.monitoringresources.org/Document/Method/Details/7034
 401,term,512,BankAngle,Numeric,PIBO,BankAngle,degrees,Double,https://www.monitoringresources.org/Document/Method/Details/68,NA
 401,term,503,BFHeight,Numeric,AREMP,average_bfdepth,meters,double,https://www.monitoringresources.org/Document/Method/Details/7028,https://www.monitoringresources.org/Document/CustomizedMethod/Details/32163
-401,term,503,BFHeight,Numeric,PIBO,tbd,tbd,tbd,https://www.monitoringresources.org/Document/Method/Details/56,https://www.monitoringresources.org/Document/CustomizedMethod/Details/32197
 401,term,504,BFWidth,Numeric,AREMP,average_bfwidth,meters,Double,https://www.monitoringresources.org/Document/Method/Details/6849,https://www.monitoringresources.org/Document/Method/Details/4245
 401,term,504,BFWidth,Numeric,AIM,BankfullWidthAvg,meters,Double,https://www.monitoringresources.org/Document/Method/Details/7030,https://www.monitoringresources.org/Document/CustomizedMethod/Details/32166
 401,term,504,BFWidth,Numeric,NRSA,XBKF_W,meters,Double,https://www.monitoringresources.org/Document/Method/Details/7080,https://www.monitoringresources.org/Document/Method/Details/7081

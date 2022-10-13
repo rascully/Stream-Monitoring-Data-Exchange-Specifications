@@ -29,7 +29,7 @@ termID,term,measurementTypeID,measurementType,dataType,projectCode,originalField
 401,term,510,PctPool,Numeric,AIM,PctPools,percent,Double,https://www.monitoringresources.org/Document/Method/Details/6859,https://www.monitoringresources.org/Document/Method/Details/7084
 401,term,510,PctPool,Numeric,PIBO,PoolPct,percent,Double,https://www.monitoringresources.org/Document/Method/Details/6872,https://www.monitoringresources.org/Document/Method/Details/7064
 401,term,521,pH,Numeric,AREMP,pH,SU,Double,https://www.monitoringresources.org/Document/Method/Details/6673,NA
-401,term,524,pH,Numeric,NRSA,PH_Results,SU,Double,https://www.monitoringresources.org/Document/Method/Details/7080,https://www.monitoringresources.org/Document/Method/Details/7081
+401,term,524,pH,Numeric,NRSA,PH,SU,Double,https://www.monitoringresources.org/Document/Method/Details/7080,https://www.monitoringresources.org/Document/Method/Details/7081
 401,term,524,pH,Numeric,AIM,pH,SU,Double,https://www.monitoringresources.org/Document/Method/Details/6673,NA
 401,term,530,PoolFreq,Numeric,PIBO,PoolFrq,number of pools per km,Double ,https://www.monitoringresources.org/Document/Method/Details/6872,https://www.monitoringresources.org/Document/CustomizedMethod/Details/32417
 401,term,530,PoolFreq,Numeric,AIM,PoolFreq,number of pools per km,Double,https://www.monitoringresources.org/Document/Method/Details/6859,https://www.monitoringresources.org/Document/Method/Details/7084

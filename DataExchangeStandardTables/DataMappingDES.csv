@@ -92,10 +92,10 @@ termID,term,measurementTypeID,measurementType,dataType,projectCode,originalField
 303,year,NA,,Numeric,AREMP,survey_year,year,Integer,NA,NA
 303,year,NA,,Numeric,NRSA,YEAR,year,Integer,NA,NA
 303,year,NA,,Numeric,PIBO,Yr,year,Integer,NA,NA
-304,samplingProtocol,NA,,Integer,AREMP,survey_type,NA,String,NA,NA
-304,samplingProtocol,NA,,Integer,AIM,ProtocolVersion,NA,String,NA,NA
-304,samplingProtocol,NA,,Integer,NRSA,PROTOCOL,NA,String,NA,NA
-304,samplingProtocol,NA,,Integer,PIBO,Type,"Categorical: I, IS, IK, IKS, K, P, R",String,NA,NA
+109,samplingProtocol,NA,,Integer,AREMP,survey_type,NA,String,NA,NA
+109,samplingProtocol,NA,,Integer,AIM,ProtocolVersion,NA,String,NA,NA
+109,samplingProtocol,NA,,Integer,NRSA,PROTOCOL,NA,String,NA,NA
+109,samplingProtocol,NA,,Integer,PIBO,Type,"Categorical: I, IS, IK, IKS, K, P, R",String,NA,NA
 305,fieldNotes,NA,,String,AIM,PctDry,percent,Double,https://www.monitoringresources.org/Document/Method/Details/7008,https://www.monitoringresources.org/Document/Method/Details/7004
 305,fieldNotes,NA,,String,NRSA,PCT_DRS,percent,Double,https://www.monitoringresources.org/Document/Method/Details/7080,https://www.monitoringresources.org/Document/Method/Details/7081
 305,fieldNotes,NA,,String,PIBO,StrmFlow,"Categorical: Flow, No Flow, Other",String,https://www.monitoringresources.org/Document/Method/Details/924,NA

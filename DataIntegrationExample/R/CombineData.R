@@ -437,10 +437,13 @@ RecordLevel_table <- all_data2 %>%
   dplyr::select(one_of(c("datasetID",RecordLevel))) %>% 
   distinct()
 
+#EH edit: Replacing original samplingProtocol data with the MR.org links - I will come back when I have more time and edit the above main for loop to change how samplingProtocol is assigned
 samplingProtocol_MRlinks <- as.data.frame(unique(RecordLevel_table$projectCode))
 samplingProtocol_MRlinks$samplingProtocol <- c("https://www.monitoringresources.org/Document/Protocol/Details/3339","https://www.monitoringresources.org/Document/Protocol/Details/3555","https://www.monitoringresources.org/Document/Protocol/Details/3552","https://www.monitoringresources.org/Document/Protocol/Details/3542")
 names(samplingProtocol_MRlinks) <- c("projectCode","samplingProtocol")
 RecordLevel_table$samplingProtocol <- samplingProtocol_MRlinks$samplingProtocol[match(RecordLevel_table$projectCode, samplingProtocol_MRlinks$projectCode)]
+#deleting repeats in the RecordLevel table (without the miltiple samplingProtocols for PIBO and AIM, there is no need to have them repeated in the table)
+RecordLevel_table <- RecordLevel_table[!duplicated(RecordLevel_table),]
 
 #location table 
 

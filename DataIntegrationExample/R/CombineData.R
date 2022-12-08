@@ -277,7 +277,7 @@ if (p=="NRSA"){
      SubSetData$datasetLink             <- "https://www.epa.gov/national-aquatic-resource-surveys/data-national-aquatic-resource-surveys"
      SubSetData$bibilographicCitation   <- paste("U.S. Environmental Protection Agency; 2016; National Aquatic Resource Surveys; National Rivers and Streams Assessment 2008 to 2009 data and metadata files Date accessed:", Sys.Date()) # ed: also confused where this comes from b/c it should change depending on the subset data...
      SubSetData$metadataID              <- "https://www.epa.gov/national-aquatic-resource-surveys/data-national-aquatic-resource-surveys"
-     SubSetData$preProcessingCode       <- "https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/DataIntegrationExample/R/DownloadAndCleanUSFSAREMPData.R" # ed: update link from Specifications to Standards if this changes in future
+     SubSetData$preProcessingCode       <- "https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/DataIntegrationExample/R/ownloadAndCleanEPANRSA.R" # ed: update link from Specifications to Standards if this changes in future
      SubSetData$locationRemarks         <- "Bottom of Reach"
      
      

@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Scully"
+  given-names: "Rebecca"
+  orcid: ""
+- family-names: "Heaston"
+  given-names: "Emily"
+  orcid: ""
+title: "Stream-Monitoring-Data-Exchange-Specifications"
+version: 1.0.0
+doi: 
+date-released: 2022-12-08
+url: "https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications"

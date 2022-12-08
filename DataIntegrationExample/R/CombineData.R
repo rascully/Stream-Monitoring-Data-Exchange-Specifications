@@ -437,6 +437,11 @@ RecordLevel_table <- all_data2 %>%
   dplyr::select(one_of(c("datasetID",RecordLevel))) %>% 
   distinct()
 
+samplingProtocol_MRlinks <- as.data.frame(unique(RecordLevel_table$projectCode))
+samplingProtocol_MRlinks$samplingProtocol <- c("https://www.monitoringresources.org/Document/Protocol/Details/3339","https://www.monitoringresources.org/Document/Protocol/Details/3555","https://www.monitoringresources.org/Document/Protocol/Details/3552","https://www.monitoringresources.org/Document/Protocol/Details/3542")
+names(samplingProtocol_MRlinks) <- c("projectCode","samplingProtocol")
+RecordLevel_table$samplingProtocol <- samplingProtocol_MRlinks$samplingProtocol[match(RecordLevel_table$projectCode, samplingProtocol_MRlinks$projectCode)]
+
 #location table 
 
 location <- MetadataDict %>%  

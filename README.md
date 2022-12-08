@@ -62,7 +62,7 @@
 │   │
 │   └── CreateDataTablesMetadataDict.R
 </pre>
-Repository file directory created using RP Tree in Python (https://github.com/realpython/rptree)
+Repository file directory created using [RP Tree](https://github.com/realpython/rptree) in Python
 
 # Database Schema
 ![database schema](/Figures/databaseERD3_ms.png "database schema") 
@@ -78,6 +78,8 @@ To run the integration code, download or clone the repository, install the neces
 
 `source(paste0(getwd(), "/Data Integration Example/R/Combine Data.R"))`  
 `data <- integrate_data()`
+
+Additional information on installation and running code can be found in the [DataIntegrationExample ReadMe](https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/DataIntegrationExample/README.md)
 
 # How to Contribute
 <i>pending</i>

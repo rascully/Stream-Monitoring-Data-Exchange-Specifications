@@ -19,28 +19,6 @@ To use this code install packages:
 | geojsonio   | raster  | sbtools | tidyverse |
 | httr        | readr   | sf      | tmap      |
 
-# Contents
-***Input***
-* _/R/DownloadAndCleanBLMAIMData.R_: acceses and pre-processes BLM lotic AIM data
-
-* _/R/DownloadAndCleanEPANRSA.R_: acceses and pre-processes EPA NARS NRSA data
-
-* _/R/DownloadAndCleanUSFSAREMPData.R_: acceses and pre-processes USFS AREMP data
-
-* _/R/CombineData.R_: transforms and combines pre-processed data from 4 wadeable stream monitoring programs (BLM lotic AIM, EPA NARS NRSA, USFS AREMP, USFS PIBO MP)
-
-* _/Data/CategoryDictionary.csv_: categorical data dictionary used by R code to fill in metric-controlled vocabulary definitions and Data Exchange Standard tables
-
-* _/Data/MetadataDictionary.csv_: data dictionary used by R code to fill in Data Exchange Standard tables
-
-* _/DataExchangeStandardTables/DataMappingDES.csv_: used by R code to map data between programs and combine data
-
-***Output***
-* _DataIntegrationExample/data/csv_: folder containing the 'RecordLevel', 'Location', 'Event', and 'MeasurementOrFact' integrated data tables produced by R code as well as the 'RelationalDataTablesStreamHabitatMetrics.xlsx' file used to create the 'Integrated Data Set.accdb'. To recreate the relationships between tables in Microsoft Access, refer to the Database Schema diagram below.
-
-* _DataExchangeStandardTables_: folder containing the Data Exchange Standards for the 'RecordLevel', 'Location', 'Event' and 'MeasurementOrFact' data tables produced by R code
-
-
 # Getting Started
 To run the data integration code, download the repository and packages as described above and run:
 
@@ -55,6 +33,27 @@ The integrated_data() function in 'CombineData.R'will run the functions:
   * Donwnload and clean EPA NRSA  Data.R
 
 The USFS PIBO data are pre-processed within the 'CombineData.R' code and does not have a separate pre-procesd file. Data are directly pulled into the integrated_data() fuction.
+
+# Contents
+**Input**
+* _/R/DownloadAndCleanBLMAIMData.R_: acceses and pre-processes BLM lotic AIM data
+
+* _/R/DownloadAndCleanEPANRSA.R_: acceses and pre-processes EPA NARS NRSA data
+
+* _/R/DownloadAndCleanUSFSAREMPData.R_: acceses and pre-processes USFS AREMP data
+
+* _/R/CombineData.R_: transforms and combines pre-processed data from 4 wadeable stream monitoring programs (BLM lotic AIM, EPA NARS NRSA, USFS AREMP, USFS PIBO MP)
+
+* _/Data/CategoryDictionary.csv_: categorical data dictionary used by R code to fill in metric-controlled vocabulary definitions and Data Exchange Standard tables
+
+* _/Data/MetadataDictionary.csv_: data dictionary used by R code to fill in Data Exchange Standard tables
+
+* _/DataExchangeStandardTables/DataMappingDES.csv_: used by R code to map data between programs and combine data
+
+**Output**
+* _DataIntegrationExample/data/csv_: folder containing the 'RecordLevel', 'Location', 'Event', and 'MeasurementOrFact' integrated data tables produced by R code as well as the 'RelationalDataTablesStreamHabitatMetrics.xlsx' file used to create the 'Integrated Data Set.accdb'. To recreate the relationships between tables in Microsoft Access, refer to the Database Schema diagram below.
+
+* _DataExchangeStandardTables_: folder containing the Data Exchange Standards for the 'RecordLevel', 'Location', 'Event' and 'MeasurementOrFact' data tables produced by R code
 
 # Database Schema
 ![database schema](/Figures/databaseERD3_ms.png "database schema") 

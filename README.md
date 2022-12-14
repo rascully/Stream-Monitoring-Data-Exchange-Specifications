@@ -9,8 +9,7 @@ Scully, R. and Heaston, E. 2022. Stream Monitoring Data Exchange Standards, GitH
 # Requirements
 R (version?) is required to execute this code.
 
-Install the following packages:
- To use this code install packages: 
+To use this code install packages: 
  
 |             |         |         |           |
 |-------------|---------|---------|-----------|

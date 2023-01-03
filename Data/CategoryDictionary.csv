@@ -34,10 +34,9 @@ Event,fieldNotes,NA,Description of the flow was not included or reported in the 
 Event,fieldNotes,Flow Whole Reach,Flow for the full reach.,Producer defined,NA,,
 Event,fieldNotes,No Flow Dry,"Reach is completely dry, no flow",Producer defined,NA,,
 Event,fieldNotes,Partial Flow or Stagnant Pools,Flow for part or subset of the reach,Producer defined,NA,,
-Event,beaverImpactFlow,NA,Beaver impacts were not reported in the source data.,Producer defined,NA,,
-Event,beaverImpactFlow,Major,tbd need def,Producer defined,NA,,
-Event,beaverImpactFlow,Minor,tbd need def,Producer defined,NA,,
-Event,beaverImpactFlow,None,tbd need def,Producer defined,NA,,
+Event,beaverPresence,NA,Beaver presence was not reported in the source data.,Producer defined,NA,,
+Event,beaverPresence,Present,Signs of beavers (such as chewed wood or lodges) are noted in the surveyed reach.,Producer defined,NA,,
+Event,beaverPresence,Absent,Signs of beavers (such as chewed wood or lodges) are NOT noted in the surveyed reach.,Producer defined,NA,,
 MeasurementOrFact,measurementType,Sin,"Reach sinuosity (reach length along the thalweg divided by straight line distance between the bottom of the reach and the top of the reach, expressed as a ratio)",Producer defined,none,1,None
 MeasurementOrFact,measurementType,AvgBFWDRatio,Average bankfull width-depth ratio for the reach where depth is measured from the streambed.,Producer defined,none,0,None
 MeasurementOrFact,measurementType,BFHeight,Average bankfull height measured from streambed transects (unit: meters).,Producer defined,meters,0,None
@@ -100,7 +99,7 @@ DataMapping,termID,301,The termID assigned to column header verbatimEventID,Prod
 DataMapping,termID,302,The termID assigned to column header eventDate,Producer defined,NA,,
 DataMapping,termID,303,The termID assigned to column header year,Producer defined,NA,,
 DataMapping,termID,305,The termID assigned to column header fieldNotes,Producer defined,NA,,
-DataMapping,termID,306,The termID assigned to column header beaverImpactFlow,Producer defined,NA,,
+DataMapping,termID,306,The termID assigned to column header beaverPresence,Producer defined,NA,,
 DataMapping,measurementTypeID,NA,There is no measurementType associated with this term so there is no measurementTypeID.,Producer defined,NA,,
 DataMapping,measurementTypeID,500,A unique numeric identifier assigned to the measurementType Sin.,Producer defined,NA,,
 DataMapping,measurementTypeID,502,A unique numeric identifier assigned to the measurementType AvgBFWDRatio.,Producer defined,NA,,

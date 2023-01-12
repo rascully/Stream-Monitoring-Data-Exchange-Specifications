@@ -1,5 +1,5 @@
 termID,term,measurementTypeID,measurementType,dataType,projectCode,originalField,originalUnit,originalDataType,methodCollection,methodAnalysis
-401,term,502,AvgBFWDRatio,Numeric,AREMP,ave_widthDepth_ratio,ratio,Double,https://www.monitoringresources.org/Document/CustomizedMethod/Details/31107,https://www.monitoringresources.org/Document/Method/Details/4245
+401,term,502,AvgBFWDRatio,Numeric,AREMP,ave_widthDepth_ratio,ratio,Double,https://www.monitoringresources.org/Document/CustomizedMethod/Details/31107,https://www.monitoringresources.org/Document/Method/Details/7132
 401,term,502,AvgBFWDRatio,Numeric,PIBO,WDTrans,ratio,Double,https://www.monitoringresources.org/Document/Method/Details/65 | https://www.monitoringresources.org/Document/Method/Details/6871,https://www.monitoringresources.org/Document/Method/Details/7047
 401,term,512,BankAngle,Numeric,AIM,BankAngleAvg,degrees,Double,https://www.monitoringresources.org/Document/Method/Details/68,https://www.monitoringresources.org/Document/Method/Details/7034
 401,term,512,BankAngle,Numeric,PIBO,BankAngle,degrees,Double,https://www.monitoringresources.org/Document/Method/Details/68,NA

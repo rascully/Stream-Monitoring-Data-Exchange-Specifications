@@ -499,8 +499,8 @@ if(compareCRS(CRS_DES, CRS_NARS)==TRUE){
     data_locations <- as.data.frame(loc_WGS84)
     print("Transformed to WGS 84 based on the data standard")
   }
-  
-  
+
+
 #### Delete the old EPA data file & save the new file ####
 
   files <- list.files(paste0(getwd(), "/DataIntegrationExample/data/DataSources"))

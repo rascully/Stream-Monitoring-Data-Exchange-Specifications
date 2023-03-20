@@ -15,6 +15,7 @@ library(sp)
 library(sbtools)
 library(rgdal)
 library(sjmisc)
+library(stringr)
 
 # Run function to build DES tables and controlled vocabulary tables from MetadataDict to make sure everything is up to date 
   source(paste0(getwd(), "/R/CreateDataTablesMetadataDict.R"))
@@ -75,7 +76,7 @@ for(p in program) {
     field <- dataMapVariable("samplingProtocol", p)
     data <- data %>% 
       filter(!!as.name(field) == "WADEABLE")
-    
+  
 # From the datamapping find the field name that contains the percent dry program # ed: not sure I understand what "percent dry program" means.
   field <- dataMapVariable("fieldNotes", p)
 
@@ -269,7 +270,7 @@ for(p in program) {
     
 if (p=="NRSA"){
 
-     SubSetData$datasetID               <- ''
+     SubSetData$datasetID               <- ""
      SubSetData$projectCode             <- "NRSA"
      SubSetData$institutionCode         <- "EPA"
      SubSetData$datasetName             <- "" # ed: not sure where the datasetNames for NRSA are coming from as there are more than one... ?
@@ -365,6 +366,9 @@ ind <- rowSums(is.na(only_metrics)) != (ncol(only_metrics))
 
 all_data2 <-all_data2[ind,]
 
+#EH - replacing commas in waterBody column with | - commas were causing an extra column to show up when unique_locations was exported to csv
+all_data2$waterBody = str_replace_all(all_data2$waterBody, ",", "|")
+
 #### Generate UIDs for the integrated dataset ####
 
 
@@ -392,8 +396,16 @@ all_data2 <- all_data2 %>%
 ind_UID <-all_data2$datasetName == ("WSA PHab Metrics (Part 1) - Data (CSV) (csv),WSA PHab Metrics (Part 2) - Data (CSV) (csv),WSA PHab Metrics (Part 1) - Data (CSV) (csv),WSA PHab Metrics (Part 2) - Data (CSV) (csv),WSA Water Chemistry - Data (CSV) (csv),WSA Site Information (CSV) (csv)")
 
 all_data2[ind_UID,"verbatimEventID"] = NA
-     
+##########################################################    
+unique(all_data2$datasetName)
+unique(all_data2$verbatimLocationID)
+head(all_data2)
+names(all_data2)
 
+location_table
+
+filter(term, projectCode == "p")
+###########################################################
 #UID location integrated dataset, need to create a temp locationID concatenating program and LocationID in case across programs location ID is repeated
 # ed: this is a little confusing, can you rephrase this comment slightly?
 all_data2 <- all_data2 %>% 
@@ -401,7 +413,10 @@ all_data2 <- all_data2 %>%
             transform(locationID=as.numeric((factor(temp_locaitonID)))) %>% 
             dplyr::select(-temp_locaitonID)
 
-
+all_data2$verbatimLocationID
+str(all_data2)
+all_data2[,c(11,12)]
+all_data2$temp_locationID
 #Remove rows that are exact duplicate from the combined dataset 
 all_data2 <-  all_data2 %>% 
               distinct()
@@ -413,12 +428,18 @@ all_data2 <- all_data2 %>%
 # Create a list of unique locations for the combined dataset 
 u_locations <- dplyr::select(all_data2, (c("locationID", "latitude", "longitude",
                                            "waterBody", "projectCode")))
-unique_locations <- distinct(u_locations)
-
+unique_locations = u_locations %>% distinct(locationID, projectCode,.keep_all = TRUE) #EH edited this line on 30Jan2023 - set distinct to only be for location ID and project code, but keep all columns. This fixed the duplicate locationID issue here.. but not for the location table
 
 unique_path <- paste0(getwd(), "/DataIntegrationExample/data/UniqueLocationsforStreamHabitatMetric.csv")
 #file.remove(unique_path)
 write.csv(unique_locations, file=unique_path, row.names=FALSE)
+
+#EH added this code to replace the sampling protocol in alldata2 
+all_data2 <- all_data2 %>%
+  mutate(samplingProtocol = replace(samplingProtocol, projectCode=='NRSA', 'https://www.monitoringresources.org/Document/Protocol/Details/3339')) %>%
+  mutate(samplingProtocol = replace(samplingProtocol, projectCode=='AIM', 'AIM https://www.monitoringresources.org/Document/Protocol/Details/3555')) %>%
+  mutate(samplingProtocol = replace(samplingProtocol, projectCode=='PIBO', 'https://www.monitoringresources.org/Document/Protocol/Details/3552')) %>%
+  mutate(samplingProtocol = replace(samplingProtocol, projectCode=='AREMP', 'https://www.monitoringresources.org/Document/Protocol/Details/3542'))
 
 
 #### Subset the data set to match the data exchange standards documented on https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications ##### # ed: update URL later if this changes. ####
@@ -437,14 +458,6 @@ RecordLevel_table <- all_data2 %>%
   dplyr::select(one_of(c("datasetID",RecordLevel))) %>% 
   distinct()
 
-#EH edit: Replacing original samplingProtocol data with the MR.org links - I will come back when I have more time and edit the above main for loop to change how samplingProtocol is assigned
-samplingProtocol_MRlinks <- as.data.frame(unique(RecordLevel_table$projectCode))
-samplingProtocol_MRlinks$samplingProtocol <- c("https://www.monitoringresources.org/Document/Protocol/Details/3339","https://www.monitoringresources.org/Document/Protocol/Details/3555","https://www.monitoringresources.org/Document/Protocol/Details/3552","https://www.monitoringresources.org/Document/Protocol/Details/3542")
-names(samplingProtocol_MRlinks) <- c("projectCode","samplingProtocol")
-RecordLevel_table$samplingProtocol <- samplingProtocol_MRlinks$samplingProtocol[match(RecordLevel_table$projectCode, samplingProtocol_MRlinks$projectCode)]
-#deleting repeats in the RecordLevel table (without the miltiple samplingProtocols for PIBO and AIM, there is no need to have them repeated in the table)
-RecordLevel_table <- RecordLevel_table[!duplicated(RecordLevel_table),]
-
 #location table 
 
 location <- MetadataDict %>%  
@@ -457,9 +470,10 @@ location <- MetadataDict %>%
 location <- location[location!= ""]
 
 #Subset the sampling features/locations 
+#EH updated the below code - distinct() changed to what it is now. It now specifies that we only want the locationID and datasetID to be distinct and to keep all table attributes
 location_table <- all_data2 %>% 
   dplyr::select(one_of(c("datasetID", location))) %>% 
-  distinct() %>% 
+  distinct(datasetID, locationID, .keep_all = TRUE) %>% 
   relocate(c("datasetID","locationID", "verbatimLocationID","latitude", "longitude"))  
 
 #Build the event table
@@ -515,7 +529,7 @@ Results<- Results %>%
   relocate(c("eventID","measurementID", "measurementType", "measurementTypeID","measurementValue")) 
 
 #### Save files ####
-#Write the analysis ready stream monitoring dataset data to a .csv
+#Write the analysis ready stream monitoring dataset data (all_data2) to a .csv 
 file_path <- paste0(getwd(), "/DataIntegrationExample/data/AnalysisStreamHabitatMonitoringMetricDataset.csv")
 #file.remove(file_path)
 write.csv(all_data2, file=file_path, row.names=FALSE)
@@ -543,4 +557,3 @@ for(i in 1:length(names(list_of_datasets))){
 return(list_of_datasets) 
 
 }
-

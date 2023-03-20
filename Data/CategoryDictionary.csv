@@ -2,11 +2,7 @@ entity,attribute,enumerateddomain,enumerateddefinition,sourcedefinition,units,mi
 Record,datasetID,1,The dataset ID assigned to PIBO source data.,Producer defined,NA,,
 Record,datasetID,2,The dataset ID assigned to AIM source data.,Producer defined,NA,,
 Record,datasetID,3,The dataset ID assigned to AREMP source data.,Producer defined,NA,,
-Record,datasetID,4,The dataset ID assigned to NRSA 2008 to 2009 source data.,Producer defined,NA,,
-Record,datasetID,5,The dataset ID assigned to NRSA 2013 to 2014 source data.,Producer defined,NA,,
-Record,datasetID,6,The dataset ID assigned to NRSA 2018 to 2019 source data.,Producer defined,NA,,
-Record,datasetID,7,The dataset ID assigned to NRSA 2018 to 2019 source data.,Producer defined,NA,,
-Record,datasetID,8,The dataset ID assigned to NRSA Streams 2004 source data.,Producer defined,NA,,
+Record,datasetID,4,The dataset ID assigned to NRSA  source data.,Producer defined,NA,,
 Record,projectCode,AIM,Assessment Inventory and Monitoring,Producer defined,NA,,
 Record,projectCode,AREMP,Aquatic and Riparian Effectiveness Monitoring Plan,Producer defined,NA,,
 Record,projectCode,NRSA,National Rivers and Streams Assessment,Producer defined,NA,,
@@ -18,11 +14,7 @@ Record,preProcessingCode,NA,Pre-processing code was not used for this dataset.,P
 Location,datasetID,1,The dataset ID assigned to PIBO source data.,Producer defined,NA,,
 Location,datasetID,2,The dataset ID assigned to AIM source data.,Producer defined,NA,,
 Location,datasetID,3,The dataset ID assigned to AREMP source data.,Producer defined,NA,,
-Location,datasetID,4,The dataset ID assigned to NRSA 2008 to 2009 source data.,Producer defined,NA,,
-Location,datasetID,5,The dataset ID assigned to NRSA 2013 to 2014 source data.,Producer defined,NA,,
-Location,datasetID,6,The dataset ID assigned to NRSA 2018 to 2019 source data.,Producer defined,NA,,
-Location,datasetID,7,The dataset ID assigned to NRSA 2018 to 2019 source data.,Producer defined,NA,,
-Location,datasetID,8,The dataset ID assigned to NRSA Streams 2004 source data.,Producer defined,NA,,
+Location,datasetID,4,The dataset ID assigned to NRSA source data.,Producer defined,NA,,
 Location,locationRemarks,Bottom of Reach,Geographic coordinates were obtained at the bottom of the reach.,Producer defined,NA,,
 Location,locationRemarks,Middle of Reach,Geographic coordinates were obtained at the middle of the reach.,Producer defined,NA,,
 Location,siteSelectionType,Random,Sample location was selected as part of a the program's probabilistic random design.,Producer defined,NA,,
@@ -47,7 +39,7 @@ MeasurementOrFact,measurementType,ReachLen,Length of the sampling reach measured
 MeasurementOrFact,measurementType,WetWidth,Average wetted width across 11 to 21 transects (unit: meters).,Producer defined,meters,0,None
 MeasurementOrFact,measurementType,PctPool,"Percent of the sample reach (linear extent) classified as pool habitat (expressed as a percent, unit: none, min: 0, max: 100).",Producer defined,percent,0,100
 MeasurementOrFact,measurementType,RPD,Average of the residual pool depth values. Residual pool depth is the difference between the pool tail depth and the maximum depth of the pool (unit: meters).,Producer defined,meters,0,None
-MeasurementOrFact,measurementType,BankAngle,Average angle of the stream bank within the reach measured where bed-meets-bank to the first flat depositional feature at or above bankfull. Acute angles indicate undercut banks while obtuse angles are laid back banks. ,Producer defined,degrees,0,180
+MeasurementOrFact,measurementType,BankAngle,Average angle of the stream bank within the reach measured where bed-meets-bank to the first flat depositional feature at or above bankfull. Acute angles indicate undercut banks while obtuse angles are laid back banks.,Producer defined,degrees,0,180
 MeasurementOrFact,measurementType,D16,"Bed surface particle size corresponding to the 16th percentile of measured particles (unit: millimeters, min: 0, max: 4098).",Producer defined,millimeters,0,4098
 MeasurementOrFact,measurementType,D50,"Bed surface particle size corresponding to the 50th percentile of measured particles (unit: millimeters, min: 0, max: 4098).",Producer defined,millimeters,0,4098
 MeasurementOrFact,measurementType,D84,"Bed surface particle size corresponding to the 84th percentile of measured particles (unit: millimeters, min: 0, max: 4098).",Producer defined,millimeters,0,4098
@@ -180,7 +172,7 @@ MetricControlledVocabulary,measurementType,ReachLen,Length of the sampling reach
 MetricControlledVocabulary,measurementType,WetWidth,Average wetted width across 11 to 21 transects (unit: meters).,Producer defined,meters,0,None
 MetricControlledVocabulary,measurementType,PctPool,"Percent of the sample reach (linear extent) classified as pool habitat (expressed as a percent, unit: none, min: 0, max: 100).",Producer defined,percent,0,100
 MetricControlledVocabulary,measurementType,RPD,Average of the residual pool depth values. Residual pool depth is the difference between the pool tail depth and the max depth (unit: meters).,Producer defined,meters,0,None
-MetricControlledVocabulary,measurementType,BankAngle,Average angle of the stream bank within the reach measured where bed-meets-bank to the first flat depositional feature at or above bankfull. Acute angles indicate undercut banks while obtuse angles are laid back banks. ,Producer defined,degrees,0,180
+MetricControlledVocabulary,measurementType,BankAngle,Average angle of the stream bank within the reach measured where bed-meets-bank to the first flat depositional feature at or above bankfull. Acute angles indicate undercut banks while obtuse angles are laid back banks.,Producer defined,degrees,0,180
 MetricControlledVocabulary,measurementType,D16,"Bed surface particle size corresponding to the 16th percentile of measured particles (unit: millimeters, min: 0, max: 4098).",Producer defined,millimeters,0,4098
 MetricControlledVocabulary,measurementType,D50,"Bed surface particle size corresponding to the 50th percentile of measured particles (unit: millimeters, min: 0, max: 4098).",Producer defined,millimeters,0,4098
 MetricControlledVocabulary,measurementType,D84,"Bed surface particle size corresponding to the 84th percentile of measured particles (unit: millimeters, min: 0, max: 4098).",Producer defined,millimeters,0,4098

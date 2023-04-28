@@ -125,7 +125,7 @@ for(p in program) {
   #from the datamapping find the field name that contains the percent dry for AIM 
     field <- dataMapVariable("beaverPresence", p)
   
-   #change BVR_FLW_MD to YES, NO
+   #change BVR_FLW_MD to Present, Absent, Common, Rare
     beaverPresence  <- data[[field]]
     beaverPresence  <- as.character(beaverPresence) 
     beaverPresence  <- str_replace(beaverPresence,c("Absent"),"Absent")
@@ -375,11 +375,6 @@ all_data2 <- all_data2 %>%
             mutate(temp_locaitonID = paste0(verbatimLocationID,projectCode)) %>% 
             transform(locationID=as.numeric((factor(temp_locaitonID)))) %>% 
             dplyr::select(-temp_locaitonID)
-
-all_data2$verbatimLocationID
-str(all_data2)
-all_data2[,c(11,12)]
-all_data2$temp_locationID #####maybe remove this an the above 3 lines!!!!!!!!!*****************
 
 #Remove rows that are exact duplicate from the combined dataset 
 all_data2 <-  all_data2 %>% 

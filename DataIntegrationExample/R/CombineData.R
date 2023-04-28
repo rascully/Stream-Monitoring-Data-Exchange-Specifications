@@ -350,10 +350,6 @@ all_data2$year[blank_year]  <- substr(all_data2$eventDate[blank_year],1, 4)
 all_data2$year              <- as.integer(all_data2$year)
 
 # Replace N/A and blanks from dataset with the no value 
-  # ed: here I think it is important to differentiate between String data blanks being converted to NA
-  # and numeric data being converted to a numeric NA value (e.g., -9999 or another outrageous value) to maintain data types within a column 
-  # AND IF we use a numeric NA value, then we need to be sure the code does not remove it later (there is a line below removing all -99.9999 values)
-#all_data2[all_data2$waterBody == "N/A"] <- NA
 all_data2[all_data2 == ''] <- NA 
 
 # Remove any rows (events) that have no metric data in the integrated dataset 
@@ -366,16 +362,15 @@ ind <- rowSums(is.na(only_metrics)) != (ncol(only_metrics))
 
 all_data2 <-all_data2[ind,]
 
-#EH - replacing commas in waterBody column with | - commas were causing an extra column to show up when unique_locations was exported to csv
+#Replacing commas in waterBody column with | - commas were causing an extra column to show up when unique_locations was exported to csv
 all_data2$waterBody = str_replace_all(all_data2$waterBody, ",", "|")
 
-#UID location integrated dataset, need to create a temp locationID concatenating program and LocationID in case across programs location ID is repeated
-# ed: this is a little confusing, can you rephrase this comment slightly?
+#UID location integrated dataset - create a temp locationID concatenating program and LocationID in case across programs location ID is repeated
+#Uses locatiuonID from each dataset as a numeric factor to provide numeric uniueID's in the combined dataset
 all_data2 <- all_data2 %>% 
             mutate(temp_locaitonID = paste0(verbatimLocationID,projectCode)) %>% 
             transform(locationID=as.numeric((factor(temp_locaitonID)))) %>% 
             dplyr::select(-temp_locaitonID)
-
 #Remove rows that are exact duplicate from the combined dataset 
 all_data2 <-  all_data2 %>% 
               distinct()
@@ -393,22 +388,22 @@ unique_path <- paste0(getwd(), "/DataIntegrationExample/data/UniqueLocationsforS
 #file.remove(unique_path)
 write.csv(unique_locations, file=unique_path, row.names=FALSE)
 
-#EH added this code to replace the sampling protocol in alldata2 
+#Replace the samplingProtocol in all_data2 with updated links 
 all_data2 <- all_data2 %>%
   mutate(samplingProtocol = replace(samplingProtocol, projectCode=='NRSA', 'https://www.monitoringresources.org/Document/Protocol/Details/3339')) %>%
   mutate(samplingProtocol = replace(samplingProtocol, projectCode=='AIM', 'AIM https://www.monitoringresources.org/Document/Protocol/Details/3555')) %>%
   mutate(samplingProtocol = replace(samplingProtocol, projectCode=='PIBO', 'https://www.monitoringresources.org/Document/Protocol/Details/3552')) %>%
   mutate(samplingProtocol = replace(samplingProtocol, projectCode=='AREMP', 'https://www.monitoringresources.org/Document/Protocol/Details/3542'))
 
-#Converting PIBO D50 data from m to mm - EH added
+#Convert PIBO D50 data from m to mm
 all_data2 <- all_data2 %>% 
   mutate(D50 = as.integer(ifelse(projectCode =="PIBO", D50*1000, D50)))
 
-#Converting NRSA MeanThalwegDepth data from cm to m - EH added
+#Convert NRSA MeanThalwegDepth data from cm to m
 all_data2 <- all_data2 %>%
   mutate(MeanThalwegDepth = ifelse(projectCode == "NRSA", MeanThalwegDepth/100, MeanThalwegDepth))
 
-#### Subset the data set to match the data exchange standards documented on https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications ##### # ed: update URL later if this changes. ####
+#Subset the data set to match the data exchange standards documented on https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications ##### # ed: update URL later if this changes. ####
 #Record level table 
 #Subset the sampling features/locations 
 RecordLevel<- MetadataDict %>% 
@@ -436,7 +431,7 @@ location <- MetadataDict %>%
 location <- location[location!= ""]
 
 #Subset the sampling features/locations 
-#EH updated the below code - distinct() changed to what it is now. It now specifies that we only want the locationID and datasetID to be distinct and to keep all table attributes
+#Code specifies that only the locationID and datasetID are distinct and all location table attributes are kept (3rd line down from here)
 location_table <- all_data2 %>% 
   dplyr::select(one_of(c("datasetID", location))) %>% 
   distinct(datasetID, locationID, .keep_all = TRUE) %>% 
@@ -455,15 +450,8 @@ event <- event[event != ""]
 event_table <- all_data2 %>% 
   dplyr::select(one_of(c("locationID",  event)))
 
-
-
 # Create the measurement or fact table 
-
 #measurement_names <- metricControlledVocabulary
-
-#measurement <- all_data2 %>% 
- # dplyr::select(eventID) 
-
 measurement <- all_data2 %>% 
             dplyr::select(measurement_names, eventID)
 

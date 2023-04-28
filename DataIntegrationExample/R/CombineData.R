@@ -1,7 +1,7 @@
 
-
 integrate_data <- function(){
 
+library(plyr)
 library(dplyr)
 library(readxl)
 library(readr)
@@ -123,15 +123,15 @@ for(p in program) {
     
     
   #from the datamapping find the field name that contains the percent dry for AIM 
-    field <- dataMapVariable("beaverImpactFlow", p)
+    field <- dataMapVariable("beaverPresence", p)
   
    #change BVR_FLW_MD to YES, NO
-    beaverImpactFlow  <- data[[field]]
-    beaverImpactFlow  <- as.character(beaverImpactFlow) 
-    beaverImpactFlow  <- str_replace(beaverImpactFlow,c("NONE"),"NO")
-    beaverImpactFlow  <- str_replace(beaverImpactFlow, c("MAJOR"),"YES")
-    beaverImpactFlow  <- str_replace(beaverImpactFlow, c("MINOR"),"YES")
-    data[[field]]     <- beaverImpactFlow
+    beaverPresence  <- data[[field]]
+    beaverPresence  <- as.character(beaverPresence) 
+    beaverPresence  <- str_replace(beaverPresence,c("Absent"),"Absent")
+    beaverPresence  <- str_replace(beaverPresence, c("Common"),"Present")
+    beaverPresence  <- str_replace(beaverPresence, c("Rare"),"Present")
+    data[[field]]     <- beaverPresence
     
     
     # Update SiteSelectionType to Random or Targeted 
@@ -270,10 +270,10 @@ for(p in program) {
     
 if (p=="NRSA"){
 
-     SubSetData$datasetID               <- ""
+     SubSetData$datasetID               <- "4"
      SubSetData$projectCode             <- "NRSA"
      SubSetData$institutionCode         <- "EPA"
-     SubSetData$datasetName             <- "" # ed: not sure where the datasetNames for NRSA are coming from as there are more than one... ?
+     SubSetData$datasetName             <- "Rivers and Streams"
      SubSetData$projectName             <- "National Aquatic Resource Surveys; National Rivers and Streams Assessmet"
      SubSetData$datasetLink             <- "https://www.epa.gov/national-aquatic-resource-surveys/data-national-aquatic-resource-surveys"
      SubSetData$bibilographicCitation   <- paste("U.S. Environmental Protection Agency; 2016; National Aquatic Resource Surveys; National Rivers and Streams Assessment 2008 to 2009 data and metadata files Date accessed:", Sys.Date()) # ed: also confused where this comes from b/c it should change depending on the subset data...
@@ -284,7 +284,7 @@ if (p=="NRSA"){
      
     } else if (p=="AIM") { 
     
-     SubSetData$datasetID               <- ""
+     SubSetData$datasetID               <- "2"
      SubSetData$projectCode             <- "AIM"
      SubSetData$institutionCode         <- "BLM"
      SubSetData$datasetName             <- "I_Indicators"
@@ -297,7 +297,7 @@ if (p=="NRSA"){
      
      
    } else if (p=="PIBO"){ 
-     SubSetData$datasetID               <- ""
+     SubSetData$datasetID               <- "1"
      SubSetData$projectCode             <- "PIBO"
      SubSetData$institutionCode         <- "USFS"
      SubSetData$datasetName             <- "2020_Seasonal_Sum_PIBO"
@@ -311,7 +311,7 @@ if (p=="NRSA"){
      
    } else if (p== "AREMP") {
    
-     SubSetData$datasetID               <- ""
+     SubSetData$datasetID               <- "3"
      SubSetData$projectCode             <- "AREMP"
      SubSetData$institutionCode         <- "USFS"
      SubSetData$datasetName             <- "NwfpWatershedConditions20yrReport" 
@@ -360,7 +360,7 @@ all_data2[all_data2 == ''] <- NA
 measurement_names <- metricControlledVocabulary
 
 only_metrics <- all_data2 %>% 
-  dplyr::select(measurement_names)
+  dplyr::select(all_of(measurement_names))
 
 ind <- rowSums(is.na(only_metrics)) != (ncol(only_metrics)) 
 
@@ -369,43 +369,6 @@ all_data2 <-all_data2[ind,]
 #EH - replacing commas in waterBody column with | - commas were causing an extra column to show up when unique_locations was exported to csv
 all_data2$waterBody = str_replace_all(all_data2$waterBody, ",", "|")
 
-#### Generate UIDs for the integrated dataset ####
-
-
-# TO DO 
-# As this is working now each time the code is run new dataset, location and event IDs are generated. 
-# To facilitate the use of the dataset by end users and allow for the updating of the dataset we need to 
-# figure out a way to run the code and keep the dataset, location and event ID consistent across time, this will allow 
-# outside users generate covariates and other data and use the IDs to link to the integrated dataset. 
-
-
-
-# create a datasetID  
-all_data2 <- all_data2 %>% 
-  transform(datasetID=as.numeric((factor(datasetName)))) 
-  
-
-# Enter an eventID for the integrated dataset, based on the structure of this dataset we know that each row is a different data collection event, so therefore we generate a UID in the eventID
-all_data2 <- all_data2 %>% 
-  mutate(temp_eventID = paste0(verbatimEventID,projectCode)) %>% 
-  transform(eventID=as.numeric((factor(temp_eventID)))) %>% 
-  dplyr::select(-temp_eventID)
-
-# Remove verbatimEventID generated for the EPA dataset in the data creation process, there is no UID for the 2004 EPA datasets 
-
-ind_UID <-all_data2$datasetName == ("WSA PHab Metrics (Part 1) - Data (CSV) (csv),WSA PHab Metrics (Part 2) - Data (CSV) (csv),WSA PHab Metrics (Part 1) - Data (CSV) (csv),WSA PHab Metrics (Part 2) - Data (CSV) (csv),WSA Water Chemistry - Data (CSV) (csv),WSA Site Information (CSV) (csv)")
-
-all_data2[ind_UID,"verbatimEventID"] = NA
-##########################################################    
-unique(all_data2$datasetName)
-unique(all_data2$verbatimLocationID)
-head(all_data2)
-names(all_data2)
-
-location_table
-
-filter(term, projectCode == "p")
-###########################################################
 #UID location integrated dataset, need to create a temp locationID concatenating program and LocationID in case across programs location ID is repeated
 # ed: this is a little confusing, can you rephrase this comment slightly?
 all_data2 <- all_data2 %>% 
@@ -416,7 +379,8 @@ all_data2 <- all_data2 %>%
 all_data2$verbatimLocationID
 str(all_data2)
 all_data2[,c(11,12)]
-all_data2$temp_locationID
+all_data2$temp_locationID #####maybe remove this an the above 3 lines!!!!!!!!!*****************
+
 #Remove rows that are exact duplicate from the combined dataset 
 all_data2 <-  all_data2 %>% 
               distinct()
@@ -441,6 +405,13 @@ all_data2 <- all_data2 %>%
   mutate(samplingProtocol = replace(samplingProtocol, projectCode=='PIBO', 'https://www.monitoringresources.org/Document/Protocol/Details/3552')) %>%
   mutate(samplingProtocol = replace(samplingProtocol, projectCode=='AREMP', 'https://www.monitoringresources.org/Document/Protocol/Details/3542'))
 
+#Converting PIBO D50 data from m to mm - EH added
+all_data2 <- all_data2 %>% 
+  mutate(D50 = as.integer(ifelse(projectCode =="PIBO", D50*1000, D50)))
+
+#Converting NRSA MeanThalwegDepth data from cm to m - EH added
+all_data2 <- all_data2 %>%
+  mutate(MeanThalwegDepth = ifelse(projectCode == "NRSA", MeanThalwegDepth/100, MeanThalwegDepth))
 
 #### Subset the data set to match the data exchange standards documented on https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications ##### # ed: update URL later if this changes. ####
 #Record level table 
@@ -557,3 +528,4 @@ for(i in 1:length(names(list_of_datasets))){
 return(list_of_datasets) 
 
 }
+

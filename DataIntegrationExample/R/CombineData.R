@@ -16,6 +16,7 @@ library(sbtools)
 library(rgdal)
 library(sjmisc)
 library(stringr)
+  
 
 # Run function to build DES tables and controlled vocabulary tables from MetadataDict to make sure everything is up to date 
   source(paste0(getwd(), "/R/CreateDataTablesMetadataDict.R"))
@@ -77,7 +78,7 @@ for(p in program) {
     data <- data %>% 
       filter(!!as.name(field) == "WADEABLE")
   
-# From the datamapping find the field name that contains the percent dry program # ed: not sure I understand what "percent dry program" means.
+# From the datamapping find the field name that contains the percent dry field note for each program - filtered from the DataMappingDES.csv
   field <- dataMapVariable("fieldNotes", p)
 
   # Change variable percent dry to a category
@@ -101,9 +102,9 @@ for(p in program) {
   } else if (p=="AIM") { 
     
     print("Processing BLM AIM data")
-   source(paste0(getwd(), "/DataIntegrationExample/R/DownloadAndCleanBLMAIMData.R"))
-   data <- download_AIM()
-
+    source(paste0(getwd(), "/DataIntegrationExample/R/DownloadAndCleanBLMAIMData.R"))
+    data <- download_AIM()
+    
     
 #### Format data to Data Exchange Standard ####
     # Remove data for ProtocolType = BOATABLE, so only wadeable data is included
@@ -187,7 +188,6 @@ for(p in program) {
    unique(siteSelectionType)
    siteSelectionType$ProjectType[str_detect(siteSelectionType$ProjectType, "CNTRCT") ] <- "Targeted"
    unique(siteSelectionType)
-   #I don't know about PILOT, FWNF? # ed: is this still up-to-date or did we resolve this and assign FWNF to Random? update the comment if so.
    siteSelectionType$ProjectType[str_detect(siteSelectionType$ProjectType, "FWNF") ] <- "Random"
    unique(siteSelectionType)
    
@@ -245,8 +245,7 @@ for(p in program) {
    SubSetData$projectCode   <- p
   
   
-  #### Convert date to datatype date #### 
-  # ed: in the line above you have convert date to datatype date which applies to the first and third lines below. so maybe add something else that says convert the other data types below to whatever?
+  #### Converting datatypes so they are cinsistent across all datasets #### 
   if(any(names(SubSetData) =="eventDate")) {SubSetData$eventDate <- as.Date(SubSetData$eventDate, tryFormats = c("%m/%d/%Y", "%Y-%m-%d")) } 
   if(any(names(SubSetData) =="verbatimLocationID")) {SubSetData$verbatimLocationID <- as.character(SubSetData$verbatimLocationID)} 
   if(any(names(SubSetData) =="verbatimEventID")) {SubSetData$verbatimEventID <- as.character(SubSetData$verbatimEventID)} 
@@ -276,9 +275,9 @@ if (p=="NRSA"){
      SubSetData$datasetName             <- "Rivers and Streams"
      SubSetData$projectName             <- "National Aquatic Resource Surveys; National Rivers and Streams Assessmet"
      SubSetData$datasetLink             <- "https://www.epa.gov/national-aquatic-resource-surveys/data-national-aquatic-resource-surveys"
-     SubSetData$bibilographicCitation   <- paste("U.S. Environmental Protection Agency; 2016; National Aquatic Resource Surveys; National Rivers and Streams Assessment 2008 to 2009 data and metadata files Date accessed:", Sys.Date()) # ed: also confused where this comes from b/c it should change depending on the subset data...
+     SubSetData$bibilographicCitation   <- paste("U.S. Environmental Protection Agency; 2016; National Aquatic Resource Surveys; National Rivers and Streams Assessment 2008 to 2009 data and metadata files Date accessed:", Sys.Date())
      SubSetData$metadataID              <- "https://www.epa.gov/national-aquatic-resource-surveys/data-national-aquatic-resource-surveys"
-     SubSetData$preProcessingCode       <- "https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/DataIntegrationExample/R/ownloadAndCleanEPANRSA.R" # ed: update link from Specifications to Standards if this changes in future
+     SubSetData$preProcessingCode       <- "https://github.com/rascully/Stream-Monitoring-Data-Exchange-Specifications/blob/master/DataIntegrationExample/R/DownloadAndCleanEPANRSA.R" # ed: update link from Specifications to Standards if this changes in future
      SubSetData$locationRemarks         <- "Bottom of Reach"
      
      
@@ -362,6 +361,23 @@ ind <- rowSums(is.na(only_metrics)) != (ncol(only_metrics))
 
 all_data2 <-all_data2[ind,]
 
+#### Generate UIDs for the integrated dataset ####
+# create a datasetID  
+all_data2 <- all_data2 %>% 
+  transform(datasetID=as.numeric((factor(datasetName)))) 
+
+# Enter an eventID for the integrated dataset, based on the structure of this dataset we know that each row is a different data collection event, so therefore we generate a UID in the eventID
+all_data2 <- all_data2 %>% 
+  mutate(temp_eventID = paste0(verbatimEventID,projectCode)) %>% 
+  transform(eventID=as.numeric((factor(temp_eventID)))) %>% 
+  dplyr::select(-temp_eventID)
+
+# Remove verbatimEventID generated for the EPA dataset in the data creation process, there is no UID for the 2004 EPA datasets 
+ind_UID <-all_data2$datasetName == ("WSA PHab Metrics (Part 1) - Data (CSV) (csv),WSA PHab Metrics (Part 2) - Data (CSV) (csv),WSA PHab Metrics (Part 1) - Data (CSV) (csv),WSA PHab Metrics (Part 2) - Data (CSV) (csv),WSA Water Chemistry - Data (CSV) (csv),WSA Site Information (CSV) (csv)")
+
+all_data2[ind_UID,"verbatimEventID"] = NA
+
+
 #Replacing commas in waterBody column with | - commas were causing an extra column to show up when unique_locations was exported to csv
 all_data2$waterBody = str_replace_all(all_data2$waterBody, ",", "|")
 
@@ -382,7 +398,7 @@ all_data2 <- all_data2 %>%
 # Create a list of unique locations for the combined dataset 
 u_locations <- dplyr::select(all_data2, (c("locationID", "latitude", "longitude",
                                            "waterBody", "projectCode")))
-unique_locations = u_locations %>% distinct(locationID, projectCode,.keep_all = TRUE) #EH edited this line on 30Jan2023 - set distinct to only be for location ID and project code, but keep all columns. This fixed the duplicate locationID issue here.. but not for the location table
+unique_locations = u_locations %>% distinct(locationID, projectCode,.keep_all = TRUE)
 
 unique_path <- paste0(getwd(), "/DataIntegrationExample/data/UniqueLocationsforStreamHabitatMetric.csv")
 #file.remove(unique_path)
@@ -498,7 +514,6 @@ file_name = paste0(getwd(), "/DataIntegrationExample/data/RelationalDataTablesSt
 openxlsx::write.xlsx(list_of_datasets, file = file_name) 
 
 # Save .csv files for each of the tables in the relational database 
-# Something in this code is change verbatim field name # ed: the verbatimD instead of verbatimEventID being output?
 for(i in 1:length(names(list_of_datasets))){ 
   filename = paste0(getwd(),"/DataIntegrationExample/Data/csv/", names(list_of_datasets[i]), ".csv")
   table_name <- names(list_of_datasets[i])

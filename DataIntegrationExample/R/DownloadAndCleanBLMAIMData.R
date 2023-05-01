@@ -11,7 +11,7 @@ download_AIM<- function(){
   library(geojsonio)
   
 
-BLM <- geojson_sf('https://services1.arcgis.com/KbxwQRRfWyEYLgp4/arcgis/rest/services/BLM_Natl_AIM_Lotic_Indicators_Hub/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json')
+BLM <- geojson_sf('https://services1.arcgis.com/KbxwQRRfWyEYLgp4/arcgis/rest/services/BLM_Natl_AIM_Lotic_Indicators_Hub/FeatureServer/5/query?where=1%3D1&outFields=*&outSR=4326&f=json')
 
    data <- as_tibble(BLM)
   
